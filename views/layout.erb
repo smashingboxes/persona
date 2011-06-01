@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <%= erb :'furniture/header.html' %>
+
+  <body>
+    <div id="wrapper">
+        <header>
+            <h1><a id="logo" href="/">Prototypical, a Sinatra Prototyping Tool</a></h1>
+        </header>
+        
+        <%= yield %>
+    
+    </div>
+
+    <%= erb :'furniture/scripts.html' %>
+    
+  </body>
+</html>
