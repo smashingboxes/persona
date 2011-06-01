@@ -1,0 +1,64 @@
+<%= erb :'furniture/header.html' %>
+<body>
+    <div id="wrapper">
+        <header>
+            <a id="logo" href="/">Zeek, Monster Savings</a>
+        </header>
+        
+    	<article class="fundraisers_page">
+            <header>
+               <h1>Fundraisers</h1>
+               <h2>The easiest way to raise funds</h2>
+           </header>
+               
+            <section>
+               <header>
+                   <h2>Benefits</h2>
+               </header>
+               <ul>
+                   <li><p>Sell something that people need every year.</p></li>
+                   <li><p>Sell something where people can see the savings.</p></li>
+                   <li><p>Sell something that adds real value to a person's life.</p></li>
+                   <li><p>Sell something that people can use EVERY DAY.</p></li>
+                   <li><p>Whoever you sold to last year can renew on their own without your organization having to do anything.</p></li>
+                   <li><p>The more you sell, the more you earn.</p></li>
+               </ul>
+               
+               <h2>Contact Us</h2>
+            </section>
+            
+            <section>
+                <header>
+                    <h2>Request Info:</h2>
+                </header>
+                
+                <form action="" method="post">
+                    <input type="text" id="organization_name" name="organization_name" class="text" placeholder="organization name *" required />
+                    <input type="text" id="first_name" name="first_name" class="text" placeholder="first name *" required />
+                    <input type="text" id="last_name" name="last_name" class="text" placeholder="last name *" required />
+                    <input type="email" id="email" name="email" class="text" placeholder="e-mail *" required />
+                    <input type="phone" id="phone" name="phone" class="text" placeholder="phone number *" required />
+                    <input type="text" id="call_time" name="call_time" class="text" placeholder="best time to call" />
+                    <input type="text" id="referal" name="referral" class="text" placeholder="how did you hear about zeek?" />
+                    <input type="text" id="twitter" name="twitter" class="text" placeholder="@twittername" />
+                    <input type="submit" value="Sign Up" class="button"/>
+                </form>               
+            </section>
+    	   
+        </article> 
+           	
+    	<footer>
+    	   <small id="legal">&copy; 2011 Zeek LLC.</small>
+    	</footer>
+    	
+    </div>
+    
+    <div id="overlays">
+        <div class="ribbon" src="images/ribbon.png" alt="Coming September 1, 2011"></div>
+        <div class="cloud foreground"></div>
+        <div class="cloud middleground"></div>
+        <div class="cloud background"></div>
+    </div>
+    <%= erb :'furniture/scripts.html' %>	
+</body>
+</html>

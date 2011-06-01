@@ -1,0 +1,62 @@
+<%= erb :'furniture/header.html' %>
+<body>
+    <div id="wrapper">
+        <header>
+            <a id="logo" href="/">Zeek, Monster Savings</a>
+        </header>
+        
+    	<article class="merchants_page">
+            <header>
+               <h1>Merchants</h1>
+               <h2>Grow Your Business</h2>
+           </header>
+               
+            <section>
+               <header>
+                   <h2>Benefits</h2>
+               </header>
+               <ul>
+                   <li><p>Get up and running for completely free. No set-up.</p></li>
+                   <li><p>Offer cheap deals, offer deals, whenever you want</p></li>
+                   <li><p>Change the deals, however often you want</p></li>
+                   <li><p>No Point of Sale Hook-up requirements</p></li>
+                   <li><p>Users can sign up to follow your deals where they will get notified via text message on their cells</p></li>
+                   <li><p>Customers clip their coupons with their smart phones</p></li>
+               </ul>
+            </section>
+            
+            <section>
+                <header>
+                    <h2>Sign Up Today</h2>
+                </header>
+                
+                <form action="" method="post">
+                    <input type="text" id="business_name" name="business_name" class="text" placeholder="business name *" required />
+                    <input type="text" id="first_name" name="first_name" class="text" placeholder="first name *" required />
+                    <input type="text" id="last_name" name="last_name" class="text" placeholder="last name *"  required/>
+                    <input type="email" id="email" name="email" class="text" placeholder="e-mail *" required />
+                    <input type="phone" id="phone" name="phone" class="text" placeholder="phone number *" required />
+                    <input type="text" id="call_time" name="call_time" class="text" placeholder="best time to call" />
+                    <input type="text" id="referal" name="referral" class="text" placeholder="how did you hear about zeek?" />
+                    <input type="text" id="twitter" name="twitter" class="text" placeholder="@twittername" />
+                    <input type="submit" value="Sign Up" class="button"/>
+                </form>               
+            </section>
+    	   
+        </article> 
+           	
+    	<footer>
+    	   <small id="legal">&copy; 2011 Zeek LLC.</small>
+    	</footer>
+    	
+    </div>
+    
+    <div id="overlays">
+        <div class="ribbon" src="images/ribbon.png" alt="Coming September 1, 2011"></div>
+        <div class="cloud foreground"></div>
+        <div class="cloud middleground"></div>
+        <div class="cloud background"></div>
+    </div>
+    <%= erb :'furniture/scripts.html' %>
+</body>
+</html>

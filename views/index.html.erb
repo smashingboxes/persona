@@ -1,0 +1,72 @@
+<%= erb :'furniture/header.html' %>
+<body>
+    <div id="wrapper">
+        <header>
+            <h1><a id="logo" href="/">Zeek, Monster Savings</a></h1>
+        </header>
+        
+    	<article>
+        
+            <section class="merchants first">
+               <header>
+                   <h2>Merchants</h2>
+                   <h5>Grow Your Business</h5>
+               </header>
+               <ul>
+                   <li><p>Choose your offers and edit them throughout the year</p></li>
+                   <li><p>Track statistics and usage</p></li>
+                   <li><p>Speak directly to loyal customers</p></li>
+                   <li><p>Push deals via text messages</p></li>
+               </ul>
+               <a class="button" href="/merchants" id="merchants">Get Zeek</a>
+            </section>
+            
+            <section class="fundraisers">
+               <header>
+                   <h2>Fundraisers</h2>
+                   <h5>The Easiest Way to Raise Funds</h5>
+               </header>
+               <ul>
+                   <li><p>Become a fundraiser hero</p></li>
+                   <li><p>Campaign guide and support</p></li>
+                   <li><p>Generate recurring revenue with auto-renewals</p></li>
+                   <li><p>Eliminate bulky coupon books</p></li>
+               </ul>
+               <a class="button" href="/fundraisers">Get Zeek</a>
+            </section>
+            
+            <section class="consumers last">
+               <header>
+                   <h2>Consumers</h2>
+                   <h5>Support Your Cause &amp; Save</h5>
+               </header>
+               <ul>
+                   <li><p>Great deals at local spots</p></li>
+                   <li><p>Mobile coupon clipping</p></li>
+                   <li><p>Track your savings unlike bulky coupon books</p></li>
+                   <li><p>Designate your case</p></li>
+               </ul>
+               <a class="button" href="/consumers">Get Zeek</a>
+            </section>
+    	   
+        </article> 
+           	
+    	<footer>
+    	   <a href="#facebook" title="Friend us on Facebook"><img src="images/facebook.png" alt="Follow us on Facebook" /></a>
+    	   <a href="#twitter" tile="Follow us on Twitter"><img src="images/twitter.png" alt="Follow us on Twitter" /></a>
+    	   <small id="legal">&copy; 2011 Zeek LLC.</small>
+    	</footer>
+    	
+    </div>
+    
+    <div id="overlays">
+        <div class="landscape"></div>
+        <div class="ribbon"></div>
+        <div class="cloud foreground"></div>
+        <div class="cloud middleground"></div>
+        <div class="cloud background"></div>
+    </div>
+    
+    <%= erb :'furniture/scripts.html' %>
+</body>
+</html>

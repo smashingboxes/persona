@@ -1,0 +1,38 @@
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script>
+
+        // The AJAX Overloader:
+        $(document).ready(function() {
+            
+            function ajaxLoaders() {
+                $("a").click(function(e) {
+                    var that = $(this);
+                    
+                    e.preventDefault();
+                                        
+                    $("#wrapper").fadeOut("fast", function() {
+                        
+                        $("body").append("<div id='loader'></div>").children("#loader").fadeOut(0).fadeIn("slow");
+
+                        $("#wrapper").load( $(that).attr("href") + " #wrapper", function() {
+                            
+                            $("#loader").fadeOut("slow", function() { 
+                                $(this).remove() 
+                                $("#wrapper").delay(400).fadeIn("slow");
+                                
+                                ajaxLoaders();
+                            });
+                            
+                        });
+                        
+                    });
+                    
+                });
+                
+            }
+            
+            ajaxLoaders();
+                        
+        });
+    </script>

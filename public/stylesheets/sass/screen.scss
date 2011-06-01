@@ -1,0 +1,186 @@
+/**   
+ * @name: Prototypical
+ * 
+ * Author: Nate Hunzaker
+ * Author URI: http://smashingboxes.com
+ * Version: 1
+ *
+*/
+
+@import "blueprint/reset";
+@import "partials/base";
+@import "blueprint"; 
+
+@import "compass/css3";
+@import "compass/utilities";
+
+
+/* Typography & Colors
+------------------------------------------ */
+
+    /* Varibles
+    ---------------------------------------*/
+    
+    $body_copy  : #222;
+    $primary    : #2a2;
+    $accent     : adjust-saturation(lighten($primary, 30%), -35%);
+    
+    /*/
+     *   Based upon recommendations by the Aaron Boodman
+     *   article: http://blogs.sitepoint.com/eight-definitive-font-stacks-3/ s
+    /*/
+    
+    $sans-serif : Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    $serif      : Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif," "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+    $mono       : Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+    
+    $fancy      : "Goudy Old Style", "Palatino", "Book Antique", $serif;
+    
+    
+    
+    /* Global
+    ---------------------------------------*/
+
+    body                                   { color: $body_copy; font: normal 62.5%/1.5em $sans-serif; }
+    *::selection                           { background: $accent; color: #fff; }
+
+
+
+    /* Headings
+    ---------------------------------------*/
+    
+    h1, h2, h3, h4, h5, h6                  { color: $body_copy; font-weight: bold; line-height: 1.5em; margin-bottom: 0.5em; text-rendering: optimizeLegibility; 
+        & + h1, & + h2, & + h3, & + h4,
+        & + h5, & + h6                      { margin-top: -1em; }
+    }
+    h1                                      { font-size: 2.8em; }
+        h2                                  { font-size: 2.6em; }
+            h3                              { font-size: 2.4em; }
+                h4                          { font-size: 1.8em; }
+                    h5                      { font-size: 1.6em; }
+                        h6                  { font-size: 1.4em; }
+
+
+
+    /* Lists
+    ---------------------------------------*/
+    
+    article                             {
+        ol, ul                              { font: normal 1.4em/1.5em $sans-serif; margin-bottom: 1em; 
+            li                              { list-style: circle; margin: 0 0 0 3em; padding: 0 0 0 0.5em; }
+        }
+        
+        ol li                               { list-style: decimal; }
+        
+        dl                                  { font: normal 1.4em/1.5em $sans-serif; margin-bottom: 1em;
+            lh                              { font: bold 1.1em/1.7em $sans-serif; } 
+            dt                              { margin: 0 0 0em 1em; font-weight: bold;}
+            dd                              { margin: 0 0 1em 2em; }
+        }
+    }
+
+    
+    /* General
+    ---------------------------------------*/
+    
+    blockquote, code, p, pre                { font: normal 1.4em/1.5em $sans-serif; margin-bottom: 1em; }
+    
+    abbr                                    { border-bottom: 1px dotted lighten($body_copy, 30%); }
+    
+    a                                       { color: $primary; text-decoration: none; 
+        &:hover, &:focus                    { color: $accent; }
+        &:active                            { color: darken($accent, 10%); }
+    }
+    
+    blockquote                              { color: lighten($body_copy, 40%); clear: right; font: italic 1.4em/1.5em $serif; margin: 2em 3em; 
+        &:before                            { color: lighten($body_copy, 20%); content: "Ò"; font-size: 2.5em; margin: 0 15px 0 0; position: relative; top: 5px; }
+        &:after                             { color: lighten($body_copy, 20%); content: "Ó"; font-size: 2.5em; margin: 15px 0 0 15px; position: absolute; }
+        
+        img                                 { border: 0.5em solid #fff; float: left; margin: 0 2em 0 -1.5em; @include box-shadow(0 1px 3px lighten($body_copy, 30%) ); }
+    }
+    
+    code                                    { font-family: $mono; }
+    
+    em                                      { font-style: italic; color: darken($body_copy, 5%); } 
+
+    hr                                      { border: none; border-bottom: 1px dashed lighten($body_copy, 50%); margin: 1.5em 0;}
+    
+    mark                                    { background: #fe8; position: relative; padding: 0.3em 0 0; text-shadow: 0 1px 1px #aa3; @include transition(background-color 0.3s ease-out); 
+        &:hover                             { background: lighten(#fe8, 15%); }
+    }
+
+    small                                   { font-size: 1.2em; }
+    
+    strong                                  { font-weight: bold; }
+    sub                                     { font-size: 0.5em; vertical-align: sub; }
+    sup                                     { font-size: 0.5em; vertical-align: super; }
+    
+    
+    /* Articles
+    ---------------------------------------*/
+    
+    article                                 {
+        aside                               { background: lighten($body_copy, 90%); border: 1px solid lighten($body_copy, 70%); float: right; padding: 1.5em 1.5em 0; margin: 0.7em 0 0 2em; width: 25%;}
+    }
+    
+
+    /* Utility Class 
+    ---------------------------------------*/
+    
+    .amp, .alt                              { font-family: $fancy, serif; font-style: italic; font-weight: normal; }
+    .columns                                { @include column-count(3); @include column-gap(1em); }
+ 
+ 
+/* Structure
+------------------------------------------ */
+
+#wrapper                                    { @include container(); margin: 3em auto;}
+
+
+/* Header
+------------------------------------------ */
+
+.menu                                       { clear: right; overflow: hidden;
+
+    ul                                      {
+        li                                  { border: 1px solid lighten($body_copy, 50%); border-width: 0 1px; float: left; padding: 0px 1em; margin: 0 -1px 0 0; }
+            a                               { line-height: 1.5em; }
+    }
+
+}
+
+
+
+/* Body
+------------------------------------------ */
+
+
+
+/* Footer
+------------------------------------------ */
+
+footer                                      { clear: both; }
+
+
+
+/* Images
+------------------------------------------ */
+
+
+/* Form Elements
+------------------------------------------ */
+
+
+
+/* Comments
+------------------------------------------ */
+
+
+
+/* Sidebar
+------------------------------------------ */
+
+
+
+/* Common Elements
+------------------------------------------ */
