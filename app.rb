@@ -17,5 +17,5 @@ end
 
 
 get '/tools/type' do
-    erb :'type.html'
+    erb :'tools/type.html'
 end
