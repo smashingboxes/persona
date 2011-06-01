@@ -83,7 +83,7 @@ body {
 
 /* line 48, sass/screen.scss */
 *::selection {
-  background: #fae8e5;
+  background: #f89381;
   color: black;
 }
 
@@ -188,11 +188,11 @@ a {
 }
 /* line 94, sass/screen.scss */
 a:hover, a:focus {
-  color: #fae8e5;
+  color: #f89381;
 }
 /* line 95, sass/screen.scss */
 a:active {
-  color: #f1c3bb;
+  color: #f66950;
 }
 
 /* line 98, sass/screen.scss */

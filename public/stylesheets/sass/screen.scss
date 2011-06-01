@@ -23,7 +23,7 @@
     
     $body_copy  : #222;
     $primary    : #FF6347;
-    $accent     : adjust-saturation(lighten($primary, 30%), -35%);
+    $accent     : adjust-saturation(lighten($primary, 10%), -10%);
     
     $grid-background-column-color: rgba(225, 225, 225, 0.25);
     $grid-background-baseline-color: rgba(0, 0, 0, 0.05);
