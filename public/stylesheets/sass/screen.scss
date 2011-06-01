@@ -30,10 +30,10 @@
     
     /*/
      *   Based upon recommendations by the Aaron Boodman
-     *   article: http://blogs.sitepoint.com/eight-definitive-font-stacks-3/ s
+     *   article: http://blogs.sitepoint.com/eight-definitive-font-stacks-3/
     /*/
     
-    $sans-serif : Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    $sans-serif : Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
     $serif      : Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif," "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
     $mono       : Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
     
@@ -52,23 +52,24 @@
     /* Headings
     ---------------------------------------*/
     
-    h1, h2, h3, h4, h5, h6                  { color: $body_copy; font-weight: bold; line-height: 1.5em; margin-bottom: 0.5em; text-rendering: optimizeLegibility; 
-        & + h1, & + h2, & + h3, & + h4,
-        & + h5, & + h6                      { margin-top: -1em; }
+    h1, h2, h3, h4, h5, h6                  { color: $body_copy; font-weight: bold; line-height: 20px; margin-bottom: 20px; text-rendering: optimizeLegibility; 
+        & + h1, & + h2, & + h3, & + h4      { margin-top: -15px;
+        }
+        
     }
     h1                                      { font-size: 2.8em; }
         h2                                  { font-size: 2.6em; }
             h3                              { font-size: 2.4em; }
-                h4                          { font-size: 1.8em; }
-                    h5                      { font-size: 1.6em; }
-                        h6                  { font-size: 1.4em; }
+                h4                          { font-size: 1.8em; margin-bottom: 10px; }
+                    h5                      { font-size: 1.6em; margin-bottom: 10px; }
+                        h6                  { font-size: 1.4em; margin-bottom: 6px; }
 
 
 
     /* Lists
     ---------------------------------------*/
     
-    article                             {
+    article                                 {
         ol, ul                              { font: normal 1.4em/1.5em $sans-serif; margin-bottom: 1em; 
             li                              { list-style: circle; margin: 0 0 0 2em; padding: 0; }
         }
@@ -86,7 +87,7 @@
     /* General
     ---------------------------------------*/
     
-    blockquote, code, p, pre                { font: normal 1.4em/1.5em $sans-serif; margin-bottom: 1em; }
+    blockquote, p, pre                      { font: normal 1.4em/20px $sans-serif; margin-bottom: 1em; }
     
     abbr                                    { border-bottom: 1px dotted lighten($body_copy, 30%); }
     
@@ -115,8 +116,8 @@
     small                                   { font-size: 1.2em; }
     
     strong                                  { font-weight: bold; }
-    sub                                     { font-size: 0.5em; vertical-align: sub; }
-    sup                                     { font-size: 0.5em; vertical-align: super; }
+    sub                                     { font-size: 0.5em; vertical-align: baseline; }
+    sup                                     { font-size: 0.5em; vertical-align: baseline; }
     
     
     /* Articles
@@ -135,15 +136,15 @@
     ---------------------------------------*/
     
     .amp, .alt                              { font-family: $fancy, serif; font-style: italic; font-weight: normal; }
-    .columns                                { @include column-count(3); @include column-gap(1em); }
-    .grid                                   { @include showgrid(); }
- 
+    .columns                                { @include column-count(3); @include column-gap(1em); } 
  
  
 /* Structure
 ------------------------------------------ */
 
-#wrapper                                    { @include container(); margin: 3em auto;}
+#wrapper                                    { @include container(); margin: 3em auto; 
+    &:target                                { @include showgrid(); }
+}
 
 
 /* Header
@@ -153,7 +154,7 @@
 
     ul                                      { margin-bottom: 2em;
         li                                  { border: 1px solid lighten($body_copy, 50%); border-width: 0 1px; float: left; list-style: none; padding: 0px 1em; margin: 0 -1px 0 0; }
-            a                               { line-height: 1.5em; }
+            a                               { font-size: 1.5em; line-height: 20px; }
     }
 
 }
@@ -195,3 +196,14 @@ footer                                      { clear: left; margin-top: 5em;
 
 /* Common Elements
 ------------------------------------------ */
+
+    /* Notifications
+    ------------------------------------------ */
+    
+    .flash                                     { background: lighten($body_copy, 80%); border: 1px solid lighten($body_copy, 70%); color: #333; font-size: 1.4em; font-weight: bold; padding: 1em; margin-bottom: 1em;
+        &.success                              { background: #E6EFC2; color: #264409; border-color: #C6D880; }
+        &.error, &.alert                       { background: #FBE3E4; color: #8A1F11; border-color: #FBC2C4; }
+        &.notice                               { background: #FFF6BF; color: #514721; border-color: #FFD324; }
+        &.info                                 { background: #D5EDF8; color: #205791; border-color: #92CAE4; }
+    }
+

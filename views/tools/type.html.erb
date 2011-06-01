@@ -7,21 +7,22 @@
 	<title>Typography Test Page</title>
 </head>
 <body>
-    <div id="wrapper" class="grid">
+    <div id="wrapper">
+                
         <h1>Prototypical Typographic <span class="amp">&amp;</span> Test Page (<abbr title="Prototypical Typographic Test Page">PTTP</abbr>) <sub><a href="#foot_1">1</a></sub></h1>
         <h2 class="alt">A guide for efficiency and efficacy</h2>
-
+        
         <div class="menu">
             <ul id="menu-primary-navigation" class="menu">
-                <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#">1<sup>st</sup> Link</a></li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#">2<sup>nd</sup> Link</a></li>
+                <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#wrapper">Show Grid</a></li>
+                <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#">Hide Grid</a></li>
                 <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#">3<sup>rd</sup> Link</a></li>
                 <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#">4<sup>th</sup> Link</a></li>
                 <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#">5<sup>th</sup> Link</a></li>
             </ul>
         </div>
 
-    	<code>All your base are belong to us_</code>
+    	<p><code>All your base are belong to us_</code></p>
         
         <hr/>
         
@@ -86,7 +87,8 @@
         
         <article>
             <h5>Header Five</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h6>Flash Notices</h6>
+            <%= styled_flash %>
         </article>
         <hr/>
         
