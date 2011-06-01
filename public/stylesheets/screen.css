@@ -104,34 +104,34 @@ h1 + h1, h1 + h2, h1 + h3, h1 + h4, h2 + h1, h2 + h2, h2 + h3, h2 + h4, h3 + h1,
 
 /* line 60, sass/screen.scss */
 h1 {
-  font-size: 2.8em;
+  font-size: 28px;
 }
 
 /* line 61, sass/screen.scss */
 h2 {
-  font-size: 2.6em;
+  font-size: 26px;
 }
 
 /* line 62, sass/screen.scss */
 h3 {
-  font-size: 2.4em;
+  font-size: 24px;
 }
 
 /* line 63, sass/screen.scss */
 h4 {
-  font-size: 1.8em;
+  font-size: 18px;
   margin-bottom: 10px;
 }
 
 /* line 64, sass/screen.scss */
 h5 {
-  font-size: 1.6em;
+  font-size: 16px;
   margin-bottom: 10px;
 }
 
 /* line 65, sass/screen.scss */
 h6 {
-  font-size: 1.4em;
+  font-size: 14px;
   margin-bottom: 6px;
 }
 
@@ -139,7 +139,7 @@ h6 {
 ---------------------------------------*/
 /* line 73, sass/screen.scss */
 article ol, article ul {
-  font: normal 1.4em/1.5em Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: normal 14px/1.5em Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-bottom: 1em;
 }
 /* line 74, sass/screen.scss */
@@ -154,12 +154,12 @@ article ol li {
 }
 /* line 79, sass/screen.scss */
 article dl {
-  font: normal 1.4em/1.5em Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: normal 14px/1.5em Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-bottom: 1em;
 }
 /* line 80, sass/screen.scss */
 article dl lh {
-  font: bold 1.1em/1.7em Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: bold 12px/1.7em Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 /* line 81, sass/screen.scss */
 article dl dt {
@@ -175,7 +175,7 @@ article dl dd {
 ---------------------------------------*/
 /* line 90, sass/screen.scss */
 blockquote, p, pre {
-  font: normal 1.4em/20px Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: normal 14px/20px Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-bottom: 1em;
 }
 
@@ -202,14 +202,14 @@ a:active {
 blockquote {
   color: #888888;
   clear: right;
-  font: italic 1.4em/1.5em Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif," "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+  font: italic 14px/1.5em Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif," "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
   margin: 2em 3em;
 }
 /* line 100, sass/screen.scss */
 blockquote:before {
   color: #555555;
   content: "Ò";
-  font-size: 2.5em;
+  font-size: 25px;
   margin: 0 15px 0 0;
   position: relative;
   top: 5px;
@@ -218,7 +218,7 @@ blockquote:before {
 blockquote:after {
   color: #555555;
   content: "Ó";
-  font-size: 2.5em;
+  font-size: 25px;
   margin: 15px 0 0 15px;
   position: absolute;
 }
@@ -273,7 +273,7 @@ mark:hover {
 
 /* line 116, sass/screen.scss */
 small {
-  font-size: 1.2em;
+  font-size: 11px;
 }
 
 /* line 118, sass/screen.scss */
@@ -383,7 +383,7 @@ article aside.right {
 }
 /* line 157, sass/screen.scss */
 .menu ul a {
-  font-size: 1.5em;
+  font-size: 15px;
   line-height: 20px;
 }
 

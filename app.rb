@@ -4,6 +4,11 @@ require 'sinatra'
 require 'sinatra/flash'
 require 'erb'
 
+require 'datamapper'
+
+# need install dm-sqlite-adapter
+#DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/blog.db")
+
 enable :sessions
 
 # Routes
