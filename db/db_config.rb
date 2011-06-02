@@ -2,12 +2,12 @@ require 'rubygems'
 require 'data_mapper'
 
 configure :development do
-    # A Sqlite3 connection to a persistent database
-    DataMapper.setup(:default, "sqlite://#{Dir.pwd}/db/proto.db")
+  # A Sqlite3 connection to a persistent database
+  DataMapper.setup(:default, "sqlite://#{Dir.pwd}/db/proto.db")
 end
 
 configure :production do 
-    # A Postgres connection:
+  # A Postgres connection:
   DataMapper.setup(:default, 'postgres://localhost/the_database_name')
 end
 
