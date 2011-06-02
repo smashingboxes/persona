@@ -8,7 +8,7 @@ end
 
 configure :production do 
   # A Postgres connection:
-  DataMapper.setup(:default, 'postgres://localhost/the_database_name')
+  DataMapper.setup(:default, 'postgres://kgvrhnbnbu:1AybmVA5tnxO7HkKOFI6@ec2-174-129-222-56.compute-1.amazonaws.com/kgvrhnbnbu')
 end
 
 class Page

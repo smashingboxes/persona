@@ -49,7 +49,7 @@ post "/create" do
     
     Page.create(
       :title      => "#{params[:title]}",
-      :body       => "#{params[:body]}",
+      :body       => "#{params[:body]}"
       :created_at => Time.now
     )
     
@@ -65,7 +65,7 @@ post "/update/:id" do
 
     @page.update(
       :title      => "#{params[:title]}",
-      :body       => "#{params[:body]}",
+      :body       => "#{params[:body]}"
     )
     
     flash[:info] = "Page was successfully updated."
