@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
 group :production do
-  #gem 'dm-postgres-adapter'  
+  gem 'dm-postgres-adapter'
 end
 
 group :development do
