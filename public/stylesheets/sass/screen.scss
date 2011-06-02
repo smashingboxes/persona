@@ -22,7 +22,7 @@
     ---------------------------------------*/
     
     $body_copy  : #222;
-    $primary    : #FF6347;
+    $primary    : #f33;
     $accent     : adjust-saturation(lighten($primary, 10%), -10%);
     
     $grid-background-column-color: rgba(225, 225, 225, 0.25);
@@ -127,7 +127,7 @@
     ---------------------------------------*/
     
     article                                 { 
-        aside                               { background: lighten($body_copy, 90%); border: 1px solid lighten($body_copy, 70%); float: left; padding: 1.5em 1.5em 0; margin: 0.7em 1em 0 0; width: 25%;
+        aside                               { background: #ffd; border: 1px solid lighten($body_copy, 70%); float: left; padding: 1.5em 1.5em 0; margin: 0.7em 1em 0 0; width: 25%;
             img                             { border: 1px solid #aaa; float: left; margin-right: 1em; }
             
             &.right                         { float: right; margin: 0.7em 0 0 2em; }
@@ -145,7 +145,7 @@
 /* Structure
 ------------------------------------------ */
 
-#wrapper                                    { @include container(); margin: 3em auto; 
+#wrapper                                    { @include container(); margin: 3em auto;
     &:target                                { @include showgrid(); }
 }
 
@@ -153,10 +153,10 @@
 /* Header
 ------------------------------------------ */
 
-.menu                                       { clear: right; overflow: hidden; margin-bottom: 40px;
+.menu                                       { clear: right; overflow: hidden; margin-bottom: 20px;
 
     ul                                      { margin-bottom: 2em;
-        li                                  { border: 1px solid lighten($body_copy, 50%); border-width: 0 1px; float: left; list-style: none; padding: 0px 1em; margin: 0 -1px 0 0; }
+        li                                  { float: left; list-style: none; margin: 0 20px 0 0; }
             a                               { font-size: 15px; line-height: 20px; }
     }
 
@@ -207,23 +207,44 @@ form.inline p                               { margin-bottom: 0; }
 
 /* Common Elements
 ------------------------------------------ */
+    
+    #admin                                  { position: fixed; top: 10px; left: 10px; background:#333; border: 1px solid #222; height: 37px; font-size: 14px; overflow: hidden; padding: 3px; text-align: center; @include box-shadow( 0 1px 5px #999);    
+                
+        a                                   { background: #222; border: 1px solid #444; display: block; color: #fff; margin: 0 auto 10px; width: 15px; height: 15px; padding: 1px 2px; @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.35));            
+            &.create                        { color: #7f4; border-color: #6a6;
+                &:hover                     { @include box-shadow(0 0 8px #9f9); border-color: #9f9; }
+            }
+            
+            &.edit                          { color: #99f; border-color: #66a;
+                &:hover                     { @include box-shadow(0 0 8px #55f); border-color: #99f; }
+            }
+            
+            &.delete                        { color: #f44; border-color: #a66;
+                &:hover                     { @include box-shadow(0 0 8px #f55); border-color: #f99; }
+            }
+            
+            &.disabled                      { color: #444; }
+        }
 
+        a#icon                              { display: block; font-size: 20px; font-family: $fancy; font-style: italic; margin: 0 auto 10px; line-height: 32px; height: 32px; width: 32px; }
+        
+        *::selection                        { background: none; }
+    }
 
     /* Notifications
     ------------------------------------------ */
     
-    .flash                                     { background: lighten($body_copy, 80%); border: 1px solid lighten($body_copy, 70%); color: #333; font-size: 1.4em; font-weight: bold; padding: 0.5em 1em; margin-bottom: 1em; @include border-radius(4px); @include box-shadow(inset 0 1px 1px #fff);
-        &.success                              { background: #E6EFC2; color: #264409; border-color: #C6D880; 
+    .flash                                     { background: lighten($body_copy, 80%); border: 1px solid lighten($body_copy, 70%); color: #333; cursor: pointer; display: none; font-size: 1.4em; font-weight: bold; left: 4px; padding: 20px 20px 20px 65px; position: fixed; top: 5px; @include border-radius(4px); @include box-shadow(inset 0 1px 1px #fff);
+        &.success                              { background-color: #E6EFC2; color: #264409; border-color: #C6D880; 
             a                                  { color:#264409; }
         }
-        &.error, &.alert                       { background: #FBE3E4; color: #8A1F11; border-color: #FBC2C4; 
+        &.error, &.alert                       { background-color: #FBE3E4; color: #8A1F11; border-color: #FBC2C4; 
             a                                  { color:#8a1f11; }
         }
-        &.notice                               { background: #FFF6BF; color: #514721; border-color: #FFD324; 
+        &.notice                               { background-color: #FFF6BF; color: #514721; border-color: #FFD324; 
             a                                  {color:#514721;}
         }
-        &.info                                 { background: #D5EDF8; color: #205791; border-color: #92CAE4; 
+        &.info                                 { background-color: #D5EDF8; color: #205791; border-color: #92CAE4; 
             a                                  { color:#205791; }
         }
     }
-

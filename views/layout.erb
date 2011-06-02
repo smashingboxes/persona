@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <%= erb :'furniture/header.html' %>
+  <%= erb :'furniture/header' %>
 
   <body>
     <div id="wrapper">
     
         <header>
-            <h1><a id="logo" href="/">Prototypical, a Sinatra Prototyping Tool</a></h1>
+            <h1><a id="logo" href="/">Prototypical</a></h1>
         </header>
         
         <div class="menu">
@@ -15,19 +15,16 @@
                 <% Page.all.each do |p| %>
                     <li><a href="/page/<%= p.id %>"><%= p.title %></a></li>
                 <% end %>
-                <li><a href="/new">Create</a></li>
             </ul>
         </div>
-        
-        <%= styled_flash %>
-        
-        <hr/>
-        
+                        
         <%= yield %>
     
     </div>
-
-    <%= erb :'furniture/scripts.html' %>
+    
+    <%= styled_flash %>
+    <%= erb :'furniture/menu' %>
+    <%= erb :'furniture/scripts' %>
     
   </body>
 </html>

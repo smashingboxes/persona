@@ -1,23 +1,14 @@
 # Required Gems
-require 'rubygems'
-require "bundler/setup"
 
-require 'sinatra'
-require 'sinatra/flash'
-require 'erb'
-
-require 'maruku'
-
-require 'coffee-script'
-
-# Database connections
-require './db/db_config.rb'
+['rubygems', 'bundler/setup', 'sinatra', 'sinatra/flash', 'erb', 'maruku','coffee-script', './db/db_config.rb'].each do |f|
+    require f
+end
 
 enable :sessions
 
 # Routes
 get '/' do
-    erb :'index.html'
+    erb :index
 end
 
 get '/javascripts/:name' do
@@ -30,24 +21,24 @@ get '/page/:id' do
     @page = Page.get(params[:id])
     @content = Maruku.new("#{@page.body}").to_html
     
-    erb :"page.html"
+    erb :page
 end
 
 get "/new" do 
-    erb :"manage/new.html"
+    erb :"manage/new"
 end
 
 get "/edit/:id" do
     @page = Page.get(params[:id])
     
-    erb :"manage/edit.html"
+    erb :"manage/edit"
 end
 
 get "/destroy/:id" do 
 
     Page.get(params[:id]).destroy
     
-    flash[:notice] = "Post was successfully destroyed."
+    flash[:alert] = "Page was destroyed."
     
     redirect "/"
 
@@ -62,7 +53,7 @@ post "/create" do
       :created_at => Time.now
     )
     
-    flash[:success] = "Post was successfully made!"
+    flash[:success] = "Page was created!"
     
     redirect "/page/#{Page.last.id}"
 
@@ -77,15 +68,13 @@ post "/update/:id" do
       :body       => "#{params[:body]}",
     )
     
-    flash[:success] = "Post was successfully updated."
+    flash[:info] = "Page was successfully updated."
     
     redirect "/page/#{@page.id}"
 
 end
 
-
 # Tools
-
 get '/tools/type' do    
-    erb :'tools/type.html'
+    erb :'tools/type'
 end

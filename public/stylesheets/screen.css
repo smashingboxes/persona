@@ -83,7 +83,7 @@ body {
 
 /* line 48, sass/screen.scss */
 *::selection {
-  background: #f89381;
+  background: #f76e6e;
   color: black;
 }
 
@@ -186,16 +186,16 @@ abbr {
 
 /* line 92, sass/screen.scss */
 a {
-  color: #ff6347;
+  color: #ff3333;
   text-decoration: none;
 }
 /* line 93, sass/screen.scss */
 a:hover, a:focus {
-  color: #f89381;
+  color: #f76e6e;
 }
 /* line 94, sass/screen.scss */
 a:active {
-  color: #f66950;
+  color: #f53d3d;
 }
 
 /* line 97, sass/screen.scss */
@@ -312,7 +312,7 @@ sup {
 ---------------------------------------*/
 /* line 130, sass/screen.scss */
 article aside {
-  background: white;
+  background: #ffd;
   border: 1px solid #d4d4d4;
   float: left;
   padding: 1.5em 1.5em 0;
@@ -382,7 +382,7 @@ article aside.right {
 .menu {
   clear: right;
   overflow: hidden;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 /* line 158, sass/screen.scss */
 .menu ul {
@@ -390,12 +390,9 @@ article aside.right {
 }
 /* line 159, sass/screen.scss */
 .menu ul li {
-  border: 1px solid #a2a2a2;
-  border-width: 0 1px;
   float: left;
   list-style: none;
-  padding: 0px 1em;
-  margin: 0 -1px 0 0;
+  margin: 0 20px 0 0;
 }
 /* line 160, sass/screen.scss */
 .menu ul a {
@@ -507,17 +504,112 @@ form.inline p {
 
 /* Common Elements
 ------------------------------------------ */
+/* line 211, sass/screen.scss */
+#admin {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background: #333;
+  border: 1px solid #222;
+  height: 37px;
+  font-size: 14px;
+  overflow: hidden;
+  padding: 3px;
+  text-align: center;
+  -moz-box-shadow: 0 1px 5px #999999;
+  -webkit-box-shadow: 0 1px 5px #999999;
+  -o-box-shadow: 0 1px 5px #999999;
+  box-shadow: 0 1px 5px #999999;
+}
+/* line 213, sass/screen.scss */
+#admin a {
+  background: #222;
+  border: 1px solid #444;
+  display: block;
+  color: #fff;
+  margin: 0 auto 10px;
+  width: 15px;
+  height: 15px;
+  padding: 1px 2px;
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+/* line 214, sass/screen.scss */
+#admin a.create {
+  color: #7f4;
+  border-color: #6a6;
+}
+/* line 215, sass/screen.scss */
+#admin a.create:hover {
+  -moz-box-shadow: 0 0 8px #99ff99;
+  -webkit-box-shadow: 0 0 8px #99ff99;
+  -o-box-shadow: 0 0 8px #99ff99;
+  box-shadow: 0 0 8px #99ff99;
+  border-color: #9f9;
+}
+/* line 218, sass/screen.scss */
+#admin a.edit {
+  color: #99f;
+  border-color: #66a;
+}
+/* line 219, sass/screen.scss */
+#admin a.edit:hover {
+  -moz-box-shadow: 0 0 8px #5555ff;
+  -webkit-box-shadow: 0 0 8px #5555ff;
+  -o-box-shadow: 0 0 8px #5555ff;
+  box-shadow: 0 0 8px #5555ff;
+  border-color: #99f;
+}
+/* line 222, sass/screen.scss */
+#admin a.delete {
+  color: #f44;
+  border-color: #a66;
+}
+/* line 223, sass/screen.scss */
+#admin a.delete:hover {
+  -moz-box-shadow: 0 0 8px #ff5555;
+  -webkit-box-shadow: 0 0 8px #ff5555;
+  -o-box-shadow: 0 0 8px #ff5555;
+  box-shadow: 0 0 8px #ff5555;
+  border-color: #f99;
+}
+/* line 226, sass/screen.scss */
+#admin a.disabled {
+  color: #444;
+}
+/* line 229, sass/screen.scss */
+#admin a#icon {
+  display: block;
+  font-size: 20px;
+  font-family: "Goudy Old Style", "Palatino", "Book Antique", Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif," "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+  font-style: italic;
+  margin: 0 auto 10px;
+  line-height: 32px;
+  height: 32px;
+  width: 32px;
+}
+/* line 231, sass/screen.scss */
+#admin *::selection {
+  background: none;
+}
+
 /* Notifications
 ------------------------------------------ */
-/* line 215, sass/screen.scss */
+/* line 237, sass/screen.scss */
 .flash {
   background: #eeeeee;
   border: 1px solid #d4d4d4;
   color: #333;
+  cursor: pointer;
+  display: none;
   font-size: 1.4em;
   font-weight: bold;
-  padding: 0.5em 1em;
-  margin-bottom: 1em;
+  left: 4px;
+  padding: 20px 20px 20px 65px;
+  position: fixed;
+  top: 5px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   -o-border-radius: 4px;
@@ -529,43 +621,43 @@ form.inline p {
   -o-box-shadow: inset 0 1px 1px white;
   box-shadow: inset 0 1px 1px white;
 }
-/* line 216, sass/screen.scss */
+/* line 238, sass/screen.scss */
 .flash.success {
-  background: #E6EFC2;
+  background-color: #E6EFC2;
   color: #264409;
   border-color: #C6D880;
 }
-/* line 217, sass/screen.scss */
+/* line 239, sass/screen.scss */
 .flash.success a {
   color: #264409;
 }
-/* line 219, sass/screen.scss */
+/* line 241, sass/screen.scss */
 .flash.error, .flash.alert {
-  background: #FBE3E4;
+  background-color: #FBE3E4;
   color: #8A1F11;
   border-color: #FBC2C4;
 }
-/* line 220, sass/screen.scss */
+/* line 242, sass/screen.scss */
 .flash.error a, .flash.alert a {
   color: #8a1f11;
 }
-/* line 222, sass/screen.scss */
+/* line 244, sass/screen.scss */
 .flash.notice {
-  background: #FFF6BF;
+  background-color: #FFF6BF;
   color: #514721;
   border-color: #FFD324;
 }
-/* line 223, sass/screen.scss */
+/* line 245, sass/screen.scss */
 .flash.notice a {
   color: #514721;
 }
-/* line 225, sass/screen.scss */
+/* line 247, sass/screen.scss */
 .flash.info {
-  background: #D5EDF8;
+  background-color: #D5EDF8;
   color: #205791;
   border-color: #92CAE4;
 }
-/* line 226, sass/screen.scss */
+/* line 248, sass/screen.scss */
 .flash.info a {
   color: #205791;
 }
