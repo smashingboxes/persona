@@ -49,7 +49,7 @@ post "/create" do
     
     Page.create(
       :title      => "#{params[:title]}",
-      :body       => "#{params[:body]}"
+      :body       => "#{params[:body]}",
       :created_at => Time.now
     )
     
