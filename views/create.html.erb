@@ -1,0 +1,75 @@
+        <section>
+            <article>
+                <h3>Create a Page</h3>
+
+                <form action="/create" method="post">
+                    <aside class="right">
+                        <h4>Markdown Cheat Sheat</h4>
+                        <hr/>
+                        <h5>Headers:</h5>
+                        <p> 
+                            # Header 1<br/>
+                            ## Header 2<br/>
+                            ### Header 3<br/>
+                            #### Header 4<br/>
+                            ##### Header 5<br/>
+                        <p>
+                        <hr/>
+                        <h5>Font Style:</h5>                        
+                        <p>
+                            <em>Italics: </em>_text_<br/>
+                            <strong>Bold:</strong> **text**<br/>
+                            <code>Code: </code>`text`<br/>
+                            
+                        </p>
+                        <hr/>
+                        <h5>Lists:</h5>
+                        <h6>Unordered</h6>
+                        <ul>
+                            <li>* Asterisks mark list items</li>
+                            <li>- Also Minus Signs</li>
+                            <li>+ And Plus Signs</li>
+                        </ul>
+                        <h6>Ordered</h6>
+                        <ol>
+                            <li>A numbered list</li>
+                            <li>Which is numbered</li>
+                            <li>With periods and a space</li>
+                        </ol>
+                        <hr/>
+                        <h5>Other:</h5>
+                        <p>![picture alt](/images/photo.jpeg "Title is optional")</p>
+                        
+                        <p>
+                            > Blockquotes are like quoted text in email replies<br/>
+                            >> And, they can be nested
+                        </p>
+                                             
+                    </aside>
+                  <fieldset>
+                    <legend>Please use the form below to create a page:</legend>
+                    <p>
+                      <label for="title">Page Title</label><br>
+                      <input type="text" class="title" name="title" id="title" placeholder="Lorem Ipsum">
+                    </p>
+        
+                    <p>
+                      <label for="body">Markdown Content:</label><br>
+                      <textarea name="body" id="body" rows="5" cols="20" placeholder="Write something..."></textarea>
+                    </p>
+        
+                    <p>
+                      <input type="submit" value="Create">
+                      <input type="reset" value="Reset">
+                    </p>
+        
+                  </fieldset>
+                </form>
+
+            <hr/>
+            </article>
+        </section>
+           	
+    	<footer>
+    	   <small id="legal">Maintained by Nate Hunzaker, at <a target="_blank" href="http://www.smashingboxes.com">Smashing Boxes</a></small>
+    	</footer>

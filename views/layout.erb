@@ -5,9 +5,20 @@
 
   <body>
     <div id="wrapper">
+    
         <header>
             <h1><a id="logo" href="/">Prototypical, a Sinatra Prototyping Tool</a></h1>
         </header>
+        <div class="menu">
+            <ul>
+                <% Page.all.each do |p| %>
+                    <li><a href="/page/<%= p.id %>"><%= p.title %></a></li>
+                <% end %>
+                <li><a href="/create">Create</a></li>
+            </ul>
+        </div>
+        
+        <%= styled_flash %>
         
         <%= yield %>
     

@@ -1,9 +1,11 @@
 source "http://rubygems.org"
 
-gem "sinatra"
-gem "tilt"
-gem "pony"
-gem 'haml'
-gem 'compass'
+# Core
+gem 'sinatra'
 gem 'sinatra-flash'
-gem 'datamapper'
+gem 'tilt'
+gem 'maruku'
+
+# Data
+gem 'data_mapper'
+gem 'dm-sqlite-adapter'
