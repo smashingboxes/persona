@@ -18,6 +18,7 @@ get '/' do
     erb :'index.html'
 end
 
+# Manage Pages
 get '/page/:id' do 
 
     @page = Page.get(params[:id])
@@ -26,9 +27,26 @@ get '/page/:id' do
     erb :"page.html"
 end
 
-get "/create" do 
-    erb :"create.html"
+get "/new" do 
+    erb :"manage/new.html"
 end
+
+get "/edit/:id" do
+    @page = Page.get(params[:id])
+    
+    erb :"manage/edit.html"
+end
+
+get "/destroy/:id" do 
+
+    Page.get(params[:id]).destroy
+    
+    flash[:notice] = "Post was successfully destroyed."
+    
+    redirect "/"
+
+end
+
 
 post "/create" do 
     
@@ -40,16 +58,28 @@ post "/create" do
     
     flash[:success] = "Post was successfully made!"
     
-    redirect "/"
+    redirect "/page/#{Page.last.id}"
+
+end
+
+post "/update/:id" do 
+
+    @page = Page.get(params[:id])
+
+    @page.update(
+      :title      => "#{params[:title]}",
+      :body       => "#{params[:body]}",
+    )
+    
+    flash[:success] = "Post was successfully updated."
+    
+    redirect "/page/#{@page.id}"
 
 end
 
 
-get '/tools/type' do    
-    flash[:success] = "Success!"
-    flash[:error] = "Error!"
-    flash[:info] = "More info: Lorem Ipsum Varle Vue Con Carne."
-    flash[:notice] = "Notice: Lorem Ipsum Varle Vue Con Carne."
+# Tools
 
+get '/tools/type' do    
     erb :'tools/type.html'
 end

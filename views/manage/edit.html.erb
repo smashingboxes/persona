@@ -1,8 +1,7 @@
         <section>
             <article>
-                <h3>Create a Page</h3>
-
-                <form action="/create" method="post">
+                <h3>Edit Page</h3>
+                <form action="/update/<%= @page.id %>" method="post">
                     <aside class="right">
                         <h4>Markdown Cheat Sheat</h4>
                         <hr/>
@@ -17,9 +16,9 @@
                         <hr/>
                         <h5>Font Style:</h5>                        
                         <p>
-                            <em>Italics: </em>_text_<br/>
-                            <strong>Bold:</strong> **text**<br/>
-                            <code>Code: </code>`text`<br/>
+                            <em>Italics: </em>_[text]_<br/>
+                            <strong>Bold:</strong> **[text]**<br/>
+                            <code>Code: </code>`[text]`<br/>
                             
                         </p>
                         <hr/>
@@ -50,16 +49,16 @@
                     <legend>Please use the form below to create a page:</legend>
                     <p>
                       <label for="title">Page Title</label><br>
-                      <input type="text" class="title" name="title" id="title" placeholder="Lorem Ipsum">
+                      <input type="text" class="title" name="title" id="title" value="<%= @page.title %>">
                     </p>
         
                     <p>
                       <label for="body">Markdown Content:</label><br>
-                      <textarea name="body" id="body" rows="5" cols="20" placeholder="Write something..."></textarea>
+                      <textarea name="body" id="body" rows="5" cols="20"><%= @page.body %></textarea>
                     </p>
         
                     <p>
-                      <input type="submit" value="Create">
+                      <input type="submit" value="Update">
                       <input type="reset" value="Reset">
                     </p>
         
