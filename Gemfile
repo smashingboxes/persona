@@ -1,9 +1,5 @@
 source "http://rubygems.org"
 
-group :production do
-  gem 'dm-postgres-adapter'
-end
-
 group :development do
 
   gem 'dm-sqlite-adapter'

@@ -3,7 +3,7 @@ require 'data_mapper'
 
 configure :development do
   # A Sqlite3 connection to a persistent database
-  DataMapper.setup(:default, "sqlite://#{Dir.pwd}/db/proto.db")
+  DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite://#{Dir.pwd}/db/proto.db")
 end
 
 configure :production do 
