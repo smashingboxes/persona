@@ -1,6 +1,6 @@
 # Required Gems
 
-['rubygems', 'bundler/setup', 'sinatra', 'sinatra/flash', 'erb', 'maruku','coffee-script', './db/db_config.rb'].each do |f|
+['rubygems', 'bundler/setup', 'sinatra', 'sinatra/flash', 'erb', 'maruku', './db/db_config.rb'].each do |f|
     require f
 end
 
@@ -12,7 +12,10 @@ get '/' do
 end
 
 get '/javascripts/:name' do
-  coffee :"../public/javascripts/#{params[:name]}"
+    configure :development do
+        require 'coffee-script'
+        coffee :"../public/javascripts/#{params[:name]}"
+    end
 end
 
 # Manage Pages
