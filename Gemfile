@@ -1,11 +1,28 @@
 source "http://rubygems.org"
 
-# Core
-gem 'sinatra'
-gem 'sinatra-flash'
-gem 'tilt'
-gem 'maruku'
+group :production do
+  gem 'dm-postgres-adapter'  
+end
 
-# Data
-gem 'data_mapper'
-gem 'dm-sqlite-adapter'
+group :development do
+
+  gem 'dm-sqlite-adapter'
+
+  # Manage Coffeescript
+  gem 'coffee-script'
+  gem 'rack-coffee'
+  gem 'therubyracer'
+  
+  # Auto server refresh
+  gem 'shotgun'
+end
+
+group :default do
+  gem 'sinatra'
+  gem 'sinatra-flash'
+  gem 'maruku'
+  
+  # Data
+  gem 'data_mapper'
+
+end

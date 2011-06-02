@@ -8,8 +8,25 @@ require 'erb'
 
 require 'maruku'
 
+require 'rack/coffee'
+
 # Database connections
 require './db/db_config.rb'
+
+# CoffeeScript
+configure :development do
+  puts "Generated CoffeeScript..."
+ 
+  require 'coffee-script'
+  
+  use Rack::Coffee, {
+    :root => '/public/javascripts/coffeescript/',
+    :urls => '/public/javascripts/',
+    :output_path => '/public/javascripts/'
+  }
+  
+  puts "CoffeeScript Generated!"
+end
 
 enable :sessions
 

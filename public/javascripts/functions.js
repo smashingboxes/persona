@@ -1,5 +1,3 @@
 (function() {
-  var a, b;
-  a = "hello";
-  b = "ho hi";
+  $('.flash').delay(2000).fadeOut(750);
 }).call(this);

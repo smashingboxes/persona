@@ -3,5 +3,4 @@
 # Watch CoffeesScripts:
 # coffee --watch --compile -o ./public/javascripts ./public/javascripts/coffeescript
 
-a = "hello"
-b = "ho hi"
+$('.flash').delay(3000).fadeOut()
