@@ -12,11 +12,10 @@ get '/' do
 end
 
 get '/javascripts/:name' do
-    configure :development do
+    if ENV['RACK_ENV'] == 'development'
         require 'coffee-script'
         coffee :"../public/javascripts/#{params[:name]}"
-    end
-    configure :production do
+    else
         File.read("public/javascripts/#{params[:name]}.js")
     end
 end

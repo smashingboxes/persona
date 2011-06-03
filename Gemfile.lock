@@ -86,7 +86,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-script
   data_mapper
-  dm-postgres-adapter (~> 1.1.0)
+  dm-postgres-adapter
   dm-sqlite-adapter
   maruku
   rack-coffee
