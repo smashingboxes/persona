@@ -94,10 +94,7 @@
         &:active                            { color: darken($accent, 10%); }
     }
     
-    blockquote                              { color: lighten($body_copy, 40%); clear: right; font: italic 14px/1.5em $serif; margin: 2em 3em; 
-        &:before                            { color: lighten($body_copy, 20%); content: "Ò"; font-size: 25px; margin: 0 15px 0 0; position: relative; top: 5px; }
-        &:after                             { color: lighten($body_copy, 20%); content: "Ó"; font-size: 25px; margin: 15px 0 0 15px; position: absolute; }
-        
+    blockquote                              { color: lighten($body_copy, 40%); clear: right; font: italic 14px/1.5em $serif; margin: 2em 3em;         
         img                                 { border: 0.5em solid #fff; float: left; margin: 0 2em 0 0; @include box-shadow(0 1px 3px lighten($body_copy, 30%) ); }
     }
     
