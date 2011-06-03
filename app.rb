@@ -12,9 +12,12 @@ get '/' do
 end
 
 get '/javascripts/:name' do
+    
     if ENV['RACK_ENV'] == 'development'
-        require 'coffee-script'
-        coffee :"../public/javascripts/#{params[:name]}"
+        require 'rake'
+        Rake::Task["js:compile"]
+        
+        File.read("public/javascripts/#{params[:name]}.js")
     else
         File.read("public/javascripts/#{params[:name]}.js")
     end
