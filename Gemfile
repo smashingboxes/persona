@@ -21,7 +21,7 @@ group :default do
   gem 'sinatra'
   gem 'sinatra-flash'
   gem 'maruku'
-  
+
   # Data
   gem 'data_mapper'
 

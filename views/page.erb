@@ -1,7 +1,7 @@
         <section>
             <article>
-                <h3><%= @page.title %></h3>
-                <p><%= @content %></p>
+                <h3><%= the_title() %></h3>
+                <p><%= the_content() %></p>
             <hr/>
             </article>
             <p><a href="/edit/<%= @page.id %>">Edit this page</a> | <a href="/destroy/<%= @page.id %>">Delete this page</a></p>

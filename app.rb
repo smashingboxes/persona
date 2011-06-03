@@ -6,11 +6,19 @@ end
 
 enable :sessions
 
-# Routes
+##############################
+# Controllers
+##############################
+
+# Define Helpers
+require './proto-includes/helpers.rb'
+
+# Root
 get '/' do
     erb :index
 end
 
+# JavaScripts/CoffeeScripts
 get '/javascripts/:name' do
     
     if ENV['RACK_ENV'] == 'development'
@@ -25,7 +33,6 @@ end
 
 # Manage Pages
 get '/page/:id' do 
-
     @page = Page.get(params[:id])
     @content = Maruku.new("#{@page.body}").to_html
     
@@ -51,7 +58,6 @@ get "/destroy/:id" do
     redirect "/"
 
 end
-
 
 post "/create" do 
     

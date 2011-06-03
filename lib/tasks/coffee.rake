@@ -3,7 +3,7 @@ require 'coffee-script'
 namespace :js do
   desc "Converts CoffeeScript to JavaScript"
   task :compile do
-    source = "./public/javascripts/coffeescripts/"
+    source = "./src/coffeescripts/"
     javascripts = "./public/javascripts/"
     
     Dir.foreach(source) do |cf|
