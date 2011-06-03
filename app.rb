@@ -11,10 +11,13 @@ get '/' do
     erb :index
 end
 
-configure :development do
-    get '/javascripts/:name' do
+get '/javascripts/:name' do
+    configure :development do
         require 'coffee-script'
         coffee :"../public/javascripts/#{params[:name]}"
+    end
+    configure :production do
+        File.read(File.join('/javascripts', '/#{params[:name]}.js'))
     end
 end
 
