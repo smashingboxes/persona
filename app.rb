@@ -17,7 +17,7 @@ get '/javascripts/:name' do
         coffee :"../public/javascripts/#{params[:name]}"
     end
     configure :production do
-        File.read(File.join('/javascripts', '/#{params[:name]}.js'))
+        File.read("public/javascripts/#{params[:name]}.js")
     end
 end
 
