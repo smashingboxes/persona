@@ -11,8 +11,8 @@ get '/' do
     erb :index
 end
 
-get '/javascripts/:name' do
-    configure :development do
+configure :development do
+    get '/javascripts/:name' do
         require 'coffee-script'
         coffee :"../public/javascripts/#{params[:name]}"
     end
