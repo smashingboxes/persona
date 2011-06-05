@@ -60,7 +60,8 @@ post "/create" do
           :title            => "#{params[:title]}",
           :body             => "#{params[:body]}",
           :created_at       => Time.now,
-          :content_type     => :"#{params[:content_type]}"
+          :content_type     => :"#{params[:content_type]}",
+          :template   => "#{params[:template]}"
         )
         
         if content.save
