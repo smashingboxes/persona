@@ -24,7 +24,7 @@ end
 
 # Manage Prototypical Content
 get '/node/:id' do 
-    @content = Content.get(params[:id], )
+    @content = Content.get(params[:id])
     
     erb :single
 end
