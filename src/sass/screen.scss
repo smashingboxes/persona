@@ -282,3 +282,11 @@ form.inline p                               { margin-bottom: 0; }
     
     #admin                                  { left: 100%; margin-left: -54px; }
 }
+
+@media (max-width: 900px) {
+    .columns                                { @include column-count(2); }
+}
+
+@media (max-width: 500px) {
+    .columns                                { @include column-count(0); }
+}
