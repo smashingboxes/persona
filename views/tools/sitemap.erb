@@ -3,8 +3,8 @@
 
 <h3>Pages</h3>
 <ul>
-    <% for page in Content.pages do %>
-        <li><a href="/node/<%= page.id %>"><%= page.title %></a></li>
+    <% proto_loop "pages" do %>
+        <li><a href="<%= the_link %>"><%= the_title %></a></li>
     <% end %>
 </ul>
 
@@ -12,7 +12,7 @@
 
 <h3>Posts</h3>
 <ul>
-    <% proto_loop() do %>
-        <li><a href="<%= @the_link %>"><%= @the_title %></a></li>
+    <% proto_loop "posts" do %>
+        <li><a href="<%= the_link %>"><%= the_title %></a></li>
     <% end %>
 </ul>

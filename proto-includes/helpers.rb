@@ -170,9 +170,9 @@ helpers do
     end
 
     # At last, the magic:
-    def proto_loop(type="post")
+    def proto_loop(type="posts")
         
-        if type="pages"
+        if type == "pages"
             posts = Content.pages
         else
             posts = Content.posts.reverse
