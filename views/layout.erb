@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <%= erb :'furniture/header' %>
+  <%= get_header() %>
 
   <body>
     
@@ -17,16 +17,18 @@
                 <% end %>
             </ul>
         </div>
-                        
+        
         <%= yield %>
-    
+
         <%= erb :'furniture/footer' %>
         
     </div>
     
     <%= styled_flash %>
-    <%= erb :'furniture/menu' %>
-    <%= erb :'furniture/scripts' %>
+
+    <%= get_admin() %>
+
+    <%= get_footer() %>
     
   </body>
 </html>

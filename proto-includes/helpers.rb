@@ -1,5 +1,44 @@
 helpers do
+
+###########################
+# Templating
+###########################
+
+    def templates()
+        source = "./views/templates/"
         
+        cluster = []
+        
+        Dir.foreach(source) do |cf|
+          unless cf == '.' || cf == '..' 
+            cluster << cf.split('.').first
+          end 
+        end
+        
+        return cluster
+    end
+    
+    def get_header()
+        erb :'furniture/header'
+    end
+    
+    def get_sidebar()
+        erb :'furniture/sidebar'
+    end
+    
+    def get_footer()
+        erb :'furniture/footer'
+    end
+    
+    def get_admin()
+        erb :'furniture/admin'
+    end
+
+    
+###########################
+# The Proto Loop
+###########################
+    
     def the_title(content=nil)
         if node = content || Content.get(params[:id])
             node.title
@@ -41,21 +80,7 @@ helpers do
             flash[:error] = "<strong>Error:</strong> No content could be found" unless ENV['RACK_ENV'] == 'production'
         end
     end
-    
-    def templates()
-        source = "./views/templates/"
         
-        cluster = []
-        
-        Dir.foreach(source) do |cf|
-          unless cf == '.' || cf == '..' 
-            cluster << cf.split('.').first
-          end 
-        end
-        
-        return cluster
-    end
-    
     def proto_loop()
     
         posts = Content.posts.reverse
