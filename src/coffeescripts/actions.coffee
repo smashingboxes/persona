@@ -4,7 +4,9 @@
 # automatically compile them. Have fun!
 
 $(document).ready ->
-
+    
+    $('.radioThumb img').dblclick -> alert('hello')
+    
     $('.flash').each ->
         index = $(this).index()
         

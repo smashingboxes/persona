@@ -198,15 +198,20 @@ textarea                                    { font-size: 14px; min-height: 250px
 form.inline                                 { line-height: 3em; }
 form.inline p                               { margin-bottom: 0; }
 
-/* Template Selection */
-label.radioThumb                            { display: block; float: left; margin: auto 10px; text-align: center;
-    input[type="radio"]                     { width: 66px; height: 66px; 
-        &:hover+img                         { border: 1px solid #ccf; @include box-shadow(0 0 4px #aaf); }
-        &:checked+img                       { border-color: red; @include box-shadow(0 0 4px #faa); }
+
+    /* Template Selection
+    ------------------------------------------ */
+    
+    label.radioThumb                            { display: block; float: left; margin: auto 10px; text-align: center;
+        input[type="radio"]                     { width: 66px; height: 66px; 
+            &:checked+img                       { border-color: red; @include box-shadow(0 0 20px #faa); }
+        }
+        img                                     { border: 1px solid #AAA; cursor: pointer; margin-bottom: -2px; margin-left: -90px; 
+            &:hover                             { border: 1px solid #88b; @include box-shadow(0 0 20px #99f); }
+        }
+        p                                       { margin-left: -17px; margin-bottom: 0; }
     }
-    img                                     { border: 1px solid #AAA; cursor: pointer; margin-bottom: -2px; margin-left: -90px; }
-    p                                       { margin-left: -17px; margin-bottom: 0; }
-}
+
 
 /* Common Elements
 ------------------------------------------ */
