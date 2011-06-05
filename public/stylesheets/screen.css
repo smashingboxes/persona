@@ -742,7 +742,7 @@ form.inline p {
 
 /* Media Queries
 ------------------------------------------ */
-@media (max-width:1024px) {
+@media (max-width:1060px) {
   /* line 268, ../../src/sass/screen.scss */
   #wrapper {
     width: 92%;
