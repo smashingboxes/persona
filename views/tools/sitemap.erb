@@ -1,0 +1,18 @@
+<h2>Sitemap</h2>
+<p>Every piece of content on this site.</p>
+
+<h3>Pages</h3>
+<ul>
+    <% for page in Content.pages do %>
+        <li><a href="/node/<%= page.id %>"><%= page.title %></li>
+    <% end %>
+</ul>
+
+<hr/>
+
+<h3>Posts</h3>
+<ul>
+    <% for post in Content.posts do %>
+        <li><a href="/node/<%= post.id %>"><%= post.title %></li>
+    <% end %>
+</ul>

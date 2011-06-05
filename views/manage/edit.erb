@@ -1,7 +1,7 @@
         <section>
             <article>
                 <h3>Edit Page</h3>
-                <form action="/update/<%= @page.id %>" method="post">
+                <form action="/update/<%= @content.id %>" method="post">
                     <aside class="right">
                         <h4>Markdown Cheat Sheat</h4>
                         <hr/>
@@ -49,17 +49,17 @@
                     <legend>Please use the form below to create a page:</legend>
                     <p>
                       <label for="title">Page Title</label><br>
-                      <input type="text" class="title" name="title" id="title" value="<%= @page.title %>">
+                      <input type="text" class="title" name="title" id="title" value="<%= @content.title %>" />
                     </p>
         
                     <p>
                       <label for="body">Markdown Content:</label><br>
-                      <textarea name="body" id="body" rows="5" cols="20"><%= @page.body %></textarea>
+                      <textarea name="body" id="body" rows="5" cols="20"><%= @content.body %></textarea>
                     </p>
         
                     <p>
-                      <input type="submit" value="Update">
-                      <input type="reset" value="Reset">
+                      <input type="reset" value="Reset" class="button reset" />
+                      <input type="submit" value="Update" class="button submit" />
                     </p>
         
                   </fieldset>
@@ -68,7 +68,3 @@
             <hr/>
             </article>
         </section>
-           	
-    	<footer>
-    	   <small id="legal">Maintained by Nate Hunzaker, at <a target="_blank" href="http://www.smashingboxes.com">Smashing Boxes</a></small>
-    	</footer>

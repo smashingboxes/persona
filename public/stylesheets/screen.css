@@ -407,9 +407,14 @@ label {
 
 /* line 181, ../../src/sass/screen.scss */
 fieldset {
-  padding: 0 1.4em 1.4em 1.4em;
+  padding: 1.4em;
   margin: 0 0 1.5em 0;
   border: 1px solid #ccc;
+  border-bottom: 1px solid #bbb;
+  -moz-box-shadow: 0 2px 5px #cccccc;
+  -webkit-box-shadow: 0 2px 5px #cccccc;
+  -o-box-shadow: 0 2px 5px #cccccc;
+  box-shadow: 0 2px 5px #cccccc;
 }
 
 /* line 182, ../../src/sass/screen.scss */
@@ -421,75 +426,104 @@ legend {
 }
 
 /* line 183, ../../src/sass/screen.scss */
-fieldset, #IE8#HACK {
-  padding-top: 1.4em;
-}
-
-/* line 184, ../../src/sass/screen.scss */
 legend, #IE8#HACK {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-/* line 187, ../../src/sass/screen.scss */
+/* line 186, ../../src/sass/screen.scss */
 input[type=text], input[type=password],
 input.text, input.title, textarea {
   background-color: #fff;
   border: 1px solid #bbb;
 }
-/* line 188, ../../src/sass/screen.scss */
+/* line 187, ../../src/sass/screen.scss */
 input[type=text]:focus, input[type=password]:focus,
 input.text:focus, input.title:focus, textarea:focus {
   border-color: #666;
 }
 
-/* line 191, ../../src/sass/screen.scss */
+/* line 190, ../../src/sass/screen.scss */
 select {
   background-color: #fff;
   border-width: 1px;
   border-style: solid;
+  margin-bottom: 1em;
 }
 
-/* line 194, ../../src/sass/screen.scss */
+/* line 193, ../../src/sass/screen.scss */
 input[type=text], input[type=password],
 input.text, input.title, textarea, select {
   margin: 0.5em 0;
   width: 100%;
+  -moz-box-shadow: #cccccc 0px 1px 3px inset;
+  -webkit-box-shadow: #cccccc 0px 1px 3px inset;
+  -o-box-shadow: #cccccc 0px 1px 3px inset;
+  box-shadow: #cccccc 0px 1px 3px inset;
 }
 
-/* line 196, ../../src/sass/screen.scss */
+/* line 195, ../../src/sass/screen.scss */
 input.text, input.title {
   padding: 5px 0;
   text-indent: 5px;
 }
 
-/* line 198, ../../src/sass/screen.scss */
+/* line 197, ../../src/sass/screen.scss */
 input.title {
   font-size: 15px;
 }
 
-/* line 199, ../../src/sass/screen.scss */
+/* line 198, ../../src/sass/screen.scss */
 textarea {
   font-size: 14px;
   min-height: 250px;
   padding: 5px 0;
 }
 
-/* line 200, ../../src/sass/screen.scss */
+/* line 199, ../../src/sass/screen.scss */
 form.inline {
   line-height: 3em;
 }
 
-/* line 201, ../../src/sass/screen.scss */
+/* line 200, ../../src/sass/screen.scss */
 form.inline p {
   margin-bottom: 0;
 }
 
 /* Common Elements
 ------------------------------------------ */
+/* line 207, ../../src/sass/screen.scss */
+.button {
+  background: #CCC;
+  border: 1px solid #777;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 8px 12px;
+  text-shadow: #EEE 0px 1px 0px;
+  -moz-box-shadow: inset 0 1px 0 white, #aaaaaa 0 1px 2px;
+  -webkit-box-shadow: inset 0 1px 0 white, #aaaaaa 0 1px 2px;
+  -o-box-shadow: inset 0 1px 0 white, #aaaaaa 0 1px 2px;
+  box-shadow: inset 0 1px 0 white, #aaaaaa 0 1px 2px;
+}
+/* line 208, ../../src/sass/screen.scss */
+.button.submit:hover {
+  color: #55f;
+}
+/* line 209, ../../src/sass/screen.scss */
+.button.reset:hover {
+  color: #ff3333;
+}
+
 /* Prototypical Admin
 ------------------------------------------ */
-/* line 211, ../../src/sass/screen.scss */
+/* line 215, ../../src/sass/screen.scss */
 #admin {
   position: fixed;
   top: 10px;
@@ -507,7 +541,7 @@ form.inline p {
   -o-box-shadow: 0 1px 5px #999999;
   box-shadow: 0 1px 5px #999999;
 }
-/* line 213, ../../src/sass/screen.scss */
+/* line 217, ../../src/sass/screen.scss */
 #admin a {
   background: #222;
   border: 1px solid #444;
@@ -522,12 +556,20 @@ form.inline p {
   -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
-/* line 214, ../../src/sass/screen.scss */
+/* line 219, ../../src/sass/screen.scss */
+#admin a:hover {
+  -moz-box-shadow: 0 0 8px #999999;
+  -webkit-box-shadow: 0 0 8px #999999;
+  -o-box-shadow: 0 0 8px #999999;
+  box-shadow: 0 0 8px #999999;
+  border-color: #777;
+}
+/* line 221, ../../src/sass/screen.scss */
 #admin a.create {
   color: #7f4;
   border-color: #6a6;
 }
-/* line 215, ../../src/sass/screen.scss */
+/* line 222, ../../src/sass/screen.scss */
 #admin a.create:hover {
   -moz-box-shadow: 0 0 8px #99ff99;
   -webkit-box-shadow: 0 0 8px #99ff99;
@@ -535,12 +577,12 @@ form.inline p {
   box-shadow: 0 0 8px #99ff99;
   border-color: #9f9;
 }
-/* line 218, ../../src/sass/screen.scss */
+/* line 225, ../../src/sass/screen.scss */
 #admin a.edit {
   color: #99f;
   border-color: #66a;
 }
-/* line 219, ../../src/sass/screen.scss */
+/* line 226, ../../src/sass/screen.scss */
 #admin a.edit:hover {
   -moz-box-shadow: 0 0 8px #5555ff;
   -webkit-box-shadow: 0 0 8px #5555ff;
@@ -548,12 +590,12 @@ form.inline p {
   box-shadow: 0 0 8px #5555ff;
   border-color: #99f;
 }
-/* line 222, ../../src/sass/screen.scss */
+/* line 229, ../../src/sass/screen.scss */
 #admin a.delete {
   color: #f44;
   border-color: #a66;
 }
-/* line 223, ../../src/sass/screen.scss */
+/* line 230, ../../src/sass/screen.scss */
 #admin a.delete:hover {
   -moz-box-shadow: 0 0 8px #ff5555;
   -webkit-box-shadow: 0 0 8px #ff5555;
@@ -561,11 +603,11 @@ form.inline p {
   box-shadow: 0 0 8px #ff5555;
   border-color: #f99;
 }
-/* line 226, ../../src/sass/screen.scss */
+/* line 233, ../../src/sass/screen.scss */
 #admin a.disabled {
   color: #444;
 }
-/* line 229, ../../src/sass/screen.scss */
+/* line 236, ../../src/sass/screen.scss */
 #admin a#icon {
   display: block;
   font-size: 20px;
@@ -576,14 +618,20 @@ form.inline p {
   height: 32px;
   width: 32px;
 }
-/* line 231, ../../src/sass/screen.scss */
+/* line 238, ../../src/sass/screen.scss */
 #admin *::selection {
   background: none;
+}
+/* line 240, ../../src/sass/screen.scss */
+#admin hr {
+  border: none;
+  border-bottom: 1px dashed #626262;
+  margin: 1em 0px;
 }
 
 /* Notifications
 ------------------------------------------ */
-/* line 237, ../../src/sass/screen.scss */
+/* line 246, ../../src/sass/screen.scss */
 .flash {
   background: #eeeeee;
   border: 1px solid #d4d4d4;
@@ -607,43 +655,59 @@ form.inline p {
   -o-box-shadow: inset 0 1px 1px white;
   box-shadow: inset 0 1px 1px white;
 }
-/* line 238, ../../src/sass/screen.scss */
+/* line 247, ../../src/sass/screen.scss */
 .flash.success {
   background-color: #E6EFC2;
   color: #264409;
   border-color: #C6D880;
+  -moz-box-shadow: #aaddaa 0px 1px 3px;
+  -webkit-box-shadow: #aaddaa 0px 1px 3px;
+  -o-box-shadow: #aaddaa 0px 1px 3px;
+  box-shadow: #aaddaa 0px 1px 3px;
 }
-/* line 239, ../../src/sass/screen.scss */
+/* line 248, ../../src/sass/screen.scss */
 .flash.success a {
   color: #264409;
 }
-/* line 241, ../../src/sass/screen.scss */
+/* line 250, ../../src/sass/screen.scss */
 .flash.error, .flash.alert {
   background-color: #FBE3E4;
   color: #8A1F11;
   border-color: #FBC2C4;
+  -moz-box-shadow: #ffcccc 0px 1px 3px;
+  -webkit-box-shadow: #ffcccc 0px 1px 3px;
+  -o-box-shadow: #ffcccc 0px 1px 3px;
+  box-shadow: #ffcccc 0px 1px 3px;
 }
-/* line 242, ../../src/sass/screen.scss */
+/* line 251, ../../src/sass/screen.scss */
 .flash.error a, .flash.alert a {
   color: #8a1f11;
 }
-/* line 244, ../../src/sass/screen.scss */
+/* line 253, ../../src/sass/screen.scss */
 .flash.notice {
   background-color: #FFF6BF;
   color: #514721;
   border-color: #FFD324;
+  -moz-box-shadow: #cccc66 0px 1px 3px;
+  -webkit-box-shadow: #cccc66 0px 1px 3px;
+  -o-box-shadow: #cccc66 0px 1px 3px;
+  box-shadow: #cccc66 0px 1px 3px;
 }
-/* line 245, ../../src/sass/screen.scss */
+/* line 254, ../../src/sass/screen.scss */
 .flash.notice a {
   color: #514721;
 }
-/* line 247, ../../src/sass/screen.scss */
+/* line 256, ../../src/sass/screen.scss */
 .flash.info {
   background-color: #D5EDF8;
   color: #205791;
   border-color: #92CAE4;
+  -moz-box-shadow: #ccccff 0px 1px 3px;
+  -webkit-box-shadow: #ccccff 0px 1px 3px;
+  -o-box-shadow: #ccccff 0px 1px 3px;
+  box-shadow: #ccccff 0px 1px 3px;
 }
-/* line 248, ../../src/sass/screen.scss */
+/* line 257, ../../src/sass/screen.scss */
 .flash.info a {
   color: #205791;
 }

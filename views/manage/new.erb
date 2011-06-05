@@ -1,6 +1,6 @@
         <section>
             <article>
-                <h3>Create a Page</h3>
+                <h3>New Content</h3>
 
                 <form action="/create" method="post">
                     <aside class="right">
@@ -46,21 +46,40 @@
                         </p>
                                              
                     </aside>
+                    
                   <fieldset>
-                    <legend>Please use the form below to create a page:</legend>
+                    <legend>Details:</legend>
+                    <select name="content_type" id="content_type">
+                        <option value="page">Page</option>
+                        <option value="post">Post</option>
+                    </select>
+                    <select name="template" id="template">
+                        <option value="single">Default Template</option>
+                    
+                    <% templates().each do |t| %>
+                          <option value="<%= t %>"/> <%= t.capitalize %></option>
+                    <% end %>
+                    
+                    </select>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend>Content:</legend>
                     <p>
                       <label for="title">Page Title</label><br>
-                      <input type="text" class="title" name="title" id="title" placeholder="Lorem Ipsum">
+                      <input type="text" class="title" name="title" id="title" placeholder="Lorem Ipsum" />
                     </p>
         
                     <p>
                       <label for="body">Markdown Content:</label><br>
-                      <textarea name="body" id="body" rows="5" cols="20" placeholder="Write something..."></textarea>
+                      <textarea name="body" id="body" rows="5" cols="20" placeholder="Write something..."><%= @page.body unless @page.nil? %></textarea>
                     </p>
         
                     <p>
-                      <input type="submit" value="Create">
-                      <input type="reset" value="Reset">
+                      <p>
+                      <input type="reset" value="Reset" class="button reset" />
+                      <input type="submit" value="Create" class="button submit"/>
+                    </p>
                     </p>
         
                   </fieldset>
@@ -69,7 +88,3 @@
             <hr/>
             </article>
         </section>
-           	
-    	<footer>
-    	   <small id="legal">Maintained by Nate Hunzaker, at <a target="_blank" href="http://www.smashingboxes.com">Smashing Boxes</a></small>
-    	</footer>

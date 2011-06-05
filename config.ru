@@ -4,5 +4,7 @@ require 'bundler'
 Bundler.require
 
 require './app'
-puts "Let's get prototypical!"
+
+puts "Let's get Prototypical!"
+
 run Sinatra::Application

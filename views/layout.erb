@@ -4,6 +4,7 @@
   <%= erb :'furniture/header' %>
 
   <body>
+    
     <div id="wrapper">
         <header>
             <h1><a id="logo" href="/">Prototypical</a></h1>
@@ -11,14 +12,16 @@
         
         <div class="menu">
             <ul>
-                <% Page.all.each do |p| %>
-                    <li><a href="/page/<%= p.id %>"><%= p.title %></a></li>
+                <% Content.pages.each do |p| %>
+                    <li><a href="/node/<%= p.id %>"><%= p.title %></a></li>
                 <% end %>
             </ul>
         </div>
                         
         <%= yield %>
     
+        <%= erb :'furniture/footer' %>
+        
     </div>
     
     <%= styled_flash %>

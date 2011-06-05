@@ -3,17 +3,29 @@
 # Prototypical will watch for CoffeeScript files for you and
 # automatically compile them. Have fun!
 
-$('.flash').fadeTo(500, 0.95).delay(2500).fadeOut(500)
-$('.flash').click ->
-    $(this).stop().fadeOut(500)
+$(document).ready ->
 
-$('#admin').hover(
-    -> $("#admin").stop().animate({height: 130}, 250),
-    -> $("#admin").stop().animate({height: 37}, 250)
-)
+    $('.flash').each ->
+        index = $(this).index()
+        
+        if index != 0
+            $(this).css("padding-left", 20)
+        
+        $(this).animate({top: "+=" + index * 70}, 200).fadeTo(500, 0.95).delay(2500).fadeOut(500)
+        
+        $(this).click ->
+            $(this).stop().fadeOut(500)
+    
+    config = {    
+         over: -> $("#admin").stop().animate({height: 210}, 350),   
+         timeout: 500, 
+         out: -> $("#admin").stop().animate({height: 37}, 500)    
+    };
 
-$('a.delete').click ->
-    answer = confirm("Are you sure you want to delete this page?")
-
-    if !answer
-      return false
+    $('#admin').hoverIntent(config)
+        
+    $('a.delete').click ->
+        answer = confirm("Are you sure you want to delete this page?")
+    
+        if !answer
+          return false

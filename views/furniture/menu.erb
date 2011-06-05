@@ -2,12 +2,17 @@
     <a id="icon">i</a>
     <a class="create" href="/new" title="Create a new page">+</a>
     
-<% if @page %>
-    <a class="edit" href="/edit/<%= @page.id %>" title="Edit current page">&#9998;</a>
-    <a class="delete" href="/destroy/<%= @page.id %>" title="Delete current page">&#10006;</a>
+<% if @content %>
+    <a class="edit" href="/edit/<%= @content.id %>" title="Edit current page">&#9998;</a>
+    <a class="delete" href="/destroy/<%= @content.id %>" title="Delete current page">&#10006;</a>
 <% else %>
     <a class="disabled">&#9997;</a>
     <a class="disabled">&#10006;</a>
 <% end %>
+
+    <hr/>
+    
+    <a href="/tools/type" title="View Typography">t</a>
+    <a href="/tools/sitemap" title="View Sitemap">s</a>
 
 </div>
