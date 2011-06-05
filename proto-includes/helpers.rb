@@ -58,7 +58,7 @@ helpers do
     
     def proto_loop()
     
-        posts = Content.posts
+        posts = Content.posts.reverse
         
         posts.each do |post|
         
