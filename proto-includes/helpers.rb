@@ -74,7 +74,7 @@ helpers do
             length = 100
             
             # Truncate content
-            text = node.body.split(" ")[0..length].join(" ").gsub(/<\/?[^>]*>/, "")
+            text = Maruku.new("#{node.body}").to_html.gsub(/<\/?[^>]*>/, "").split(" ")[0..length].join(" ")
             
             # Add ellipse if any content was truncated
             text += "..." unless node.body.split(" ").length < length
