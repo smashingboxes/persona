@@ -1,6 +1,5 @@
         <section>
             <article>
-                
                 <%= get_sidebar() %>
                 
                 <h3>A Simple CMS</h3>
@@ -9,11 +8,11 @@
                 
                 <hr/>
                 
-                <% proto_loop() do %>
+                <% proto_loop("posts") do %>
                     <article>
-                        <h4><a href="<%= @the_link %>"><%= @the_title %></a></h4>
-                        <p class="meta"><time datetime="<%= @the_datetime %>"><%= @the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
-                        <%= @the_excerpt %>                    
+                        <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
+                        <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
+                        <%= the_excerpt %>                    
                     </article>
 
                     <hr/>

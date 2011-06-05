@@ -41,11 +41,12 @@ helpers do
 
     # All attribute finders will seek a value in the following order:
         # 1) A passed argument
-        # 2) The current query string
-        # 3) Return nil (throw error)
+        # 2) An object variable within the proto_loop()
+        # 3) The current query string
+        # 4) Return nil (throw error)
     
     def the_title(content=nil)
-        if node = content || Content.get(params[:id])
+        if node = content || @content || Content.get(params[:id])
             node.title
         else
             flash[:error] = "<strong>Error:</strong> No title could be found" unless ENV['RACK_ENV'] == 'production'
@@ -53,7 +54,7 @@ helpers do
     end
     
     def the_datetime(content=nil)
-        if node = content || Content.get(params[:id])
+        if node = content || @content || Content.get(params[:id])
             node.created_at
         else
             flash[:error] = "<strong>Error:</strong> No creation date could be found" unless ENV['RACK_ENV'] == 'production'
@@ -61,15 +62,15 @@ helpers do
     end
     
     def the_content(content=nil)    
-        if node = content || Content.get(params[:id])
+        if node = content || @content || Content.get(params[:id])
             Maruku.new("#{node.body}").to_html 
         else
             flash[:error] = "<strong>Error:</strong> No content could be found" unless ENV['RACK_ENV'] == 'production'
         end
     end
-        
+
     def the_excerpt(content=nil)
-        if node = content || Content.get(params[:id])
+        if node = content || @content || Content.get(params[:id])
             
             length = 100
             
@@ -87,7 +88,7 @@ helpers do
     end
     
     def the_link(content=nil)
-        if node = content || Content.get(params[:id])
+        if node = content || @content || Content.get(params[:id])
             "/node/#{node.id}"
         else
             flash[:error] = "<strong>Error:</strong> No link could be found" unless ENV['RACK_ENV'] == 'production'
@@ -95,20 +96,17 @@ helpers do
     end
 
     # At last, the magic:
-    def proto_loop()
-    
-        posts = Content.posts.reverse
+    def proto_loop(type="post")
+        
+        if type="pages"
+            posts = Content.pages
+        else
+            posts = Content.posts.reverse
+        end
         
         posts.each do |post|
         
-            @post = post
-            
-            @the_title = the_title(post)
-            @the_content= the_content(post)
-            @the_datetime = the_datetime(post)
-            @the_excerpt = the_excerpt(post)
-            
-            @the_link = the_link(post)
+            @content = post
             
             yield
             
