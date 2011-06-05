@@ -2,9 +2,9 @@
     <a id="icon">i</a>
     <a class="create" href="/new" title="Create a new page">+</a>
     
-<% if @content %>
-    <a class="edit" href="/edit/<%= @content.id %>" title="Edit current page">&#9998;</a>
-    <a class="delete" href="/destroy/<%= @content.id %>" title="Delete current page">&#10006;</a>
+<% if params[:id] %>
+    <a class="edit" href="/edit/<%= params[:id] %>" title="Edit current page">&#9998;</a>
+    <a class="delete" href="/destroy/<%= params[:id] %>" title="Delete current page">&#10006;</a>
 <% else %>
     <a class="disabled">&#9997;</a>
     <a class="disabled">&#10006;</a>
