@@ -4,7 +4,7 @@
 <h3>Pages</h3>
 <ul>
     <% for page in Content.pages do %>
-        <li><a href="/node/<%= page.id %>"><%= page.title %></li>
+        <li><a href="/node/<%= page.id %>"><%= page.title %></a></li>
     <% end %>
 </ul>
 
@@ -13,6 +13,6 @@
 <h3>Posts</h3>
 <ul>
     <% for post in Content.posts do %>
-        <li><a href="/node/<%= post.id %>"><%= post.title %></li>
+        <li><a href="/node/<%= post.id %>"><%= post.title %></a></li>
     <% end %>
 </ul>
