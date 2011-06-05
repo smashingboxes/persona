@@ -11,10 +11,11 @@
                 
                 <% proto_loop() do %>
                     <article>
-                        <h4><a href="/node/<%= @post.id %>"><%= @the_title %></a></h4>
+                        <h4><a href="<%= @the_link %>"><%= @the_title %></a></h4>
                         <p class="meta"><time datetime="<%= @the_datetime %>"><%= @the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
-                        <%= @the_excerpt %>
+                        <%= @the_excerpt %>                    
                     </article>
+
                     <hr/>
                 <% end %> 
                 

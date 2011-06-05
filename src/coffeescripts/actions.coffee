@@ -17,8 +17,8 @@ $(document).ready ->
             $(this).stop().fadeOut(500)
     
     config = {    
-         over: -> $("#admin").stop().animate({height: 210}, 350),   
-         timeout: 500, 
+         over: -> $("#admin").stop().animate({height: 210}, 250),   
+         timeout: 300, 
          out: -> $("#admin").stop().animate({height: 37}, 500)    
     };
 

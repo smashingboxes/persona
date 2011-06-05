@@ -12,7 +12,7 @@
 
 <h3>Posts</h3>
 <ul>
-    <% for post in Content.posts do %>
-        <li><a href="/node/<%= post.id %>"><%= post.title %></a></li>
+    <% proto_loop() do %>
+        <li><a href="<%= @the_link %>"><%= @the_title %></a></li>
     <% end %>
 </ul>

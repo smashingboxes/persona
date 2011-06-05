@@ -13,22 +13,21 @@
         <div class="menu">
             <ul>
                 <% Content.pages.each do |p| %>
-                    <li><a href="/node/<%= p.id %>"><%= p.title %></a></li>
+                    <li><a href="<%= the_link(p)%>"><%= the_title(p) %></a></li>
                 <% end %>
             </ul>
         </div>
         
         <%= yield %>
-
-        <%= erb :'furniture/footer' %>
         
+        <%= get_footer() %>
+
     </div>
     
     <%= styled_flash %>
 
     <%= get_admin() %>
 
-    <%= get_footer() %>
     
   </body>
 </html>

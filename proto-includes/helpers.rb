@@ -38,6 +38,11 @@ helpers do
 ###########################
 # The Proto Loop
 ###########################
+
+    # All attribute finders will seek a value in the following order:
+        # 1) A passed argument
+        # 2) The current query string
+        # 3) Return nil (throw error)
     
     def the_title(content=nil)
         if node = content || Content.get(params[:id])
@@ -80,7 +85,16 @@ helpers do
             flash[:error] = "<strong>Error:</strong> No content could be found" unless ENV['RACK_ENV'] == 'production'
         end
     end
-        
+    
+    def the_link(content=nil)
+        if node = content || Content.get(params[:id])
+            "/node/#{node.id}"
+        else
+            flash[:error] = "<strong>Error:</strong> No link could be found" unless ENV['RACK_ENV'] == 'production'
+        end
+    end
+
+    # At last, the magic:
     def proto_loop()
     
         posts = Content.posts.reverse
@@ -93,6 +107,8 @@ helpers do
             @the_content= the_content(post)
             @the_datetime = the_datetime(post)
             @the_excerpt = the_excerpt(post)
+            
+            @the_link = the_link(post)
             
             yield
             
