@@ -3,11 +3,38 @@
                 <%= get_sidebar "right" %>
 
                 <h3>A Simple CMS</h3>
-                <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.</p>
-                <p>The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought. It wasn't a dream.</p>    
+                <p>
+                    Prototypical is a lightweight CMS built on <a href="http://www.sinatrarb.com/" target="_blank">Sinatra</a> with the goal of assisting developers with the rapid creation of working prototypes.
+                    Prototypical is responsive, easy to set up, and takes most of the grunt work out of building an initial draft to show clients.
+                </p>
+                <p>
+                    Simply put, there are things developers shouldn't have to worry about when making prototypes. Here's what I've done:
+                    <ul>
+                        <li>Created tools such as a <a href="/tools/sitemap">Sitemap</a> and a clean, <a href="http://www.alistapart.com/articles/responsive-web-design/" target="_blank">responsive</a> typography <a href="/tools/type">Test Page</a></li>
+                        <li>A method of allowing clients control over content/layout without breaking anything (let them try, I <em>dare</em> them).</li>
+                        <li>Support tools for CoffeeScript and Sass/Compass</li>
+                        <li>Easy publishing to <a href="http://www.heroku.com">Heroku</a></li>
+                    </ul>
+                </p>
+                
+                <h4>More Under the Hood</h4>
+                <p>
+                   At the present, Prototypical uses <a hef="https://github.com/rtomayko/tilt/" target="_blank">Tilt</a> to support templating, with <a href="http://daringfireball.net/projects/markdown/" target="_blank">Markdown</a> to allow clients/designers to safely edit the content on pages. 
+                   Creating templates is as easy as dropping files into the <code>templates</code> folder, and built-in support commands similar to that of <a href="http://www.wordpress.org" target="_blank">WordPress</a> including:
+                    <br/><br/>
+                    <code>
+                          get_header <br />  
+                          the_title<br />
+                          the_content<br />
+                          get_footer
+                    </code>
+                </p>
+                <p>Plus it's built on Ruby, which is awesome in and of itself.</p>
+                <hr/>
+                <p>Try <a href="https://github.com/nhunzaker/Prototypical">Prototypical</a> today!</p>
                 
                 <hr/>
-                
+                <h3>Updates <span class="alt">&amp;</span> Such</h3>
                 <% proto_loop("posts") do %>
                     <article>
                         <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
