@@ -18,9 +18,9 @@
       over: function() {
         return $("#admin").stop().animate({
           height: 210
-        }, 350);
+        }, 250);
       },
-      timeout: 500,
+      timeout: 300,
       out: function() {
         return $("#admin").stop().animate({
           height: 37
