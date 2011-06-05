@@ -79,7 +79,7 @@ post "/update/:id" do
       :body       => "#{params[:body]}"
     )
     
-    flash[:info] = "#{@content.content_type.capitalize} was successfully updated."
+    flash[:info] = "Content was successfully updated!"
     
     redirect "/node/#{@content.id}"
 
