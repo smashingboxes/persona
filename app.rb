@@ -4,6 +4,12 @@
     require f
 end
 
+# Convert CoffeeScript to JavaScript
+if ENV['RACK_ENV'] == 'development'
+    require 'rake'
+    Rake::Task["js:compile"]
+end
+
 enable :sessions
 
 # Models
@@ -92,13 +98,5 @@ end
 
 # JavaScripts/CoffeeScripts
 get '/javascripts/:name' do
-    
-    if ENV['RACK_ENV'] == 'development'
-        require 'rake'
-        Rake::Task["js:compile"]
-        
-        File.read("public/javascripts/#{params[:name]}.js")
-    else
-        File.read("public/javascripts/#{params[:name]}.js")
-    end
+    File.read("public/javascripts/#{params[:name]}.js")
 end

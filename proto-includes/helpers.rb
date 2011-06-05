@@ -8,6 +8,14 @@ helpers do
         end
     end
     
+    def the_datetime(content=nil)
+        if node = content || Content.get(params[:id])
+            node.created_at
+        else
+            flash[:error] = "<strong>Error:</strong> No creation date could be found" unless ENV['RACK_ENV'] == 'production'
+        end
+    end
+    
     def the_content(content=nil)    
         if node = content || Content.get(params[:id])
             Maruku.new("#{node.body}").to_html 
@@ -58,6 +66,7 @@ helpers do
             
             @the_title = the_title(post)
             @the_content= the_content(post)
+            @the_datetime = the_datetime(post)
             @the_excerpt = the_excerpt(post)
             
             yield

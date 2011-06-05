@@ -15,6 +15,7 @@
                 <% proto_loop() do %>
                     <article>
                         <h4><a href="/node/<%= @post.id %>"><%= @the_title %></a></h4>
+                        <p class="meta"><time datetime="<%= @the_datetime %>"><%= @the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
                         <%= @the_excerpt %>
                     </article>
                 <% end %> 
