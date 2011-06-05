@@ -18,8 +18,8 @@ $(document).ready ->
     
     config = {    
          over: -> $("#admin").stop().animate({height: 210}, 250),   
-         timeout: 300, 
-         out: -> $("#admin").stop().animate({height: 37}, 500)    
+         timeout: 100, 
+         out: -> $("#admin").stop().animate({height: 37}, 300)    
     };
 
     $('#admin').hoverIntent(config)

@@ -345,8 +345,8 @@ sup {
   background: #ffd;
   border: 1px solid #d4d4d4;
   float: left;
-  padding: 1.5em 1.5em 0;
-  margin: 0.7em 1em 0 0;
+  padding: 1.5em 1.5em;
+  margin: 0 2em 2em 0;
   width: 25%;
 }
 /* line 141, ../../src/sass/screen.scss */
@@ -358,7 +358,7 @@ sup {
 /* line 143, ../../src/sass/screen.scss */
 #wrapper aside.right {
   float: right;
-  margin: 0.7em 0 0 2em;
+  margin: 0 0 2em 2em;
 }
 
 /* Header
@@ -492,9 +492,51 @@ form.inline p {
   margin-bottom: 0;
 }
 
+/* Template Selection */
+/* line 202, ../../src/sass/screen.scss */
+label.radioThumb {
+  display: block;
+  float: left;
+  margin: auto 10px;
+  text-align: center;
+}
+/* line 203, ../../src/sass/screen.scss */
+label.radioThumb input[type="radio"] {
+  width: 66px;
+  height: 66px;
+}
+/* line 204, ../../src/sass/screen.scss */
+label.radioThumb input[type="radio"]:hover + img {
+  border: 1px solid #ccf;
+  -moz-box-shadow: 0 0 4px #aaaaff;
+  -webkit-box-shadow: 0 0 4px #aaaaff;
+  -o-box-shadow: 0 0 4px #aaaaff;
+  box-shadow: 0 0 4px #aaaaff;
+}
+/* line 205, ../../src/sass/screen.scss */
+label.radioThumb input[type="radio"]:checked + img {
+  border-color: red;
+  -moz-box-shadow: 0 0 4px #ffaaaa;
+  -webkit-box-shadow: 0 0 4px #ffaaaa;
+  -o-box-shadow: 0 0 4px #ffaaaa;
+  box-shadow: 0 0 4px #ffaaaa;
+}
+/* line 207, ../../src/sass/screen.scss */
+label.radioThumb img {
+  border: 1px solid #AAA;
+  cursor: pointer;
+  margin-bottom: -2px;
+  margin-left: -90px;
+}
+/* line 208, ../../src/sass/screen.scss */
+label.radioThumb p {
+  margin-left: -17px;
+  margin-bottom: 0;
+}
+
 /* Common Elements
 ------------------------------------------ */
-/* line 206, ../../src/sass/screen.scss */
+/* line 214, ../../src/sass/screen.scss */
 .button {
   background: #CCC;
   border: 1px solid #777;
@@ -514,18 +556,18 @@ form.inline p {
   -o-box-shadow: inset 0 1px 0 white, #aaaaaa 0 1px 2px;
   box-shadow: inset 0 1px 0 white, #aaaaaa 0 1px 2px;
 }
-/* line 207, ../../src/sass/screen.scss */
+/* line 215, ../../src/sass/screen.scss */
 .button.submit:hover {
   color: #55f;
 }
-/* line 208, ../../src/sass/screen.scss */
+/* line 216, ../../src/sass/screen.scss */
 .button.reset:hover {
   color: #ff3333;
 }
 
 /* Prototypical Admin
 ------------------------------------------ */
-/* line 214, ../../src/sass/screen.scss */
+/* line 222, ../../src/sass/screen.scss */
 #admin {
   position: fixed;
   top: 10px;
@@ -559,7 +601,7 @@ form.inline p {
   -o-transition-duration: 1s;
   transition-duration: 1s;
 }
-/* line 216, ../../src/sass/screen.scss */
+/* line 224, ../../src/sass/screen.scss */
 #admin a {
   background: #222;
   border: 1px solid #444;
@@ -574,7 +616,7 @@ form.inline p {
   -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
-/* line 218, ../../src/sass/screen.scss */
+/* line 226, ../../src/sass/screen.scss */
 #admin a:hover {
   -moz-box-shadow: 0 0 8px #999999;
   -webkit-box-shadow: 0 0 8px #999999;
@@ -582,12 +624,12 @@ form.inline p {
   box-shadow: 0 0 8px #999999;
   border-color: #777;
 }
-/* line 220, ../../src/sass/screen.scss */
+/* line 228, ../../src/sass/screen.scss */
 #admin a.create {
   color: #7f4;
   border-color: #6a6;
 }
-/* line 221, ../../src/sass/screen.scss */
+/* line 229, ../../src/sass/screen.scss */
 #admin a.create:hover {
   -moz-box-shadow: 0 0 8px #99ff99;
   -webkit-box-shadow: 0 0 8px #99ff99;
@@ -595,12 +637,12 @@ form.inline p {
   box-shadow: 0 0 8px #99ff99;
   border-color: #9f9;
 }
-/* line 224, ../../src/sass/screen.scss */
+/* line 232, ../../src/sass/screen.scss */
 #admin a.edit {
   color: #99f;
   border-color: #66a;
 }
-/* line 225, ../../src/sass/screen.scss */
+/* line 233, ../../src/sass/screen.scss */
 #admin a.edit:hover {
   -moz-box-shadow: 0 0 8px #5555ff;
   -webkit-box-shadow: 0 0 8px #5555ff;
@@ -608,12 +650,12 @@ form.inline p {
   box-shadow: 0 0 8px #5555ff;
   border-color: #99f;
 }
-/* line 228, ../../src/sass/screen.scss */
+/* line 236, ../../src/sass/screen.scss */
 #admin a.delete {
   color: #f44;
   border-color: #a66;
 }
-/* line 229, ../../src/sass/screen.scss */
+/* line 237, ../../src/sass/screen.scss */
 #admin a.delete:hover {
   -moz-box-shadow: 0 0 8px #ff5555;
   -webkit-box-shadow: 0 0 8px #ff5555;
@@ -621,11 +663,11 @@ form.inline p {
   box-shadow: 0 0 8px #ff5555;
   border-color: #f99;
 }
-/* line 232, ../../src/sass/screen.scss */
+/* line 240, ../../src/sass/screen.scss */
 #admin a.disabled {
   color: #444;
 }
-/* line 233, ../../src/sass/screen.scss */
+/* line 241, ../../src/sass/screen.scss */
 #admin a.disabled:hover {
   border-color: #444;
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
@@ -633,7 +675,7 @@ form.inline p {
   -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
-/* line 237, ../../src/sass/screen.scss */
+/* line 245, ../../src/sass/screen.scss */
 #admin a#icon {
   display: block;
   font-size: 20px;
@@ -644,11 +686,11 @@ form.inline p {
   height: 32px;
   width: 32px;
 }
-/* line 239, ../../src/sass/screen.scss */
+/* line 247, ../../src/sass/screen.scss */
 #admin *::selection {
   background: none;
 }
-/* line 241, ../../src/sass/screen.scss */
+/* line 249, ../../src/sass/screen.scss */
 #admin hr {
   border: none;
   border-bottom: 1px dashed #626262;
@@ -657,7 +699,7 @@ form.inline p {
 
 /* Notifications
 ------------------------------------------ */
-/* line 247, ../../src/sass/screen.scss */
+/* line 255, ../../src/sass/screen.scss */
 .flash {
   background: #eeeeee;
   border: 1px solid #d4d4d4;
@@ -681,7 +723,7 @@ form.inline p {
   -o-box-shadow: inset 0 1px 1px white;
   box-shadow: inset 0 1px 1px white;
 }
-/* line 248, ../../src/sass/screen.scss */
+/* line 256, ../../src/sass/screen.scss */
 .flash.success {
   background-color: #E6EFC2;
   color: #264409;
@@ -691,11 +733,11 @@ form.inline p {
   -o-box-shadow: #aaddaa 0px 1px 3px;
   box-shadow: #aaddaa 0px 1px 3px;
 }
-/* line 249, ../../src/sass/screen.scss */
+/* line 257, ../../src/sass/screen.scss */
 .flash.success a {
   color: #264409;
 }
-/* line 251, ../../src/sass/screen.scss */
+/* line 259, ../../src/sass/screen.scss */
 .flash.error, .flash.alert {
   background-color: #FBE3E4;
   color: #8A1F11;
@@ -705,11 +747,11 @@ form.inline p {
   -o-box-shadow: #ffcccc 0px 1px 3px;
   box-shadow: #ffcccc 0px 1px 3px;
 }
-/* line 252, ../../src/sass/screen.scss */
+/* line 260, ../../src/sass/screen.scss */
 .flash.error a, .flash.alert a {
   color: #8a1f11;
 }
-/* line 254, ../../src/sass/screen.scss */
+/* line 262, ../../src/sass/screen.scss */
 .flash.notice {
   background-color: #FFF6BF;
   color: #514721;
@@ -719,11 +761,11 @@ form.inline p {
   -o-box-shadow: #cccc66 0px 1px 3px;
   box-shadow: #cccc66 0px 1px 3px;
 }
-/* line 255, ../../src/sass/screen.scss */
+/* line 263, ../../src/sass/screen.scss */
 .flash.notice a {
   color: #514721;
 }
-/* line 257, ../../src/sass/screen.scss */
+/* line 265, ../../src/sass/screen.scss */
 .flash.info {
   background-color: #D5EDF8;
   color: #205791;
@@ -733,7 +775,7 @@ form.inline p {
   -o-box-shadow: #ccccff 0px 1px 3px;
   box-shadow: #ccccff 0px 1px 3px;
 }
-/* line 258, ../../src/sass/screen.scss */
+/* line 266, ../../src/sass/screen.scss */
 .flash.info a {
   color: #205791;
 }
@@ -741,17 +783,17 @@ form.inline p {
 /* Media Queries
 ------------------------------------------ */
 @media (max-width:1060px) {
-  /* line 266, ../../src/sass/screen.scss */
+  /* line 274, ../../src/sass/screen.scss */
   #wrapper {
     width: 92%;
     margin: inherit 4%;
   }
-  /* line 267, ../../src/sass/screen.scss */
+  /* line 275, ../../src/sass/screen.scss */
   #wrapper aside {
     min-width: 150px;
   }
 
-  /* line 270, ../../src/sass/screen.scss */
+  /* line 278, ../../src/sass/screen.scss */
   #admin {
     left: 100%;
     margin-left: -54px;

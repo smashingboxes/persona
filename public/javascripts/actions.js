@@ -20,11 +20,11 @@
           height: 210
         }, 250);
       },
-      timeout: 300,
+      timeout: 100,
       out: function() {
         return $("#admin").stop().animate({
           height: 37
-        }, 500);
+        }, 300);
       }
     };
     $('#admin').hoverIntent(config);

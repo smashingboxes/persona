@@ -2,16 +2,16 @@
             <article>
                 <%= get_sidebar() %>
                 
-                <h3>A Simple CMS</h3>
-                <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</p>
-                <p>I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.</p>
+                <h3><%= the_title %></h3>
+                
+                <%= the_content %>
                 
                 <hr/>
                 
-                <% proto_loop("posts") do %>
+                <% proto_loop "posts" do %>
                     <article>
                         <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
-                        <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
+                        <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime @content, "%l:%M%P on %A, %B %e %Y" %></time></p>
                         <%= the_excerpt %>                    
                     </article>
 

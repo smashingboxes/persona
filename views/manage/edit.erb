@@ -1,7 +1,7 @@
         <section>
             <article>
                 <h3>Edit Content</h3>
-                <form action="/update/<%= @content.id %>" method="post">
+                <form action="/update/<%= the_id %>" method="post">
                     <aside class="right">
                         <h4>Markdown Cheat Sheat</h4>
                         <hr/>
@@ -45,16 +45,24 @@
                         </p>
                                              
                     </aside>
+                    
+                  <fieldset>
+                    <legend>Template:</legend>
+                     <% templates().each do |t| %>
+                        <label class="radioThumb"><input name="template" id="template" type="radio" value="<%= t %>" <%= "checked" if the_template === t %>/><img width="64" height="64" src="/images/template_snaps/<%= t %>.png"/> <p><%= t.capitalize %></p></label>
+                     <% end %>
+                  </fieldset>
+                  
                   <fieldset>
                     <legend>Please use the form below to create a page:</legend>
                     <p>
                       <label for="title">Page Title</label><br>
-                      <input type="text" class="title" name="title" id="title" value="<%= @content.title %>" />
+                      <input type="text" class="title" name="title" id="title" value="<%= the_title %>" />
                     </p>
         
                     <p>
                       <label for="body">Markdown Content:</label><br>
-                      <textarea name="body" id="body" rows="5" cols="20"><%= @content.body %></textarea>
+                      <textarea name="body" id="body" rows="5" cols="20"><%= the_content nil, true %></textarea>
                     </p>
         
                     <p>

@@ -20,7 +20,7 @@ require './proto-includes/helpers.rb'
 
 # Root
 get '/' do
-    erb :'templates/blog'
+    erb :"index"
 end
 
 # General Pages
@@ -29,19 +29,18 @@ get 'pages/:name' do
 end 
 
 # Manage Prototypical Content
-get '/node/:id' do 
-    @content = Content.get(params[:id])
+get '/node/:id' do     
     
-    erb :single
+    template = Content.get(params[:id]).template
+
+    erb :"templates/#{template}"
 end
 
 get "/new" do 
     erb :"manage/new"
 end
 
-get "/edit/:id" do
-    @content = Content.get(params[:id])
-    
+get "/edit/:id" do    
     erb :"manage/edit"
 end
 
@@ -82,7 +81,8 @@ post "/update/:id" do
 
     @content.update(
       :title      => "#{params[:title]}",
-      :body       => "#{params[:body]}"
+      :body       => "#{params[:body]}",
+      :template   => "#{params[:template]}"
     )
     
     flash[:info] = "Content was successfully updated!"

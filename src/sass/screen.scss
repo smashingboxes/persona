@@ -137,10 +137,10 @@
         .meta                               { margin-bottom: 15px; }
     }
     
-    aside                               { background: #ffd; border: 1px solid lighten($body_copy, 70%); float: left; padding: 1.5em 1.5em 0; margin: 0.7em 1em 0 0; width: 25%;
-        img                             { border: 1px solid #aaa; float: left; margin-right: 1em; }
+    aside                                   { background: #ffd; border: 1px solid lighten($body_copy, 70%); float: left; padding: 1.5em 1.5em; margin: 0 2em 2em 0; width: 25%;
+        img                                 { border: 1px solid #aaa; float: left; margin-right: 1em; }
         
-        &.right                         { float: right; margin: 0.7em 0 0 2em; }
+        &.right                             { float: right; margin: 0 0 2em 2em; }
     }
 
 }
@@ -198,7 +198,15 @@ textarea                                    { font-size: 14px; min-height: 250px
 form.inline                                 { line-height: 3em; }
 form.inline p                               { margin-bottom: 0; }
 
-
+/* Template Selection */
+label.radioThumb                            { display: block; float: left; margin: auto 10px; text-align: center;
+    input[type="radio"]                     { width: 66px; height: 66px; 
+        &:hover+img                         { border: 1px solid #ccf; @include box-shadow(0 0 4px #aaf); }
+        &:checked+img                       { border-color: red; @include box-shadow(0 0 4px #faa); }
+    }
+    img                                     { border: 1px solid #AAA; cursor: pointer; margin-bottom: -2px; margin-left: -90px; }
+    p                                       { margin-left: -17px; margin-bottom: 0; }
+}
 
 /* Common Elements
 ------------------------------------------ */

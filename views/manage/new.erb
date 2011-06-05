@@ -48,20 +48,19 @@
                     </aside>
                     
                   <fieldset>
-                    <legend>Details:</legend>
+                    <legend>Content Type:</legend>
                     <select name="content_type" id="content_type">
                         <option value="page">Page</option>
                         <option value="post">Post</option>
                     </select>
-                    <select name="template" id="template">
-                        <option value="single">Default Template</option>
-                    
-                    <% templates().each do |t| %>
-                          <option value="<%= t %>"/> <%= t.capitalize %></option>
-                    <% end %>
-                    
-                    </select>
                   </fieldset>
+                  <fieldset>
+                    <legend>Template:</legend>
+
+                     <% templates().each do |t| %>
+                        <label class="radioThumb"><input name="template" id="template" type="radio" value="<%= t %>" /><img width="64" height="64" src="/images/template_snaps/<%= t %>.png"/> <p><%= t.capitalize %></p></label>
+                     <% end %>
+                   </fieldset>
 
                   <fieldset>
                     <legend>Content:</legend>
