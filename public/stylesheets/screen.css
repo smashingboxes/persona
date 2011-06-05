@@ -798,13 +798,18 @@ label.radioThumb p {
   }
 
   /* line 283, ../../src/sass/screen.scss */
+  .flash {
+    padding-left: 20px;
+  }
+
+  /* line 285, ../../src/sass/screen.scss */
   #admin {
     left: 100%;
     margin-left: -54px;
   }
 }
 @media (max-width: 900px) {
-  /* line 287, ../../src/sass/screen.scss */
+  /* line 289, ../../src/sass/screen.scss */
   .columns {
     -moz-column-count: 2;
     -webkit-column-count: 2;
@@ -813,7 +818,7 @@ label.radioThumb p {
   }
 }
 @media (max-width: 500px) {
-  /* line 291, ../../src/sass/screen.scss */
+  /* line 293, ../../src/sass/screen.scss */
   .columns {
     -moz-column-count: 0;
     -webkit-column-count: 0;
