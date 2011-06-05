@@ -1,6 +1,6 @@
         <section>
             <article>
-                <h3>Edit Page</h3>
+                <h3>Edit <%= @content.content_type.capitalize %></h3>
                 <form action="/update/<%= @content.id %>" method="post">
                     <aside class="right">
                         <h4>Markdown Cheat Sheat</h4>
