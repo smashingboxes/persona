@@ -4,7 +4,15 @@
 	<link rel="stylesheet" href="/stylesheets/screen.css" />
 	<link rel="stylesheet" href="/stylesheets/type/type.css" />
 	
-	<title>Prototypical | A Sinatra Prototyping Tool</title>
+	<title>
+	   <%= 
+	       unless @content.nil? 
+	           @content.title + " | Prototypical"
+	       else
+	           "Prototypical, A Sinatra CMS" 
+	       end 
+	   %>
+    </title>
     
     <!-- Patch holes in HTML5 support -->
     

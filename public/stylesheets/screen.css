@@ -540,6 +540,22 @@ form.inline p {
   -webkit-box-shadow: 0 1px 5px #999999;
   -o-box-shadow: 0 1px 5px #999999;
   box-shadow: 0 1px 5px #999999;
+  -moz-transition-property: left 0.3s linear;
+  -webkit-transition-property: left 0.3s linear;
+  -o-transition-property: left 0.3s linear;
+  transition-property: left 0.3s linear;
+  -moz-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -moz-transition-property: right 0.3s linear;
+  -webkit-transition-property: right 0.3s linear;
+  -o-transition-property: right 0.3s linear;
+  transition-property: right 0.3s linear;
+  -moz-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
 }
 /* line 217, ../../src/sass/screen.scss */
 #admin a {
@@ -607,7 +623,15 @@ form.inline p {
 #admin a.disabled {
   color: #444;
 }
-/* line 236, ../../src/sass/screen.scss */
+/* line 234, ../../src/sass/screen.scss */
+#admin a.disabled:hover {
+  border-color: #444;
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+/* line 238, ../../src/sass/screen.scss */
 #admin a#icon {
   display: block;
   font-size: 20px;
@@ -618,11 +642,11 @@ form.inline p {
   height: 32px;
   width: 32px;
 }
-/* line 238, ../../src/sass/screen.scss */
+/* line 240, ../../src/sass/screen.scss */
 #admin *::selection {
   background: none;
 }
-/* line 240, ../../src/sass/screen.scss */
+/* line 242, ../../src/sass/screen.scss */
 #admin hr {
   border: none;
   border-bottom: 1px dashed #626262;
@@ -631,7 +655,7 @@ form.inline p {
 
 /* Notifications
 ------------------------------------------ */
-/* line 246, ../../src/sass/screen.scss */
+/* line 248, ../../src/sass/screen.scss */
 .flash {
   background: #eeeeee;
   border: 1px solid #d4d4d4;
@@ -655,7 +679,7 @@ form.inline p {
   -o-box-shadow: inset 0 1px 1px white;
   box-shadow: inset 0 1px 1px white;
 }
-/* line 247, ../../src/sass/screen.scss */
+/* line 249, ../../src/sass/screen.scss */
 .flash.success {
   background-color: #E6EFC2;
   color: #264409;
@@ -665,11 +689,11 @@ form.inline p {
   -o-box-shadow: #aaddaa 0px 1px 3px;
   box-shadow: #aaddaa 0px 1px 3px;
 }
-/* line 248, ../../src/sass/screen.scss */
+/* line 250, ../../src/sass/screen.scss */
 .flash.success a {
   color: #264409;
 }
-/* line 250, ../../src/sass/screen.scss */
+/* line 252, ../../src/sass/screen.scss */
 .flash.error, .flash.alert {
   background-color: #FBE3E4;
   color: #8A1F11;
@@ -679,11 +703,11 @@ form.inline p {
   -o-box-shadow: #ffcccc 0px 1px 3px;
   box-shadow: #ffcccc 0px 1px 3px;
 }
-/* line 251, ../../src/sass/screen.scss */
+/* line 253, ../../src/sass/screen.scss */
 .flash.error a, .flash.alert a {
   color: #8a1f11;
 }
-/* line 253, ../../src/sass/screen.scss */
+/* line 255, ../../src/sass/screen.scss */
 .flash.notice {
   background-color: #FFF6BF;
   color: #514721;
@@ -693,11 +717,11 @@ form.inline p {
   -o-box-shadow: #cccc66 0px 1px 3px;
   box-shadow: #cccc66 0px 1px 3px;
 }
-/* line 254, ../../src/sass/screen.scss */
+/* line 256, ../../src/sass/screen.scss */
 .flash.notice a {
   color: #514721;
 }
-/* line 256, ../../src/sass/screen.scss */
+/* line 258, ../../src/sass/screen.scss */
 .flash.info {
   background-color: #D5EDF8;
   color: #205791;
@@ -707,7 +731,27 @@ form.inline p {
   -o-box-shadow: #ccccff 0px 1px 3px;
   box-shadow: #ccccff 0px 1px 3px;
 }
-/* line 257, ../../src/sass/screen.scss */
+/* line 259, ../../src/sass/screen.scss */
 .flash.info a {
   color: #205791;
+}
+
+/* Media Queries
+------------------------------------------ */
+@media (max-width:1024px) {
+  /* line 267, ../../src/sass/screen.scss */
+  #wrapper {
+    width: 92%;
+    margin: inherit 4%;
+  }
+  /* line 268, ../../src/sass/screen.scss */
+  #wrapper aside {
+    min-width: 150px;
+  }
+
+  /* line 271, ../../src/sass/screen.scss */
+  #admin {
+    left: 100%;
+    margin-left: -54px;
+  }
 }

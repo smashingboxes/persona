@@ -212,7 +212,7 @@ form.inline p                               { margin-bottom: 0; }
     /* Prototypical Admin
     ------------------------------------------ */
     
-    #admin                                      { position: fixed; top: 10px; left: 10px; background:#333; border: 1px solid #222; height: 37px; width: 38px; font-size: 14px; overflow: hidden; padding: 3px; text-align: center; @include box-shadow( 0 1px 5px #999);    
+    #admin                                      { position: fixed; top: 10px; left: 10px; background:#333; border: 1px solid #222; height: 37px; width: 38px; font-size: 14px; overflow: hidden; padding: 3px; text-align: center; @include box-shadow( 0 1px 5px #999); @include transition(left 0.3s linear); @include transition(right 0.3s linear);    
                 
         a                                       { background: #222; border: 1px solid #444; display: block; color: #fff; margin: 0 auto 10px; width: 15px; height: 15px; padding: 1px 2px; @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.35));            
             
@@ -230,7 +230,9 @@ form.inline p                               { margin-bottom: 0; }
                 &:hover                         { @include box-shadow(0 0 8px #f55); border-color: #f99; }
             }   
             
-            &.disabled                          { color: #444; }
+            &.disabled                          { color: #444;
+                &:hover                         { border-color: #444; @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.35)); }
+            }
         }
 
         a#icon                                  { display: block; font-size: 20px; font-family: $fancy; font-style: italic; margin: 0 auto 10px; line-height: 32px; height: 32px; width: 32px; }
@@ -257,3 +259,14 @@ form.inline p                               { margin-bottom: 0; }
             a                                   { color:#205791; }
         }
     }
+
+/* Media Queries
+------------------------------------------ */
+
+@media (max-width:1024px) {
+    #wrapper                                { width: 92%; margin: inherit 4%; 
+        aside                               { min-width: 150px; }
+    }
+    
+    #admin                                  { left: 100%; margin-left: -54px; }
+}
