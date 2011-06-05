@@ -5,8 +5,8 @@
 		
 	<title>
 	   <%= 
-	       unless @content.nil? 
-	           @content.title + " | Prototypical"
+	       unless params[:id].nil? 
+	           Content.get(params[:id]).title + " | Prototypical"
 	       else
 	           "Prototypical, A Sinatra CMS" 
 	       end 

@@ -348,8 +348,8 @@ sup {
   background: #ffd;
   border: 1px solid #d4d4d4;
   float: left;
-  padding: 1.5em 1.5em;
-  margin: 0 2em 2em 0;
+  padding: 1.5em 1.3em;
+  margin: 0 1em 1em 0;
   width: 25%;
 }
 /* line 141, ../../src/sass/screen.scss */
@@ -361,7 +361,7 @@ sup {
 /* line 143, ../../src/sass/screen.scss */
 #wrapper aside.right {
   float: right;
-  margin: 0 0 2em 2em;
+  margin: 0 0 1em 1em;
 }
 
 /* Header

@@ -137,10 +137,10 @@
         .meta                               { margin-bottom: 15px; }
     }
     
-    aside                                   { background: #ffd; border: 1px solid lighten($body_copy, 70%); float: left; padding: 1.5em 1.5em; margin: 0 2em 2em 0; width: 25%;
+    aside                                   { background: #ffd; border: 1px solid lighten($body_copy, 70%); float: left; padding: 1.5em 1.3em; margin: 0 1em 1em 0; width: 25%;
         img                                 { border: 1px solid #aaa; float: left; margin-right: 1em; }
         
-        &.right                             { float: right; margin: 0 0 2em 2em; }
+        &.right                             { float: right; margin: 0 0 1em 1em; }
     }
 
 }
