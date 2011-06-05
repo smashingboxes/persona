@@ -5,8 +5,6 @@
 
 $(document).ready ->
     
-    $('.radioThumb img').dblclick -> alert('hello')
-    
     $('.flash').each ->
         index = $(this).index()
         

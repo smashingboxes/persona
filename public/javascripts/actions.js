@@ -1,9 +1,6 @@
 (function() {
   $(document).ready(function() {
     var config;
-    $('.radioThumb img').dblclick(function() {
-      return alert('hello');
-    });
     $('.flash').each(function() {
       var index;
       index = $(this).index();
