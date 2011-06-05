@@ -50,7 +50,7 @@ helpers do
     
     def proto_loop()
     
-        posts = Content.pages
+        posts = Content.posts
         
         posts.each do |post|
         
