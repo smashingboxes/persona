@@ -2,17 +2,17 @@ Prototypical is a lightweight prototyping tool built on Sinatra with the goal of
 
 There are some things developers should never have to worry about when making prototypes. Here's what I've created:
 
-A Toolkit including a Sitemap and a clean, responsive stylesheet (View it here)
-Content management which gives clients control over content/layout without breaking anything (let them try, I dare them).
-A strong frontend powered by CoffeeScript and Compass (an extension of Sass)
-Easy deployment, straight to Heroku
-More Under the Hood
+*A Toolkit including a Sitemap and a clean, responsive stylesheet (View it here)
+*Content management which gives clients control over content/layout without breaking anything (let them try, I dare them).
+*A strong frontend powered by CoffeeScript and Compass (an extension of Sass)
+*Easy deployment, straight to Heroku
+*More Under the Hood
 
 At the present, Prototypical uses Tilt to support templating, with Markdown to allow clients/designers to safely edit the content on pages. Creating templates is as easy as dropping files into the templates folder, and built-in support commands similar to that of WordPress including: 
 
-get_header 
-the_title
-the_content
-get_footer
+`get_header `
+`the_title`
+`the_content`
+`get_footer`
 
 Plus it's built on Ruby, which is awesome in and of itself.
