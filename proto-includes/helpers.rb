@@ -32,7 +32,7 @@ helpers do
     
     # Renders the sidebar template found in the ./views/furniture directory
     #
-    # @param [String] Helpts to dictate the styling of the sidebar
+    # @param [String] Helps to dictate the styling of the sidebar
     # @return An action to render the sidebar template
     def get_sidebar(css_class="left")
         @css_class = css_class
@@ -129,7 +129,7 @@ helpers do
             return "<p> #{text} </p>"
             
         else
-            flash[:error] = "<strong>Error:</strong> No content could be found" unless ENV['RACK_ENV'] == 'production'
+            "<strong>Error:</strong> No content could be found" unless ENV['RACK_ENV'] == 'production'
         end
     end
     
@@ -141,7 +141,7 @@ helpers do
         if node = content || @content || Content.get(params[:id])
             "/node/#{node.id}"
         else
-            flash[:error] = "<strong>Error:</strong> No link could be found" unless ENV['RACK_ENV'] == 'production'
+            "<strong>Error:</strong> No link could be found" unless ENV['RACK_ENV'] == 'production'
         end
     end
     
@@ -153,7 +153,7 @@ helpers do
         if node = content || @content || Content.get(params[:id])
             node.id
         else
-            flash[:error] = "<strong>Error:</strong> No content identifier could be found" unless ENV['RACK_ENV'] == 'production'
+            "<strong>Error:</strong> No content identifier could be found" unless ENV['RACK_ENV'] == 'production'
         end
     end
     
@@ -165,18 +165,17 @@ helpers do
         if node = content || @content || Content.get(params[:id])
             node.template
         else
-            flash[:error] = "<strong>Error:</strong> No template information could be found" unless ENV['RACK_ENV'] == 'production'
+            "<strong>Error:</strong> No template information could be found" unless ENV['RACK_ENV'] == 'production'
         end
     end
 
     # At last, the magic:
     def proto_loop(type="posts")
         
-        if type == "pages"
-            posts = Content.pages
-        else
-            posts = Content.posts.reverse
-        end
+        # Get content type
+        posts = Content.send(:"#{type}")
+                
+        Content#{method}
         
         posts.each do |post|
         
