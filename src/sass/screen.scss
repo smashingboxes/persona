@@ -44,7 +44,7 @@
     /* Global
     ---------------------------------------*/
 
-    body                                    { color: $body_copy; font: normal 12px/1.5em $sans-serif; }
+    body                                    { background: #fff; color: $body_copy; font: normal 12px/1.5em $sans-serif; }
     *::selection                            { background: $accent; color: contrast-color($accent); }
 
 
@@ -130,7 +130,8 @@
 /* Structure
 ------------------------------------------ */
 
-#wrapper                                    { @include container(); margin: 3em auto;
+#wrapper                                    { @include container(); margin: 45px auto;
+    header                                  { margin-bottom: 40px; }
     &:target                                { @include showgrid(); }
     
     article                                 { 
@@ -168,8 +169,10 @@
 /* Footer
 ------------------------------------------ */
 
-footer                                      { clear: left; margin-top: 5em; 
-    #legal                                  { display: block;text-align: center; }
+footer                                      { clear: left; font-size: 14px; margin: 2.5em auto;  
+    #legal                                  { font-size: 14px; display: block;text-align: center; 
+        a                                   { font-weight: bold; }
+    }
 }
 
 
@@ -224,9 +227,9 @@ form.inline p                               { margin-bottom: 0; }
     /* Prototypical Admin
     ------------------------------------------ */
     
-    #admin                                      { position: fixed; top: 10px; left: 10px; background:#333; border: 1px solid #222; height: 37px; width: 38px; font-size: 14px; overflow: hidden; padding: 3px; text-align: center; @include box-shadow( 0 1px 5px #999); @include transition(left 0.3s linear); @include transition(right 0.3s linear);    
+    #admin                                      { position: fixed; top: 10px; left: 10px; background:#333; border: 1px solid #222; height: 37px; width: 38px; font-size: 14px; overflow: hidden; padding: 3px; text-align: center; @include box-shadow( 0 1px 5px #777); @include transition(left 0.3s linear); @include border-radius(5px); @include transition(right 0.3s linear);    
                 
-        a                                       { background: #222; border: 1px solid #444; display: block; color: #fff; margin: 0 auto 10px; width: 15px; height: 15px; padding: 1px 2px; @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.35));            
+        a                                       { background: #222; border: 1px solid #444; display: block; color: #fff; margin: 0 auto 10px; width: 15px; height: 15px; padding: 1px 2px; @include border-radius(3px); @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.35));            
             
             &:hover                             { @include box-shadow(0 0 8px #999); border-color: #777;  }
             
@@ -247,7 +250,9 @@ form.inline p                               { margin-bottom: 0; }
             }
         }
 
-        a#icon                                  { display: block; font-size: 20px; font-family: $fancy; font-style: italic; margin: 0 auto 10px; line-height: 32px; height: 32px; width: 32px; }
+        a#icon                                  { border-color: #333; display: block; font-size: 20px; font-family: $fancy; font-style: italic; margin: 0 auto 10px; line-height: 32px; height: 32px; width: 32px;
+            &:hover                             { border-color: #333; @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.35)); }
+        }
         
         *::selection                            { background: none; }
         
@@ -276,7 +281,7 @@ form.inline p                               { margin-bottom: 0; }
 ------------------------------------------ */
 
 @media (max-width:1060px) {
-    #wrapper                                { width: 92%; margin: inherit 4%;
+    #wrapper                                { width: 92%; padding: 4%; margin: 0;
         aside                               { min-width: 150px; }
     }
     

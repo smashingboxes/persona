@@ -8,22 +8,23 @@
     <div id="wrapper">
         <header>
             <h1><a id="logo" href="/">Prototypical</a></h1>
-        </header>
         
-        <div class="menu">
-            <ul>
-                <% proto_loop("pages") do |p| %>
-                    <li><a href="<%= the_link %>"><%= the_title %></a></li>
-                <% end %>
-            </ul>
-        </div>
+            <div class="menu">
+                <ul>
+                    <% proto_loop("pages") do |p| %>
+                        <li><a href="<%= the_link %>"><%= the_title %></a></li>
+                    <% end %>
+                </ul>
+            </div>
+            <hr/>
+        </header>
         
         <%= yield %>
         
-        <%= get_footer() %>
+       
 
     </div>
-    
+     <%= get_footer() %>
     <%= styled_flash %>
 
     <%= get_admin() %>
