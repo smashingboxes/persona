@@ -17,7 +17,7 @@
     config = {
       over: function() {
         return $("#admin").stop().animate({
-          height: 210
+          height: 240
         }, 250);
       },
       timeout: 100,

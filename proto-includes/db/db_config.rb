@@ -7,10 +7,10 @@ class Content
   include DataMapper::Resource
 
   property :id,                 Serial
-  property :title,              String,                 :required => true,      :message => "Please specify a title for this page."
-  property :body,               Text,                   :required => true,      :message => "Please specify body content for this page."
-  property :content_type,       Enum[:post, :page],     :required => true,      :message => "Please specify the content type."
-  property :parent,             Integer,                :default => 0
+  property :title,              String,                                             :required => true,      :message => "Please specify a title for this page."
+  property :body,               Text,                                               :required => true,      :message => "Please specify body content for this page."
+  property :content_type,       Enum[:post, :page, :category, :comment, :tag],      :required => true,      :message => "Please specify the content type."
+  property :parent,             Integer,                                            :default => 0
   property :created_at,         DateTime
   
   def self.posts
@@ -20,6 +20,19 @@ class Content
   def self.pages
     all(:content_type => :page)
   end
+  
+  def self.categories
+    all(:content_type => :category)
+  end
+  
+  def self.comments
+    all(:content_type => :comment)
+  end
+  
+  def self.pages
+    all(:content_type => :tag)
+  end
+  
 end
 
 class Content
