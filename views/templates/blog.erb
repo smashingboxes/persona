@@ -6,11 +6,11 @@
                 
                 <hr/>
                 
-                <% proto_loop "posts" do %>
+                <% proto_loop "post" do %>
                     <article>
                         <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
                         <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime @content, "%l:%M%P on %A, %B %e %Y" %></time></p>
-                        <%= the_excerpt %>                    
+                        <p><%= the_excerpt %></p>
                     </article>
 
                     <hr/>

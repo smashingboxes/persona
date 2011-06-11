@@ -35,11 +35,11 @@
                 
                 <hr/>
                 <h3>Updates <span class="alt">&amp;</span> Such</h3>
-                <% proto_loop("posts") do %>
+                <% proto_loop "post" do %>
                     <article>
                         <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
                         <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
-                        <%= the_excerpt %>                    
+                        <p><%= the_excerpt %></p>                    
                     </article>
 
                     <hr/>

@@ -13,14 +13,15 @@ end
 enable :sessions
 
 # Models
-require './proto-includes/db/db_config.rb'
+require './proto-includes/model.rb'
 
 # Helpers
 require './proto-includes/helpers.rb'
 
 # Root
 get '/' do
-    erb :"index"
+    home = "/node/#{Content.first.id}"
+    redirect home
 end
 
 # General Pages

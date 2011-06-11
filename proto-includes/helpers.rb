@@ -1,14 +1,22 @@
 helpers do
 
-
 ###########################
-# Templating
+#    Table of Contents    #
 ###########################
+#
+# 1) General Template Helper Methods
+# 2) Protoloop Methods (the_content, the_title, etc...)
+#
+###########################
+    
+###########################
+# 1) General Template Helper Methods
+###########################
+    
     
     # Scans for all .erb files in the ./views/templates directory 
     #
-    # @param
-    # @return [Array] of template name strings
+    # Return an array of strings equal to template names
     def templates()
         source = "./views/templates/"
         
@@ -25,16 +33,16 @@ helpers do
     
     # Renders the header template found in the ./views/furniture directory
     #
-    # @param
-    # @return An action to render the header template
+    # Returns an action to render the header template
     def get_header()
         erb :'furniture/header'
     end
     
     # Renders the sidebar template found in the ./views/furniture directory
     #
-    # @param [String] Helps to dictate the styling of the sidebar
-    # @return An action to render the sidebar template
+    # css_class - Helps to dictate the styling of the sidebar by inserting a class
+    #
+    # Returns an action to render the sidebar template
     def get_sidebar(css_class="left")
         @css_class = css_class
         erb :'furniture/sidebar'
@@ -42,36 +50,38 @@ helpers do
     
     # Renders the footer template found in the ./views/furniture directory
     #
-    # @param
-    # @return An action to render the footer template
+    # Returns an action to render the footer template
     def get_footer()
         erb :'furniture/footer'
     end
     
     # Renders the admin menu found in the ./views/furniture directory
     #
-    # @param
-    # @return An action to render the admin menu template
+    # Returns an action to render the admin menu template
     def get_admin()
         erb :'furniture/admin'
     end
 
     
 ###########################
-# The Proto Loop
+# 2) Protoloop Methods (the_content, the_title, etc...)
 ###########################
-
+    #
+    # NOTES:
+    #
     # All attribute finders will seek a value in the following order:
-        # 1) A passed argument
-        # 2) An object variable within the proto_loop()
-        # 3) The current query string
-        # 4) Return nil (throw error)
+    # 1) A passed argument
+    # 2) An object variable within the proto_loop()
+    # 3) The current query string
+    # 4) Return nil (throw error)
     
     
     # Finds the title of a given content entry in the database
     #
-    # @param [Object] a content object overide to the default functionality
-    # @return The title of the passed object
+    # content - An optional overide to display the title of a specific
+    #           content item.
+    #
+    # Retuns the title of the passed object (Be it from the protoloop or argument)
     def the_title(content=nil)
         if node = content || @content || Content.get(params[:id])
             node.title
@@ -82,9 +92,11 @@ helpers do
     
     # Finds the datetime of a given content entry in the database
     #
-    # @param [Object] a content object overide to the default functionality
-    # @param [String] a special override to adjust the format of the datetime
-    # @return The datetime of the passed object
+    # content - An optional overide to display the datetime of a specific
+    #           content item.
+    # output  - An optional overide to specify a format for the returned datetime
+    #
+    # Retuns the datetime of the passed object (Be it from the protoloop or argument)
     def the_datetime(content=nil, output=nil)
         if node = content || @content || Content.get(params[:id])
             output.nil? ? node.created_at : node.created_at.strftime(output)
@@ -93,11 +105,14 @@ helpers do
         end
     end
     
-    # Finds the datetime of a given content entry in the database
+    # Finds the content of a given content entry in the database
     #
-    # @param [Object] a content object overide to the default functionality
-    # @param [String] a special override to adjust the format of the datetime
-    # @return The datetime of the passed object
+    # content - An optional overide to display the content of a specific
+    #           content item.
+    # raw     - A boolean which tells the function to spit out the unformated 
+    #           data (true) or format it using Markdown (false)
+    #
+    # Returns the content of the passed object
     def the_content(content=nil, raw=false)    
        
         if node = content || @content || Content.get(params[:id])
@@ -114,20 +129,32 @@ helpers do
     # Finds the content of a given content entry in the database
     # and truncates it to 100 words.
     #
-    # @param [Object] a content object overide to the default functionality
-    # @return The truncated content of the passed object
-    def the_excerpt(content=nil)
+    # content - An optional overide to display the truncated body copy
+    #           of a specific content item.
+    # length  - A number value dictating the maximum word count of the 
+    #           returned content (defaults to 100 words)
+    #
+    # Example:
+    #   [assuming content = billy madison is a great movie]   
+    #
+    #   the_excerpt(content, 2)
+    #      # => "billy madison"
+    #
+    # Returns the truncated content of the passed object
+    def the_excerpt(content=nil, length=100)
         if node = content || @content || Content.get(params[:id])
             
-            length = 100
+            # First, we convert the text to html and strip it
+            # (remember it's stored as markdown)
+            text = Maruku.new("#{node.body}").to_html.gsub(/<\/?[^>]*>/, "")
             
-            # Truncate content
-            text = Maruku.new("#{node.body}").to_html.gsub(/<\/?[^>]*>/, "").split(" ")[0..length].join(" ")
+            # Next, we truncate it
+            text = text.split(" ")[0..length].join(" ")
             
-            # Add ellipse if any content was truncated
+            # Add ellipse if anything was actually shortened
             text += "..." unless node.body.split(" ").length < length
             
-            return "<p> #{text} </p>"
+            return text
             
         else
             "<strong>Error:</strong> No content could be found" unless ENV['RACK_ENV'] == 'production'
@@ -146,10 +173,11 @@ helpers do
         end
     end
     
-    # Finds the primary key of a given content entry in the database
+    # Finds the primary key of a given content entry in the database.
     #
-    # @param [Object] a content object overide to the default functionality
-    # @return The ID of the passed content object
+    # Content - An optional arugment to dictate the content in question
+    # Return the ID of the passed content object
+    #
     def the_id(content=nil)
         if node = content || @content || Content.get(params[:id])
             node.id
@@ -171,16 +199,14 @@ helpers do
     end
 
     # At last, the magic:
-    def proto_loop(type="posts")
+    def proto_loop(type="post")
         
         # Get content type
-        posts = Content.send(:"#{type}")
-                
-        Content#{method}
+        nodes = Content.all(:content_type => type)
+                        
+        nodes.each do |node|
         
-        posts.each do |post|
-        
-            @content = post
+            @content = node
             
             yield
             
