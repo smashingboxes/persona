@@ -48,11 +48,13 @@ end
 post "/create" do 
     
     content = Content.new(
-      :title            => "#{params[:title]}",
-      :body             => "#{params[:body]}",
+      :title            => params[:title],
+      :body             => params[:body],
+      :content_type     => params[:content_type],
+      :template         => params[:template],
+      :parent           => params[:parent],
       :created_at       => Time.now,
-      :content_type     => :"#{params[:content_type]}",
-      :template   => "#{params[:template]}"
+      :updated_at       => Time.now
     )
     
     if content.save
@@ -64,7 +66,7 @@ post "/create" do
       end
         redirect back
     end
-            
+
 end
 
 post "/update/:id" do 
@@ -72,9 +74,10 @@ post "/update/:id" do
     @content = Content.get(params[:id])
 
     @content.update(
-      :title      => "#{params[:title]}",
-      :body       => "#{params[:body]}",
-      :template   => "#{params[:template]}"
+      :title        => params[:title],
+      :body         => params[:body],
+      :template     => params[:template],
+      :updated_at   => Time.now
     )
     
     flash[:info] = "Content was successfully updated!"

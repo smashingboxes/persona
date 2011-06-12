@@ -9,14 +9,9 @@
         <header>
             
             <h1><a id="logo" href="/">Prototypical</a></h1>
-        
-            <div class="menu">
-                <ul>
-                    <% proto_loop "page" do |p| %>
-                        <li><a href="<%= the_link %>"><%= the_title %></a></li>
-                    <% end %>
-                </ul>
-            </div>
+            
+            <%= get_navigation %>
+            
             <hr/>
         </header>
         

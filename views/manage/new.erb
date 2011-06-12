@@ -58,12 +58,24 @@
                     </select>
                   </fieldset>
                   <fieldset>
+                    <legend>Parent Page:</legend>
+                     
+                     <select name="parent" id="parent">
+                            <option value="0">None</option>
+                         <% proto_loop "page" do %>
+                            <option value="<%= the_id %>"><%= the_title %></option>
+                         <% end %>
+                    </select>
+                  
+                  </fieldset>
+                  
+                  <fieldset>
                     <legend>Template:</legend>
 
                      <% templates().each do |t| %>
                         <label class="radioThumb"><input name="template" id="template" type="radio" value="<%= t %>" <%= "checked" if t == "single" %> /><img width="64" height="64" src="/images/template_thumbs/<%= t %>.png"/> <p><%= t.capitalize %></p></label>
                      <% end %>
-                   </fieldset>
+                  </fieldset>
 
                   <fieldset>
                     <legend>Content:</legend>

@@ -1,17 +1,17 @@
 helpers do
 
-###########################
-#    Table of Contents    #
-###########################
+#######################################################
+#                 Table of Contents                   #
+#######################################################
 #
 # 1) General Template Helper Methods
 # 2) Protoloop Methods (the_content, the_title, etc...)
 #
-###########################
+#######################################################
     
-###########################
+#######################################################
 # 1) General Template Helper Methods
-###########################
+#######################################################
     
     
     # Scans for all .erb files in the ./views/templates directory 
@@ -64,25 +64,57 @@ helpers do
     
     # Renders a link tag with stylesheet information
     #
-    # file  - The name of the stylesheet. Defaults to 'style'
-    # media - The media format the stylesheet will be displayed as.
-    #         Defaults to 'screen'
+    # stylesheet - The name of the stylesheet. Defaults to 'screen'
+    # media      - The media format the stylesheet will be displayed as.
+    #              Defaults to 'screen'
     #
     # Example:
     #   get_stylesheet("print", "print")
     #       # => <link rel='stylesheet' href='/stylesheets/print.css' media='print'/>
     #
     # Returns an action to render the admin menu template
-    def get_stylesheet(file="style", media="screen")
+    def get_stylesheet(stylesheet="screen", media="screen")
         
-        echo "<link rel='stylesheet' href='/stylesheets/#{location}.css' media='#{media}'/>"
+        return "<link rel='stylesheet' href='/stylesheets/#{stylesheet}.css' media='#{media}'/>"
         
+    end
+    
+    # Renders a navigation bar
+    #
+    # css_class - An optional overide to dicate the class of the nav
+    #             html element. Defaults to "menu"
+    #
+    # Example:
+    #   get_navigation("menu")
+    #       # => <nav class="menu">
+    #               <ul>
+    #                   <li><a href="/node/1">Title</a></li> ...
+    #               </ul>
+    #            </nav>
+    #
+    # Returns a string describing the navigation HTML component
+    def get_navigation(css_class="menu")
+        nav = ""
+        
+        nav += "<nav class='#{css_class}'>"
+        nav += "<ul>"
+        
+        Content.all(:content_type => "page").each do |p|
+            if p.parent != 0
+                nav = nav + "<li><a href='/node/#{p.id}'>#{p.title}</a></li>"
+            end                    
+        end
+        
+        nav += "</ul>"
+        nav += "</nav>"
+        
+        return nav
     end
 
     
-###########################
+#######################################################
 # 2) Protoloop Methods (the_content, the_title, etc...)
-###########################
+#######################################################
     #
     # NOTES:
     #

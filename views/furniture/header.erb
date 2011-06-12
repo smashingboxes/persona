@@ -1,8 +1,9 @@
 <head>
 	<meta charset="utf-8">
 	
-	<link rel="stylesheet" href="/stylesheets/screen.css" />
-		
+	<%= get_stylesheet("screen") %>
+	<%= get_stylesheet("print", "print") %>
+	
 	<title>
 	   <%= 
 	       unless params[:id].nil? 

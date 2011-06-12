@@ -11,27 +11,29 @@ class Content
   property :body,               Text
   property :content_type,       Enum[:post, :page, :category, :comment, :tag],      :required => true,      :message => "Please specify the content type."
   property :parent,             Integer,                                            :default => 0
-  property :created_at,         DateTime
   property :template,           String,                                             :default => "single"
   
+  property :created_at,         DateTime
+  property :updated_at,         DateTime 
+  
   def self.posts
-    all(:content_type => :post)
+    self.all(:content_type => "post")
   end
 
   def self.pages
-    all(:content_type => :page)
+    self.all(:content_type => "page")
   end
   
   def self.categories
-    all(:content_type => :category)
+    self.all(:content_type => "category")
   end
   
   def self.comments
-    all(:content_type => :comment)
+    self.all(:content_type => "comment")
   end
   
   def self.pages
-    all(:content_type => :tag)
+    self.all(:content_type => "tag")
   end
   
 end
