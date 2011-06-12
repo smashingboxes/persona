@@ -8,10 +8,11 @@ class Content
 
   property :id,                 Serial
   property :title,              String,                                             :required => true,      :message => "Please specify a title for this page."
-  property :body,               Text,                                               :required => true,      :message => "Please specify body content for this page."
+  property :body,               Text
   property :content_type,       Enum[:post, :page, :category, :comment, :tag],      :required => true,      :message => "Please specify the content type."
   property :parent,             Integer,                                            :default => 0
   property :created_at,         DateTime
+  property :template,           String,                                             :default => "single"
   
   def self.posts
     all(:content_type => :post)
@@ -34,11 +35,6 @@ class Content
   end
   
 end
-
-class Content
-  property :template,           String,                 :default => "single"
-end
-
 
 DataMapper.finalize
 DataMapper.auto_upgrade!

@@ -1,31 +1,5 @@
 <!-- End of content, begin scripting -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
 
 <script src="/javascripts/hoverintent.js"></script>
 <script src="/javascripts/actions"></script>
-
-<script>
-    $(function() {
-        $("#newFrame").click(function() {
-            $("#wirebox").append('<div class=" wire ui-widget-content"><h4 class="ui-widget-header" contenteditable="true">[Object]</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>');
-            refreshWireFrame();
-        })
-	   
-        function refreshWireFrame() {
-            $(".wire").resizable({
-                grid: [10, 10],
-                minWidth: 20,
-                //containment: "#wirebox",
-            });
-          
-            $(".wire").draggable({ 
-                grid: [ 10, 10 ],
-                //containment: "#wirebox", 
-            });
-        }
-        		$( "#draggable3" ).draggable({ containment: "#containment-wrapper", scroll: false });
-
-        refreshWireFrame();
-	});
-</script>

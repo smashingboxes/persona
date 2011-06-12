@@ -61,6 +61,23 @@ helpers do
     def get_admin()
         erb :'furniture/admin'
     end
+    
+    # Renders a link tag with stylesheet information
+    #
+    # file  - The name of the stylesheet. Defaults to 'style'
+    # media - The media format the stylesheet will be displayed as.
+    #         Defaults to 'screen'
+    #
+    # Example:
+    #   get_stylesheet("print", "print")
+    #       # => <link rel='stylesheet' href='/stylesheets/print.css' media='print'/>
+    #
+    # Returns an action to render the admin menu template
+    def get_stylesheet(file="style", media="screen")
+        
+        echo "<link rel='stylesheet' href='/stylesheets/#{location}.css' media='#{media}'/>"
+        
+    end
 
     
 ###########################
@@ -163,8 +180,9 @@ helpers do
     
     # Creates a link to a given content entry in the database
     #
-    # @param [Object] a content object overide to the default functionality
-    # @return a url to location of the passed content object
+    # Content - An optional argument to dictate the content in question
+    # 
+    # Returns a url to location of the passed content object
     def the_link(content=nil)
         if node = content || @content || Content.get(params[:id])
             "/node/#{node.id}"
@@ -175,9 +193,9 @@ helpers do
     
     # Finds the primary key of a given content entry in the database.
     #
-    # Content - An optional arugment to dictate the content in question
-    # Return the ID of the passed content object
-    #
+    # Content - An optional argument to dictate the content in question
+    # 
+    # Returns the ID of the passed content object
     def the_id(content=nil)
         if node = content || @content || Content.get(params[:id])
             node.id
@@ -188,8 +206,9 @@ helpers do
     
     # Finds the name of the template for a given content entry in the database
     #
-    # @param [Object] a content object overide to the default functionality
-    # @return The name of of the passed content object
+    # Content - An optional argument to dictate the content in question
+    #
+    # Returns the name of of the passed content object
     def the_template(content=nil)
         if node = content || @content || Content.get(params[:id])
             node.template
@@ -200,17 +219,19 @@ helpers do
 
     # At last, the magic:
     def proto_loop(type="post")
-        
+
         # Get content type
-        nodes = Content.all(:content_type => type)
-                        
-        nodes.each do |node|
+        aggregator = Content.all(:content_type => type)
+        
+        # Run through each item the aggregator finds
+        # Unless, of course, their is nothing
+        aggregator.each do |node|
         
             @content = node
             
             yield
             
-        end
+        end 
         
     end
 

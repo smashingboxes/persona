@@ -13,8 +13,11 @@ group :development do
   gem 'rack-coffee'
   gem 'therubyracer'
   
-  # Auto server refresh
-  gem 'shotgun'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'rack-test'
 end
 
 group :default do

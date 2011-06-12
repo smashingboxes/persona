@@ -2,4 +2,26 @@ require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
 
-Dir["#{File.dirname(__FILE__)}/proto-includes/lib/tasks/**/*.rake"].sort.each { |ext| load ext }
+namespace :js do
+  desc "Converts CoffeeScript to JavaScript"
+  task :compile do
+    require 'coffee-script'
+    
+    print "Compiling CoffeeScript..."
+    
+    source = "./proto-includes/src/coffeescripts/"
+    javascripts = "./public/javascripts/"
+    
+    Dir.foreach(source) do |cf|
+      unless cf == '.' || cf == '..' 
+        js = CoffeeScript.compile File.read("#{source}#{cf}") 
+        open "#{javascripts}#{cf.gsub('.coffee', '.js')}", 'w' do |f|
+          f.puts js
+        end 
+      end 
+    end
+    
+    puts " converted!"
+    
+  end
+end

@@ -3,7 +3,7 @@ require 'bundler'
 
 Bundler.require
     
-require './app'
+require './proto-includes/controller.rb'
 
 puts "Let's get Prototypical!"
 
