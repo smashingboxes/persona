@@ -48,8 +48,3 @@ end
 get '/tools/:name' do    
     erb :"tools/#{params[:name]}"
 end
-
-# JavaScripts/CoffeeScripts
-get '/javascripts/:name' do
-    File.read("public/javascripts/#{params[:name]}.js")
-end
