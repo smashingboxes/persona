@@ -8,8 +8,14 @@
 # Takes all items out of a collection and
 # requires them
 #
-# collection - The array or string to pull
-#              required files from
+# items - A variable number of required file
+#         names as strings
+#
+# Example:
+#   require_all "sinatra", "pony", "foo"
+#     #=> require "sinatra"
+#         require "pony"
+#         require "foo" 
 #
 def require_all(*items)
 
