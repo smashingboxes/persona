@@ -1,90 +1,48 @@
-# Required Gems
+#########################################
+#             Prototypical              #
+#########################################
+#                                       #
+#  1. Setup                             #
+#       a. System Helpers               #
+#       b. Personas                     #
+#  2. General Routes                    #
+#  3. Miscellaneous                     #
+#                                       #
+#########################################
 
-['rubygems', 'bundler/setup', 'sinatra', 'sinatra/flash', 'erb', 'maruku'].each do |f|
-    require f
-end
 
-enable :sessions
+#########################################
+# 1. Setup
+#########################################
 
-# Models
-require File.dirname(__FILE__) + '/model.rb'
+  # a) System Helpers
+  require "./proto-includes/system.rb"
+  require_all 'rubygems', 'bundler/setup', 'sinatra', 'sinatra/flash', 'erb', 'maruku', './proto-includes/model.rb'
+  
+  # Required for flash notifications
+  enable :sessions
 
-# Helpers
-require File.dirname(__FILE__) + '/helpers.rb'
+  # b) Personas
+  #    Careful: Having multiple personalities can make you crazy
+  require './proto-includes/personas/blog.rb'
 
-# Root
+
+#########################################
+# 2. Routes
+#########################################
+
 get '/' do
     erb :"templates/home"
 end
 
-# General Pages
 get 'pages/:name' do
     erb :"pages/#{params[:name]}"
 end 
 
-# Manage Prototypical Content
-get '/node/:id' do     
-    erb :"templates/#{Content.get(params[:id]).template}"
-end
 
-get "/new" do 
-    erb :"manage/new"
-end
-
-get "/edit/:id" do    
-    erb :"manage/edit"
-end
-
-get "/destroy/:id" do 
-
-    Content.get(params[:id]).destroy
-    
-    flash[:alert] = "Content was destroyed."
-    
-    redirect "/"
-
-end
-
-post "/create" do 
-    
-    content = Content.new(
-      :title            => params[:title],
-      :body             => params[:body],
-      :content_type     => params[:content_type],
-      :template         => params[:template],
-      :parent           => params[:parent],
-      :created_at       => Time.now,
-      :updated_at       => Time.now
-    )
-    
-    if content.save
-      flash[:success] = "#{params[:content_type].capitalize} was created!"
-      redirect "/node/#{content.id}"
-    else
-      content.errors.each do |e|
-        flash[:error] = e
-      end
-        redirect back
-    end
-
-end
-
-post "/update/:id" do 
-
-    @content = Content.get(params[:id])
-
-    @content.update(
-      :title        => params[:title],
-      :body         => params[:body],
-      :template     => params[:template],
-      :updated_at   => Time.now
-    )
-    
-    flash[:info] = "Content was successfully updated!"
-    
-    redirect "/node/#{@content.id}"
-
-end
+#########################################
+# 3. Miscellaneous
+#########################################
 
 # Tools
 get '/tools/:name' do    

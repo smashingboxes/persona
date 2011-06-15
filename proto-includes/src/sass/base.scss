@@ -94,7 +94,7 @@
         &:active                            { color: darken($accent, 10%); }
     }
     
-    blockquote                              { border-bottom: 1px solid #CFCFCF; border-top: 1px solid #CFCFCF; color: lighten($body_copy, 40%); clear: right; font: italic 14px/1.5em $serif; margin: 2em 0px; padding: 0em 4em; @include box-shadow(0 0 25px #ddd);        
+    blockquote                              { border-bottom: 1px solid #CFCFCF; border-top: 1px solid #CFCFCF; color: lighten($body_copy, 40%); clear: right; font: italic 14px/1.5em $serif; margin: 2em 0px; padding: 0em 4em; @include box-shadow(0 0 1px 1px #fff, 0 0 25px #ddd);        
         &::before                           { background: url("/images/blockquotes.png") no-repeat; width: 32px; height: 32px; display: block; position: relative; left: -42px; top: 15px; }
         &::after                            { background: url("/images/blockquotes.png") -40px 0 no-repeat; width: 32px; height: 32px; display: block; position: relative; left: 100%; top: -15px; }
 
@@ -237,14 +237,16 @@ form.inline p                               { margin-bottom: 0; }
     
     /* Prototypical Admin
     ------------------------------------------ */
-    
-    #admin                                      { position: fixed; top: 10px; left: 10px; background:#333; border: 1px solid #222; height: 37px; width: 38px; font-size: 14px; overflow: hidden; padding: 3px; text-align: center; @include box-shadow( 0 1px 5px #777); @include transition(left 0.3s linear); @include border-radius(5px); @include transition(right 0.3s linear);    
-                
-        a                                       { background: #222; border: 1px solid #444; display: block; color: #fff; margin: 0 auto 10px; width: 15px; height: 15px; padding: 1px 2px; @include border-radius(3px); @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.35));            
+    #admin-toggle                               { position: fixed; top: 0; left: -1px; width: 50px; background: #222; height: 48px; overflow: hidden; font-size: 14px; text-align: center; @include transition(all 0.1s linear); @include border-bottom-right-radius (4px);
+        &:hover                                 { height: 300px;  }
+        &:hover #icon                           { text-shadow: 0 0 50px #eee; }
+        
+        nav                                     { width: 25px; margin-left: 8px; }
+                        
+        a                                       { background: #222; border: 1px solid #444; color: #fff; display: block; font: bold 20px/30px $sans-serif; margin: 0 0 15px 0; width: 32px; height: 32px; text-shadow: 0 1px 0 #AAA; text-align: center; @include border-radius(3px); @include box-shadow(0 1px 0px rgba(0, 0, 0, 0.35)); @include transition(all 0.1s easeOut);       
+            &:hover                             { @include box-shadow(0 0 8px #999); border-color: #777; }
             
-            &:hover                             { @include box-shadow(0 0 8px #999); border-color: #777;  }
-            
-            &.create                            { color: #7f4; border-color: #6a6;
+            &.create                            { color: #ada;
                 &:hover                         { @include box-shadow(0 0 8px #9f9); border-color: #9f9; }
             }
             
@@ -252,18 +254,16 @@ form.inline p                               { margin-bottom: 0; }
                 &:hover                         { @include box-shadow(0 0 8px #55f); border-color: #99f; }
             }
             
-            &.delete                            { color: #f44; border-color: #a66;
+            &.delete                            { color: #f44; border-color: #a66; 
                 &:hover                         { @include box-shadow(0 0 8px #f55); border-color: #f99; }
             }   
             
-            &.disabled                          { color: #444;
+            &.disabled                          { color: #444; opacity: 0.4;
                 &:hover                         { border-color: #444; @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.35)); }
             }
         }
-
-        a#icon                                  { border-color: #555; display: block; font-size: 20px; font-family: $fancy; font-style: italic; margin: 0 auto 10px; line-height: 32px; height: 32px; width: 32px;
-            &:hover                             { border-color: #555; @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.35)); }
-        }
+        
+        #icon                                   { background: none; border: none; cursor: pointer; font: italic 42px/42px $fancy; margin-left: 9px; margin-bottom: 20px; @include box-shadow(none); }
         
         *::selection                            { background: none; }
         
@@ -273,17 +273,21 @@ form.inline p                               { margin-bottom: 0; }
     /* Notifications
     ------------------------------------------ */
         
-    .flash                                      { background: lighten($body_copy, 80%); border: 1px solid lighten($body_copy, 70%); color: #333; cursor: pointer; display: none; font-size: 14px; font-weight: bold; left: 4px; padding: 20px 20px 20px 65px; position: fixed; top: 5px; @include border-radius(4px); @include box-shadow(inset 0 1px 1px #fff);
-        &.success                               { background-color: #E6EFC2; color: #264409; border-color: #C6D880; @include box-shadow(#ADA 0px 1px 3px);
+    .flash                                      { background: lighten($body_copy, 80%); border: 1px solid lighten($body_copy, 70%); color: #333; cursor: pointer; display: none; font-size: 14px; left: 20px; max-width: 300px; padding: 14px 20px; position: fixed; top: 5px; @include border-radius(4px); @include box-shadow(inset 0 1px 1px #fff);
+        
+        &.success                               { background-color: #E6EFC2; color: #264409; border-color: #C6D880; @include box-shadow(inset 0 1px 0 #fff, #ADA 0px 1px 3px);
             a                                   { color:#264409; }
         }
-        &.error, &.alert                        { background-color: #FBE3E4; color: #8A1F11; border-color: #FBC2C4; @include box-shadow(#FCC 0px 1px 3px);
+        
+        &.error, &.alert                        { background-color: #FBE3E4; color: #8A1F11; border-color: #FBC2C4; @include box-shadow(inset 0 1px 0 #fff, #FCC 0px 1px 3px);
             a                                   { color:#8a1f11; }
         }
-        &.notice                                { background-color: #FFF6BF; color: #514721; border-color: #FFD324; @include box-shadow(#CC6 0px 1px 3px);
+        
+        &.notice                                { background-color: #FFF6BF; color: #514721; border-color: #FFD324; @include box-shadow(inset 0 1px 0 #fff, #CC6 0px 1px 3px);
             a                                   { color:#514721;}
         }
-        &.info                                  { background-color: #D5EDF8; color: #205791; border-color: #92CAE4;  @include box-shadow(#CCF 0px 1px 3px);
+        
+        &.info                                  { background-color: #D5EDF8; color: #205791; border-color: #92CAE4;  @include box-shadow(inset 0 1px 0 #fff, #CCF 0px 1px 3px);
             a                                   { color:#205791; }
         }
     }
