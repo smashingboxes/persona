@@ -374,7 +374,10 @@ helpers do
   def proto_loop(type="post")
 
     # Get content type
+    # For everything but pages, we want to reverse the order
+    # so that the most recent content displays first.
     aggregator = Content.all(:content_type => type)
+    aggregator.reverse! unless type == "page"
     
     # Run through each item the aggregator finds
     # Unless, of course, their is nothing
