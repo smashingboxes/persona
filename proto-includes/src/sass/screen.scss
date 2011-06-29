@@ -177,7 +177,7 @@ Version: 1
             .ui-accordion-header            { background: #a1d54d; border: 1px solid #8cc644; border-color: #8cc644 #8cc644 #7BAD3B; @include linear-gradient( color-stops(#a1d54d, #8cc644)); 
                 a                           { color: #fff; font-size: 18px; text-shadow: 0 1px 3px #60852c; }
                 
-                &:hover, &:focus            { background: #aaa; @include linear-gradient(color-stops(#bbb, #999)); border: 1px solid #666; color: #fff; @include box-shadow(inset 0px 1px 0px #ddd);  
+                &:hover                     { background: #aaa; @include linear-gradient(color-stops(#bbb, #999)); border: 1px solid #666; color: #fff; @include box-shadow(inset 0px 1px 0px #ddd);  
                     a                       { text-shadow: 0 1px 3px #555; }
                 }
                 &:active                    { @include box-shadow(inset 2px 2px 5px #777);}
