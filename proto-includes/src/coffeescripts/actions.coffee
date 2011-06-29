@@ -1,14 +1,12 @@
 # A nice place for your CoffeeScript,
 #
-# Prototypical will watch for CoffeeScript files for you and
-# automatically compile them.
-#
 # You can compile via a Rake process using "rake js:compile"
 #
 #  Have fun!
 
 $(document).ready ->
     
+    # To handle flash notification behaviors
     $('.flash').each ->
         index = $(this).index()
         
@@ -16,17 +14,17 @@ $(document).ready ->
         
         $(this).click ->
             $(this).stop().fadeOut(500)
-
-    $('#admin-toggle #icon').toggle(
-      -> $("#admin-overlay").stop().fadeIn(),
-      -> $("#admin-overlay").stop().fadeOut()
-    )
     
-    $("#admin-overlay").click ->
-      $(this).fadeOut()
-    
+    # Asks the user to confirm they truly want to delete content
     $('a.delete').click ->
-        answer = confirm("Are you sure you want to delete this page?")
+        answer = confirm("Are you sure you want to delete this content?")
     
         if !answer
           return false
+    
+    ##########################################
+    #           Get Zeek Behaviors           #
+    ##########################################
+    
+    # Add G
+    $('#card-tabs').tabs()

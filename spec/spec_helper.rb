@@ -7,6 +7,7 @@ require 'rspec'
 
 require "./proto-includes/controller.rb"
 
+set :root, File.dirname("../")
 set :environment, :test
 
 Rspec.configure do |config|

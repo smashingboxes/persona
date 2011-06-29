@@ -1,5 +1,59 @@
-<%= erb :'furniture/scripts' %>
 
-<footer>
-   <small id="legal">Maintained by Nate Hunzaker, at <a target="_blank" href="http://www.smashingboxes.com">Smashing Boxes</a></small>
+<footer id="footer">
+   <small id="legal">&copy; 2011 Zeek LLC | Zeek Monster Savings</small>
+   <%= get_navigation %>
 </footer>
+
+<!-- End of content, begin scripting -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+<script src="/javascripts/actions.js"></script>
+
+
+<script>
+
+    (function() {
+        
+        var ColorPicker = {
+            
+            colors : [ "#F7E4A2", "#A7BD5B", "#DC574E", "#8DC7B8", "#ED9355", "#FFF", "#111" ],
+            slot   : -1,
+            
+            next : function() {
+                
+                ColorPicker.slot += 1            
+                
+                
+                if ( ColorPicker.slot > ColorPicker.colors.length ) {
+                    ColorPicker.slot = 0;
+                }
+                
+                return ColorPicker.colors[ColorPicker.slot];
+            }
+        }
+        
+        $("#wrapper").prepend("<div class='mothership golden'></div>");
+                
+        $(".golden").live("click", function(e) {
+                  
+            $(e.target).html("<div class='golden'></div><div class='golden'></div>");
+            
+            var target = $(e.target);
+            
+            if (target.height() > target.width()) {
+                target.children(".golden:first").animate({"width": "100%", "height" : "38%", "opacity" : 0.9 }, 400).css( "background", ColorPicker.next() );
+                target.children(".golden:last").animate({"width": "100%", "height" : "62%", "opacity" : 0.9 }, 400).css( "background", ColorPicker.next() );
+            }
+            else {
+                target.children(".golden:first").animate({"height": "100%", "width" : "38%" }, 400).css( "background", ColorPicker.next() );
+                target.children(".golden:last").animate({"height": "100%", "width" : "62%" }, 400).css( "background", ColorPicker.next() );
+            }
+            
+            
+            
+        });
+    
+    
+    })();
+
+</script>

@@ -10,20 +10,13 @@
         return $(this).stop().fadeOut(500);
       });
     });
-    $('#admin-toggle #icon').toggle(function() {
-      return $("#admin-overlay").stop().fadeIn();
-    }, function() {
-      return $("#admin-overlay").stop().fadeOut();
-    });
-    $("#admin-overlay").click(function() {
-      return $(this).fadeOut();
-    });
-    return $('a.delete').click(function() {
+    $('a.delete').click(function() {
       var answer;
-      answer = confirm("Are you sure you want to delete this page?");
+      answer = confirm("Are you sure you want to delete this content?");
       if (!answer) {
         return false;
       }
     });
+    return $('#card-tabs').tabs();
   });
 }).call(this);

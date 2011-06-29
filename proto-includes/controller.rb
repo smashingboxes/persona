@@ -15,7 +15,12 @@
 # 1. Setup
 #########################################
 
-  # a) System Helpers
+  # a) System Configuration
+  
+  # We need to ensure the correct root, otherwise testing will fail
+  set :root, File.dirname("../")
+    
+  # SystemHelpers
   require "./proto-includes/system.rb"
   require_all 'rubygems', 'bundler/setup', 'sinatra', 'sinatra/flash', 'erb', 'maruku', './proto-includes/model.rb'
   
@@ -32,11 +37,11 @@
 #########################################
 
 get '/' do
-    erb :"templates/home"
+    erb :"/templates/home"
 end
 
-get 'pages/:name' do
-    erb :"pages/#{params[:name]}"
+get '/golden' do
+    erb :"/pages/golden"
 end 
 
 
