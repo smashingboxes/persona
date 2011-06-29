@@ -293,8 +293,9 @@ h4 { font-size: 16px; line-height: 16px; }
 #deals ul.feed li.post { margin: 25px 0 0 0; }
 #deals ul.feed li.post .deal_type { font-size: 22px; margin: 0 0 10px; font-weight: normal; float: left; }
 #deals ul.feed li.post .deal_type.monster { background: url("/images/star.png") 0 50% no-repeat; padding-left: 30px; }
-#deals ul.feed li.post ul.actions { float: right; margin-top: 5px; }
-#deals ul.feed li.post ul.actions li { display: inline; font-size: 14px; margin-left: 5px; }
+#deals ul.feed li.post ul.actions { float: right; }
+#deals ul.feed li.post ul.actions li { display: inline; margin-left: 5px; }
+#deals ul.feed li.post ul.actions li a { font: normal 14px/1.5em Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif; }
 #deals ul.feed li.post .content { background: #fff; border: 1px solid #ccc; clear: both; padding: 15px 15px 8px; }
 #deals ul.feed li.post .content img.thumb { border: 1px solid #aaa; float: left; margin-right: 20px; }
 #deals ul.feed li.post .content h4 { font-weight: normal; margin: 0; }

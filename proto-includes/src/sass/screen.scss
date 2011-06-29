@@ -143,8 +143,10 @@ Version: 1
                     &.monster               { background: url("/images/star.png") 0 50% no-repeat; padding-left: 30px; }
                 }
                 
-                ul.actions                  { float: right; margin-top: 5px;
-                    li                      { display: inline; font-size: 14px; margin-left: 5px; }
+                ul.actions                  { float: right;
+                    li                      { display: inline; margin-left: 5px; 
+                        a                   { font: normal 14px/1.5em $sans-serif; }
+                    }
                 }
                 
                 .content                    { background: #fff; border: 1px solid #ccc; clear: both; padding: 15px 15px 8px;
