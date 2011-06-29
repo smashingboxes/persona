@@ -5,7 +5,7 @@
  *                                                                                          *
  * @author      Nate Hunzaker (Smashing Boxes)                                              *
  * @url         www.smashingboxes.com                                                       *
- * @version     2.01                                                                         *
+ * @version     2.02                                                                         *
  *                                                                                          *
  * @notes       This is the base stylesheet for Prototypical. It need not be loaded,        *
  *              however includes many default styles to work as a starting point for rapid  *
@@ -239,6 +239,14 @@
         }
         p                                       { margin-left: -17px; margin-bottom: 0; }
     }
+    
+    /* a) Template Selection
+    ------------------------------------------ */
+    #login                                      { width: 400px; margin: 0 auto;
+        fieldset                                { border: 1px solid #aaa; @include box-shadow(0 1px 8px rgba(0, 0, 0, 0.3)); @include border-radius(5px); }
+        input.text                              { padding: 10px 0; margin: 10px 0; }
+    }
+    
 
 /* =========================================== *
  *   4) Misc. Elements                         *
