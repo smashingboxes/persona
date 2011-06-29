@@ -63,9 +63,11 @@
 </section>
 
 <section id="deals">
+
     <header>
         <h2>Latest Deals</h2>
     </header>
+    
     <nav>
         <form>
             <label><input type="checkbox"/> Monster Deals</label>
@@ -73,6 +75,7 @@
             <label class="search"><input type="search" class="search" placeholder="Search Deals" /></label>
         </form>
     </nav>
+    
     <ul class="feed">
     <% proto_loop "post", 3 do %>
         <li class="post">
@@ -92,6 +95,7 @@
             </div>                  
         </li>
     <% end %>
+    
     <% proto_loop "post", 2 do %>
         <li class="post">
             <h3 class="deal_type">Baby Monster</h3>
@@ -114,4 +118,5 @@
     
         <li class="view_all"><a class="button">View all deals</a></li>
     </ul>
+    
 </section>

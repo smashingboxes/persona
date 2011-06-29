@@ -1,4 +1,4 @@
-/* ======================================================================================= * Prototypical - Base Stylesheet                              * ======================================================================================== * * @author      Nate Hunzaker (Smashing Boxes)                                              * @url         www.smashingboxes.com                                                       * @version     2.0                                                                         * * @notes       This is the base stylesheet for Prototypical. It need not be loaded,        * however includes many default styles to work as a starting point for rapid  * development.                                                                * * ======================================================================================== */
+/* ======================================================================================= * Prototypical - Base Stylesheet                              * ======================================================================================== * * @author      Nate Hunzaker (Smashing Boxes)                                              * @url         www.smashingboxes.com                                                       * @version     2.01                                                                         * * @notes       This is the base stylesheet for Prototypical. It need not be loaded,        * however includes many default styles to work as a starting point for rapid  * development.                                                                * * ======================================================================================== */
 /* ======================================================================================== * Table of Contents                                    * ======================================================================================== * * 1) Typography & Colors                                                                * a) Variables (Viewable only in the SASS file format)                            * b) Universal Styles                                                             * c) Headings                                                                     * d) Lists                                                                        * e) General                                                                      * f) Utility Classes                                                              * 2) Structure                                                                          * a) Main Content                                                                 * b) Header                                                                       * c) Footer                                                                       * 3) Form Elements                                                                      * a) Template Selection                                                           * 4) Misc. Elements                                                                     * a) UI Elements                                                                  * b) Prototypical Admin                                                           * c) Flash Notifications                                                          * * ======================================================================================== */
 html { margin: 0; padding: 0; border: 0; }
 
@@ -21,7 +21,7 @@ a img { border: none; }
 /* Based upon recommendations by the Aaron Boodman article: http://blogs.sitepoint.com/eight-definitive-font-stacks-3/ */
 /* b) Universal Styles
 ---------------------------------------*/
-body { background: #fff; color: #222222; font: normal 12px/1.5em Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif; }
+body { background: #fff; color: #222222; font: normal 14px/1.5em Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 *::selection { background: #f76e6e; color: black; }
 
@@ -43,17 +43,17 @@ h6 { font-size: 14px; margin-bottom: 6px; }
 
 /* d) Lists
 ---------------------------------------*/
-article ol, article ul { font: normal 14px/1.5em Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif; margin-bottom: 1em; }
+article ol, article ul { margin-bottom: 1em; }
 article ol li, article ul li { list-style: circle; margin: 0 0 0 2em; padding: 0; }
 article ol li { list-style: decimal; }
-article dl { font: normal 14px/1.5em Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif; margin-bottom: 1em; }
-article dl lh { font: bold 14px/1.9em Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif; }
+article dl { margin-bottom: 1em; }
+article dl lh { font: bold 14px/1.9em inherit; }
 article dl dt { margin: 0 0 0 1em; font-weight: bold; }
 article dl dd { margin: 0 0 1em 2em; }
 
 /* e) General
 ---------------------------------------*/
-blockquote, p, pre { font: normal 14px/20px Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif; margin-bottom: 1em; }
+blockquote, p, pre { margin-bottom: 1em; }
 
 abbr { border-bottom: 1px dotted #6f6f6f; }
 
@@ -91,7 +91,9 @@ sup { font-size: 0.5em; vertical-align: baseline; }
 ---------------------------------------*/
 .amp, .alt { font-family: "Goudy Old Style", "Palatino", "Book Antique", Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif," "Bitstream Vera Serif", "Liberation Serif", Georgia, serif, serif; font-style: italic; font-weight: normal; }
 
-.columns { -moz-column-count: 3; -webkit-column-count: 3; -o-column-count: 3; column-count: 3; -moz-column-gap: 1em; -webkit-column-gap: 1em; -o-column-gap: 1em; column-gap: 1em; }
+.columns-3 { -moz-column-count: 3; -webkit-column-count: 3; -o-column-count: 3; column-count: 3; -moz-column-gap: 1em; -webkit-column-gap: 1em; -o-column-gap: 1em; column-gap: 1em; }
+
+.columns-2 { -moz-column-count: 2; -webkit-column-count: 2; -o-column-count: 2; column-count: 2; -moz-column-gap: 1em; -webkit-column-gap: 1em; -o-column-gap: 1em; column-gap: 1em; }
 
 /* =========================================== * 2) Structure                              * =========================================== */
 /* a) Main Content

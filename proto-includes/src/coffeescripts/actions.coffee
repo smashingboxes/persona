@@ -28,3 +28,4 @@ $(document).ready ->
     
     # Add G
     $('#card-tabs').tabs()
+		$( "#accordion" ).accordion()

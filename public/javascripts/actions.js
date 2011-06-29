@@ -19,4 +19,5 @@
     });
     return $('#card-tabs').tabs();
   });
+  $("#accordion").accordion();
 }).call(this);

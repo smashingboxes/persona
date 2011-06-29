@@ -5,7 +5,7 @@
  *                                                                                          *
  * @author      Nate Hunzaker (Smashing Boxes)                                              *
  * @url         www.smashingboxes.com                                                       *
- * @version     2.0                                                                         *
+ * @version     2.01                                                                         *
  *                                                                                          *
  * @notes       This is the base stylesheet for Prototypical. It need not be loaded,        *
  *              however includes many default styles to work as a starting point for rapid  *
@@ -74,7 +74,7 @@
     
     /* b) Universal Styles
     ---------------------------------------*/
-    body                                    { background: #fff; color: $body_copy; font: normal 12px/1.5em $sans-serif; }
+    body                                    { background: #fff; color: $body_copy; font: normal 14px/1.5em $sans-serif; }
     *::selection                            { background: $accent; color: contrast-color($accent); }
 
 
@@ -93,14 +93,14 @@
     /* d) Lists
     ---------------------------------------*/
     article                                 {
-        ol, ul                              { font: normal 14px/1.5em $sans-serif; margin-bottom: 1em; 
+        ol, ul                              { margin-bottom: 1em; 
             li                              { list-style: circle; margin: 0 0 0 2em; padding: 0; }
         }
         
         ol li                               { list-style: decimal; }
         
-        dl                                  { font: normal 14px/1.5em $sans-serif; margin-bottom: 1em;
-            lh                              { font: bold 14px/1.9em $sans-serif; } 
+        dl                                  { margin-bottom: 1em;
+            lh                              { font: bold 14px/1.9em inherit; } 
             dt                              { margin: 0 0 0 1em; font-weight: bold;}
             dd                              { margin: 0 0 1em 2em; }
         }
@@ -109,7 +109,7 @@
     
     /* e) General
     ---------------------------------------*/
-    blockquote, p, pre                      { font: normal 14px/20px $sans-serif; margin-bottom: 1em; }
+    blockquote, p, pre                      { margin-bottom: 1em; }
     
     abbr                                    { border-bottom: 1px dotted lighten($body_copy, 30%); }
     
@@ -150,7 +150,8 @@
     /* f) Utility Class 
     ---------------------------------------*/
     .amp, .alt                              { font-family: $fancy, serif; font-style: italic; font-weight: normal; }
-    .columns                                { @include column-count(3); @include column-gap(1em); } 
+    .columns-3                              { @include column-count(3); @include column-gap(1em); } 
+    .columns-2                              { @include column-count(2); @include column-gap(1em); } 
  
  
 /* =========================================== *
