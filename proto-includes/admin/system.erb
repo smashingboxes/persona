@@ -5,23 +5,24 @@
 
           <fieldset>
               <p>
-                  <label for="theme">Theme</label></br>
-                  <select name="theme" id="theme">
-                      <% themes().each do |t| %>
-                          <option value="<%= t %>" <%= "selected" if System.theme === t %> ><%= t.capitalize %></option>
-                      <% end %>
-                  </select>
-               </p>
-             
-                <p>
-                    <label for="title">Title</label><br>
-                    <input type="text" class="title" name="title" id="title" value="<%= System.title %>" />
-                </p>
-                
-                <p>
-                    <label for="description">Site Description</label><br>
-                    <input type="text" class="title" class="description" name="description" id="description" value="<%= System.description %>" />
-                </p>
+                <label for="theme">Theme</label></br>
+                <select name="theme" id="theme">
+                    <% themes.each do |t| %>
+                        <option value="<%= t %>" <%= "selected" if System.theme === t %> ><%= t.capitalize %></option>
+                    <% end %>
+                </select>
+              </p>
+              
+              <p>
+                  <label for="title">Title</label><br>
+                  <input type="text" class="title" name="title" id="title" value="<%= System.title %>" />
+              </p>
+              
+              <p>
+                  <label for="description">Site Description</label><br>
+                  <input type="text" class="title" class="description" name="description" id="description" value="<%= System.description %>" />
+              </p>
+              
             </fieldset>
             <input type="reset" value="Reset" />
             <input type="submit" value="Save" />
