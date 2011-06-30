@@ -30,24 +30,10 @@ require "./proto-includes/personas/tools/authentication.rb"
     property :created_at,         DateTime
     property :updated_at,         DateTime 
     
-    def self.posts
-      self.all(:content_type => "post")
-    end
-  
-    def self.pages
-      self.all(:content_type => "page")
-    end
-    
-    def self.categories
-      self.all(:content_type => "category")
-    end
-    
-    def self.comments
-      self.all(:content_type => "comment")
-    end
-    
-    def self.pages
-      self.all(:content_type => "tag")
+    # Allows to use the content_type as a class method, e.g., Content.post, Content.page
+    # Todo: Add an singularize method and use the plural form of content_type as method name.
+    def self.method_missing(name, *args)
+      self.all(:content_type => name.to_s)
     end
     
   end
