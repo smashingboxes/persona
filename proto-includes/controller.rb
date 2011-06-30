@@ -49,7 +49,10 @@ end
   # a) System Settings
   #####################################################
 
-  get "/admin" do    
+  get "/admin" do
+  
+    require_user
+    
     erb :"/manage/system"
   end
   
