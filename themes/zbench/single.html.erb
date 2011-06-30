@@ -1,0 +1,32 @@
+<%= get_header() %>
+<div id="content">
+	<%= the_post() %>
+	<div <%= post_class('post-single') %> id="post-<%= the_ID() %>"><!-- post div -->
+		<h2 class="title title-single"><%= the_title() %></h2>
+		<div class="post-info-top">
+			<span class="post-info-date"><%= _e('Posted by', 'zbench') %> <%= the_author() %> <%= _e('on', 'zbench') %> <%= the_time(get_option( 'date_format' )) %> <%= edit_post_link(__('Edit','zbench'), '[', ']') %></span>
+			<%= if (comments_open()) : %>
+			<span id="addcomment"><a href="#respond"  rel="nofollow" title="Leave a comment ?"><%= _e('Leave a comment', 'zbench') %></a><%= comments_number(' (0)', ' (1)', ' (%)') %></span>
+			<span id="gotocomments"><a href="#comments"  rel="nofollow" title="Go to comments ?"><%= _e('Go to comments', 'zbench') %></a></span>
+			<%= endif %>
+		</div>
+		<div class="clear"></div>
+		<div class="entry">
+			<%= the_content() %>
+			<%= wp_link_pages( array( 'before' => '<div class="page_link"><strong>' . __( 'Pages:', 'zbench' ) . '</strong>' , 'after' => '</div>' ) ) %>
+		</div><!-- END entry -->
+		<div class="add-info">
+			<%= if(function_exists('st_related_posts')) { st_related_posts('title=<h3>'._e('Related Posts','zbench').'</h3>') } %>
+		</div>
+		<div class="post-info-bottom">
+			<span class="post-info-category"><%= the_category(', ') %></span><span class="post-info-tags"><%= the_tags('', ', ', '') %></span>
+		</div>
+		<div id="nav-below">
+			<div class="nav-previous"><%= previous_post_link( '%link', '<span class="meta-nav">&larr</span> %title' ) %></div>
+			<div class="nav-next"><%= next_post_link( '%link', '%title <span class="meta-nav">&rarr</span>' ) %></div>
+		</div><!-- #nav-below -->					
+	</div><!-- END post -->
+	<%= comments_template( '', true ) %>
+</div><!--content-->
+<%= get_sidebar() %>
+<%= get_footer() %>
