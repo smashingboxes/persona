@@ -162,6 +162,7 @@ label.radioThumb p { margin-left: -17px; margin-bottom: 0; }
 
 /* c) Content Management Forms
 ------------------------------------------ */
+#manageContent #tabs { overflow: hidden; }
 #manageContent fieldset { margin-top: 40px; }
 #manageContent legend { background: white; padding: 0 10px 0; border: 1px solid #CCC; border-bottom: 0; -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; -o-border-top-left-radius: 5px; -ms-border-top-left-radius: 5px; -khtml-border-top-left-radius: 5px; border-top-left-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; -o-border-top-right-radius: 5px; -ms-border-top-right-radius: 5px; -khtml-border-top-right-radius: 5px; border-top-right-radius: 5px; position: relative; top: -12px; }
 

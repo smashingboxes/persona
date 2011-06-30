@@ -253,6 +253,7 @@
     ------------------------------------------ */
     
     #manageContent                              {
+        #tabs                                   { overflow: hidden; }
         fieldset                                { margin-top: 40px; }
         legend                                  { background: white; padding: 0 10px 0; border: 1px solid #CCC; border-bottom: 0; @include border-top-radius(5px); position: relative; top: -12px; }
     }
