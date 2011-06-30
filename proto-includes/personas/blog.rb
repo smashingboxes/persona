@@ -50,7 +50,10 @@ get '/node/:id' do
   erb :"/templates/#{Content.get(params[:id]).template}"
 end
 
-get "/new" do 
+get "/new" do
+  
+  require_user
+   
   erb :"/manage/new"
 end
 
@@ -60,13 +63,18 @@ end
   #####################################################
 
 
-  get "/edit/:id" do    
+  get "/edit/:id" do
+      
+      require_user
+      
       erb :"/manage/edit"
   end
   
   
   get "/destroy/:id" do 
-  
+      
+      require_user
+      
       Content.get(params[:id]).destroy
       
       flash[:alert] = "Content was destroyed."
@@ -77,6 +85,8 @@ end
   
   
   post "/create" do 
+      
+      require_user
       
       content = Content.new(
         :title            => params[:title],
@@ -102,7 +112,9 @@ end
   
   
   post "/update/:id" do 
-  
+      
+      require_user
+      
       @content = Content.get(params[:id])
   
       @content.update(
