@@ -68,7 +68,7 @@ get "/new" do
   
   require_user
    
-  erb :"/manage/new"
+  erb :"../../proto-includes/personas/cms/admin/new"
 end
 
   
@@ -81,7 +81,7 @@ end
       
       require_user
       
-      erb :"/manage/edit"
+      erb :"../../proto-includes/personas/cms/admin/edit"
   end
   
   
@@ -177,7 +177,7 @@ helpers do
   #
   # Returns an action to render the header template
   def get_header()
-    erb :'furniture/header'
+    erb :'header'
   end
   
   
@@ -188,7 +188,7 @@ helpers do
   # Returns an action to render the sidebar template
   def get_sidebar(css_class="left")
     @css_class = css_class
-    erb :'furniture/sidebar'
+    erb :'sidebar'
   end
   
   
@@ -196,7 +196,7 @@ helpers do
   #
   # Returns an action to render the footer template
   def get_footer()
-    erb :'furniture/footer'
+    erb :'footer'
   end
   
   
@@ -204,7 +204,7 @@ helpers do
   #
   # Returns an action to render the admin menu template
   def get_admin()
-    erb :'furniture/admin'
+    erb :'../../proto-includes/personas/cms/admin/admin'
   end
   
   

@@ -34,7 +34,7 @@
   
   # b) Personas
   #    Careful: Having multiple personalities can make you crazy
-  require './proto-includes/personas/blog.rb'
+  require './proto-includes/personas/cms/cms.rb'
   
 
 #########################################
@@ -42,7 +42,7 @@
 #########################################
 
 get '/' do
-  erb :"/templates/home"
+  erb :"index"
 end
 
   #####################################################
@@ -50,10 +50,8 @@ end
   #####################################################
 
   get "/admin" do
-  
     require_user
-    
-    erb :"/manage/system"
+    erb :"../../proto-includes/admin/system"
   end
   
   post "/admin" do 
@@ -79,5 +77,5 @@ end
 
 # Tools
 get '/tools/:name' do    
-  erb :"tools/#{params[:name]}"
+  erb :"../../proto-includes/tools/#{params[:name]}"
 end
