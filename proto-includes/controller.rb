@@ -19,38 +19,62 @@
   
   # We need to ensure the correct root, otherwise testing will fail
   set :root, File.dirname("../")
-    
-  # SystemHelpers
+  
+  # System Helpers
   require "./proto-includes/system.rb"
+  
   require_all 'rubygems', 'bundler/setup', 'sinatra', 'sinatra/flash', 'erb', 'maruku', './proto-includes/model.rb'
   
   # Required for flash notifications
   enable :sessions
-
+  
+  # Change the default directories to point to "themes"
+  set :views, Proc.new { File.join(root, "/themes/#{System.theme}/") }
+  set :public, Proc.new { File.join(root, "/themes/#{System.theme}/") }
+  
   # b) Personas
   #    Careful: Having multiple personalities can make you crazy
   require './proto-includes/personas/blog.rb'
-
+  
 
 #########################################
 # 2. Routes
 #########################################
 
 get '/' do
-    erb :"/templates/home"
+  erb :"/templates/home"
 end
 
-# This can go away soon
-get '/golden' do
-    erb :"/pages/golden"
-end 
+  #####################################################
+  # a) System Settings
+  #####################################################
 
-
+  get "/admin" do    
+    erb :"/manage/system"
+  end
+  
+  post "/admin" do 
+  
+    @system = System.first
+  
+    @system.update(
+      :title        => params[:title],
+      :theme        => params[:theme],
+      :description  => params[:description]
+    )
+    
+    flash[:info] = "System was successfully updated!"
+    
+    redirect "/"
+    
+  end
+  
+  
 #########################################
 # 3. Miscellaneous
 #########################################
 
 # Tools
 get '/tools/:name' do    
-    erb :"tools/#{params[:name]}"
+  erb :"tools/#{params[:name]}"
 end

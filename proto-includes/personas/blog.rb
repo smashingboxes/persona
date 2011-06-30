@@ -47,11 +47,11 @@ require "./proto-includes/personas/tools/authentication.rb"
 #######################################################
 
 get '/node/:id' do     
-  erb :"templates/#{Content.get(params[:id]).template}"
+  erb :"/templates/#{Content.get(params[:id]).template}"
 end
 
 get "/new" do 
-  erb :"manage/new"
+  erb :"/manage/new"
 end
 
   
@@ -61,7 +61,7 @@ end
 
 
   get "/edit/:id" do    
-      erb :"manage/edit"
+      erb :"/manage/edit"
   end
   
   
@@ -134,7 +134,7 @@ helpers do
   #
   # Return an array of strings equal to template names
   def templates()
-    source = "./views/templates/"
+    source = "./themes/#{System.theme}/templates/"
     
     cluster = []
     

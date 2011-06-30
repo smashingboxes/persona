@@ -9,9 +9,9 @@
     <title>
     <%= 
        unless params[:id].nil? 
-           Content.get(params[:id]).title + " | Prototypical"
+           Content.get(params[:id]).title + " | #{System.title}"
        else
-           "Protoypical | A Simple CMS" 
+           "#{System.title} | #{ System.description }" 
        end 
     %>
     </title>

@@ -16,27 +16,27 @@ require 'sinatra/base'
 #######################################################
 
 class User
-    include DataMapper::Resource
-    
-    property :id,                 Serial
-    property :username,           String,                                             :required => true,      :message => "Please specify a username."
-    property :password,           String,                                             :required => true,      :message => "Please specify a password."                
-    
-    property :created_at,         DateTime
-    property :updated_at,         DateTime 
-    
-  end
+  include DataMapper::Resource
+  
+  property :id,                 Serial
+  property :username,           String,                                             :required => true,      :message => "Please specify a username."
+  property :password,           String,                                             :required => true,      :message => "Please specify a password."                
+  
+  property :created_at,         DateTime
+  property :updated_at,         DateTime 
+  
+end
 
-  DataMapper.finalize
-  DataMapper.auto_upgrade!
-    
-  # Create the default admin
-  @user = User.create(
-    :username      => "admin",
-    :password      => "Smashingid3a",
-    :created_at    => Time.now,
-    :updated_at    => Time.now
-  )
+DataMapper.finalize
+DataMapper.auto_upgrade!
+  
+# Create the default admin
+@user = User.create(
+  :username      => "admin",
+  :password      => "Smashingid3a",
+  :created_at    => Time.now,
+  :updated_at    => Time.now
+)
 
 
 #######################################################
