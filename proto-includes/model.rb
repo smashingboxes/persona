@@ -19,17 +19,24 @@ class System
   property :id,              Serial
   property :theme ,          String,       :required => true,      :message => "Please specify a theme for this site.",      :default => "protoplasm"
   property :title,           String,       :required => true,      :message => "Please specify a title for this site",       :default => "Prototypical"
+  property :description,     String,       :required => false,     :default => "A basic CMS"
+  
   def self.theme
     self.first.theme
   end
-
+  
+  def self.title
+    self.first.title
+  end
+  
+  def self.description
+    self.first.description
+  end
+  
 end
       
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
 # Create the default settings
-@system = System.create(
-  :theme => "protoplasm",
-  :title => "Prototypical"
-)
+@system = System.create()

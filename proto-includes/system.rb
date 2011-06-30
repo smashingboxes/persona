@@ -24,3 +24,24 @@ def require_all(*items)
   end
   
 end
+
+helpers do
+
+  # Scans for all folders files in the themes directory 
+  #
+  # Return an array of strings equal to theme names
+  def themes()
+    source = "./themes/"
+    
+    cluster = []
+    
+    Dir.foreach(source) do |cf|
+      unless cf == '.' || cf == '..' 
+        cluster << cf.split('.').first
+      end 
+    end
+    
+    return cluster
+  end
+
+end
