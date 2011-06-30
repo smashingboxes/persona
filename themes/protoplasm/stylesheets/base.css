@@ -187,6 +187,8 @@ button, .button, input[type="submit"], input[type="reset"] { background: #CCC; b
 #admin-toggle a.disabled { color: #444; opacity: 0.4; }
 #admin-toggle a.disabled:hover { border-color: #444; -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35); -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35); -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35); }
 #admin-toggle #icon { background: none; border: none; cursor: pointer; font: italic 30px/34px "Goudy Old Style", "Palatino", "Book Antique", Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif," "Bitstream Vera Serif", "Liberation Serif", Georgia, serif; margin-left: 5px; margin-bottom: 20px; text-shadow: 0 0 50px #eee; -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; }
+#admin-toggle #icon:hover { color: #ff3333; text-shadow: 0 0 5px #ff3333; }
+#admin-toggle #icon:hover { text-shadow: 0 0 5px #ff3333; }
 #admin-toggle *::selection { background: none; }
 #admin-toggle hr { margin-left: 8px; }
 

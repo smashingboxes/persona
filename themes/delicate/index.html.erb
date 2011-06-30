@@ -1,31 +1,34 @@
 <%= get_header() %>
 
 <div id="main">		
-  <div class="columns">        
-    <div class="narrowcolumn">
-      <% proto_loop "post" do %>	
-      <div class="post">
-        <div class="title">
-	  <h2><a href="<%= the_link %>" rel="bookmark" title="<%= the_title %>"><%= the_title %></a></h2>
-          <small>Posted by<span class="author">Admin</span> in Category | - (0 Comments)</small>
-        </div>                
-	<div class="entry">
-          <%= the_excerpt %>  
-          <div class="clear"></div>
-        </div>              
+    <div class="columns">        
+      <div class="narrowcolumn">
+        <% proto_loop "post" do %>	
+            <div class="post">
+                <div class="title">
+                    <h2><a href="<%= the_link %>" rel="bookmark" title="<%= the_title %>"><%= the_title %></a></h2>
+                    <small>Posted by<span class="author">Admin</span> in Category | - (0 Comments)</small>
+                </div>                
+                
+                <div class="entry">
+                    <%= the_excerpt %>  
+                    <div class="clear"></div>
+                </div>              
+                  
+                <p class="postmetadata"><span class="category">Tags</span></p>
+            </div>			
+        <% end %>	
         
-	<p class="postmetadata">	
-          <span class="category">Tags</span>   
-	</p>
-      </div>			
-      <% end %>	
-      
-      <div id="navigation">
-        <%= get_navigation({ :include_home => true }) %>  
-      </div>    
+        <div id="navigation">
+            <%= get_navigation({ :include_home => true }) %>  
+        </div>    
+    
     </div> <!-- END Narrowcolumn -->
+    
     <div id="sidebar" class="profile">
-      <%= get_sidebar()%>
+        <%= get_sidebar()%>
     </div>    
-    <div class="clear"></div>    
-    <%= get_footer() %> 
+
+<div class="clear"></div>    
+
+<%= get_footer() %> 

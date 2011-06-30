@@ -296,7 +296,10 @@
             }
         }
         
-        #icon                                   { background: none; border: none; cursor: pointer; font: italic 30px/34px $fancy; margin-left: 5px; margin-bottom: 20px; text-shadow: 0 0 50px #eee; @include box-shadow(none); }
+        #icon                                   { background: none; border: none; cursor: pointer; font: italic 30px/34px $fancy; margin-left: 5px; margin-bottom: 20px; text-shadow: 0 0 50px #eee; @include box-shadow(none);
+            &:hover                             { color: $primary; text-shadow: 0 0 5px $primary; }
+            &:hover                             { text-shadow: 0 0 10px $primary; }
+        }
         
         *::selection                            { background: none; }
         

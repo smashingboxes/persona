@@ -64,9 +64,7 @@ end
 
 
   get "/edit/:id" do
-      
       require_user
-      
       erb :"../../proto-includes/personas/cms/admin/edit"
   end
   
@@ -76,9 +74,7 @@ end
       require_user
       
       Content.get(params[:id]).destroy
-      
       flash[:alert] = "Content was destroyed."
-      
       redirect "/"
   
   end
@@ -162,7 +158,7 @@ helpers do
   # Renders the header template found in the ./views/furniture directory
   #
   # Returns an action to render the header template
-  def get_header()
+  def get_header()  
     erb :'header'
   end
   
@@ -182,9 +178,12 @@ helpers do
   #
   # Returns an action to render the footer template
   def get_footer()
-    erb :'footer'
+    
+    output = erb :footer
+    output += erb :'../../proto-includes/personas/cms/admin/admin' if authorized?
+    
   end
-  
+    
   
   # Renders the admin menu found in the ./views/furniture directory
   #
