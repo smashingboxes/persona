@@ -236,7 +236,7 @@ helpers do
     nav = "<nav class='#{local_options[:css_class]}'><ul>"
     
     # If specified, add a home link 
-    nav += "<li class='#{ "current" if ( params[:id] == nil) }')><a href='/'>Home</a></li>" if local_options[:include_home] == true
+    nav += "<li class='#{ "current" if ( params[:id] == nil) }'><a href='/'>Home</a></li>" if local_options[:include_home] == true
     
     # Now we get all pages without a parent (first level)
     content = Content.all(:content_type => "page", :parent => 0)

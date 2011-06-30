@@ -31,6 +31,8 @@
  *          c) Footer                                                                       *
  *    3) Form Elements                                                                      *
  *          a) Template Selection                                                           *
+ *          b) Login Form                                                                   *
+ *          c) Content Management Forms                                                     *
  *    4) Misc. Elements                                                                     *
  *          a) UI Elements                                                                  *
  *          b) Prototypical Admin                                                           *
@@ -240,14 +242,21 @@
         p                                       { margin-left: -17px; margin-bottom: 0; }
     }
     
-    /* a) Template Selection
+    /* b) Login Form
     ------------------------------------------ */
     #login                                      { width: 400px; margin: 0 auto;
         fieldset                                { border: 1px solid #aaa; @include box-shadow(0 1px 8px rgba(0, 0, 0, 0.3)); @include border-radius(5px); }
         input.text                              { padding: 10px 0; margin: 10px 0; }
     }
     
-
+    /* c) Content Management Forms
+    ------------------------------------------ */
+    
+    #manageContent                              {
+        fieldset                                { margin-top: 40px; }
+        legend                                  { background: white; padding: 0 10px 0; border: 1px solid #CCC; border-bottom: 0; @include border-top-radius(5px); position: relative; top: -12px; }
+    }
+    
 /* =========================================== *
  *   4) Misc. Elements                         *
  * =========================================== */

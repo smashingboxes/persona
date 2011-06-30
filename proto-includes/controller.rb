@@ -40,6 +40,7 @@ get '/' do
     erb :"/templates/home"
 end
 
+# This can go away soon
 get '/golden' do
     erb :"/pages/golden"
 end 

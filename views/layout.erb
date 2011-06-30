@@ -8,19 +8,20 @@
     <div id="wrapper">
     
         <header id="header">    
-            <h1><a id="logo" href="/">Zeek, Monster Savings</a></h1>
+            <h1><a id="logo" href="/">Prototypical</a></h1>
             <%= get_navigation({ :include_home => true }) %>            
         </header>
         
         <%= yield %>       
 
-     
         <%= get_footer() %>
     
     </div>
 
     <div id="overlays">
+    
         <%= styled_flash %>
+        
         <div class="landscape"></div>
         <div class="cloud foreground"></div>
         <div class="cloud middleground"></div>
