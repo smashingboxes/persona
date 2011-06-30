@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" <%= language_attributes() %>>
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="<%= bloginfo('html_type') %> charset=<%= bloginfo('charset') %>" />
+<%= $the_title = wp_title(' - ', false) if ($the_title != '') : %>
+    <title><%= echo wp_title('',false) %> | <%= bloginfo('name') %></title>
+<%= else : %>
+	<title><%= bloginfo('name') %><%= if ( $paged > 1 ) echo ( ' - page '.$paged ) %></title>
+<%= endif %>
+	<%= if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ) %>
+	<link rel="stylesheet" type="text/css" media="all" href="<%= bloginfo( 'stylesheet_url' ) %>" />
+	<link rel="pingback" href="<%= bloginfo( 'pingback_url' ) %>" />
+	<%= wp_head() %>
+</head>
+<body <%= body_class() %>>
+<div id="nav">
+	<div id="menus">
+		<ul><li<%= if (is_home()) echo ' class="current_page_item"' %>><a href="<%= echo home_url() %>"><%= _e('Home', 'zbench') %></a></li></ul>
+		<%= wp_nav_menu( array( 'container' => 'none', 'theme_location' => 'primary' ) ) %>
+	</div>
+	<div id="search">
+		<%= get_search_form() %>
+	</div>
+</div>
+<div id="wrapper">
+	<div id="header">
+		<h1><a href="<%= echo home_url() %>"><%= bloginfo('name') %></a></h1>
+		<h2><%= bloginfo('description')%></h2>
+		<div class="clear"></div>
+		<%= if ( get_header_image() != '' ) : %>
+		<div id="header_image">
+			<div id="header_image_border">
+				<img src="<%= header_image() %>" width="<%= echo HEADER_IMAGE_WIDTH %>" height="<%= echo HEADER_IMAGE_HEIGHT %>" alt="" />
+			</div>
+		</div>
+		<%= endif %>
+	</div>

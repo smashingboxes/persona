@@ -102,3 +102,4 @@ DEPENDENCIES
   sinatra
   sinatra-flash
   therubyracer
+  tilt

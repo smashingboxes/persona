@@ -23,7 +23,9 @@
   # System Helpers
   require "./proto-includes/system.rb"
   
-  require_all 'rubygems', 'bundler/setup', 'sinatra', 'sinatra/flash', 'erb', 'maruku', './proto-includes/model.rb'
+  require_all 'rubygems', 'bundler/setup', 'sinatra', 'sinatra/flash', 'erb', 'tilt', 'maruku', './proto-includes/model.rb'
+
+  Tilt.register 'html.erb', Tilt::ERBTemplate
   
   # Required for flash notifications
   enable :sessions
@@ -42,7 +44,7 @@
 #########################################
 
 get '/' do
-  erb :"index"
+  erb :"index.html"
 end
 
   #####################################################

@@ -1,0 +1,23 @@
+<%= get_header() %>
+<div id="content">
+	<%= the_post() $nocomment_class='' if ('open' != $post->comment_status) $nocomment_class=' post-page-nocomment' %>
+	<div <%= post_class('post post-page'.$nocomment_class) %> id="post-<%= the_ID() %>"><!-- post div -->
+		<h2 class="title title-single"><%= the_title() %></h2>
+		<%= if ('open' == $post->comment_status) { %>
+		<div class="post-info-top">
+			<span id="addcomment"><a href="#respond"  rel="nofollow" title="Leave a comment ?"><%= _e('Leave a comment', 'zbench') %></a><%= comments_number(' (0)', ' (1)', ' (%)') %></span>
+			<span id="gotocomments"><a href="#comments"  rel="nofollow" title="Go to comments ?"><%= _e('Go to comments', 'zbench') %></a></span>
+		</div>
+		<%= } else { %>
+		<div class="post-info-top post-info-top-nocomment"></div>
+		<%= } %>
+		<div class="clear"></div>
+		<div class="entry">
+			<%= the_content() %>
+			<%= wp_link_pages( array( 'before' => '<div class="page_link"><strong>' . __( 'Pages:', 'zbench' ) . '</strong>' , 'after' => '</div>' ) ) %>
+		</div><!-- END entry -->
+	</div><!-- END post -->
+	<%= comments_template( '', true ) %>
+</div><!--content-->
+<%= get_sidebar() %>
+<%= get_footer() %>

@@ -1,0 +1,71 @@
+<div id="sidebar-border">
+	<%= $options = get_option('zBench_options') %>
+	<div id="rss"><a href="<%= if($options['rss_url'] <> '') { echo($options['rss_url']) } else { bloginfo('rss2_url') } %>" rel="nofollow" title="<%= _e('RSS Feed', 'zbench') %>"><%= _e('RSS Feed', 'zbench') %></a></div>
+	<%= if($options['twitter_url'] <> '') : %>
+	<div id="twitter"><a href="<%= echo($options['twitter_url']) %>" rel="nofollow" title="<%= _e('Follow me on twitter.', 'zbench') %>"><%= _e('Follow me on twitter.', 'zbench') %></a></div>
+	<%= endif %>
+	<%= if($options['facebook_url'] <> '') : %>
+	<div id="facebook"><a href="<%= echo($options['facebook_url']) %>" rel="nofollow" title="<%= _e('Facebook', 'zbench') %>"><%= _e('Facebook', 'zbench') %></a></div>
+	<%= endif %>
+	<div id="sidebar">
+
+<%= if ( !dynamic_sidebar('primary-widget-area') ) : %>
+
+<%= if ( is_singular() ) { %>
+	<div class="widget">
+		<h3><%= _e('Recent Posts', 'zbench') %></h3>
+		<ul>
+			<%=
+			$myposts = get_posts('numberposts=5&offset=0&category=0')
+			foreach($myposts as $post) : setup_postdata($post)
+			%>
+			<li><span><a href="<%= the_permalink() %>"><%= the_title() %></a></span></li>
+			<%= endforeach %>
+		</ul>
+	</div>
+<%= } else { %>
+	<div class="widget">
+		<h3><%= _e('Random Posts', 'zbench') %></h3>
+		<ul>
+			<%=
+			$rand_posts = get_posts('numberposts=5&orderby=rand')
+			foreach( $rand_posts as $post ) :
+			%>
+			<li><a href="<%= the_permalink() %>"><%= the_title() %></a></li>
+			<%= endforeach %>
+		</ul>
+	</div>
+<%= } %>
+	<div class="widget">
+		<h3><%= _e('Search by Tags!', 'zbench') %></h3>
+		<div><%= wp_tag_cloud('smallest=9&largest=18') %></div>
+	</div>	
+	<div class="widget">
+		<h3><%= _e('Archives', 'zbench') %></h3>
+		<ul>
+			<%= wp_get_archives( 'type=monthly' ) %>
+		</ul>
+	</div>
+	<div class="widget">
+		<h3><%= _e('Links', 'zbench') %></h3>
+		<ul>
+			<%= wp_list_bookmarks('title_li=&categorize=0&orderby=id') %>
+		</ul>
+	</div>
+	<div class="widget">
+		<h3><%= _e('Meta', 'zbench') %></h3>
+		<ul>
+			<%= wp_register() %>
+			<li><%= wp_loginout() %></li>
+			<%= wp_meta() %>
+		</ul>
+	</div>
+
+<%= endif %>
+
+<%= if ( is_singular() ) { if ( is_active_sidebar('singular-widget-area') ) dynamic_sidebar('singular-widget-area') } %>
+<%= if (!is_singular()) { if ( is_active_sidebar('not-singular-widget-area') ) dynamic_sidebar('not-singular-widget-area') } %>
+<%= if ( is_active_sidebar('footer-widget-area') ) dynamic_sidebar('footer-widget-area') %>
+
+	</div><!-- end: #sidebar -->
+</div><!-- end: #sidebar-border -->

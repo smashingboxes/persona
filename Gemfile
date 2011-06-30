@@ -4,14 +4,15 @@ group :default do
   gem 'sinatra'
   gem 'sinatra-flash'
   gem 'maruku'
-
+  gem 'tilt'
+  
   # Data
   gem 'data_mapper'
 
 end
 
 group :production do
-    gem "dm-postgres-adapter"
+    gem 'dm-postgres-adapter'
 end
 
 group :development do
@@ -22,8 +23,8 @@ group :development do
   gem 'coffee-script'
   gem 'rack-coffee'
   gem 'therubyracer'
-  gem "sass"
-  gem "compass"
+  gem 'sass'
+  gem 'compass'
   
 end
 
