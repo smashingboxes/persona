@@ -1,3 +1,4 @@
 .sass-cache/
 
-proto-includes/db/proto.db
+proto-includes/proto.db
+.project

@@ -91,6 +91,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt-ruby
   coffee-script
   compass
   data_mapper

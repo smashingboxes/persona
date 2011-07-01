@@ -19,12 +19,31 @@ class User
   include DataMapper::Resource
   
   property :id,                 Serial
-  property :username,           String,                                             :required => true,      :message => "Please specify a username."
-  property :password,           String,                                             :required => true,      :message => "Please specify a password."                
-  
+  property :username,           String,                                             :required => true,      :message => "Please specify a username."                
+  property :password_salt,      String
+  property :password_hash,      String
   property :created_at,         DateTime
   property :updated_at,         DateTime 
+  attr_accessor :password
   
+  validates_uniqueness_of :username
+  validates_presence_of :password
+  
+  before :create do
+    if self.password
+      self.password_salt =  BCrypt::Engine.generate_salt
+      self.password_hash = BCrypt::Engine.hash_secret(self.password, self.password_salt)
+    end
+  end
+  
+  def self.login(args)
+    user = User.first(:username => args[:username])
+    if user && user.password_hash == BCrypt::Engine.hash_secret(args[:password], user.password_salt)
+      user
+    else
+      nil
+    end
+  end
 end
 
 DataMapper.finalize
@@ -37,7 +56,6 @@ DataMapper.auto_upgrade!
   :created_at    => Time.now,
   :updated_at    => Time.now
 )
-
 
 #######################################################
 # 2) Controllers
@@ -139,7 +157,7 @@ module Authentication
   
     post '/login' do
       login, password = params['username'], params['password']
-      if authorize @login_callback.call(login, password)  
+      if authorize @login_callback.call(login, password)
         return_or_redirect_to '/'
       else
         redirect request.script_name + '/login'
@@ -158,5 +176,5 @@ end
 
 use Authentication::Basic,
   :login => lambda {|username, password|
-    user = User.first(:username => username, :password => password) and user.id
+    user = User.login(:username => username, :password => password) and user.id
   }

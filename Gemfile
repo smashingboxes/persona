@@ -5,7 +5,7 @@ group :default do
   gem 'sinatra-flash'
   gem 'maruku'
   gem 'tilt'
-  
+  gem "bcrypt-ruby", :require => "bcrypt"
   # Data
   gem 'data_mapper'
 
