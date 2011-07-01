@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <%= get_header() %>
+    
+  <body>
+    <header id="navigation">    
+        <h1><a class="logo" href="/"><%= System.title %></a><span class="arrow"></span></h1>
+        <%= get_navigation({ :include_home => true }) %>            
+    </header>
+    
+    <div id="wrapper">
+        
+        <%= yield %>       
+
+        <%= get_footer() %>
+    
+    </div>
+    
+    <%= styled_flash %>
+        
+  </body>
+  
+</html>

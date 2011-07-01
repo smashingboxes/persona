@@ -1,0 +1,27 @@
+<header>
+    <%= the_content %>
+</header>
+
+<section>
+    <header>
+        <h2>blog</h2>
+    </header> 
+    
+    <ul class="feed">
+        <% proto_loop "post" do %>
+            <li class="post">
+                <img src="http://www.lorempixum.com/245/125/" />
+                <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
+                <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
+                <p><%= the_excerpt(@content, 20) %></p>
+                <a href="<%= the_link %>">Read More</a>                  
+            </li>
+        <% end %> 
+    </ul>
+</section>
+
+<section>
+    <header>
+        <h2>the team</h2>
+    </header>
+</section>
