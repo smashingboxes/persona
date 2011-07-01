@@ -80,7 +80,6 @@ require "./proto-includes/personas/tools/authentication.rb"
 # 2) Controller
 #######################################################
 
-<<<<<<< HEAD
 get '/' do
   @content = Content.get(System.homepage) || Content.first
   erb :'index'
@@ -88,10 +87,10 @@ end
 
 get '/node/:id' do
   erb :"/templates/#{Content.get(params[:id]).template}"
-=======
+end
+
 get '/node/:id' do     
   erb :"/#{Content.get(params[:id]).template}"
->>>>>>> 4a579e14936b55b8921416c6e33d434af7ec3d30
 end
 
 get "/new" do
