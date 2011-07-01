@@ -18,7 +18,7 @@
     </div>
     
     <%= styled_flash %>
-        
+    <%= "Welcome, #{User.get(current_user).username}" if current_user %>
   </body>
   
 </html>

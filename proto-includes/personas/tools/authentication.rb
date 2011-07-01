@@ -22,6 +22,9 @@ class User
   property :username,           String,                                             :required => true,      :message => "Please specify a username."
   property :password,           String,                                             :required => true,      :message => "Please specify a password."                
   
+  property :first_name,         String
+  property :last_name,          String
+  
   property :created_at,         DateTime
   property :updated_at,         DateTime 
   
@@ -29,11 +32,23 @@ end
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
-  
+
 # Create the default admin
 @user = User.create(
   :username      => "admin",
   :password      => "Smashingid3a",
+  :first_name    => "Prototypical",
+  :last_name     => "Admin",
+  :created_at    => Time.now,
+  :updated_at    => Time.now
+)
+
+# Create the default admin
+@nate = User.create(
+  :username      => "nate",
+  :password      => "Smashingid3a",
+  :first_name    => "Nate",
+  :last_name     => "Hunzaker",
   :created_at    => Time.now,
   :updated_at    => Time.now
 )

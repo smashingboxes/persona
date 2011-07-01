@@ -162,46 +162,60 @@
     
     /* a) Left Navigation
     ------------------------------------------ */
-    #navigation                                 { display: inline; width: 150px; margin-right: 15px; float: left; 
-        .logo                                   { background: #000 url("/images/logo.png") 50% 50% no-repeat; display: block; width: 231px; height: 150px; text-indent: -9999px; }
-        .arrow                                  { display: block; background: transparent url("/images/logo_arrow.png") no-repeat; height: 13px; position: relative; left: 150px; }
+    #navigation                                 { display: inline; width: 220px; margin-right: 35px; float: left; 
+        .logo                                   { background: url("/images/logo.png") 50% 50% no-repeat; display: block; width: 206px; height: 150px; text-indent: -9999px; }
     }
     
     
     /* a) Main Content
     ------------------------------------------ */
     
-    #wrapper                                    { @include column(24, last); float: left; margin-top: 43px; width: 790px;
-
-        > header                                { margin-left: 113px; 
-            h2                                  { color: #444; font-size: 55.3px; line-height: 51px; letter-spacing: -2.5px;
-                strong                          { color: #ec1467; display: block; }
-            }
-            
-            h3                           { color: #444; font: normal 14px/22px "Gotham" Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif; margin-left: 195px; }
-        }
-        
-        /* Displays a grid, for reference */
-        &:target                                { @include showgrid(); }
-        
+    #wrapper                                    { float: left; margin-top: 43px; width: 790px;
+    
         aside                                   { background: #ffd; border: 1px solid lighten($body_copy, 70%); float: left; padding: 1.5em 1.3em; margin: 0 1em 1em 0; width: 25%;
             img                                 { border: 1px solid #aaa; float: left; margin-right: 1em; }
             
             &.right                             { float: right; margin: 0 0 1em 1em; }
         }
         
-        section                                 { margin-bottom: 60px; overflow: hidden;
-            header                              { background: url("/images/heading_bg.png") 0 50% repeat-x;  margin-bottom: 25px; 
-                h2                              { background: #fff; color: #ec1467; display: inline; font-size: 32px; line-height: 32px; padding: 0 5px; position: relative; left: 65px; }
+        section                                 { clear: left; margin-bottom: 60px;
+            
+            header                              { margin-bottom: 80px;
+                h2                              { color: #444; font-size: 55.3px; line-height: 51px; letter-spacing: -2.5px;
+                    strong                      { color: #ec1467; display: block; }
+                }
+                
+                h3                              { color: #444; font: normal 18px/28px $sans-serif; }
             }
             
-            &.content                           { margin-left: 117px; }
+            section                             {
+                header                          { background: url("/images/shadow.png") 50% 0 no-repeat; border-top: 1px solid #d9d9d9;  margin-bottom: 25px; 
+                    h2                          { background: #fff; color: #ec1467; display: inline; font-size: 32px; line-height: 32px; padding: 0 5px; position: relative; left: 65px; top: -15px; }
+                }
+            }
+                    
         }
-    
-        .feed                                   {
-            .post                               { width: 31%; margin-right: 2%; float: left; list-style: none; }
+            
+        .feed                                   { overflow: hidden;
+            
+            .post, .bio                         { width: 32.5%; margin-right: 1%; float: left; list-style: none; height: 390px;
+                img.thumb                       { margin-bottom: 15px;}
+             }
+             
+             .bio                               { width: 24.5%; margin-right: 0.5%; }
+             
             .meta                               { font-style: italic; margin-bottom: 15px; }
         }
+        
+        article                                 { margin-bottom: 50px;
+            img.thumb                           { border: 2px solid #aaa; margin-bottom: 25px;}
+        }
+        
+        a.more                                  { color: #4eaf9f; 
+            &:hover                             { color: lighten(#4eaf9f, 15%); text-decoration: underline;}
+            &:active                            { color: lighten(#4eaf9f, 5%); text-decoration: underline;}
+        }
+
     }
 
 
@@ -210,16 +224,16 @@
     .menu                                       { clear: right; margin-bottom: 20px;
     
         ul                                      { margin-bottom: 2em;
-            li                                  { list-style: none; margin: 0 20px 0 15px;
-                a                               { color: #fff; font-size: 15px; line-height: 30px; text-transform: uppercase; }
+            li                                  { margin-left: 0; width: 220px; height: 31px; margin-bottom: 10px;
+                a                               { color: #444; font: normal 15px/34px $sans-serif; text-transform: uppercase;  display: block; margin-left: -15px; text-indent: 30px; width: 235px; }
             }
             
-            li.home                             { background: #E61364; margin-left: 0; width: 161px; height: 27px; margin-bottom: 10px;
-                a                               { background: transparent url("/images/home_arrow.png") 165px 27px no-repeat;display: block; margin-left: -15px; text-indent: 30px; width: 176px; }
+            li.current                          { background: #E61364; @include box-shadow(0 1px 2px #aaa);
+                a                               { background: transparent url("/images/home_arrow.png") 222px 31px no-repeat; color: #fff; font-weight: bold; text-shadow: 0 1px 1px #111;}
             }
             
-            li.current                          { background: #4b9b90; margin-left: 0; width: 161px; height: 27px;
-                a                               { background: transparent url("/images/current_arrow.png") 165px 27px no-repeat;display: block; margin-left: -15px; text-indent: 30px; width: 176px; }
+            li:hover                            { background: #4b9b90;  @include box-shadow(0 1px 2px #aaa);
+                a                               { background: transparent url("/images/current_arrow.png") 222px 31px no-repeat; color: #fff; font-weight: bold; text-shadow: 0 1px 1px #111; }
             }
         }
     
@@ -297,47 +311,9 @@
     /* a) UI Elements
     ------------------------------------------ */
     button, .button, 
-    input[type="submit"], input[type="reset"]       { background: #CCC; border: 1px solid #777; @include border-radius(3px); cursor: pointer; font-size: 12px; font-weight: bold; padding: 8px 12px; text-shadow: #EEE 0px 1px 0; @include box-shadow(inset 0 1px 0 #fff, #AAA 0 1px 2px); }
+    input[type="submit"], input[type="reset"]   { background: #CCC; border: 1px solid #777; @include border-radius(3px); cursor: pointer; font-size: 12px; font-weight: bold; padding: 8px 12px; text-shadow: #EEE 0px 1px 0; @include box-shadow(inset 0 1px 0 #fff, #AAA 0 1px 2px); }
     
     
-    /* b) Prototypical Admin
-    ------------------------------------------ */
-    #admin-toggle                               { position: fixed; top: 0; left: -1px; width: 41px; background: #222; height: 40px; overflow: hidden; font-size: 14px; text-align: center; @include transition(all 0.1s linear); @include border-bottom-right-radius (4px); @include box-shadow(inset 0 0 10px #111); z-index: 9999;
-        
-        &:hover                                 { height: 292px; }
-        
-        nav                                     { width: 26px; margin-left: 3px; }
-                        
-        a                                       { background: #222; border: 1px solid #444; color: #fff; display: block; font: bold 20px/30px $sans-serif; margin: 0 0 7px 0; width: 32px; height: 32px; text-shadow: 0 1px 0 #AAA; text-align: center; @include border-radius(3px); @include box-shadow(0 1px 0px rgba(0, 0, 0, 0.35)); @include transition(all 0.1s easeOut);       
-            &:hover                             { @include box-shadow(0 0 8px #999); border-color: #777; }
-            
-            &.create                            { color: #ada;
-                &:hover                         { @include box-shadow(0 0 8px #9f9); border-color: #9f9; }
-            }
-            
-            &.edit                              { color: #99f; border-color: #66a;
-                &:hover                         { @include box-shadow(0 0 8px #55f); border-color: #99f; }
-            }
-            
-            &.delete                            { color: #f44; border-color: #a66; 
-                &:hover                         { @include box-shadow(0 0 8px #f55); border-color: #f99; }
-            }   
-            
-            &.disabled                          { color: #444; opacity: 0.4;
-                &:hover                         { border-color: #444; @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.35)); }
-            }
-        }
-        
-        #icon                                   { background: none; border: none; cursor: pointer; font: italic 30px/34px $fancy; margin-left: 5px; margin-bottom: 20px; text-shadow: 0 0 50px #eee; @include box-shadow(none);
-            &:hover                             { color: $primary; text-shadow: 0 0 5px $primary; }
-            &:hover                             { text-shadow: 0 0 10px $primary; }
-        }
-        
-        *::selection                            { background: none; }
-        
-        hr                                      { margin-left: 8px;}
-    }
-
     /* b) Flash Notifications
     ------------------------------------------ */
     .flash                                      { background: lighten($body_copy, 80%); border: 1px solid lighten($body_copy, 70%); color: #333; cursor: pointer; display: none; font-size: 14px; left: 20px; max-width: 300px; padding: 14px 20px; position: fixed; top: 5px; @include border-radius(4px); @include box-shadow(inset 0 1px 1px #fff); z-index: 9999;

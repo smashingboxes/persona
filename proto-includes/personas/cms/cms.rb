@@ -26,6 +26,7 @@ require "./proto-includes/personas/tools/authentication.rb"
     property :content_type,       Enum[:post, :page, :category, :comment, :tag],      :required => true,      :message => "Please specify the content type."
     property :parent,             Integer,                                            :default  => 0
     property :template,           String,                                             :default  => "single"
+    property :author,             Integer,                                            :default => User.first.id
     
     property :created_at,         DateTime
     property :updated_at,         DateTime 
@@ -128,6 +129,7 @@ end
         :content_type     => params[:content_type],
         :template         => params[:template],
         :parent           => params[:parent],
+        :author           => current_user,
         :created_at       => Time.now,
         :updated_at       => Time.now
       )
@@ -149,19 +151,18 @@ end
       
       require_user
       
-      @content = Content.get(params[:id])
+      @target = Content.get(params[:id])
   
-      @content.update(
+      @target.update(
         :title        => params[:title],
         :body         => params[:body],
         :template     => params[:template],
-        :content_type => params[:content_type],
         :updated_at   => Time.now
       )
       
       flash[:info] = "Content was successfully updated!"
       
-      redirect "/node/#{@content.id}"
+      redirect "/node/#{@target.id}"
   
   end
 
@@ -315,6 +316,29 @@ helpers do
   # 2) An object variable within the proto_loop()
   # 3) The current query string
   # 4) Throw exception (a template friendly error)
+  
+  
+  # Finds the author of a given content entry in the database
+  #
+  # content => An optional overide to display the author of a specific
+  #            content item.
+  #
+  # Retuns the author of the passed object (Be it from the protoloop or argument)
+  def the_author(content=nil)
+    if node = content || @content || Content.get(params[:id])
+        
+      author = User.get(node.author)
+        
+      if (author.first_name && author.second_name)
+        ( User.get(node.author).first_name + " " + User.get(node.author).last_name )
+      else          
+        author.username
+      end
+        
+    else
+      "<strong>Error:</strong> No author could be found" unless ENV['RACK_ENV'] == 'production'
+    end
+  end
   
   
   # Finds the title of a given content entry in the database
