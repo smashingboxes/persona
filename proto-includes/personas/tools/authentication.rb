@@ -23,11 +23,13 @@ class User
   property :password_salt, String
   property :password_hash, String
   property :created_at,    DateTime
-  property :updated_at,    DateTime,
+  property :updated_at,    DateTime
   attr_accessor :password
+  attr_accessor :password_confirmation
   
   validates_uniqueness_of :username
   validates_presence_of :password
+  validates_confirmation_of :password
   
   before :create do
     if self.password
@@ -48,13 +50,14 @@ end
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
-  
+
 # Create the default admin
 @user = User.create(
-  :username   => "admin",
-  :password   => "secret",
-  :created_at => Time.now,
-  :updated_at => Time.now
+  :username              => "admin",
+  :password              => "secret",
+  :password_confirmation => "secret",
+  :created_at            => Time.now,
+  :updated_at            => Time.now
 )
 
 #######################################################
@@ -79,20 +82,20 @@ helpers do
   def current_user
     session[:current_user]
   end
-
+  
   def authorized?
     session[:current_user]
   end
-
+  
   def login
     session[:redirect_to] = request.path_info
     redirect request.script_name + '/login'
   end
-
+  
   def logout
     session[:current_user] = nil
   end
-
+  
   def require_user
     login unless authorized?
   end
