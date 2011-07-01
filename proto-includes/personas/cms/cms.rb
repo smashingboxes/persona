@@ -21,12 +21,12 @@ require "./proto-includes/personas/tools/authentication.rb"
     include DataMapper::Resource
   
     property :id,                 Serial
-    property :title,              String,                                             :required => true,      :message => "Please specify a title for this content."
+    property :title,              String,                                                      :required => true,      :message => "Please specify a title for this content."
     property :body,               Text
-    property :content_type,       Enum[:post, :page, :category, :comment, :tag],      :required => true,      :message => "Please specify the content type."
-    property :parent,             Integer,                                            :default  => 0
-    property :template,           String,                                             :default  => "single"
-    property :author,             Integer,                                            :default => User.first.id
+    property :content_type,       Enum[:post, :page, :category, :comment, :tag, :widget],      :required => true,      :message => "Please specify the content type."
+    property :parent,             Integer,                                                     :default  => 0
+    property :template,           String,                                                      :default  => "single"
+    property :author,             Integer,                                                     :default => User.first.id
     
     property :created_at,         DateTime
     property :updated_at,         DateTime 
@@ -186,7 +186,7 @@ helpers do
   #
   # Return an array of strings equal to template names
   def templates()
-    source = "./themes/#{System.theme}/"
+    source = "./themes/#{System.theme}/templates"
     
     cluster = []
     
