@@ -28,11 +28,11 @@ class User
   
   # Account permissions level
   # 
-  # 0 - General User
-  # 1 - Create, Edit own posts
-  # 3 - Create, Edit, Delete own posts
-  # 4 - Create, Edit, Delete all posts
-  # 5 - Create, Edit, Delete all users and posts
+  # 0 - # General User  =>   No privileges
+  # 1 - # Contributer   =>   Create, Edit, Delete own posts
+  # 2 - # Editor        =>   Create, Edit, Delete all posts
+  # 4 - # Admin         =>   Create, Edit, Delete all non-admin users and posts
+  # 5 - # Superadmin    =>   Create, Edit, Delete all users and posts
   
   property :account_level,      Integer,                  :required => true,      :default => 0
   
