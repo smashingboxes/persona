@@ -10,7 +10,7 @@ namespace :js do
     print "Compiling CoffeeScript..."
     
     source = "./proto-includes/src/coffeescripts/"
-    javascripts = "./public/javascripts/"
+    javascripts = "./proto-includes/personas/cms/admin/"
     
     Dir.foreach(source) do |cf|
       unless cf == '.' || cf == '..' 

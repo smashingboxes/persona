@@ -37,16 +37,54 @@ require "./proto-includes/personas/tools/authentication.rb"
     end
     
   end
+
+  # Creates a datatable with the current website settings
+  class System
+    include DataMapper::Resource
     
+    property :id,              Serial
+    property :theme ,          String,       :required => true,      :message => "Please specify a theme for this site.",      :default => "protoplasm"
+    property :title,           String,       :required => true,      :message => "Please specify a title for this site",       :default => "Prototypical"
+    property :description,     String,       :required => false,     :default => "A basic CMS"
+    property :homepage,        Integer,      :required => true,      :default  => 0
+  
+    def self.theme
+      self.first.theme
+    end
+    
+    def self.title
+      self.first.title
+    end
+    
+    def self.description
+      self.first.description
+    end
+    
+    def self.homepage
+      self.first.homepage
+    end 
+    
+  end
+        
   DataMapper.finalize
   DataMapper.auto_upgrade!
-
-
+  
+  # Create the default settings
+  @system = System.create(
+      :homepage => Content.first
+  )
+  
+  
 #######################################################
 # 2) Controller
 #######################################################
 
-get '/node/:id' do     
+get '/' do
+  @content = Content.get(System.homepage) || Content.first
+  erb :'index'
+end
+
+get '/node/:id' do
   erb :"/templates/#{Content.get(params[:id]).template}"
 end
 
@@ -117,6 +155,7 @@ end
         :title        => params[:title],
         :body         => params[:body],
         :template     => params[:template],
+        :content_type => params[:content_type],
         :updated_at   => Time.now
       )
       
@@ -233,10 +272,10 @@ helpers do
     nav = "<nav class='#{local_options[:css_class]}'><ul>"
     
     # If specified, add a home link 
-    nav += "<li class='#{ "current" if ( params[:id] == nil) }'><a href='/'>Home</a></li>" if local_options[:include_home] == true
+    nav += "<li class='home #{ "current" if ( params[:id] == nil) }'><a href='/'>Home</a></li>" if local_options[:include_home] == true
     
     # Now we get all pages without a parent (first level)
-    content = Content.all(:content_type => "page", :parent => 0)
+    content = Content.all(:content_type => "page", :parent => 0, :id.not => System.homepage )
     
     content.each_with_index do |p, index|
         
@@ -409,6 +448,20 @@ helpers do
   end
   
   
+  # Finds the name of the template for a given content entry in the database
+  #
+  # Content => An optional argument to dictate the content in question
+  #
+  # Returns the name of of the passed content object
+  def the_content_type(content=nil)
+    if node = content || @content || Content.get(params[:id])
+      node.content_type
+    else
+      "<strong>Error:</strong> No content type information could be found" unless ENV['RACK_ENV'] == 'production'
+    end
+  end
+  
+  
   # At last, the magic. A yield loop that finds every 
   #
   # Type  => Specifies the type of content to run through
@@ -427,6 +480,10 @@ helpers do
     # Limit the aggregator to the desired content count
     aggregator = aggregator[0..(count-1)] unless count.nil?
     
+    # We don't know if the content is set to anything, so we'll set it up here first
+    @old_content = @content || nil
+    
+    
     # Run through each item the aggregator finds
     aggregator.each do |node|
     
@@ -435,7 +492,10 @@ helpers do
       yield
         
     end
-      
+    
+    # Reset the content back to normal
+    @content = @old_content || nil
+    
   end
   
 end

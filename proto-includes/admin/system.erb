@@ -5,6 +5,15 @@
 
           <fieldset>
               <p>
+                <label for="homepage">Homepage</label></br>
+                <select name="homepage" id="homepage">
+                    <% proto_loop "page" do %>
+                        <option value="<%= the_id %>" <%= "selected" if System.theme === the_id %> ><%= the_title %></option>
+                    <% end %>
+                </select>
+              </p>
+              
+              <p>
                 <label for="theme">Theme</label></br>
                 <select name="theme" id="theme">
                     <% themes.each do |t| %>

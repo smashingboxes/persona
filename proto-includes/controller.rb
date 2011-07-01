@@ -63,7 +63,8 @@ end
     @system.update(
       :title        => params[:title],
       :theme        => params[:theme],
-      :description  => params[:description]
+      :description  => params[:description],
+      :homepage     => params[:homepage]
     )
     
     flash[:info] = "System was successfully updated!"

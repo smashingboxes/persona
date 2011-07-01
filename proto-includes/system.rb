@@ -25,6 +25,7 @@ def require_all(*items)
   
 end
 
+
 helpers do
 
   # Scans for all folders files in the themes directory 

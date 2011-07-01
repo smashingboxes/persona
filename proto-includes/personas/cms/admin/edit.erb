@@ -8,8 +8,8 @@
                   <fieldset>
                     <legend>Content Type:</legend>
                     <select name="content_type" id="content_type">
-                        <option value="page">Page</option>
-                        <option value="post">Post</option>
+                        <option value="page" selected="<%= "true" if the_content_type == "page" %>" >Page</option>
+                        <option value="post" selected="<%= "true" if the_content_type == "post" %>" >Post</option>
                     </select>
                   </fieldset>
                   
@@ -19,7 +19,7 @@
                      <select name="parent" id="parent">
                             <option value="0">None</option>
                          <% proto_loop "page" do %>
-                            <option value="<%= the_id %>"><%= the_title %></option>
+                              <option value="<%= the_id %>"><%= the_title %></option>
                          <% end %>
                     </select>
                   
