@@ -103,17 +103,16 @@ sup { font-size: 0.5em; vertical-align: baseline; }
 
 /* a) Main Content
 ------------------------------------------ */
-#wrapper { float: left; margin-top: 43px; width: 790px; }
+#wrapper { float: left; margin-top: 43px; margin-bottom: 60px; width: 790px; }
+#wrapper > header { margin-bottom: 80px; }
+#wrapper > header h2 { color: #444; font-size: 55.3px; line-height: 51px; letter-spacing: -2.5px; }
+#wrapper > header h2 strong { color: #ec1467; display: block; }
+#wrapper > header h3 { color: #444; font: normal 18px/28px "Gotham" Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif; }
 #wrapper aside { background: #ffd; border: 1px solid #d4d4d4; float: left; padding: 1.5em 1.3em; margin: 0 1em 1em 0; width: 25%; }
 #wrapper aside img { border: 1px solid #aaa; float: left; margin-right: 1em; }
 #wrapper aside.right { float: right; margin: 0 0 1em 1em; }
-#wrapper section { clear: left; margin-bottom: 60px; }
-#wrapper section header { margin-bottom: 80px; }
-#wrapper section header h2 { color: #444; font-size: 55.3px; line-height: 51px; letter-spacing: -2.5px; }
-#wrapper section header h2 strong { color: #ec1467; display: block; }
-#wrapper section header h3 { color: #444; font: normal 18px/28px "Gotham" Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif; }
-#wrapper section section header { background: url("/images/shadow.png") 50% 0 no-repeat; border-top: 1px solid #d9d9d9; margin-bottom: 25px; }
-#wrapper section section header h2 { background: #fff; color: #ec1467; display: inline; font-size: 32px; line-height: 32px; padding: 0 5px; position: relative; left: 65px; top: -15px; }
+#wrapper section header { background: url("/images/shadow.png") 50% 0 no-repeat; border-top: 1px solid #d9d9d9; margin-bottom: 25px; }
+#wrapper section header h2 { background: #fff; color: #ec1467; display: inline; font-size: 32px; line-height: 32px; padding: 0 5px; position: relative; left: 65px; top: -15px; }
 #wrapper .feed { overflow: hidden; }
 #wrapper .feed .post, #wrapper .feed .bio { width: 32.5%; margin-right: 1%; float: left; list-style: none; height: 390px; }
 #wrapper .feed .post img.thumb, #wrapper .feed .bio img.thumb { margin-bottom: 15px; }

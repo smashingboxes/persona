@@ -4,21 +4,22 @@
   <%= get_header() %>
     
   <body>
+  
     <header id="navigation">    
         <h1><a class="logo" href="/"><%= System.title %></a><span class="arrow"></span></h1>
         <%= get_navigation({ :include_home => true }) %>            
     </header>
     
-    <div id="wrapper">
+    <section id="wrapper">
         
         <%= yield %>       
 
         <%= get_footer() %>
     
-    </div>
+    </section>
     
     <%= styled_flash %>
-    <%= "Welcome, #{User.get(current_user).username}" if current_user %>
+    
   </body>
   
 </html>

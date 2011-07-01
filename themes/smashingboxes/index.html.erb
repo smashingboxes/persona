@@ -1,40 +1,36 @@
-<section class="content">
-    
-    <header>
-        <%= the_content %>
-    </header>
-    
-    <section>
-        <header>
-            <h2>blog</h2>
-        </header> 
-        
-        <ul class="feed">
-            <% proto_loop "post", 3 do %>
-                <li class="post">
-                    <a href="<%= the_link %>"><img class="thumb" src="http://www.lorempixum.com/245/100/people/2" /></a>                 
-                    <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
-                    <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
-                    <p><%= the_excerpt(@content, 20) %></p>
-                    <a class="more" href="<%= the_link %>">Read More</a>
-                </li>
-            <% end %> 
-        </ul>
-    </section>
-    
-    <section>
-        <header>
-            <h2>the team</h2>
-            <ul class="feed">
-            <% proto_loop "post", 6 do %>
-                <li class="bio">
-                    <a href="<%= the_link %>"><img class="thumb" src="http://www.lorempixum.com/180/125/people/" /></a>                 
-                    <p>Lorem Ipsum</p>
-                    <p>Developer</p>
-                </li>
-            <% end %> 
-        </ul>
-        </header>
-    </section>
+<header>
+    <%= the_content %>
+</header>
 
+<section>
+    <header>
+        <h2>blog</h2>
+    </header> 
+    
+    <ul class="feed">
+        <% proto_loop "post", 3 do %>
+            <li class="post">
+                <a href="<%= the_link %>"><img class="thumb" src="http://www.lorempixum.com/245/100/people/2" /></a>                 
+                <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
+                <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
+                <p><%= the_excerpt(@content, 20) %></p>
+                <a class="more" href="<%= the_link %>">Read More</a>
+            </li>
+        <% end %> 
+    </ul>
+</section>
+
+<section>
+    <header>
+        <h2>the team</h2>
+        <ul class="feed">
+        <% proto_loop "post", 6 do %>
+            <li class="bio">
+                <a href="<%= the_link %>"><img class="thumb" src="http://www.lorempixum.com/180/125/people/" /></a>                 
+                <p>Lorem Ipsum</p>
+                <p>Developer</p>
+            </li>
+        <% end %> 
+    </ul>
+    </header>
 </section>

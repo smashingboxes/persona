@@ -19,11 +19,22 @@ class User
   include DataMapper::Resource
   
   property :id,                 Serial
-  property :username,           String,                                             :required => true,      :message => "Please specify a username."
-  property :password,           String,                                             :required => true,      :message => "Please specify a password."                
+  
+  property :username,           String,                   :required => true,      :message => "Please specify a username."
+  property :password,           String,                   :required => true,      :message => "Please specify a password."                
   
   property :first_name,         String
   property :last_name,          String
+  
+  # Account permissions level
+  # 
+  # 0 - General User
+  # 1 - Create, Edit own posts
+  # 3 - Create, Edit, Delete own posts
+  # 4 - Create, Edit, Delete all posts
+  # 5 - Create, Edit, Delete all users and posts
+  
+  property :account_level,      Integer,                  :required => true,      :default => 0
   
   property :created_at,         DateTime
   property :updated_at,         DateTime 
@@ -35,6 +46,7 @@ DataMapper.auto_upgrade!
 
 # Create the default admin
 @user = User.create(
+  :account_level => 5,
   :username      => "admin",
   :password      => "Smashingid3a",
   :first_name    => "Prototypical",
@@ -45,6 +57,7 @@ DataMapper.auto_upgrade!
 
 # Create the default admin
 @nate = User.create(
+  :account_level => 5,
   :username      => "nate",
   :password      => "Smashingid3a",
   :first_name    => "Nate",
@@ -151,10 +164,10 @@ module Authentication
   end
 
   class Basic < Base
-  
+        
     post '/login' do
       login, password = params['username'], params['password']
-      if authorize @login_callback.call(login, password)  
+      if authorize @login_callback.call(login, password)
         return_or_redirect_to '/'
       else
         redirect request.script_name + '/login'
