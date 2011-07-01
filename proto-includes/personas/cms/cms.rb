@@ -21,7 +21,7 @@ require "./proto-includes/personas/tools/authentication.rb"
     include DataMapper::Resource
   
     property :id,                 Serial
-    property :title,              String,                                             :required => true,      :message => "Please specify a title for this page."
+    property :title,              String,                                             :required => true,      :message => "Please specify a title for this content."
     property :body,               Text
     property :content_type,       Enum[:post, :page, :category, :comment, :tag],      :required => true,      :message => "Please specify the content type."
     property :parent,             Integer,                                            :default  => 0
@@ -80,6 +80,7 @@ require "./proto-includes/personas/tools/authentication.rb"
 # 2) Controller
 #######################################################
 
+<<<<<<< HEAD
 get '/' do
   @content = Content.get(System.homepage) || Content.first
   erb :'index'
@@ -87,6 +88,10 @@ end
 
 get '/node/:id' do
   erb :"/templates/#{Content.get(params[:id]).template}"
+=======
+get '/node/:id' do     
+  erb :"/#{Content.get(params[:id]).template}"
+>>>>>>> 4a579e14936b55b8921416c6e33d434af7ec3d30
 end
 
 get "/new" do
@@ -182,7 +187,7 @@ helpers do
   #
   # Return an array of strings equal to template names
   def templates()
-    source = "./themes/#{System.theme}/templates/"
+    source = "./themes/#{System.theme}/"
     
     cluster = []
     
