@@ -1,0 +1,50 @@
+        <section>
+            <article>
+                <%= get_sidebar "right" %>
+
+                <h3>A Tool for Prototyping</h3>
+                <p>
+                    Prototypical is a lightweight prototyping tool built on <a href="http://www.sinatrarb.com/" target="_blank">Sinatra</a> with the goal of assisting developers with the rapid creation of working prototypes.
+                    Prototypical is responsive, easy to set up, and takes most of the grunt work out of building an initial draft to show clients.
+                </p>
+                <p>
+                    There are some things developers should never have to worry about when making prototypes. Here's what I've created:
+                    <ul>
+                        <li><strong>A Toolkit</strong> including a <a href="/tools/sitemap">Sitemap</a> and a clean, <a href="http://www.alistapart.com/articles/responsive-web-design/" target="_blank">responsive</a> stylesheet (View it <a href="/tools/type">here</a>)</li>
+                        <li><strong>Content management</strong> which gives clients control over content/layout without breaking anything (let them try, I <em>dare</em> them).</li>
+                        <li><strong>A strong frontend</strong> powered by <a href="http://jashkenas.github.com/coffee-script/" target="_blank">CoffeeScript</a> and <a href="http://compass-style.org/" target="_blank>">Compass</a> (an extension of <a href="http://sass-lang.com" target="_blank">Sass</a>)</li>
+                        <li><strong>Easy deployment</strong>, straight to <a href="http://www.heroku.com" target="_blank">Heroku</a>.</li>
+                    </ul>
+                </p>
+                
+                <h4>More Under the Hood</h4>
+                <p>
+                   At the present, Prototypical uses <a href="https://github.com/rtomayko/tilt/" target="_blank">Tilt</a> to support templating, with <a href="http://daringfireball.net/projects/markdown/" target="_blank">Markdown</a> to allow clients/designers to safely edit the content on pages. 
+                   Creating templates is as easy as dropping files into the <code>templates</code> folder, and includes built-in support commands similar to that of <a href="http://www.wordpress.org" target="_blank">WordPress</a> such as:
+                    <br/><br/>
+                    <code>
+                          get_header <br/>  
+                          the_title <br/>
+                          the_content <br/>
+                          get_footer
+                    </code>
+                </p>
+                <p>Plus it's built on Ruby, which is awesome in and of itself.</p>
+                <hr/>
+                <p>Try <a href="https://github.com/smashingboxes/Prototypical">Prototypical</a> today!</p>
+                
+                <hr/>
+                <h3>Updates <span class="alt">&amp;</span> Such</h3>
+                <% proto_loop "post" do %>
+                    <article>
+                        <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
+                        <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
+                        <p><%= the_excerpt %></p>                    
+                    </article>
+
+                    <hr/>
+                <% end %> 
+                
+                
+            </article>
+        </section>
