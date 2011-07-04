@@ -23,6 +23,7 @@ require "./proto-includes/personas/tools/authentication.rb"
     property :id,                 Serial
     property :title,              String,                                                      :required => true,      :message => "Please specify a title for this content."
     property :body,               Text
+
     property :content_type,       Enum[:post, :page, :category, :comment, :tag, :widget],      :required => true,      :message => "Please specify the content type."
     property :parent,             Integer,                                                     :default  => 0
     property :template,           String,                                                      :default  => "single"
@@ -69,10 +70,18 @@ require "./proto-includes/personas/tools/authentication.rb"
         
   DataMapper.finalize
   DataMapper.auto_upgrade!
+
+    
+  # Create the default settings
+  unless Content.first
+    @homepage = Content.create(
+      :title => "Hello, world!",
+      )
+  end
   
   # Create the default settings
   @system = System.create(
-      :homepage => Content.first
+      :homepage => Content.first.id
   )
   
   
