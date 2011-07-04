@@ -1,4 +1,8 @@
 #######################################################
+#                    CMS Persona                      #
+#######################################################
+#                                                     #
+#######################################################
 #                 Table of Contents                   #
 #######################################################
 #                                                     #
@@ -90,10 +94,8 @@ require "./proto-includes/personas/tools/authentication.rb"
 #######################################################
 
 get '/' do
-  
   @content = Content.get(System.homepage) || Content.first
   proto_genesis 'index'
-  
 end
 
 get '/node/:id' do
@@ -106,7 +108,7 @@ end
 
 get "/new" do
   require_user
-  proto_genesis "#{proto_path}/cms/admin/new"
+  erb :"../../proto-includes/personas/cms/admin/new"
 end
 
   
@@ -117,7 +119,7 @@ end
 
   get "/edit/:id" do
       require_user
-      proto_genesis "../../proto-includes/personas/cms/admin/edit"
+      erb :"../../proto-includes/personas/cms/admin/edit"
   end
   
   
@@ -195,7 +197,8 @@ helpers do
   #
   # Return an array of strings equal to template names
   def templates()
-    source = "./themes/#{System.theme}/templates"
+  
+    source = "./themes/#{current_theme}/templates/"
     
     cluster = []
     
@@ -243,22 +246,6 @@ helpers do
   # Returns an action to render the admin menu template
   def get_admin()
     proto_genesis '../../proto-includes/personas/cms/admin/admin'
-  end
-  
-  
-  # Renders a link tag with stylesheet information
-  #
-  # stylesheet => The name of the stylesheet. Defaults to 'screen'
-  # media      => The media format the stylesheet will be displayed as.
-  #               Defaults to 'screen'
-  #
-  # Example:
-  #   get_stylesheet("print", "print")
-  #       # => <link rel='stylesheet' href='/stylesheets/print.css' media='print'/>
-  #
-  # Returns an action to render the admin menu template
-  def get_stylesheet(stylesheet="screen", media="screen")
-    return "<link rel='stylesheet' href='/stylesheets/#{stylesheet}.css' media='#{media}'/>"  
   end
   
   
