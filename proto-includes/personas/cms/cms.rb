@@ -84,29 +84,29 @@ require "./proto-includes/personas/tools/authentication.rb"
       :homepage => Content.first.id
   )
   
-  
+
 #######################################################
 # 2) Controller
 #######################################################
 
 get '/' do
+  
   @content = Content.get(System.homepage) || Content.first
-  erb :'index'
+  proto_genesis 'index'
+  
 end
 
 get '/node/:id' do
-  erb :"/templates/#{Content.get(params[:id]).template}"
+  proto_genesis "/templates/#{Content.get(params[:id]).template}"
 end
 
 get '/node/:id' do     
-  erb :"/#{Content.get(params[:id]).template}"
+  proto_genesis "/#{Content.get(params[:id]).template}"
 end
 
 get "/new" do
-  
   require_user
-   
-  erb :"../../proto-includes/personas/cms/admin/new"
+  proto_genesis "#{proto_path}/cms/admin/new"
 end
 
   
@@ -117,7 +117,7 @@ end
 
   get "/edit/:id" do
       require_user
-      erb :"../../proto-includes/personas/cms/admin/edit"
+      proto_genesis "../../proto-includes/personas/cms/admin/edit"
   end
   
   
@@ -212,7 +212,7 @@ helpers do
   #
   # Returns an action to render the header template
   def get_header()  
-    erb :'header'
+    proto_genesis 'header'
   end
   
   
@@ -223,7 +223,7 @@ helpers do
   # Returns an action to render the sidebar template
   def get_sidebar(css_class="left")
     @css_class = css_class
-    erb :'sidebar'
+    proto_genesis 'sidebar'
   end
   
   
@@ -232,8 +232,8 @@ helpers do
   # Returns an action to render the footer template
   def get_footer()
     
-    output = erb :footer
-    output += erb :'../../proto-includes/personas/cms/admin/admin' if authorized?
+    output = proto_genesis 'footer'
+    output += proto_genesis '../../proto-includes/personas/cms/admin/admin' if authorized?
     
   end
     
@@ -242,7 +242,7 @@ helpers do
   #
   # Returns an action to render the admin menu template
   def get_admin()
-    erb :'../../proto-includes/personas/cms/admin/admin'
+    proto_genesis '../../proto-includes/personas/cms/admin/admin'
   end
   
   

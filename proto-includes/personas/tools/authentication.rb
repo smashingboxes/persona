@@ -72,7 +72,7 @@ DataMapper.auto_upgrade!
 #######################################################
 
 get '/login' do
-  erb :login
+  proto_genesis "login"
 end
 
 get '/logout' do
@@ -175,6 +175,7 @@ module Authentication
     end
 
     private
+    
     def signup_view_with_errors(errors)
       SIGNUP_VIEW.gsub(
         /__ERRORS__/,
