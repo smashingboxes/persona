@@ -35,9 +35,9 @@
     end
     
     
-    # Returns the filepath for the proto-includes views folder
-    def proto_path()
-        proto_path = "../../proto-includes/"
+    # Returns the path to the theme currently in use
+    def current_theme()
+        System.theme
     end
     
     
@@ -48,20 +48,32 @@
     # filename = The file in question
     #
     # Returns a string
-    def look_for(filename="")
+    def look_for(term)
         
-        # Check the /themes/template directory 
-        if File.file? ("./themes/" + current_theme + filename)
-            filename
-        else File.file? (proto_path + filename)            
-            
-            #sanitize 'filename'
-            filename[0] = "" if filename[0] == "/"
-            
-            "#{proto_path + filename}"
+        found = ""
+           
+        # Check the /themes/template directory
+        Dir.foreach("./themes/#{current_theme}/") do |cf|
+          if cf.split('.').first == term
+              found = term
+              return found 
+          end
         end
         
+        # Otherwise, check /proto-includes/views
+        Dir.foreach("./proto-includes/views/") do |cf|
+          if cf.split('.').first == term
+            found = "../../proto-includes/views/#{term}" 
+            return found
+          end
+        end
+        
+        # If it can't find either one, we'll at throw the original term back out
+        # for error handling
+        return term
+        
     end
+    
     
     # Renders a template if it exists, if not it 
     # defaults to the default template in proto-includes
@@ -69,12 +81,8 @@
     # filename => The template file to be rendered
     #
     # Returns an action to render a template file
-    def proto_genesis(filename="")
-            
-        seed = look_for filename
-        
-        erb :"#{seed}"
-        
+    def proto_genesis(filename="")       
+        erb :"#{look_for filename}"
     end
     
     
@@ -93,11 +101,6 @@
       end
       
       return cluster
-    end
-    
-    # Returns the path to the theme currently in use
-    def current_theme()
-        System.theme
     end
 
 

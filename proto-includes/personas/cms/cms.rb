@@ -209,6 +209,7 @@ helpers do
     end
     
     return cluster
+    
   end
     
   # Renders the header template found in the ./views/furniture directory
