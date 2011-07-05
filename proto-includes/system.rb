@@ -102,6 +102,12 @@
       
       return cluster
     end
+    
+    
+    # Syntax sugar for loading personas into the system
+    def load_persona(persona="")
+        require "./proto-includes/personas/#{persona}"
+    end
 
 
 #######################################################

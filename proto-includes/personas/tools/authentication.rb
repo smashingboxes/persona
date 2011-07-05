@@ -108,7 +108,7 @@ helpers do
   def require_user
     login unless authorized?
   end
-  
+
 end
 
 

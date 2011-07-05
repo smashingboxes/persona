@@ -32,11 +32,12 @@
   
   # b) Personas
   #    Careful: Having multiple personalities can make you crazy
-  require './proto-includes/personas/cms/cms.rb'
+  load_persona "cms/cms"
   
   # Change the default directories to point to "themes"
   set :views, Proc.new { File.join(root, "/themes/#{System.theme}/") }
   set :public, Proc.new { File.join(root, "/themes/#{System.theme}/") }
+
 
 #########################################
 # 2. Routes

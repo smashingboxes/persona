@@ -3,16 +3,16 @@
                 <h3>Edit Content</h3>
                 <form action="/update/<%= the_id %>" method="post" id="manageContent">
                     
-                  <%= erb :'../../proto-includes/personas/cms/admin/cheatsheet' %>
+                  <%= get_cheatsheet %>
                   
                   <fieldset>
                     <legend>Parent Page:</legend>
-                     
-                     <select name="parent" id="parent">
-                            <option value="0">None</option>
-                         <% proto_loop "page" do %>
-                              <option value="<%= the_id %>"><%= the_title %></option>
-                         <% end %>
+                    <select name="parent" id="parent">
+                        <option value="0">None</option>
+                        <% parent = the_parent %>
+                        <% proto_loop "page" do %>
+                            <option value="<%= the_id %>" <%= "selected" if parent == @content.id%> ><%= the_title %></option>
+                        <% end %>
                     </select>
                   
                   </fieldset>

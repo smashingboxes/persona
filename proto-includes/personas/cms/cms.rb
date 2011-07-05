@@ -12,10 +12,20 @@
 # 3) Helper Methods                                   #
 #    a) General Helper Methods                        #
 #    b) Protoloop Methods                             #
+#       i) the author                                 #
+#      ii) the_content                                #
+#     iii) the_content_type                           #
+#      iv) the_datetime                               #
+#      vi) the_excerpt                                #
+#     vii) the_id                                     #
+#    viii) the_link                                   #
+#      ix) the_parent                                 #
+#       x) the_title                                  #
+#      xi) the_template                               #
 #                                                     #
 #######################################################
 
-require "./proto-includes/personas/tools/authentication.rb"
+load_persona "tools/authentication"
 
 #######################################################
 # 1) Model
@@ -154,7 +164,7 @@ end
         redirect "/node/#{content.id}"
       else
         content.errors.each do |e|
-          flash[:error] = e
+          flash[:error] = "The following errors occured: #{e}"
         end
           redirect back
       end
@@ -231,6 +241,14 @@ helpers do
   end
   
   
+  # Renders the cheatsheat template found in the ./proto-includes/personas/cms/admin
+  #
+  # Returns an action to render the cheatsheet template
+  def get_cheatsheet()
+    erb :'../../proto-includes/personas/cms/admin/cheatsheet'
+  end
+  
+  
   # Renders the footer template found in the ./views/furniture directory
   #
   # Returns an action to render the footer template
@@ -271,39 +289,30 @@ helpers do
         :include_home => options[:include_home] || false    
     }
     
-    nav = "<nav class='#{local_options[:css_class]}'><ul>"
+    @css_class = local_options[:css_class]
+    @include_home = local_options[:css_class]
     
-    # If specified, add a home link 
-    nav += "<li class='home #{ "current" if ( params[:id] == nil) }'><a href='/'>Home</a></li>" if local_options[:include_home] == true
-    
-    # Now we get all pages without a parent (first level)
-    content = Content.all(:content_type => "page", :parent => 0, :id.not => System.homepage )
-    
-    content.each_with_index do |p, index|
+    def get_position(index, content)
         
         list_style = ""
         
         # Get position
         if index == 0
             list_style += "first"
-        elsif index == content.size - 1
+        elsif index == Content.pages.size - 1
             list_style += "last"
         end
         
         # Is this the current link?
-        if (p.id == params[:id].to_i)
+        if (content.id == params[:id].to_i)
           list_style += " current"
         end
-        
-        nav = nav + "<li #{ 'class="' + list_style+ '"' unless list_style == "" }><a href='/node/#{p.id}'>#{p.title}</a></li>"
+
     end
     
-    nav += "</ul>"
-    nav += "</nav>"
-    
-    return nav
+    proto_genesis "navigation"
+        
   end
-  
 
 
   #######################################################
@@ -342,37 +351,6 @@ helpers do
   end
   
   
-  # Finds the title of a given content entry in the database
-  #
-  # content => An optional overide to display the title of a specific
-  #            content item.
-  #
-  # Retuns the title of the passed object (Be it from the protoloop or argument)
-  def the_title(content=nil)
-    if node = content || @content || Content.get(params[:id])
-      node.title
-    else
-      "<strong>Error:</strong> No title could be found" unless ENV['RACK_ENV'] == 'production'
-    end
-  end
-  
-  
-  # Finds the datetime of a given content entry in the database
-  #
-  # content => An optional overide to display the datetime of a specific
-  #            content item.
-  # output  => An optional overide to specify a format for the returned datetime
-  #
-  # Retuns the datetime of the passed object (Be it from the protoloop or argument)
-  def the_datetime(content=nil, output=nil)
-    if node = content || @content || Content.get(params[:id])
-      output.nil? ? node.created_at : node.created_at.strftime(output)
-    else
-      "<strong>Error:</strong> No creation date could be found" unless ENV['RACK_ENV'] == 'production'
-    end
-  end
-  
-  
   # Finds the content of a given content entry in the database
   #
   # content => An optional overide to display the content of a specific
@@ -392,6 +370,36 @@ helpers do
       "<strong>Error:</strong> No content could be found" unless ENV['RACK_ENV'] == 'production'
     end
       
+  end
+
+  
+  # Finds the name of the template for a given content entry in the database
+  #
+  # Content => An optional argument to dictate the content in question
+  #
+  # Returns the name of of the passed content object
+  def the_content_type(content=nil)
+    if node = content || @content || Content.get(params[:id])
+      node.content_type
+    else
+      "<strong>Error:</strong> No content type information could be found" unless ENV['RACK_ENV'] == 'production'
+    end
+  end
+  
+  
+  # Finds the datetime of a given content entry in the database
+  #
+  # content => An optional overide to display the datetime of a specific
+  #            content item.
+  # output  => An optional overide to specify a format for the returned datetime
+  #
+  # Retuns the datetime of the passed object (Be it from the protoloop or argument)
+  def the_datetime(content=nil, output=nil)
+    if node = content || @content || Content.get(params[:id])
+      output.nil? ? node.created_at : node.created_at.strftime(output)
+    else
+      "<strong>Error:</strong> No creation date could be found" unless ENV['RACK_ENV'] == 'production'
+    end
   end
   
   
@@ -429,7 +437,7 @@ helpers do
       "<strong>Error:</strong> No content could be found" unless ENV['RACK_ENV'] == 'production'
     end
   end
-  
+    
   
   # Creates a link to a given content entry in the database
   #
@@ -459,6 +467,20 @@ helpers do
   end
   
   
+  # Finds the parent of a given piece of content
+  #
+  # Content => An optional argument to dictate the content in question
+  #
+  # Returns the name of of the passed content object
+  def the_parent(content=nil)
+    if node = content || @content || Content.get(params[:id])
+      node.parent
+    else
+      "<strong>Error:</strong> No parent information could be found" unless ENV['RACK_ENV'] == 'production'
+    end
+  end
+  
+  
   # Finds the name of the template for a given content entry in the database
   #
   # Content => An optional argument to dictate the content in question
@@ -473,18 +495,20 @@ helpers do
   end
   
   
-  # Finds the name of the template for a given content entry in the database
+  # Finds the title of a given content entry in the database
   #
-  # Content => An optional argument to dictate the content in question
+  # content => An optional overide to display the title of a specific
+  #            content item.
   #
-  # Returns the name of of the passed content object
-  def the_content_type(content=nil)
+  # Retuns the title of the passed object (Be it from the protoloop or argument)
+  def the_title(content=nil)
     if node = content || @content || Content.get(params[:id])
-      node.content_type
+      node.title
     else
-      "<strong>Error:</strong> No content type information could be found" unless ENV['RACK_ENV'] == 'production'
+      "<strong>Error:</strong> No title could be found" unless ENV['RACK_ENV'] == 'production'
     end
   end
+  
   
   
   # At last, the magic. A yield loop that finds every 
@@ -507,11 +531,11 @@ helpers do
     
     # We don't know if the content is set to anything, so we'll set it up here first
     @old_content = @content || nil
-    
-    
+        
     # Run through each item the aggregator finds
-    aggregator.each do |node|
-    
+    aggregator.each_with_index do |node, index|
+
+      @index = index
       @content = node
       
       yield
