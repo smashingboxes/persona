@@ -1,20 +1,3 @@
-/* ======================================================================================== * SmashingBoxes -     Stylesheet                              * ======================================================================================== * * @author      Nate Hunzaker (Smashing Boxes)                                              * @url         www.smashingboxes.com                                                       * @version     0.01                                                                        * * @notes       This is the base stylesheet for Prototypical. It need not be loaded,        * however includes many default styles to work as a starting point for rapid  * development.                                                                * * ======================================================================================== */
-/* ======================================================================================== * Table of Contents                                    * ======================================================================================== * * 1) Typography & Colors                                                                * a) Variables (Viewable only in the SASS file format)                            * b) Universal Styles                                                             * c) Headings                                                                     * d) Lists                                                                        * e) General                                                                      * f) Utility Classes                                                              * 2) Structure                                                                          * a) Main Content                                                                 * b) Header                                                                       * c) Footer                                                                       * 3) Form Elements                                                                      * a) Template Selection                                                           * b) Login Form                                                                   * c) Content Management Forms                                                     * 4) Misc. Elements                                                                     * a) UI Elements                                                                  * b) Prototypical Admin                                                           * c) Flash Notifications                                                          * * ======================================================================================== */
-html { margin: 0; padding: 0; border: 0; }
-
-.bp-reset-element, body, h1, h2, h3, h4, h5, h6, article, aside, dialog, figure, footer, header, hgroup, nav, section, blockquote, q, th, td, caption, table, div, span, object, iframe, p, pre, a, abbr, acronym, address, code, del, dfn, em, img, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tbody, tfoot, thead, tr { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
-
-article, aside, dialog, figure, footer, header, hgroup, nav, section { display: block; }
-
-blockquote, q { quotes: "" ""; }
-blockquote:before, blockquote:after, q:before, q:after { content: ""; }
-
-th, td, caption { float: none !important; text-align: left; font-weight: normal; vertical-align: middle; }
-
-table { border-collapse: separate; border-spacing: 0; vertical-align: middle; }
-
-a img { border: none; }
-
 /* ======================================================================================= * Prototypical - Base Stylesheet                              * ======================================================================================== * * @author      Nate Hunzaker (Smashing Boxes)                                              * @url         www.smashingboxes.com                                                       * @version     2.02                                                                         * * @notes       This is the base stylesheet for Prototypical. It need not be loaded,        * however includes many default styles to work as a starting point for rapid  * development.                                                                * * ======================================================================================== */
 /* ======================================================================================== * Table of Contents                                    * ======================================================================================== * * 1) Typography & Colors                                                                * a) Variables (Viewable only in the SASS file format)                            * b) Universal Styles                                                             * c) Headings                                                                     * d) Lists                                                                        * e) General                                                                      * f) Utility Classes                                                              * 2) Structure                                                                          * a) Main Content                                                                 * b) Header                                                                       * c) Footer                                                                       * 3) Form Elements                                                                      * a) Template Selection                                                           * b) Login Form                                                                   * c) Content Management Forms                                                     * 4) Misc. Elements                                                                     * a) UI Elements                                                                  * b) Prototypical Admin                                                           * c) Flash Notifications                                                          * * ======================================================================================== */
 html { margin: 0; padding: 0; border: 0; }
@@ -128,9 +111,9 @@ sup { font-size: 0.5em; vertical-align: baseline; }
 .menu { clear: right; overflow: hidden; margin-bottom: 20px; }
 .menu ul { margin-bottom: 2em; }
 .menu ul li { float: left; list-style: none; margin: 0 20px 0 0; }
-.menu ul li a { font-size: 15px; line-height: 20px; }
-.menu ul li ul.children { display: none; position: absolute; }
-.menu ul li:hover ul.children { display: block; }
+.menu ul a { font-size: 15px; line-height: 20px; }
+.menu ul ul.children { display: none; position: absolute; }
+.menu ul:hover > ul.children { display: block; }
 
 /* c) Footer
 ------------------------------------------ */
@@ -189,3 +172,36 @@ label.radioThumb p { margin-left: -17px; margin-bottom: 0; }
 /* a) UI Elements
 ------------------------------------------ */
 button, .button, input[type="submit"], input[type="reset"] { background: #CCC; border: 1px solid #777; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; cursor: pointer; font-size: 12px; font-weight: bold; padding: 8px 12px; text-shadow: #EEE 0px 1px 0; -moz-box-shadow: inset 0 1px 0 white, #aaaaaa 0 1px 2px; -webkit-box-shadow: inset 0 1px 0 white, #aaaaaa 0 1px 2px; -o-box-shadow: inset 0 1px 0 white, #aaaaaa 0 1px 2px; box-shadow: inset 0 1px 0 white, #aaaaaa 0 1px 2px; }
+
+/* b) Prototypical Admin
+------------------------------------------ */
+#admin-toggle { position: fixed; top: 0; left: -1px; width: 41px; background: #222; height: 40px; overflow: hidden; font-size: 14px; text-align: center; -moz-transition: all 0.1s linear; -webkit-transition: all 0.1s linear; -o-transition: all 0.1s linear; transition: all 0.1s linear; -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; -o-border-bottom-right-radius: 4px; -ms-border-bottom-right-radius: 4px; -khtml-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px; -moz-box-shadow: inset 0 0 10px #111111; -webkit-box-shadow: inset 0 0 10px #111111; -o-box-shadow: inset 0 0 10px #111111; box-shadow: inset 0 0 10px #111111; z-index: 9999; }
+#admin-toggle:hover { height: 292px; }
+#admin-toggle nav { width: 26px; margin-left: 3px; }
+#admin-toggle a { background: #222; border: 1px solid #444; color: #fff; display: block; font: bold 20px/30px Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 0 0 7px 0; width: 32px; height: 32px; text-shadow: 0 1px 0 #AAA; text-align: center; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.35); -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.35); -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.35); box-shadow: 0 1px 0px rgba(0, 0, 0, 0.35); -moz-transition: all 0.1s easeOut; -webkit-transition: all 0.1s easeOut; -o-transition: all 0.1s easeOut; transition: all 0.1s easeOut; }
+#admin-toggle a:hover { -moz-box-shadow: 0 0 8px #999999; -webkit-box-shadow: 0 0 8px #999999; -o-box-shadow: 0 0 8px #999999; box-shadow: 0 0 8px #999999; border-color: #777; }
+#admin-toggle a.create { color: #ada; }
+#admin-toggle a.create:hover { -moz-box-shadow: 0 0 8px #99ff99; -webkit-box-shadow: 0 0 8px #99ff99; -o-box-shadow: 0 0 8px #99ff99; box-shadow: 0 0 8px #99ff99; border-color: #9f9; }
+#admin-toggle a.edit { color: #99f; border-color: #66a; }
+#admin-toggle a.edit:hover { -moz-box-shadow: 0 0 8px #5555ff; -webkit-box-shadow: 0 0 8px #5555ff; -o-box-shadow: 0 0 8px #5555ff; box-shadow: 0 0 8px #5555ff; border-color: #99f; }
+#admin-toggle a.delete { color: #f44; border-color: #a66; }
+#admin-toggle a.delete:hover { -moz-box-shadow: 0 0 8px #ff5555; -webkit-box-shadow: 0 0 8px #ff5555; -o-box-shadow: 0 0 8px #ff5555; box-shadow: 0 0 8px #ff5555; border-color: #f99; }
+#admin-toggle a.disabled { color: #444; opacity: 0.4; }
+#admin-toggle a.disabled:hover { border-color: #444; -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35); -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35); -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35); }
+#admin-toggle #icon { background: none; border: none; cursor: pointer; font: italic 30px/34px "Goudy Old Style", "Palatino", "Book Antique", Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif," "Bitstream Vera Serif", "Liberation Serif", Georgia, serif; margin-left: 5px; margin-bottom: 20px; text-shadow: 0 0 50px #eee; -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; }
+#admin-toggle #icon:hover { color: #ff3333; text-shadow: 0 0 5px #ff3333; }
+#admin-toggle #icon:hover { text-shadow: 0 0 10px #ff3333; }
+#admin-toggle *::selection { background: none; }
+#admin-toggle hr { margin-left: 8px; }
+
+/* b) Flash Notifications
+------------------------------------------ */
+.flash { background: #eeeeee; border: 1px solid #d4d4d4; color: #333; cursor: pointer; display: none; font-size: 14px; left: 20px; max-width: 300px; padding: 14px 20px; position: fixed; top: 5px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; -moz-box-shadow: inset 0 1px 1px white; -webkit-box-shadow: inset 0 1px 1px white; -o-box-shadow: inset 0 1px 1px white; box-shadow: inset 0 1px 1px white; z-index: 9999; }
+.flash.success { background-color: #E6EFC2; color: #264409; border-color: #C6D880; -moz-box-shadow: inset 0 1px 0 white, #aaddaa 0 1px 3px; -webkit-box-shadow: inset 0 1px 0 white, #aaddaa 0 1px 3px; -o-box-shadow: inset 0 1px 0 white, #aaddaa 0 1px 3px; box-shadow: inset 0 1px 0 white, #aaddaa 0 1px 3px; }
+.flash.success a { color: #264409; }
+.flash.error, .flash.alert { background-color: #FBE3E4; color: #8A1F11; border-color: #FBC2C4; -moz-box-shadow: inset 0 1px 0 white, #ffcccc 0 1px 3px; -webkit-box-shadow: inset 0 1px 0 white, #ffcccc 0 1px 3px; -o-box-shadow: inset 0 1px 0 white, #ffcccc 0 1px 3px; box-shadow: inset 0 1px 0 white, #ffcccc 0 1px 3px; }
+.flash.error a, .flash.alert a { color: #8a1f11; }
+.flash.notice { background-color: #FFF6BF; color: #514721; border-color: #FFD324; -moz-box-shadow: inset 0 1px 0 white, #cccc66 0 1px 3px; -webkit-box-shadow: inset 0 1px 0 white, #cccc66 0 1px 3px; -o-box-shadow: inset 0 1px 0 white, #cccc66 0 1px 3px; box-shadow: inset 0 1px 0 white, #cccc66 0 1px 3px; }
+.flash.notice a { color: #514721; }
+.flash.info { background-color: #D5EDF8; color: #205791; border-color: #92CAE4; -moz-box-shadow: inset 0 1px 0 white, #ccccff 0 1px 3px; -webkit-box-shadow: inset 0 1px 0 white, #ccccff 0 1px 3px; -o-box-shadow: inset 0 1px 0 white, #ccccff 0 1px 3px; box-shadow: inset 0 1px 0 white, #ccccff 0 1px 3px; }
+.flash.info a { color: #205791; }

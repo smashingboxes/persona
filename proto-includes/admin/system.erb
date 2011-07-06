@@ -21,7 +21,7 @@
                     <label for="homepage">Homepage</label></br>
                     <select name="homepage" id="homepage">
                         <% proto_loop "page" do %>
-                            <option value="<%= the_id %>" <%= "selected" if current_theme === the_id %> ><%= the_title %></option>
+                            <option value="<%= the_id %>" <%= "selected" if System.homepage === the_id %> ><%= the_title %></option>
                         <% end %>
                     </select>
                 </p>

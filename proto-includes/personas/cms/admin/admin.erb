@@ -1,6 +1,6 @@
 <div id="admin-toggle">
   
-  <a id="icon" href="/admin">i</a>
+  <a id="icon" href="/admin"> &#9776;</a>
   
   <nav>
       <a class="create" href="/new" title="Create a new page" draggable="true">+</a>
@@ -15,9 +15,7 @@
       <a class="disabled">&#9997;</a>
       <a class="disabled">&#10006;</a>
   <% end %>
-      <hr/>
-      <a href="/tools/type" title="View Typography">t</a>
-      <a href="/tools/sitemap" title="View Sitemap">s</a>
+  
   </nav>
   
 </div>
@@ -25,10 +23,10 @@
 <style>
     /* Prototypical Admin
     ------------------------------------------ */
-    #admin-toggle                               { position: fixed; top: 0; left: -1px; width: 41px; background: #222; height: 40px; overflow: hidden; font-size: 14px; text-align: center; -moz-transition-property: all 0.1s linear; -webkit-transition-property: all 0.1s linear; -o-transition-property: all 0.1s linear; transition-property: all 0.1s linear; -moz-transition-duration: 1s; -webkit-transition-duration: 1s; -o-transition-duration: 1s; transition-duration: 1s; -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; -o-border-bottom-right-radius: 4px; -ms-border-bottom-right-radius: 4px; -khtml-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px; -moz-box-shadow: inset 0 0 10px #111111; -webkit-box-shadow: inset 0 0 10px #111111; -o-box-shadow: inset 0 0 10px #111111; box-shadow: inset 0 0 10px #111111; z-index: 9999; }
-    #admin-toggle:hover                         { height: 292px; }
-    #admin-toggle nav                           { width: 26px; margin-left: 3px; }
-    #admin-toggle a                             { background: #222; border: 1px solid #444; color: #fff; display: block; font: bold 20px/30px Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 0 0 7px 0; width: 32px; height: 32px; text-shadow: 0 1px 0 #AAA; text-align: center; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.35); -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.35); -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.35); box-shadow: 0 1px 0px rgba(0, 0, 0, 0.35); -moz-transition-property: all 0.1s easeOut; -webkit-transition-property: all 0.1s easeOut; -o-transition-property: all 0.1s easeOut; transition-property: all 0.1s easeOut; -moz-transition-duration: 1s; -webkit-transition-duration: 1s; -o-transition-duration: 1s; transition-duration: 1s; }
+    #admin-toggle                               { position: fixed; top: 5px; left: 5px; background: #222; border: 2px solid #333; height: 38px; overflow: hidden; font-size: 14px; text-align: center; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-radius: 4px; border-radius: 4px; -moz-box-shadow: inset 0 0 10px #111111; -webkit-box-shadow: inset 0 0 10px #111111; -o-box-shadow: inset 0 0 10px #111111; box-shadow: inset 0 0 10px #111111; z-index: 9999; -moz-transition-property: all 0.3s easeOut; -webkit-transition-property: all 0.3s easeOut; -o-transition-property: all 0.3s easeOut; transition-property: all 0.3s easeOut; -moz-transition-duration: 0.3s; -webkit-transition-duration: 0.3s; -o-transition-duration: 0.3s; transition-duration: 0.3s; }
+    #admin-toggle:hover                         { height: 158px;}
+    #admin-toggle nav                           { text-align: center; padding: 0 3px;}
+    #admin-toggle a                             { background: #222; border: 1px solid #444; color: #fff; display: block; font: normal 20px/30px Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 0 0 7px 0; width: 32px; height: 32px; text-shadow: 0 1px 0 #AAA; text-align: center; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.35); -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.35); -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.35); box-shadow: 0 1px 0px rgba(0, 0, 0, 0.35); -moz-transition-property: all 0.3s easeOut; -webkit-transition-property: all 0.3s easeOut; -o-transition-property: all 0.3s easeOut; transition-property: all 0.3s easeOut; -moz-transition-duration: 0.3s; -webkit-transition-duration: 0.3s; -o-transition-duration: 0.3s; transition-duration: 0.3s; }
     #admin-toggle a:hover                       { -moz-box-shadow: 0 0 8px #999999; -webkit-box-shadow: 0 0 8px #999999; -o-box-shadow: 0 0 8px #999999; box-shadow: 0 0 8px #999999; border-color: #777; }
     #admin-toggle a.create                      { color: #ada; }
     #admin-toggle a.create:hover                { -moz-box-shadow: 0 0 8px #99ff99; -webkit-box-shadow: 0 0 8px #99ff99; -o-box-shadow: 0 0 8px #99ff99; box-shadow: 0 0 8px #99ff99; border-color: #9f9; }
@@ -38,9 +36,9 @@
     #admin-toggle a.delete:hover                { -moz-box-shadow: 0 0 8px #ff5555; -webkit-box-shadow: 0 0 8px #ff5555; -o-box-shadow: 0 0 8px #ff5555; box-shadow: 0 0 8px #ff5555; border-color: #f99; }
     #admin-toggle a.disabled                    { color: #444; opacity: 0.4; }
     #admin-toggle a.disabled:hover              { border-color: #444; -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35); -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35); -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35); }
-    #admin-toggle #icon                         { background: none; border: none; cursor: pointer; font: italic 30px/34px "Goudy Old Style", "Palatino", "Book Antique", Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif," "Bitstream Vera Serif", "Liberation Serif", Georgia, serif; margin-left: 5px; margin-bottom: 20px; text-shadow: 0 0 50px #eee; -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; }
-    #admin-toggle #icon:hover                   { color: #ff3333; text-shadow: 0 0 5px #ff3333; }
-    #admin-toggle #icon:hover                   { text-shadow: 0 0 10px #ff3333; }
+    #admin-toggle #icon                         { background: none; border: none; cursor: pointer; font: normal 23px/38px inherit; margin-left: 5px; margin-bottom: 7px; text-shadow: 0 0 50px #eee; -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; }
+    #admin-toggle #icon:hover                   { color: #aaaaff; text-shadow: 0 0 5px #aaaaff; }
+    #admin-toggle #icon:hover                   { text-shadow: 0 0 10px #aaaaff; }
     #admin-toggle *::selection                  { background: none; }
     #admin-toggle hr                            { margin-left: 8px; }
     
