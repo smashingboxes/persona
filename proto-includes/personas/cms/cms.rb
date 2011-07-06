@@ -90,6 +90,7 @@ load_persona "tools/authentication"
   unless Content.first
     @homepage = Content.create(
       :title => "Hello, world!",
+      :content_type => "page"
       )
   end
   
@@ -608,5 +609,4 @@ helpers do
     
   end
 
-  
 end
