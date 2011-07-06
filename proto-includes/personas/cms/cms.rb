@@ -507,11 +507,26 @@ helpers do
     else
       "<strong>Error:</strong> No title could be found" unless ENV['RACK_ENV'] == 'production'
     end
-  end
+  end  
   
   
+  # Determines if a piece of content has children
+  #
+  # type => The type of child content to look for
+  #
+  # Returns a boolean
+  def has_children?(type="page", content=nil)
+    node = content || @content || Content.get(params[:id]) || nil
+    
+    if ( node && Content.all(:parent => node.id, :content_type => type).count > 0 )
+        return true
+    else
+        return false
+    end      
+  end    
+    
   
-  # At last, the magic. A yield loop that finds every 
+  # At last, the magic. A yield loop that finds every instance of a specific content type
   #
   # Type  => Specifies the type of content to run through
   #          the proto_loop.
@@ -546,5 +561,52 @@ helpers do
     @content = @old_content || nil
     
   end
+  
+  
+  # Finds all children of a given content entry in the database
+  #
+  # type    => Specifies the type of content to run through
+  #            the child_loop.
+  # content => An optional overide to display the title of a specific
+  #            content item.
+  # count   => Specifies how many items to include in the
+  #            loop.
+  #
+  def child_loop(type="comment", content=nil, count=nil)
+    
+    # Check for parent
+    parent = content || @content || Content.get(params[:id]) || nil
+    return [] if parent == nil
+    
+    # Check to see if the piece of content even has children
+    # if not, return an empty array
+    aggregator = Content.all(:content_type => type, :parent => parent.id)
+    return [] if aggregator.count == 0
+    
+    # For everything but pages, we want to reverse the order
+    # so that the most recent content displays first.
+    aggregator.reverse! unless type == "page"
+    
+    # Limit the aggregator to the desired content count
+    aggregator = aggregator[0..(count-1)] unless count.nil?
+    
+    # We don't know if the content is set to anything, so we'll set it up here first
+    @old_content = @content || nil
+        
+    # Run through each item the aggregator finds
+    aggregator.each_with_index do |node, index|
+
+      @index = index
+      @content = node
+      
+      yield
+        
+    end
+    
+    # Reset the content back to normal
+    @content = @old_content || nil
+    
+  end
+
   
 end
