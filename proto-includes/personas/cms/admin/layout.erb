@@ -1,10 +1,11 @@
-<head>
-   <meta charset="utf-8">
-	
-   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css" type="text/css" media="all">
-	 <link rel="stylesheet" href="/stylesheets/screen.css" type="text/css" media="all" />
-	 
-	 <%= get_stylesheet("screen") %>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+	  
+	  <link rel="stylesheet" href="/stylesheets/screen.css" type="text/css" media="all" />
+	  <link rel="stylesheet" href="/admin/stylesheets/system.css" type="text/css" media="all" />
 	
     <title>
     <%= 
@@ -30,3 +31,25 @@
     
     <script src="/javascripts/actions.js"></script>
 </head>
+    
+  <body>
+
+    <div id="wrapper">
+    
+        <header id="header">    
+            <h1><a id="logo" href="/"><%= System.title %></a></h1>
+        </header>
+        
+        <%= yield %>       
+    
+    </div>
+
+    <div id="overlays">
+        
+        <%= get_admin %>
+        <%= styled_flash %>
+        
+    </div>
+        
+  </body>
+</html>

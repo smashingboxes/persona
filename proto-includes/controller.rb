@@ -33,10 +33,6 @@
   # b) Personas
   #    Careful: Having multiple personalities can make you crazy
   load_persona "cms/cms"
-  
-  # Change the default directories to point to "themes"
-  set :views, Proc.new { File.join(root, "/themes/#{System.theme}/") }
-  set :public, Proc.new { File.join(root, "/themes/#{System.theme}/") }
 
 
 #########################################
@@ -46,33 +42,6 @@
 get '/' do
   erb :"index.html"
 end
-
-  #####################################################
-  # a) gitSystem Settings
-  #####################################################
-
-  get "/admin" do
-    require_user
-    erb :"../../proto-includes/admin/system"
-  end
-  
-  post "/admin" do 
-  
-    @system = System.first
-  
-    @system.update(
-      :title        => params[:title],
-      :theme        => params[:theme],
-      :description  => params[:description],
-      :homepage     => params[:homepage]
-    )
-    
-    flash[:info] = "System was successfully updated!"
-    
-    redirect "/"
-    
-  end
-  
   
 #########################################
 # 3. Miscellaneous

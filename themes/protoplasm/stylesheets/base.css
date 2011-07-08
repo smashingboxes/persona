@@ -89,7 +89,7 @@ sup { font-size: 0.5em; vertical-align: baseline; }
 
 /* f) Utility Class 
 ---------------------------------------*/
-.amp, .alt { font-family: "Goudy Old Style", "Palatino", "Book Antique", Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif," "Bitstream Vera Serif", "Liberation Serif", Georgia, serif, serif; font-style: italic; font-weight: normal; }
+.amp, .alt { font-family: "Goudy Old Style", "Palatino", "Book Antique", Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif," "Bitstream Vera Serif", "Liberation Serif", Georgia, serif; font-style: italic; font-weight: normal; }
 
 .columns-3 { -moz-column-count: 3; -webkit-column-count: 3; -o-column-count: 3; column-count: 3; -moz-column-gap: 1em; -webkit-column-gap: 1em; -o-column-gap: 1em; column-gap: 1em; }
 

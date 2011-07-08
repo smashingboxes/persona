@@ -73,8 +73,7 @@
         return term
         
     end
-    
-    
+            
     # Renders a template if it exists, if not it 
     # defaults to the default template in proto-includes
     #
@@ -82,7 +81,7 @@
     #
     # Returns an action to render a template file
     def proto_genesis(filename="")       
-        erb :"#{look_for filename}"
+        erb :"#{look_for filename}", { :layout => :"../../proto-includes/views/layout" }
     end
     
     

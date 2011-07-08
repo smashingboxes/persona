@@ -9,6 +9,7 @@
 # 1) Model                                            #
 # 2) Controller                                       #
 #    a) Basic Content CRUD                            #
+#    b) Administration Panel                          #
 # 3) Helper Methods                                   #
 #    a) General Helper Methods                        #
 #    b) Protoloop Methods                             #
@@ -104,6 +105,15 @@ load_persona "tools/authentication"
 # 2) Controller
 #######################################################
 
+# Change the default directories to point to "themes"
+set :views, Proc.new { File.join(root, "/themes/#{System.theme}/") }
+set :public, Proc.new { File.join(root, "/themes/#{System.theme}/") }
+
+module Templates
+  @default_layout = :"../../proto-includes/personas/cms/admin/layout"
+end
+
+# Look for a base layout file to work with
 get '/' do
   @content = Content.get(System.homepage) || Content.first
   proto_genesis 'index'
@@ -119,7 +129,7 @@ end
 
 get "/new" do
   require_user
-  erb :"../../proto-includes/personas/cms/admin/new"
+  erb :"../../proto-includes/personas/cms/admin/new", {:layout => :"../../proto-includes/personas/cms/admin/layout"}
 end
 
   
@@ -130,7 +140,7 @@ end
 
   get "/edit/:id" do
       require_user
-      erb :"../../proto-includes/personas/cms/admin/edit"
+      erb :"../../proto-includes/personas/cms/admin/edit", {:layout => :'../../proto-includes/personas/cms/admin/layout'}
   end
   
   
@@ -191,6 +201,38 @@ end
       redirect "/node/#{@target.id}"
   
   end
+  
+  #####################################################
+  # b) Administration Panel
+  #####################################################
+
+  get "/admin" do
+    require_user
+    
+    erb :"../../proto-includes/personas/cms/admin/system", {:layout => :"../../proto-includes/personas/cms/admin/layout"}
+  end
+  
+  get "/admin/stylesheets/:name" do
+      File.read("proto-includes/personas/cms/admin/#{params[:name]}")
+  end
+  
+  post "/admin" do 
+  
+    @system = System.first
+  
+    @system.update(
+      :title        => params[:title],
+      :theme        => params[:theme],
+      :description  => params[:description],
+      :homepage     => params[:homepage]
+    )
+    
+    flash[:info] = "System was successfully updated!"
+    
+    redirect "/"
+    
+  end
+
 
 
 
@@ -257,6 +299,8 @@ helpers do
     
     output = proto_genesis 'footer'
     output += proto_genesis '../../proto-includes/personas/cms/admin/admin' if authorized?
+    
+    return output
     
   end
     
