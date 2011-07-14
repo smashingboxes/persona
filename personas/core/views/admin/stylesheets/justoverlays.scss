@@ -1,0 +1,135 @@
+/* -------------------------------------------- *
+ *               Persona Admin CSS              *
+ * -------------------------------------------- *
+ *                                              *
+ *  @author   Nate Hunzaker                     *
+ *  @version  3.2                               *
+ *                                              *
+ * -------------------------------------------- *
+
+ * -------------------------------------------- *
+ *               Table of Contents              * 
+ * -------------------------------------------- *
+ *                                              *
+ *  1. Setup                                    *
+ *  2. Admin Toggle                             *
+ *  3. Login Form                               *
+ *  4. Content Management Forms                 *
+ *  3. UI Elements                              *
+ *      a) Fancy Radio Button Thumbnails        *
+ *      b) Flash Notifications                  *
+ *                                              *
+----------------------------------------------- */
+  
+  
+/* 1) Setup                             
+----------------------------------------------- */
+ 
+    @import "compass/css3";
+    @import "compass/utilities";
+    
+    $body_copy  : #222;
+    $primary    : #f33;
+    $accent     : adjust-saturation(lighten($primary, 10%), -10%);
+    
+    /*
+     *   Based upon recommendations by the Aaron Boodman
+     *   article: http://blogs.sitepoint.com/eight-definitive-font-stacks-3/
+     */
+    
+    $sans-serif : Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    $serif      : Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif," "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+    $mono       : Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+    $fancy      : "Goudy Old Style", "Palatino", "Book Antique", $serif;
+
+
+/* 2) Admin Toggle
+----------------------------------------------- */
+
+    #admin-toggle                               { position: fixed; top: 5px; left: 5px; background: #222; border: 2px solid #333; height: 38px; overflow: hidden; font-size: 14px; text-align: center; z-index: 9999; @include border-radius(4px); @include box-shadow(inset 0 0 10px #111111); @include transition(all 0.1s easeOut); @include transition-duration(0.3s);
+        
+        &:hover                                 { height: 158px;}
+        
+        nav                                     { text-align: center; padding: 0 3px;}
+        
+        a                                       { background: #222; border: 1px solid #444; color: #fff; display: block; font: normal 20px/30px $sans-serif; margin: 0 0 7px 0; width: 32px; height: 32px; text-shadow: 0 1px 0 #AAA; text-align: center; @include border-radius(3px); @include box-shadow(0 1px 0px rgba(0, 0, 0, 0.35)); @include transition(all 0.3s easeOut); @include transition-duration(0.3s);
+            
+            &:hover                             { @include box-shadow(0 0 8px #999999); border-color: #777; }
+            
+            &.create                            { color: #ada;
+                &:hover                         { @include box-shadow(0 0 8px #99ff99); border-color: #9f9; }
+            }
+            &.edit                              { color: #99f; border-color: #66a;
+                &:hover                         { @include box-shadow(0 0 8px #5555ff); border-color: #99f; }
+            }
+            &.delete                            { color: #f44; border-color: #a66;
+                &:hover                         { @include box-shadow(0 0 8px #ff5555); border-color: #f99; }
+            }
+            &.disabled                          { color: #444; opacity: 0.4; cursor: not-allowed;
+                &:hover                         { cursor: not-allowed;border-color: #444; @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.35)); }
+            }
+        }
+        
+        #icon                                   { background: none; border: none; cursor: pointer; font: normal 23px/38px inherit; margin-left: 5px; margin-bottom: 7px; text-shadow: 0 0 50px #eee; @include box-shadow(none);
+            &:hover                             { color: #aaaaff; text-shadow: 0 0 5px #aaaaff; text-shadow: 0 0 10px #aaaaff; }
+        }
+        
+        *::selection                            { background: none; }
+        hr                                      { margin-left: 8px; }
+        
+    }
+    
+    
+/* 3) Login Form
+----------------------------------------------- */
+    #login                                      { width: 400px; margin: 0 auto;
+        fieldset                                { border: 1px solid #aaa; @include box-shadow(0 1px 8px rgba(0, 0, 0, 0.3)); @include border-radius(5px); }
+        input.text                              { padding: 10px 0; margin: 10px 0; }
+    }
+
+
+/* 4) Content Management Forms
+----------------------------------------------- */
+    #manageContent                              {
+        #tabs                                   { overflow: hidden; }
+        fieldset                                { margin-top: 40px; }
+        legend                                  { background: white; padding: 0 10px 0; border: 1px solid #CCC; border-bottom: 0; @include border-top-radius(5px); position: relative; top: -12px; }
+    }
+
+
+/* 5) UI Elements
+----------------------------------------------- */
+
+    /* a) Fancy Radio Button Thumbnails
+    ------------------------------------------- */
+        
+        label.radioThumb                        { display: block; float: left; margin: auto 20px; text-align: center;
+            input[type="radio"]                 { display: none;
+                &:checked+img                   { border-color: red; @include box-shadow(0 0 20px #faa); }
+            }
+            img                                 { border: 1px solid #AAA; cursor: pointer; position: relative; bottom: -2px; left: -10px; 
+                &:hover                         { border: 1px solid #88b; @include box-shadow(0 0 20px #ccf); }
+            }
+            span                                { display: block; margin-left: -17px; margin-bottom: 0; }
+        }
+      
+    /* b) Flash Notifications
+    ------------------------------------------- */
+        .flash                                  { background: lighten($body_copy, 80%); border: 1px solid lighten($body_copy, 70%); color: #333; cursor: pointer; display: none; font-size: 14px; left: 20px; max-width: 300px; padding: 14px 20px; position: fixed; top: 5px; @include border-radius(4px); @include box-shadow(inset 0 1px 1px #fff); z-index: 9999;
+        
+            &.success                           { background-color: #E6EFC2; color: #264409; border-color: #C6D880; @include box-shadow(inset 0 1px 0 #fff, #ADA 0 1px 3px);
+                a                               { color:#264409; }
+            }
+            
+            &.error, &.alert                    { background-color: #FBE3E4; color: #8A1F11; border-color: #FBC2C4; @include box-shadow(inset 0 1px 0 #fff, #FCC 0 1px 3px);
+                a                               { color:#8a1f11; }
+            }
+            
+            &.notice                            { background-color: #FFF6BF; color: #514721; border-color: #FFD324; @include box-shadow(inset 0 1px 0 #fff, #CC6 0 1px 3px);
+                a                               { color:#514721;}
+            }
+            
+            &.info                              { background-color: #D5EDF8; color: #205791; border-color: #92CAE4;  @include box-shadow(inset 0 1px 0 #fff, #CCF 0 1px 3px);
+                a                               { color:#205791; }
+            }
+        }

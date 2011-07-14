@@ -1,14 +1,25 @@
 source "http://rubygems.org"
 
 group :default do
+
+  # We need to place compass before sinatra
+  gem 'compass'
+  
+  # Sinatra, naturally  
   gem 'sinatra'
   gem 'sinatra-flash'
+  
+  # Templating
   gem 'maruku'
   gem 'tilt'
+  gem 'haml'
   
   # Data
   gem 'data_mapper'
-
+  
+  # Mail
+  gem 'pony'
+  
 end
 
 group :production do
@@ -22,10 +33,7 @@ group :development do
   # Manage Coffeescript
   gem 'coffee-script'
   gem 'rack-coffee'
-  gem 'therubyracer'
-  gem 'sass'
-  gem 'compass'
-  
+  gem 'therubyracer'  
 end
 
 group :test do

@@ -1,0 +1,33 @@
+<section>
+    <article>
+        <h3>System Settings</h3>
+        <form action="/admin/system" method="post" id="manageContent">
+            <fieldset>
+              <legend>Site Settings: </legend>
+              <% System.properties.each do |s| %>
+                <% unless s.name.to_s === "theme" or s.options[:serial] == true %>
+                <p>
+                    <label for="system[<%= s.name %>]"><%= s.name.capitalize %></label>
+                    <input type="text" name="system[<%= s.name.to_s %>]" id="system[<%= s.name.to_s %>]" value="<%= System.first[s.name] %>" />
+                </p>
+                  <% end %>
+              <% end %>
+                            
+            </fieldset>
+            
+            <fieldset>
+                <legend>Theme:</legend>
+                <% themes.each do |t| %>
+                  <label class="radioThumb">
+                      <input name="system[theme]" id="system[theme]" type="radio" value="<%= t %>" <%= "checked" if current_theme === t %>/>
+                      <img width="64" height="64" src="../themes/<%= t %>/images/screenshot.jpg"/> 
+                      <span><%= t.capitalize %></span>
+                  </label>
+                <% end %>
+            </fieldset>
+            
+            <input type="reset" value="Reset" />
+            <input type="submit" value="Save" />
+        </form>
+    </article>
+</section>

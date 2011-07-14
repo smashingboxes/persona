@@ -1,0 +1,122 @@
+<section id="getZeek">
+    <section id="card-tabs">
+        <h2>Get Zeek</h2>
+        <ul class="tabs">
+            <li><a href="#tabs-1">Activate Card</a></li>
+            <li><a href="#tabs-2">Purchase Card</a></li>
+        </ul>
+        <ul class="content">
+            <li id="tabs-1">
+                <form>
+                    <header>
+                        <h3 class="title">Have you already purchased a card?</h3>
+                        <h4 class="subtitle">Activate it now!</h4>
+                    </header>
+                    <label for="card_number"><input class="text" type="text" placeholder="your card number" /></label>
+                    <label for="card_number"><input class="text" type="text" placeholder="activation code" /></label>
+                    
+                    <footer>
+                        <input class="button" type="submit" value="Activate" />
+                    </footer>
+                </form>
+            </li>
+            <li id="tabs-2">
+                <form>
+                     <header>
+                        <h3 class="title">Do you need a card?</h3>
+                        <h4 class="subtitle">Buy it now!</h4>
+                    </header>
+                    <label for="card_number"><input class="text" type="text" placeholder="your card number" /></label>
+                    <label for="card_number"><input class="text" type="text" placeholder="activation code" /></label>
+                    
+                    <footer>
+                        <input class="button" type="submit" value="Activate" />
+                    </footer>
+                </form>
+
+                </form>
+            </li>
+        </ul>
+    </section>
+    
+    <section class="about">
+        <header>
+            <h2>About Zeek</h2>
+        </header>
+        <p>
+            Get the Latest Deals and Discounts from Local Retailers with Your Card or any Smart Phone. Get the Card and 50% goes towards the cause of  your choice.
+        </p>
+        <footer>
+            <a href="#readmore" class="button">Read More</a>
+        </footer>        
+    </section>
+    <section class="tweets">
+        <header>
+            <h2>Zeek Tweets</h2>
+        </header>
+        <h3>
+            "Some really funny Tweet can go here. Oh Yeah!"
+        </h3>
+        <small>5 Min Ago</small>  
+    </section> 
+      
+</section>
+
+<section class="deals">
+    
+    <header>
+        <h2>Latest Deals</h2>
+    </header>
+
+    <nav>
+        <form>
+            <label><input type="checkbox"/> Monster Deals</label>
+            <label><input type="checkbox"/> Monster Deals</label>
+            <label class="search"><input type="search" class="search" placeholder="Search Deals" /></label>
+        </form>
+    </nav>
+    
+    <ul class="feed">
+    <% proto_loop "post", 3 do %>
+        <li class="post">
+            <h3 class="deal_type monster">Monster Deal</h3>
+            <ul class="actions">
+                <li><a href="#">Email</a></li>
+                <li><a href="#">Text</a></li>
+                <li><a href="#">Follow</a></li>
+                <li><a href="#">Map</a></li>
+                <li><a href="#">Like</a></li>
+            </ul>
+            <div class="content">
+                <img class="thumb" src="http://www.lorempixum.com/65/65" />
+                <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
+                <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
+                <p class="description"><%= the_excerpt %></p>
+            </div>                  
+        </li>
+    <% end %>
+    
+    <% proto_loop "post", 2 do %>
+        <li class="post">
+            <h3 class="deal_type">Zeek Deal</h3>
+            <ul class="actions">
+                <li><a href="#">Email</a></li>
+                <li><a href="#">Text</a></li>
+                <li><a href="#">Follow</a></li>
+                <li><a href="#">Map</a></li>
+                <li><a href="#">Like</a></li>
+            </ul>
+            <div class="content">
+                <img class="thumb" src="http://www.lorempixum.com/65/65" />
+                <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
+                <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
+                <p class="description"><%= the_excerpt %></p>
+            </div>                  
+        </li>
+    <% end %>
+
+    
+        <li class="view_all"><a class="button">View all deals</a></li>
+    </ul>
+    
+</section>

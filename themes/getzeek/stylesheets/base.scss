@@ -35,6 +35,8 @@
  *          c) Content Management Forms                                                     *
  *    4) Misc. Elements                                                                     *
  *          a) UI Elements                                                                  *
+ *          b) Prototypical Admin                                                           *
+ *          c) Flash Notifications                                                          *
  *                                                                                          *
  * ======================================================================================== */
 
@@ -184,13 +186,8 @@
     .menu                                       { clear: right; overflow: hidden; margin-bottom: 20px;
     
         ul                                      { margin-bottom: 2em;
-            li                                  { float: left; list-style: none; margin: 0 20px 0 0;
+            li                                  { float: left; list-style: none; margin: 0 20px 0 0; }
                 a                               { font-size: 15px; line-height: 20px; }
-            
-                ul.children                     { display: none; position: absolute; }
-                
-                &:hover ul.children             { display: block; }
-            }
         }
     
     }        
@@ -230,33 +227,11 @@
     textarea                                    { font-size: 14px; min-height: 250px; padding: 5px 0; }
     form.inline                                 { line-height: 3em; }
     form.inline p                               { margin-bottom: 0; }
-
-
-    /* a) Template Selection
-    ------------------------------------------ */
-    
-    label.radioThumb                            { display: block; float: left; margin: auto 20px; text-align: center;
-        input[type="radio"]                     { display: none;
-            &:checked+img                       { border-color: red; @include box-shadow(0 0 20px #faa); }
-        }
-        img                                     { border: 1px solid #AAA; cursor: pointer; position: relative; bottom: -2px; left: -10px; 
-            &:hover                             { border: 1px solid #88b; @include box-shadow(0 0 20px #ccf); }
-        }
-        p                                       { margin-left: -17px; margin-bottom: 0; }
-    }
-    
-    /* b) Login Form
-    ------------------------------------------ */
-    #login                                      { width: 400px; margin: 0 auto;
-        fieldset                                { border: 1px solid #aaa; @include box-shadow(0 1px 8px rgba(0, 0, 0, 0.3)); @include border-radius(5px); }
-        input.text                              { padding: 10px 0; margin: 10px 0; }
-    }
     
     /* c) Content Management Forms
     ------------------------------------------ */
     
     #manageContent                              {
-        #tabs                                   { overflow: hidden; }
         fieldset                                { margin-top: 40px; }
         legend                                  { background: white; padding: 0 10px 0; border: 1px solid #CCC; border-bottom: 0; @include border-top-radius(5px); position: relative; top: -12px; }
     }
@@ -268,4 +243,4 @@
     /* a) UI Elements
     ------------------------------------------ */
     button, .button, 
-    input[type="submit"], input[type="reset"]       { background: #CCC; border: 1px solid #777; @include border-radius(3px); cursor: pointer; font-size: 12px; font-weight: bold; padding: 8px 12px; text-shadow: #EEE 0px 1px 0; @include box-shadow(inset 0 1px 0 #fff, #AAA 0 1px 2px); }
+    input[type="submit"], input[type="reset"]       { background: #CCC; border: 1px solid #111; @include border-radius(3px); cursor: pointer; font-size: 12px; font-weight: bold; padding: 8px 12px; text-shadow: #EEE 0px 1px 0; @include box-shadow(inset 0 1px 0 #fff, #AAA 0 1px 2px); }

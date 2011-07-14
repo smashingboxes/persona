@@ -3,9 +3,9 @@ require 'bundler'
 
 Bundler.require
     
-require './proto-includes/controller.rb'
+require './personas/core/core.rb'
 require 'sinatra/flash'
 
-puts "\nLet's get Prototypical!\n\n"
+puts "\nPersona.... engage!\n\n"
 
 run Sinatra::Application

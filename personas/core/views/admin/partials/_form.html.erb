@@ -1,0 +1,23 @@
+<fieldset>
+    <% @model.properties.each do |p| %> 
+      <% unless (p.name.to_s === "id") || (@record[p.name].is_a? DateTime) %>
+      <p>
+        <label><%= p.name.to_s.gsub("_", " ").capitalize %></label>
+            
+        <% if p.options[:length] %>
+            <textarea name="record[<%= p.name %>]" placeholder="Enter <%= p.name.to_s.gsub("_", " ") %>"><%= @record[p.name] %></textarea>
+        <% elsif p.options[:flags] %>
+            <select name="record[<%= p.name %>]">
+                <% p.options[:flags].each do |flag| %>
+                    <option value="<%= flag %>" <%= "selected='true'" if @record[p.name] == flag %>><%= flag.capitalize %></option>
+                <% end %>                          
+            </select>
+        <% elsif p.name.to_s === "password" %>
+            <input type="password" class="text" placeholder="Enter <%= p.name %>" name="record[<%= p.name %>]" value="<%= @record[p.name] %>"/>
+        <% else %>
+            <input type="text" class="text" name="record[<%= p.name %>]" value="<%= @record[p.name] %>"/>
+        <% end %>
+      </p>                
+      <% end %>
+  <% end %>
+</fieldset>

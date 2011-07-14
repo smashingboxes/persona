@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+      <meta charset="utf-8">
+  	     	 
+  	  <link rel="stylesheet" href="/admin/stylesheets/screen.css" type="text/css" media="all"/>
+      
+      <title><%= System.theme.capitalize %> Admin</title>
+      
+      <!-- Patch holes in HTML5 support -->
+      
+      <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+      
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+      <script src="/admin/javascripts/system.js"></script>
+                
+  </head>
+
+  <body>    
+        <header id="header">
+            
+            <a id="logo" href="/admin"><%= System.theme.capitalize %> Admin</a>
+            
+            <nav class="utility">
+                <ul>
+                    <li class="user">Welcome, <a href="/admin"><strong><%= current_user.username.capitalize %></strong></a></li>
+                    <li><a href="/logout">Sign Out</a></li>
+                </ul>
+            </nav>
+            
+            <nav class="menu">
+                <ul>
+                    <li><a class="home" href="/" title="Visit homepage">&#8657;</a></li>
+                    <li class="settings"><a href="/admin/system">System Settings</a></li>
+                    <% all_models.each do |m| %>
+                        <% unless m == System %>
+                            <li <%= "class='current'" if (params[:name] && params[:name] === m.name.downcase) %>><a href="/admin/manage/<%= m.name.downcase %>"><%= m.storage_name.capitalize %></a></li>
+                        <% end %>
+                    <% end %>
+                    <li class="tools"><a href="/admin/system">Tools</a></a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <div id="wrapper">
+            <%= yield %>      
+        </div> 
+            
+    </div>
+
+    <div id="overlays">
+    
+        <%= styled_flash %>
+        
+    </div>
+        
+  </body>
+</html>

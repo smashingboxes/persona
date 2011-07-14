@@ -1,0 +1,74 @@
+<article id="deal_tracker">
+    <div class="columns-2"><%= the_content(); %></div>
+    
+    <nav class="filter">
+        <header>
+            Filters
+        </header>
+        <ul>
+            <li><a href="#">Latest Deals <span>&rsaquo;</span></a></li>
+            <li><a href="#">Dining<span>&rsaquo;</span></a></li>
+            <li><a href="#">Entertainment<span>&rsaquo;</span></a></li>
+            <li><a href="#">Shopping<span>&rsaquo;</span></a></li>
+            <li><a href="#">Travel<span>&rsaquo;</span></a></li>
+        </ul>
+    </nav>
+    
+    <section class="deals">
+    
+        <nav>
+            <form>
+                <label><input type="checkbox"/> Monster</label>
+                <label><input type="checkbox"/> Tiny</label>
+                <label class="search"><input type="search" class="search" placeholder="Search Deals" /></label>
+            </form>
+        </nav>
+        
+        <ul class="feed">
+        
+            <li><h2 class="title">Find Deals</h2></li>
+            <li><iframe class="map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=American+Tobacco+District,+Durham&amp;aq=t&amp;sll=37.0625,-95.677068&amp;sspn=46.812293,89.384766&amp;ie=UTF8&amp;hq=American+Tobacco+District,&amp;hnear=Durham,+North+Carolina&amp;ll=35.992771,-78.904464&amp;spn=0.006295,0.012859&amp;t=h&amp;output=embed"></iframe></li>
+            
+        <% proto_loop "post", 3 do %>
+            <li class="post">
+                <div class="split first">
+                    <h3 class="deal_type monster">Monster Deal</h3>
+                    <ul class="actions">
+                        <li><a href="#">Email</a></li>
+                        <li><a href="#">Text</a></li>
+                        <li><a href="#">Follow</a></li>
+                        <li><a href="#">Map</a></li>
+                        <li><a href="#">Like</a></li>
+                    </ul>
+                    <div class="content">
+                        <img class="thumb" src="http://www.lorempixum.com/65/65" />
+                        <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
+                        <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
+                        <p class="description"><%= the_excerpt %></p>
+                    </div> 
+                </div>
+                <div class="split last">
+                    <h3 class="deal_type monster">Monster Deal</h3>
+                    <ul class="actions">
+                        <li><a href="#">Email</a></li>
+                        <li><a href="#">Text</a></li>
+                        <li><a href="#">Follow</a></li>
+                        <li><a href="#">Map</a></li>
+                        <li><a href="#">Like</a></li>
+                    </ul>
+                    <div class="content">
+                        <img class="thumb" src="http://www.lorempixum.com/65/65" />
+                        <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
+                        <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
+                        <p class="description"><%= the_excerpt %></p>
+                    </div> 
+                </div>               
+            </li>
+        <% end %>
+        
+            <li class="view_all"><a class="button">View more deals</a></li>
+        </ul>
+        
+    </section>
+
+</article>
