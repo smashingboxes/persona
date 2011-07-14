@@ -5,7 +5,23 @@
                 <form action="/admin/manage/create/content" method="post" id="manageContent">
                   
                   <%= get_cheatsheet %>
-                    
+                  
+                  <fieldset>
+                    <p>
+                      <label for="title">Page Title</label><br>
+                      <input type="text" class="text" name="record[title]" id="title" placeholder="Lorem Ipsum" />
+                    </p>
+        
+                    <p>
+                      <label for="body">Markdown Content:</label><br>
+                      <textarea name="record[body]" id="body" rows="5" cols="20" placeholder="Write something..."><%= @page.body unless @page.nil? %></textarea>
+                    </p>
+        
+                    <input type="reset" value="Reset" class="button" />
+                    <input type="submit" value="Create" class="button"/>
+        
+                  </fieldset>
+                  
                   <fieldset>
                     <legend>Content Type:</legend>
                     <select name="record[content_type]" id="content_type">
@@ -34,22 +50,6 @@
                      
                   </fieldset>
 
-                  <fieldset>
-                    <legend>Content:</legend>
-                    <p>
-                      <label for="title">Page Title</label><br>
-                      <input type="text" class="text" name="record[title]" id="title" placeholder="Lorem Ipsum" />
-                    </p>
-        
-                    <p>
-                      <label for="body">Markdown Content:</label><br>
-                      <textarea name="record[body]" id="body" rows="5" cols="20" placeholder="Write something..."><%= @page.body unless @page.nil? %></textarea>
-                    </p>
-        
-                    <input type="reset" value="Reset" class="button" />
-                    <input type="submit" value="Create" class="button"/>
-        
-                  </fieldset>
                 </form>
 
             <hr/>

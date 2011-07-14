@@ -57,7 +57,7 @@
     /* b) Universal Styles
     ---------------------------------------*/
     html                                    { background: #fff; height: 100%; @include background-image(linear-gradient(#eeeeee, #ffffff)); background-repeat: repeat-x; }
-    body                                    { color: $body_copy; font: normal 14px/1.5em $sans-serif; }
+    body                                    { color: $body_copy; font: normal 14px/1.5em $sans-serif; padding-bottom: 80px;}
 
     /* c) Headings
     ---------------------------------------*/
@@ -163,19 +163,20 @@
             ul                                  { margin: auto; width: 950px; min-height: 25px;
                 li                              { float: left; list-style: none; margin-right: 15px;
                     a                           { background: #666; border: 1px solid #888; border-width: 1px 1px 0; color: #fff; display: block; padding: 4px 10px 4px; text-shadow: 0 1px 2px #111; @include border-top-radius(5px); @include box-shadow(0 0 4px #222); 
-                        
                         &:hover                 { border-color: #999; background: #777; text-shadow: 0 0 5px #fff;}
-                        
-                        &.home                  { background: rgb(245, 127, 0); border: 1px solid rgb(255, 190, 60); border-width: 1px 1px 0; @include background-image(linear-gradient(#ff9d00, #f57f00)); 
-                            &:hover             { text-shadow: 0 0 5px #ff0;}
-                        }
-
                     }
+                                            
                 }
                 
                 li.current a                    { border-color: #ccc;  background: #999; }
                 
-                li.settings                     { margin-right: 79px;
+                li.home                         { margin-right: 50px;
+                    a                           { background: rgb(245, 127, 0); border: 1px solid rgb(255, 190, 60); border-width: 1px 1px 0; @include background-image(linear-gradient(#ff9d00, #f57f00)); 
+                        &:hover                 { text-shadow: 0 0 5px #ff0; }
+                    }
+                }
+  
+                li.settings                     { margin-left: 15px; float: right;
                     a                           { background: #677; border: 1px solid #899; border-width: 1px 1px 0; 
                         &:hover                 { text-shadow: 0 0 5px #aff;}
                     }
@@ -353,3 +354,8 @@
             p, ul, ol                           { background: #FFE; border: 1px ridge #fda; padding: 5%; @include box-shadow(0 1px 4px #EDA); }
             .title                              { background: #FEA; color: #333; padding: 9px; margin: -21px -18px 10px; border-top: 1px solid #FFD;text-shadow: 0 1px 0 #fff; text-align: center; border-bottom: 1px solid #FDA; }
         }
+        
+    /* e) Media Boxes
+    ------------------------------------------- */ 
+        .mediabox                               { background:#fefefe; padding: 2% 2%; width: 26%; margin: 1.2%; border: 1px solid #d9d9d9; float: left; @include box-shadow(0 1px 5px #ddd); }
+             

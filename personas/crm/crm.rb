@@ -7,6 +7,9 @@
     property :company,         String
     property :email,           String
     property :website,         String
+    
+    property :created_at,         DateTime,                                                    :default => Time.now
+    property :updated_at,         DateTime,                                                    :default => Time.now
       
   end
         

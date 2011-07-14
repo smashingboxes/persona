@@ -1,0 +1,29 @@
+<style>
+    table           { width: 300px; clear: none; float: left; margin: 0 16px 0 0;}
+    table th        { text-align: left; }
+    table tr td     { text-align: left; }
+</style>
+
+<section>
+    <article>
+        <h1>Data Model</h1>
+        <hr/>
+        <% all_models.each do |m| %>
+            <table>
+              <caption><%= m.name.capitalize %> </caption>
+              <thead>
+                  <th>Attribute Name</th>
+                  <th>Attribute Type</th>
+              </thead>
+              <tbody>
+                <% m.first.attributes.each do |a| %>
+                    <tr>
+                        <td><%= a[0].to_s.gsub("_", " ").capitalize %></td>
+                        <td><%= a[0].class %></td>
+                    </tr>
+                <% end %>
+              </body>
+            </table>
+        <% end %>
+   </article>
+</section>

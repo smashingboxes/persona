@@ -24,13 +24,13 @@
   # Load admin styles through Compass
   get "/admin/stylesheets/:name.css" do
     content_type 'text/css', :charset => 'utf-8'
-    scss(:"../../personas/core/views/admin/stylesheets/#{params[:name]}", Compass.sass_engine_options )
+    scss(:"../../personas/core/views/stylesheets/#{params[:name]}", Compass.sass_engine_options )
   end
   
   get "/admin/javascripts/:name" do
       
       content_type 'text/javascript'
-      File.read( "personas/core/views/admin/javascripts/#{params[:name]}" )
+      File.read( "personas/core/views/javascripts/#{params[:name]}" )
       
   end
   
@@ -40,12 +40,12 @@
   
   get '/admin' do
     require_user
-    erb :"../../personas/core/views/admin/index", :layout => :"../../personas/core/views/admin/layout.html"
+    erb :"../../personas/core/views/index", :layout => :"../../personas/core/views/layout.html"
   end
   
   get '/admin/system' do
     require_user
-    erb :"../../personas/core/views/admin/system", :layout => :"../../personas/core/views/admin/layout.html"
+    erb :"../../personas/core/views/system", :layout => :"../../personas/core/views/layout.html"
   end
   
   post '/admin/system' do
@@ -72,7 +72,7 @@
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
       @record = @model.new(params[:record])
       
-      erb :"../../personas/core/views/admin/new", :layout => :"../../personas/core/views/admin/layout.html"
+      erb :"../../personas/core/views/new", :layout => :"../../personas/core/views/layout.html"
     end
     
     post '/admin/manage/create/:name' do
@@ -95,7 +95,7 @@
         flash.now[:error] = "<strong>Error#{"s" if @record.errors.count > 1}:</strong><br/>#{errors}"
         
         # Go back, only maintain old values
-        erb :"../../personas/core/views/admin/new", :layout => :"../../personas/core/views/admin/layout.html", :locals => { :"@record" => @record }
+        erb :"../../personas/core/views/new", :layout => :"../../personas/core/views/layout.html", :locals => { :"@record" => @record }
       end
     end
       
@@ -107,7 +107,7 @@
     get '/admin/manage/:name' do
       require_user
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
-      erb :"../../personas/core/views/admin/manage", :layout => :"../../personas/core/views/admin/layout.html"
+      erb :"../../personas/core/views/manage", :layout => :"../../personas/core/views/layout.html"
     end
     
     
@@ -120,7 +120,7 @@
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
       @record = @model.get(params[:id])
       
-      erb :"../../personas/core/views/admin/edit", :layout => :"../../personas/core/views/admin/layout.html"
+      erb :"../../personas/core/views/edit", :layout => :"../../personas/core/views/layout.html"
     end
       
     post '/admin/manage/:name/edit/:id' do

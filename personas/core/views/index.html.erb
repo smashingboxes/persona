@@ -1,0 +1,20 @@
+<section>
+    <article>
+        <h3>Welcome to <strong><%= System.theme.capitalize %></strong></h3> 
+        <hr/>
+        <% all_models.each do |m| %>
+            <% unless m == System %>
+                <div class="mediabox">
+                    <h4><strong><%= m.name.capitalize %>s</strong></h4>
+                    <p><strong><%= m.count %> Entries </strong>
+                    <% if m.count > 0 %>
+                        | Last updated on <%= m.all(:order => :updated_at).first.updated_at.strftime("%B %e, %Y") %>
+                    <% end %>
+                    </p>
+                    <hr/>
+                    <a class="button" href="/admin/manage/<%= m.name.downcase %>">View <%= m.name.downcase %>s</a>
+                </div>
+            <% end %>
+        <% end %>
+    </article>
+</section>

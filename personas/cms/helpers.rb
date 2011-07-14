@@ -50,7 +50,7 @@ helpers do
   #
   # Returns an action to render the cheatsheet template
   def get_cheatsheet()
-    erb :'../../personas/cms/views/admin/cheatsheet'
+    erb :'../../personas/cms/views/cheatsheet'
   end
   
   
@@ -60,7 +60,7 @@ helpers do
   def get_footer()
     
     output = proto_genesis 'footer'
-    output += proto_genesis '../../personas/cms/views/admin/admin' if authorized?
+    output += proto_genesis '../../personas/cms/views/admin' if authorized?
     
     return output
     
@@ -71,7 +71,7 @@ helpers do
   #
   # Returns an action to render the admin menu template
   def get_admin()
-    proto_genesis '../../personas/cms/views/admin/admin'
+    proto_genesis '../../personas/cms/views/admin'
   end
   
   

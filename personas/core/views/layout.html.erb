@@ -15,6 +15,9 @@
       <![endif]-->
       
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+      <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/ui-darkness/jquery-ui.css" type="text/css" media="all"/>
+      
       <script src="/admin/javascripts/system.js"></script>
                 
   </head>
@@ -33,14 +36,14 @@
             
             <nav class="menu">
                 <ul>
-                    <li><a class="home" href="/" title="Visit homepage">&#8657;</a></li>
-                    <li class="settings"><a href="/admin/system">System Settings</a></li>
+                    <li class="home"><a href="/admin" title="Go to dashboard">&#8657;</a></li>
                     <% all_models.each do |m| %>
                         <% unless m == System %>
                             <li <%= "class='current'" if (params[:name] && params[:name] === m.name.downcase) %>><a href="/admin/manage/<%= m.name.downcase %>"><%= m.storage_name.capitalize %></a></li>
                         <% end %>
                     <% end %>
-                    <li class="tools"><a href="/admin/system">Tools</a></a></li>
+                    <li class="settings"><a href="/admin/system">System Settings</a></li>
+                    <li class="tools"><a href="">Tools</a></a></li>
                 </ul>
             </nav>
         </header>
