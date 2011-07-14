@@ -1,6 +1,6 @@
 <fieldset>
     <% @model.properties.each do |p| %> 
-      <% unless (p.name.to_s === "id") || (@record[p.name].is_a? DateTime) %>
+      <% unless (p.name.to_s === "id") || (p.options[:primitive] == DateTime) %>
       <p>
         <label><%= p.name.to_s.gsub("_", " ").capitalize %></label>
             

@@ -14,9 +14,11 @@
     property :template,           String,                                                      :default  => "single"
     property :author,             Integer,                                                     :default => User.first.id
     
+    property :position,           Integer,                                                     :default => 0
+    
     property :created_at,         DateTime,                                                    :default => Time.now
     property :updated_at,         DateTime,                                                    :default => Time.now
-        
+  
     # Allows to use the content_type as a class method, e.g., Content.post, Content.page
     # Todo: Add an singularize method and use the plural form of content_type as method name.
     def self.method_missing(name, *args)

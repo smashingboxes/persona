@@ -6,7 +6,7 @@
 
     <section class="deals">    
     <nav>
-        <header>Fundraisers</header>
+        <header>Saved Deals</header>
     </nav>
     
     <ul class="feed">
@@ -14,13 +14,13 @@
         <li class="post">
             <h3 class="deal_type">CFCC Alumni</h3>
             <ul class="actions">
-                <li><a href="#">Support this fundraiser +</a></li>
+                <li><a href="#">+</a></li>
             </ul>
             <div class="content">
                 <img class="thumb" src="http://www.lorempixum.com/65/65" />
                 <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
                 <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
-                <p class="description"><%= the_excerpt %></p>
+                <p class="description"><%= the_excerpt(@content, 10) %></p>
             </div>                  
         </li>
     <% end %>
