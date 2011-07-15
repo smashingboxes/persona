@@ -16,7 +16,8 @@ group :default do
   
   # Manage Coffeescript
   gem 'coffee-script'
-  
+  gem "therubyracer"
+    
   # Data
   gem 'data_mapper'
   
