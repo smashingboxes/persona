@@ -7,8 +7,12 @@
               <% System.properties.each do |s| %>
                 <% unless s.name.to_s === "theme" or s.options[:serial] == true %>
                     <p>
-                        <label for="system[<%= s.name %>]"><%= s.name.capitalize %></label>
-                        <input type="text" name="system[<%= s.name.to_s %>]" id="system[<%= s.name.to_s %>]" value="<%= System.first[s.name] %>" />
+                        <label for="system[<%= s.name %>]"><%= s.name.to_s.capitalize.gsub("_", " " ) %></label>
+                        <% if s.name.to_s.include?("password") %>
+                            <input type="password" name="system[<%= s.name.to_s %>]" id="system[<%= s.name.to_s %>]" value="<%= System.first[s.name] %>" />
+                        <% else %>
+                            <input type="text" name="system[<%= s.name.to_s %>]" id="system[<%= s.name.to_s %>]" value="<%= System.first[s.name] %>" />
+                        <% end %>
                     </p>
                   <% end %>
               <% end %>

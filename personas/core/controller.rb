@@ -37,13 +37,15 @@
     erb :index
   end
   
-  get '/admin' do
+  before '/admin' do
     require_user
+  end
+  
+  get '/admin' do
     erb :"../../personas/core/views/index", :layout => :"../../personas/core/views/layout.html"
   end
   
   get '/admin/system' do
-    require_user
     erb :"../../personas/core/views/system", :layout => :"../../personas/core/views/layout.html"
   end
   
@@ -70,7 +72,7 @@
   #########################################
       
     get '/admin/manage/create/:name' do
-      require_user
+    
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
       @record = @model.new(params[:record])
       
@@ -78,7 +80,6 @@
     end
     
     post '/admin/manage/create/:name' do
-      require_user
       
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}      
       @record = @model.new(params[:record])
@@ -107,7 +108,6 @@
   ######################################### 
     
     get '/admin/manage/:name' do
-      require_user
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
       erb :"../../personas/core/views/manage", :layout => :"../../personas/core/views/layout.html"
     end
@@ -118,7 +118,6 @@
   #########################################
 
     get '/admin/manage/:name/edit/:id' do
-      require_user
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
       @record = @model.get(params[:id])
       
@@ -126,7 +125,6 @@
     end
       
     post '/admin/manage/:name/edit/:id' do
-      require_user
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
       @record = @model.get(params[:id])
       
@@ -151,7 +149,6 @@
   #########################################
     
     get '/admin/manage/delete/:name/:id' do
-      require_user
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}      
       @record = @model.get(params[:id])
 

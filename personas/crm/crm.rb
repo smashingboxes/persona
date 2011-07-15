@@ -1,5 +1,6 @@
 
   require 'data_mapper'
+  require "./personas/tools/mail/mail.rb"
 
   # Creates a datatable to support contact information
   class Contact

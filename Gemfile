@@ -31,7 +31,8 @@ group :production do
 end
 
 group :development do
-  gem 'dm-sqlite-adapter'  
+  gem 'sqlite3'
+  gem 'dm-sqlite-adapter' 
 end
 
 group :test do

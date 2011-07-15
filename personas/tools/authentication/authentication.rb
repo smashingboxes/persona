@@ -42,30 +42,21 @@ class User
 end
 
 DataMapper.finalize
-DataMapper.auto_upgrade!
+User.auto_upgrade!
 
 if User.all.count == 0 
+    
     # Create the default admin
     @user = User.create(
       :account_level => 5,
       :username      => "admin",
-      :password      => "Smashingid3a",
+      :password      => "admin",
       :first_name    => "Persona",
       :last_name     => "Admin",
       :created_at    => Time.now,
       :updated_at    => Time.now
     )
     
-    # Create the default admin
-    @nate = User.create(
-      :account_level => 5,
-      :username      => "nate",
-      :password      => "Smashingid3a",
-      :first_name    => "Nate",
-      :last_name     => "Hunzaker",
-      :created_at    => Time.now,
-      :updated_at    => Time.now
-    )
 end
 
 #######################################################

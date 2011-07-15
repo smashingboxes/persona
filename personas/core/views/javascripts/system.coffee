@@ -11,7 +11,7 @@ $(document).ready ->
         index = $(this).index()
         
         $(this).animate({top: "+=" + (90 + (index * 70) )}, 200).fadeTo(500, 0.95)
-        
+                
         $(this).hover( 
           -> $(this).stop().fadeIn()
           -> $(this).stop().delay(1000).fadeOut()
