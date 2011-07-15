@@ -49,11 +49,18 @@
   end
   
   post '/admin/system' do
-            
-    System.first.update(params[:system])
-      
-    flash[:info] = "<strong>System</strong> was successfully updated!"
-        
+    _theme = System.theme
+    
+    # If there is a change to the theme, we need to load in the new personas
+    if _theme != params[:theme]
+      System.first.update(params[:system])
+      flash[:info] = "<strong>System</strong> was successfully updated!"
+    else
+      System.first.update(params[:system])
+      require "./themes/#{System.theme}/config.rb"
+      flash[:success] = "New theme was successfully integrated!"
+    end
+    
     redirect "/admin"
     
   end
