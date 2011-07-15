@@ -21,7 +21,7 @@
                     <tr>
                         <% e.attributes.each do |a| %>
                             <% unless (@model.first[a[0]].is_a? DateTime) || (a[0].to_s === "password") %>
-                                <td><%= a[1].to_s.capitalize %></td>
+                                <td><%= a[1].to_s.capitalize.split(" ")[0..20].join(" ") %><%= "..." if a[1].to_s.split(" ").length > 20 %></td>
                             <% end %>
                         <% end %>
                         <td><a href="/admin/manage/<%= @model.name.downcase %>/edit/<%= e.id %>">Edit</a></td>
