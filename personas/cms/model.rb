@@ -1,7 +1,9 @@
 #######################################################
 # CMS Model
 #######################################################
-
+  
+  require 'data_mapper'
+  
   class Content
     include DataMapper::Resource
   
@@ -27,9 +29,8 @@
     
   end
   
-  DataMapper.finalize
-  DataMapper.auto_upgrade!
-
+  Content.auto_upgrade!
+    
   # Updates the system data table with more attributes
   class System
     
@@ -45,10 +46,10 @@
     end 
     
   end
-        
-  DataMapper.auto_upgrade!
-
-    
+  
+  DataMapper.finalize
+  System.auto_upgrade! 
+  
   # Create the default settings
   unless Content.first
     @homepage = Content.create(

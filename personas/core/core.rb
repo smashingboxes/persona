@@ -16,7 +16,7 @@
   require "#{_location}/helpers.rb"
   
   # Load core files
-  require_all 'rubygems', 'bundler/setup','compass', 'sinatra', 'haml', 'sinatra/flash', 'erb', 'tilt', 'maruku'
+  require_all 'rubygems', 'bundler/setup','compass', 'sinatra', 'haml', 'sinatra/flash', 'erb', 'tilt', 'maruku', "coffee-script"
   
   # Required for flash notifications
   enable :sessions

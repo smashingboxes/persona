@@ -6,4 +6,3 @@
 # tread lightly
 
 load_persona "cms"
-load_persona "crm"

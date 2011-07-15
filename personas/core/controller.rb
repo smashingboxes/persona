@@ -27,11 +27,10 @@
     scss(:"../../personas/core/views/stylesheets/#{params[:name]}", Compass.sass_engine_options )
   end
   
-  get "/admin/javascripts/:name" do
-      
+  # Handle javascript and coffeescript
+  get "/admin/javascripts/:name.js" do
       content_type 'text/javascript'
-      File.read( "personas/core/views/javascripts/#{params[:name]}" )
-      
+      coffee :"../../personas/core/views/javascripts/#{params[:name]}"
   end
   
   get '/' do
@@ -51,16 +50,12 @@
   post '/admin/system' do
     _theme = System.theme
     
-    # If there is a change to the theme, we need to load in the new personas
-    if _theme != params[:theme]
-      System.first.update(params[:system])
-      flash[:info] = "<strong>System</strong> was successfully updated!"
-    else
-      System.first.update(params[:system])
-      require "./themes/#{System.theme}/config.rb"
-      flash[:success] = "New theme was successfully integrated!"
-    end
+    System.first.update(params[:'system'])
     
+    require "./themes/#{System.theme}/config.rb"
+    
+    flash[:success] = "<strong>System</strong> was successfully updated"
+
     redirect "/admin"
     
   end

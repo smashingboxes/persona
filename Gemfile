@@ -14,6 +14,9 @@ group :default do
   gem 'tilt'
   gem 'haml'
   
+  # Manage Coffeescript
+  gem 'coffee-script'
+  
   # Data
   gem 'data_mapper'
   
@@ -27,13 +30,7 @@ group :production do
 end
 
 group :development do
-
-  gem 'dm-sqlite-adapter'
-
-  # Manage Coffeescript
-  gem 'coffee-script'
-  gem 'rack-coffee'
-  gem 'therubyracer'  
+  gem 'dm-sqlite-adapter'  
 end
 
 group :test do
