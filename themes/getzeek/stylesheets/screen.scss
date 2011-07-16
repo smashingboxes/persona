@@ -248,9 +248,48 @@ Version: 1
     
     #deal_tracker                           {
         
-        nav.filter                          { width: 30%; float: left; 
+        nav.filter                          { width: 30%; float: left; overflow: hidden;
+            
+            ul, li                          { background: none; border: none; list-style: circle;}
+            
+            #accordion                      { background: none; }
+            div                             { background: #a1d54d; list-style: none; margin: 0; @include linear-gradient( color-stops(#a1d54d, #8cc644) ); 
+                h3                          { border: 1px solid #80ad45; border-top: 0; color: #fff; display: block; font: bold 15px/54px $century_gothic; padding: 0 20px; text-shadow: 0 1px 3px #60852C; 
+                    span                    { float: right; font-size: 40px; line-height: 50px; font-family: $sans-serif; }
+                     &:active               { @include box-shadow(inset 2px 2px 5px #555);}
+                }
+
+                &:hover                     { background: #aaa; @include linear-gradient(color-stops(#bbb, #999));  
+                    a                       { text-shadow: 0 1px 3px #555; }
+                }
+                
+               
+            }
+            
             header                          { border: 1px solid #80AD45; @include border-top-right-radius(0); }
+            
+            .ui-accordion-header            { background: #a1d54d; border: 1px solid #8cc644; border-color: #8cc644 #8cc644 #7BAD3B; margin: 0 0 0; @include linear-gradient( color-stops(#a1d54d, #8cc644)); @include border-radius(0);
+                a                           { color: #fff; font-size: 18px; text-shadow: 0 1px 3px #60852c; }
+                .ui-icon                    { display: none; }
+                &:hover                     { background: #aaa; @include linear-gradient(color-stops(#bbb, #999)); border: 1px solid #666; color: #fff; @include box-shadow(inset 0px 1px 0px #ddd);   
+                    a                       { text-shadow: 0 1px 3px #555; }
+                }
+                &:active                    { @include box-shadow(inset 2px 2px 5px #777);}
+                
+               
+                /* Active */
+                &.ui-state-active           {
+                    a                       { border-bottom: 1px solid #aaa; }
+                }
+            }
+            .ui-accordion-content           { border: 1px solid #8cc644; border-color: #8cc644 #8cc644 #7BAD3B; background: #bfe091; margin: -1px 0 0 10%; @include border-radius(0);
+                div                         { background: none; display: block; }
+                
+                &:hover                     { border: 1px solid #8cc644; border-color: #8cc644 #8cc644 #7BAD3B; background: #bfe091; }
+            }
         }
+        
+        
         
         .deals                              { width: 70%; position: relative; left: 1px;
             nav                             { @include border-top-left-radius(0); }
@@ -315,7 +354,52 @@ Version: 1
         }
     }
     
-    
+    /* Fundraiser Feed
+    -------------------------------------- */
+     #fundraiser_feed                       {
+     
+        header                              {border: 1px solid #80AD45;}
+                    
+        .col1                               { width: 54.2%; float: left; }
+        .col2                               { width: 42%; float: right; }
+                
+        .profile                            { margin-bottom: 72px; overflow: hidden;
+            .col1                           { float: left; width: 37.5%; 
+                img                         { margin-bottom: 20px; }
+            }
+            .col2                           { float: right; width: 58%; 
+                h2                          { margin-bottom: 20px; 
+                    .fundraiser             { margin-bottom: 50px; }
+                }
+            }
+            
+            ul.actions                      { background: #d6f4fe; background: rgba(255, 255, 255, 0.3); border: 1px solid #b0d6e3; overflow: hidden; @include border-radius(12px); width: 100%;
+                li                          { float: left; list-style: none; margin: 5px;}
+            }
+        }
+        
+        
+        .support                            { clear: both; font-size: 17px; line-height: 1.5em;}
+        .map                                { width: 100%; height: 270px;}
+
+        ul.feed                             { border-width: 0 1px 1px; padding: 0; overflow: hidden;
+            
+            li.post                         { background: #d6f4fe; background: rgba(255, 255, 255, 0.3); border: none; list-style: none; margin: 0; padding: 15px;                     
+                img.thumb                   { border: 1px solid #aaa; float: left; margin-right: 10px; }
+                h4                          { font-weight: normal; margin: 0; }
+                .meta                       { font-weight: bold; font-size: 10px; margin: 0; position: relative; top: 15px; text-align: right;}
+                .description                { color: #111; }
+            }
+
+            li.view_all                     { border-top: 1px solid #aaa; border-bottom: 0; list-style: none; margin: 0; padding: 25px; text-align: right; @include box-shadow(0 0 26px #777);}
+        }
+        
+        article                             { background: #d6f4fe; background: rgba(255, 255, 255, 0.3); overflow: hidden; padding: 10px; text-align: right;
+            a.button                        { line-height: 3em; }
+        }
+        
+    }
+
     /* Businesses and Fundraisers
     -------------------------------------- */
     #organization                           {

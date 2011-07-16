@@ -1,0 +1,31 @@
+<section id="fundraiser_feed">
+    
+    <h2>My Fundraiser Feed</h2>
+
+    <section class="col1">
+                
+        <nav>
+            <header>Recent Updates</header>
+        </nav>
+        
+        <ul class="feed">
+        <% Deal.all.each do |deal| %>
+            <li class="post">
+                <img class="thumb" src="http://www.lorempixum.com/70/70" />
+                <p class="description"><%= deal.description.split(" ")[0..20].join(" ") + "..." %></p>
+                <p class="meta"><time datetime="deal.created_at">1 day ago</time></p>
+            </li>
+        <% end %>    
+        </ul>
+    </section>
+    
+    <section class="col2">
+        <nav>
+            <header>Update Your Customers</header>
+        </nav>
+        <article>
+            <textarea></textarea>
+            <a class="button">Update</a>
+        </article>    
+    </section>
+</section>
