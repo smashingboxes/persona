@@ -1,10 +1,8 @@
-<article id="deal_tracker">
+<article id="search_results">
     <div class="columns-2"><%= the_content(); %></div>
     
     <nav class="filter">
-        <header>
-            Filters
-        </header>
+        <header></header>
         <ul>
             <li><a href="#">Latest Deals <span>&rsaquo;</span></a></li>
             <li><a href="#">Dining<span>&rsaquo;</span></a></li>
@@ -26,8 +24,7 @@
         
         <ul class="feed">
         
-            <li><h2 class="title">Find Deals</h2></li>
-            <li><iframe class="map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=American+Tobacco+District,+Durham&amp;aq=t&amp;sll=37.0625,-95.677068&amp;sspn=46.812293,89.384766&amp;ie=UTF8&amp;hq=American+Tobacco+District,&amp;hnear=Durham,+North+Carolina&amp;ll=35.992771,-78.904464&amp;spn=0.006295,0.012859&amp;t=h&amp;output=embed"></iframe></li>
+            <li><h2 class="title">Search Results</h2></li>
             
         <% Deal.all.each do |deal| %>
             <li class="post">
@@ -44,7 +41,7 @@
                         <img class="thumb" src="http://www.lorempixum.com/65/65" />
                         <h4><a href=""><%= deal.title %></a></h4>
                         <p class="meta"><time datetime="<%= deal.created_at %>"><%= deal.created_at.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
-                        <p class="description"><%= truncate(deal.description, 10, true) %></p>
+                        <p class="description"><%= truncate(deal.description, 6, true) %></p>
                     </div> 
                 </div>
                 <div class="split last">
@@ -60,7 +57,7 @@
                         <img class="thumb" src="http://www.lorempixum.com/65/65" />
                         <h4><a href=""><%= deal.title %></a></h4>
                         <p class="meta"><time datetime="<%= deal.created_at %>"><%= deal.created_at.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
-                        <p class="description"><%= truncate(deal.description, 10, true) %></p>
+                        <p class="description"><%= truncate(deal.description, 6, true) %></p>
                     </div> 
                 </div>           
             </li>

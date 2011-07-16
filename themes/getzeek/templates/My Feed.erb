@@ -1,0 +1,25 @@
+<section class="deals">
+    
+    <header>
+        <h2>My Fundraiser Deals</h2>
+    </header>
+
+    <nav>
+        <header>Recent Updates</header>
+    </nav>
+    
+    <ul class="feed">
+        <% Deal.all.each do |deal| %>
+            <li class="post">
+                <div class="content">
+                    <img class="thumb" src="http://www.lorempixum.com/65/65" />
+                    <h4><a href=""><%= deal.title %></a></h4>
+                    <p class="meta"><time datetime="deal.created_at"><%= deal.created_at.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
+                    <p class="description"><%= deal.description.split(" ")[0..10].join(" ") + "..." %></p>
+                </div>                  
+            </li>
+        <% end %>    
+        <li class="view_all"><a class="button">View all deals</a></li>
+    </ul>
+    
+</section>

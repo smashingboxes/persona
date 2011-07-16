@@ -40,5 +40,5 @@
   require_all './personas/tools/authentication/authentication.rb',      # => Load Authentication
               "./themes/#{System.theme}/config.rb",                     # => Fireup theme modifiers (We do this first so that they can overide the core controller
               './personas/core/controller.rb',                          # => Core controllers
-              './personas/tools/visualizer/visualizer.rb'     # => Displays all model attributes
+              './personas/tools/visualizer/visualizer.rb'               # => Displays all model attributes
   

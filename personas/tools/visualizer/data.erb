@@ -16,10 +16,21 @@
                   <th>Attribute Type</th>
               </thead>
               <tbody>
-                <% m.first.attributes.each do |a| %>
+                <% m.properties.each do |p| %>
                     <tr>
-                        <td><%= a[0].to_s.gsub("_", " ").capitalize %></td>
-                        <td><%= a[0].class %></td>
+                        <td><%= p.name.to_s.gsub("_", " ").capitalize %></td>
+                        <td>
+                            <% if p.options[:flags] %>
+                                Enumerable:
+                                <ul>
+                                    <% p.options[:flags].each do |f| %>
+                                        <li><%= f.capitalize %></li>
+                                    <% end %>
+                                </ul> 
+                            <% else %>
+                                <%= p.options[:primitive] %>
+                            <% end %>
+                        </td>
                     </tr>
                 <% end %>
               </body>

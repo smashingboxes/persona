@@ -114,6 +114,15 @@ helpers do
         if (content.id == params[:id].to_i)
           list_style += " current"
         end
+        
+        # Are children current?
+        Content.all(:parent => content.id).each do |child|
+            if (child.id == params[:id].to_i)
+                list_style += " current"
+            end
+        end
+        
+        return list_style       
 
     end
     

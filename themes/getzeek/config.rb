@@ -30,4 +30,4 @@ class Deal
 end
 
 DataMapper.finalize
-Deal.auto_migrate!
+Deal.auto_upgrade!

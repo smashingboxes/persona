@@ -1,13 +1,17 @@
 <section id="profile">
     
-    <h2>Basic Information:</h2>
-    
     <form action="" method="post">
+      
+        <h2>Basic Information:</h2>
         <fieldset class="photo">
-            <button>Upload Image</button>
+            <div class="photobox">
+              <img src="http://www.lorempixum.com/200/200" title="Upload an image" />
+            </div>
+            <button>Upload Photo</button>
         </fieldset>
             
         <fieldset class="profile">
+            <textarea placeholder="About my company" class="text"></textarea>
             <p><input type="text" class="text" placeholder="Company Name" /></p>
             
             <p>
@@ -25,8 +29,12 @@
                 <input type="text" class="text" placeholder="LinkedIn"/>
                 <button>Add another</button>
             </p>
+            
+            <input type="submit" class="submit" value="Save"/>
         </fieldset>
-        <textarea placeholder="About my company" class="text"></textarea>
+        
+        
+        
     </form>
 
 </section>

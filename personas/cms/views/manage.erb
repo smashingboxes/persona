@@ -1,45 +1,24 @@
 <section>
     <article>
-        <h1>All Content</h1>
+        <h1>Content</h1>
         <hr/>
-        <div id="tabs">
-        <ul>
-        <% Content.properties.find{|p| p.name.to_s == "content_type"}.options[:flags].each_with_index do |c, i| %>
-            <li><a href="#tabs-<%= i + 1 %>"><%= c %></a></li>
-        <% end %>
-        </ul>
-        <% Content.properties.find{|p| p.name.to_s == "content_type"}.options[:flags].each_with_index do |c, i| %>
-            <div id="tabs-<%= i+1 %>">
-                <table>
-                    <thead>
-                        <th>ID</th>
-                        <th>Title</th>
-                    </thead>
-                    <tbody>
-                <% Content.all(:content_type => c).each do |content| %>
-                    <tr>
-                        <td>
-                            <%= content.id %>
-                        </td> 
-                        <td>
-                            <%= content.title %>
-                        </td>                         
-                    </tr>
+        <a href="/admin/manage/create/content" class="button">New Content</a>
+        <hr/>
+        <% proto_loop "page" do %>
+            <% if @content.parent == 0 %>
+            <div class="mediabox page">
+                <h4><a href="<%= the_link %>"><strong><%= the_title() %></strong></a> | <a href="/admin/manage/content/edit/<%= the_id %>">Edit Page</a></h4>
+                <hr/>
+                <ul>
+                <% child_loop "page" do %>
+                <li>
+                    <strong><a href="<%= the_link %>"><%= the_title() %></a></strong> | <a href="/admin/manage/content/edit/<%= the_id %>">Edit Page</a>                    
+                </li>
                 <% end %>
-                </tbody>
-                </table>
+                </ul>
             </div>
+            <% end %>
         <% end %>
-
         </div>
     </article>
 </section>
-<style>
-    table th    { color: #111; }
-    table tr td { color: #111; }
-</style>
-<script>
-    $(function() {
-    	$( "#tabs" ).tabs();
-    });
-</script>

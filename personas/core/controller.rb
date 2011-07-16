@@ -57,10 +57,14 @@
     require "./themes/#{System.theme}/config.rb"
     
     flash[:success] = "<strong>System</strong> was successfully updated"
-
+  
     redirect "/admin"
-    
   end
+  
+  get "/admin/tools" do
+    erb :"../../personas/tools/index", :layout => :"../../personas/core/views/layout.html"
+  end
+
   
   
 #########################################

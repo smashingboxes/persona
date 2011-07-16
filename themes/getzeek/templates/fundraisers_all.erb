@@ -1,0 +1,53 @@
+<article id="fundraiser_tracker">
+    <div class="columns-2"><%= the_content(); %></div>
+    
+    <nav class="filter">
+        <header>
+            Sort Fundraisers
+        </header>
+        <ul>
+            <li><a href="#">All</a></li>
+            <li><a href="#">Schools</a></li>
+            <li><a href="#">Charities</a></li>
+            <li><a href="#">Clubs</a></li>
+        </ul>
+    </nav>
+    
+    <section class="deals">
+    
+        <nav>
+            <header>
+               All Fundraisers
+            </header>
+        </nav>
+        
+        <ul class="feed">            
+        <% Deal.all.each do |deal| %>
+            <li class="post">
+                <div class="split first">
+                    <h3 class="deal_type">CFCC Alumni</h3>
+                    <ul class="actions">
+                        <li><a href="#">Add to your Account +</a></li>
+                    </ul>
+                    <div class="content">
+                        <img class="thumb" src="http://www.lorempixum.com/65/65" />
+                        <p class="description"><%= truncate(deal.description, 10, true) %></p>
+                    </div> 
+                </div>
+                <div class="split last">
+                    <h3 class="deal_type">CFCC Alumni</h3>
+                    <ul class="actions">
+                        <li><a href="#">Add to your Account +</a></li>
+                    </ul>
+                    <div class="content">
+                        <img class="thumb" src="http://www.lorempixum.com/65/65" />
+                        <p class="description"><%= truncate(deal.description, 10, true) %></p>
+                    </div> 
+                </div>      
+            </li>
+        <% end %>
+        </ul>
+        
+    </section>
+
+</article>

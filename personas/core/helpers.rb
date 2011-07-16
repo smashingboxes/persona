@@ -29,6 +29,24 @@
       System.theme
   end
   
+  # Strips html and returns a string
+  def strip_html(str)
+      str.gsub(/<\/?[^>]*>/, "")
+  end
+  
+  
+  # Reduces a string to a certain number of words and returns a string
+  def truncate(str, length=10, strip=false)
+    
+    str = strip_html(str) if strip
+
+    str = str.split(" ")[0..length].join(" ")
+    str += "..." if str.split(" ").length > length   
+        
+    return str
+    
+  end
+  
   
   # Looks for a file in the themes folder. If it does not exist, 
   # looks for the file in the proto-includes/views folder. Otherwise,

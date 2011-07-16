@@ -41,7 +41,7 @@ System.auto_upgrade!
 # 2) Routes
 #######################################################
 
-  get "/contactme" do 
+  post "/contactme" do 
     
     begin
       email "nate.hunzaker@gmail.com", "Hey Nate!", "How are you doing?"

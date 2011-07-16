@@ -1,5 +1,5 @@
 <section id="getZeek">
-    <section id="card-tabs">
+    <section id="tabs">
         <h2>Get Zeek</h2>
         <ul class="tabs">
             <li><a href="#tabs-1">Activate Card</a></li>
@@ -77,45 +77,24 @@
     </nav>
     
     <ul class="feed">
-    <% proto_loop "post", 3 do %>
-        <li class="post">
-            <h3 class="deal_type monster">Monster Deal</h3>
-            <ul class="actions">
-                <li><a href="#">Email</a></li>
-                <li><a href="#">Text</a></li>
-                <li><a href="#">Follow</a></li>
-                <li><a href="#">Map</a></li>
-                <li><a href="#">Like</a></li>
-            </ul>
-            <div class="content">
-                <img class="thumb" src="http://www.lorempixum.com/65/65" />
-                <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
-                <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
-                <p class="description"><%= the_excerpt(@content, 10) %></p>
-            </div>                  
-        </li>
-    <% end %>
-    
-    <% proto_loop "post", 2 do %>
-        <li class="post">
-            <h3 class="deal_type">Zeek Deal</h3>
-            <ul class="actions">
-                <li><a href="#">Email</a></li>
-                <li><a href="#">Text</a></li>
-                <li><a href="#">Follow</a></li>
-                <li><a href="#">Map</a></li>
-                <li><a href="#">Like</a></li>
-            </ul>
-            <div class="content">
-                <img class="thumb" src="http://www.lorempixum.com/65/65" />
-                <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
-                <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
-                <p class="description"><%= the_excerpt(@content, 10) %></p>
-            </div>                  
-        </li>
-    <% end %>
-
-    
+        <% Deal.all.each do |deal| %>
+            <li class="post">
+                <h3 class="deal_type <%= deal.deal_type %>"><%= deal.deal_type.capitalize %> Deal</h3>
+                <ul class="actions">
+                    <li><a href="#">Email</a></li>
+                    <li><a href="#">Text</a></li>
+                    <li><a href="#">Follow</a></li>
+                    <li><a href="#">Map</a></li>
+                    <li><a href="#">Like</a></li>
+                </ul>
+                <div class="content">
+                    <img class="thumb" src="http://www.lorempixum.com/65/65" />
+                    <h4><a href=""><%= deal.title %></a></h4>
+                    <p class="meta"><time datetime="deal.created_at"><%= deal.created_at.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
+                    <p class="description"><%= deal.description.split(" ")[0..10].join(" ") + "..." %></p>
+                </div>                  
+            </li>
+        <% end %>    
         <li class="view_all"><a class="button">View all deals</a></li>
     </ul>
     

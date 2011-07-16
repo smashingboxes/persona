@@ -2,20 +2,30 @@
     <ul>
     
         <% if @include_home %>
-            <li class="home first <%= "current" if params[:id] == nil %>"><a title="Home" href='/'>Home</a></li>
+            <li class="home first <%= "current" if params[:id] == nil %>">
+                <a title="Home" href='/'>Home</a>
+                <% if has_children?("page", Content.get(System.homepage)) %>
+                      <ul class="children">
+                          <% child_loop "page", Content.get(System.homepage) do %>
+                              <li class="<%= get_position(@index, @content) %>"><a href="<%= the_link %>"><%= the_title %></a></li>
+                          <% end %>
+                      </ul>
+                  <% end %>
+            </li>
         <% end %>
         
-        <% proto_loop "page" do %>
+        <% Content.all(:content_type => "page", :parent => 0).each_with_index do |c, index| %>
             
+            <% @content = c %>
             <% if ( @content.parent == 0 && @content.id != System.homepage ) %>
-                <li class="<%= get_position(@index, @content) %>">
+                <li class="<%= get_position(index, @content) %>">
                     
                     <a href="<%= the_link %>"><%= the_title %></a>
                     
                     <% if has_children? %>
                         <ul class="children">
                             <% child_loop "page" do %>
-                                <li class="<%= get_position(@index, @content) %>"><a href="<%= the_link %>"><%= the_title %></a></li>
+                                <li class="<%= get_position(index, @content) %>"><a href="<%= the_link %>"><%= the_title %></a></li>
                             <% end %>
                         </ul>
                     <% end %>

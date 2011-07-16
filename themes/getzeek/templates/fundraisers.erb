@@ -1,4 +1,4 @@
-<section id="fundraisers">
+<section id="organization">
         
     <article class="text-block">
         <%= the_content %>
@@ -10,7 +10,7 @@
     </nav>
     
     <ul class="feed">
-    <% proto_loop "post", 5 do %>
+    <% Deal.each do |deal| %>
         <li class="post">
             <h3 class="deal_type">CFCC Alumni</h3>
             <ul class="actions">
@@ -18,9 +18,9 @@
             </ul>
             <div class="content">
                 <img class="thumb" src="http://www.lorempixum.com/65/65" />
-                <h4><a href="<%= the_link %>"><%= the_title %></a></h4>
-                <p class="meta"><time datetime="<%= the_datetime %>"><%= the_datetime.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
-                <p class="description"><%= the_excerpt(@content, 10) %></p>
+                <h4><a href=""><%= deal.title %></a></h4>
+                <p class="meta"><time datetime="<%= deal.created_at %>"><%= deal.created_at.strftime("%l:%M%P on %A, %B %e %Y") %></time></p>
+                <p class="description"><%= deal.description.split(" ")[0..5].join(" ") + "..." %></p>
             </div>                  
         </li>
     <% end %>

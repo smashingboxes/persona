@@ -17,7 +17,7 @@
         return false;
       }
     });
-    return $('#card-tabs').tabs();
+    return $('#tabs').tabs();
   });
   $("#accordion").accordion();
 }).call(this);

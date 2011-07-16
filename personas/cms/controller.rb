@@ -25,6 +25,10 @@ get '/node/:id' do
   proto_genesis :"/templates/#{Content.get(params[:id]).template}"
 end
 
+get "/admin/manage/content" do
+  erb :"../../personas/cms/views/manage", :layout => :"../../personas/core/views/layout"
+end
+
 get "/admin/manage/create/content" do
   erb :"../../personas/cms/views/new", :layout => :"../../personas/core/views/layout"
 end

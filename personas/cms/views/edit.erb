@@ -6,6 +6,25 @@
                   <%= get_cheatsheet %>
                   
                   <fieldset>
+                    <legend>Please use the form below to create a page:</legend>
+                    <p>
+                      <label for="title">Page Title</label><br>
+                      <input type="text" class="text" name="record[title]" id="title" value="<%= the_title %>" />
+                    </p>
+        
+                    <p>
+                      <label for="body">Markdown Content:</label><br>
+                      <textarea name="record[body]" id="body" rows="5" cols="20"><%= the_content nil, true %></textarea>
+                    </p>
+        
+                    <p>
+                      <input type="reset" value="Reset" class="button" />
+                      <input type="submit" value="Update" class="button" />
+                    </p>
+        
+                  </fieldset>
+                  
+                  <fieldset>
                     <legend>Parent Page:</legend>
                     <select name="record[parent]" id="parent">
                         <option value="0">None</option>
@@ -24,24 +43,6 @@
                      <% end %>
                   </fieldset>
                   
-                  <fieldset>
-                    <legend>Please use the form below to create a page:</legend>
-                    <p>
-                      <label for="title">Page Title</label><br>
-                      <input type="text" class="text" name="record[title]" id="title" value="<%= the_title %>" />
-                    </p>
-        
-                    <p>
-                      <label for="body">Markdown Content:</label><br>
-                      <textarea name="record[body]" id="body" rows="5" cols="20"><%= the_content nil, true %></textarea>
-                    </p>
-        
-                    <p>
-                      <input type="reset" value="Reset" class="button" />
-                      <input type="submit" value="Update" class="button" />
-                    </p>
-        
-                  </fieldset>
                 </form>
 
             <hr/>
