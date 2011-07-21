@@ -222,7 +222,7 @@ Version: 1
             }
 
             &:hover                         { background: #aaa; border-color: #666; @include background-image(linear-gradient(color-stops(#bbb, #999))); @include box-shadow(inset 0px 1px 0px #ddd);  
-                a                           { text-shadow: 0 1px 3px #555; border-bottom: 1px solid #777;  }
+                a                           { text-shadow: 0 1px 3px #555; }
             }
             
             a:active                        { @include box-shadow(inset 2px 2px 5px #555);}
@@ -324,11 +324,7 @@ Version: 1
         }
         
     }
-    
-    
-    
-    
-    
+        
     /* Homepage
     -------------------------------------- */
     #getZeek                                { @include column(11); margin-right: 20px;

@@ -57,8 +57,3 @@
   
   # Let Tilt know to look for '*.html.erb'
   Tilt.register 'html.erb', Tilt::ERBTemplate
-  
-  # Configure Compass
-  configure do
-    Compass.add_project_configuration('./personas/core/compass.config')
-  end

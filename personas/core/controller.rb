@@ -5,8 +5,7 @@
 #  1. Directory Filters                 #
 #                                       #
 #  2. Resource Routes                   #
-#       a) Stylesheets                  #
-#       b) JavaScript                   #
+#       a) JavaScript                   #
 #                                       #
 #  3. General Routes                    #
 #                                       #
@@ -28,11 +27,11 @@
       
       if request.path =~ /\/admin(\/|\w)*/
           
-          require_user
+        require_user
           
-          set :views,  Proc.new  { File.join(root, "/personas/core/views") }
-          set :public, Proc.new  { File.join(root, "/personas/core/views") }
-          set :layout, Proc.new  { File.join(root, "/personas/core/views") }
+        set :views,  Proc.new  { File.join(root, "/personas/core/views") }
+        set :public, Proc.new  { File.join(root, "/personas/core/views") }
+        set :layout, Proc.new  { File.join(root, "/personas/core/views") }
           
       else
           # Change the default directories to point to "themes"
@@ -47,24 +46,8 @@
 #########################################
 #  2. Resource Routes
 #########################################
-    
-  # a. Stylesheets (and SASS/Compass)
-  #########################################
-
-      # Load all stylesheets through compass
-      get '/stylesheets/:name.css' do
-        content_type 'text/css', :charset => 'utf-8'
-        scss(:"/stylesheets/#{params[:name]}", Compass.sass_engine_options )
-      end
-      
-      # Force load admin styles
-      get '/admin/stylesheets/:name.css' do
-        content_type 'text/css', :charset => 'utf-8'
-        scss(:"/stylesheets/#{params[:name]}", Compass.sass_engine_options )
-      end
-      
-      
-  # b. JavaScript (and CoffeeScript)
+          
+  # a. JavaScript (and CoffeeScript)
   #########################################
       
       # Handle javascript and coffeescript
@@ -72,7 +55,16 @@
           content_type 'text/javascript'
           coffee :"/javascripts/#{params[:name]}"
       end
-
+  
+  # b. Stylesheets
+  #########################################
+      
+      # Handle admin styles
+      get '/admin/stylesheets/:name.css' do
+          content_type 'text/css'
+          
+          File.read("personas/core/views/stylesheets/#{params[:name]}.css")
+      end
 
 #########################################
 #  2. General Routes
