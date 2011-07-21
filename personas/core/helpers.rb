@@ -132,9 +132,9 @@ helpers do
   #   get_stylesheet("print", "print") => <link rel='stylesheet' href='/stylesheets/print.css' media='print'/>
   #
   # Returns an action to render a stylesheet link
-  def get_stylesheet(filename="screen", media="all")
+  def stylesheet(filename="screen", media="all")
     
-    return "<link rel='stylesheet' href='/stylesheets/#{filename}' media='#{media}'/>"
+    return "<link rel='stylesheet' href='/stylesheets/#{filename}?#{Random.rand(99999999)}' media='#{media}'/>"
   
   end
   

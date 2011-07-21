@@ -59,6 +59,13 @@
   # b. Stylesheets
   #########################################
       
+      # Handle general styles
+      get '/stylesheets/:name' do
+          content_type 'text/css'
+                
+          File.read("themes/#{System.theme}/stylesheets/#{params[:name]}")
+      end
+      
       # Handle admin styles
       get '/admin/stylesheets/:name.css' do
           content_type 'text/css'
@@ -121,14 +128,14 @@
   #  a. Create Routes
   #########################################
       
-    core_new = get '/admin/:name/create' do    
+    get '/admin/:name/create' do    
         @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
         @record = @model.new(params[:record])
         
         erb :new
     end
     
-    core_create = post '/admin/:name/create' do
+    post '/admin/:name/create' do
       
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}      
       @record = @model.new(params[:record])
@@ -165,14 +172,14 @@
   #  c. Update Routes
   #########################################
 
-    core_edit = get '/admin/:name/edit/:id' do
+    get '/admin/:name/edit/:id' do
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
       @record = @model.get(params[:id])
       
       erb :edit
     end
       
-    core_update = post '/admin/:name/edit/:id' do
+    post '/admin/:name/edit/:id' do
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
       @record = @model.get(params[:id])
       
@@ -196,7 +203,7 @@
   #  d. Delete Routes
   #########################################
     
-    core_delete = post '/admin/:name/:id' do
+    post '/admin/:name/:id' do
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}      
       @record = @model.get(params[:id])
 

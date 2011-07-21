@@ -28,7 +28,6 @@
               'bundler/setup',
               'compass',    
               'sinatra',
-              'sinatra/advanced_routes',                                   # => Helps us manage our route overides
               'sinatra/flash',                                             # => 
               'maruku',                                                    # => For interpretting Markdown
               'coffee-script',                                             # => For interpreting CoffeeScript
@@ -44,10 +43,10 @@
   
   require_all './personas/core/helpers.rb',                                # => Required for the 'require_all' method
               './personas/tools/authentication/authentication.rb',         # => Load Authentication
-              './personas/core/controller.rb',                             # => Core controllers
               './personas/tools/visualizer/visualizer.rb',                 # => Displays all model attributes
-              "./themes/#{System.theme}/config.rb"                         # => Fireup theme modifiers
-  
+              "./themes/#{System.theme}/config.rb",                        # => Fireup theme modifiers
+              './personas/core/controller.rb'                              # => Core controllers
+
 
 #########################################
 #  2. Configuration

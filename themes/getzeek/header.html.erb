@@ -3,8 +3,9 @@
 	
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css" type="text/css" media="all">
 	  <% if authorized? %><link rel="stylesheet" href="/admin/stylesheets/justoverlays.css" type="text/css" media="all"/><% end %>
-	  <%= get_stylesheet("screen.css") %>
-    <%= get_stylesheet("type/type.css") %>	
+	  
+	  <%= stylesheet "screen.css" %>
+    <%= stylesheet "type/type.css" %>	
 	
     <title>
     <%= 
