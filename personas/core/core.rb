@@ -31,10 +31,10 @@
               'sinatra/advanced_routes',                                   # => Helps us manage our route overides
               'sinatra/flash',                                             # => 
               'maruku',                                                    # => For interpretting Markdown
-              'coffee-script',                                             # => For interpreting CoffeeScript
+              'coffee-script'                                             # => For interpreting CoffeeScript
            
               # Development
-              'sinatra/reloader' unless ENV['RACK_ENV'] == 'production'   # => Auto reloads the server with it detects changes
+              #'sinatra/reloader' unless ENV['RACK_ENV'] == 'production'   # => Auto reloads the server with it detects changes
 
   
   puts "Environment is set to #{ENV['RACK_ENV']}."
