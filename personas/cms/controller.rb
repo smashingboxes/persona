@@ -41,7 +41,7 @@
   
   # Create
   get "/admin/content/create" do
-    erb :'../../personas/cms/views/new', :layout => '../../personas/core/views/layout'
+    erb :'../../personas/cms/views/new', :layout => :'../../personas/core/views/layout'
   end
   
   # Read
@@ -51,5 +51,5 @@
     
   # Update
   get '/admin/content/edit/:id' do  
-    erb :"../../personas/cms/views/edit", :layout => '../../personas/core/views/layout'
+    erb :"../../personas/cms/views/edit", :layout => :'../../personas/core/views/layout'
   end
