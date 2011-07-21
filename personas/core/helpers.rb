@@ -81,8 +81,7 @@
   #
   # Returns an action to render a template file
   def proto_genesis(filename="")       
-      erb :"themes/#{current_theme}/#{filename}"
-      erb :"themes/default/#{filename}"
+      erb :"#{lookfor filename}"
   end
   
   
