@@ -10,7 +10,6 @@ group :default do
   gem 'sinatra'
   gem 'sinatra-reloader'
   gem 'sinatra-flash'
-  gem 'sinatra-advanced-routes'
   
   # Templating
   gem 'maruku'
@@ -18,7 +17,7 @@ group :default do
   gem 'haml'
   
   # Manage JavaScript
-  gem 'sprockets'
+  # gem 'sprockets'
   gem 'coffee-script'
   gem "therubyracer"
     

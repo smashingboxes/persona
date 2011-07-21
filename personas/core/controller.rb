@@ -22,26 +22,41 @@
 #  1. Directory Filters
 #########################################    
     
+    # Change the default directories to point to "themes"
+    set :views,  Proc.new  { File.join(root, "/themes/#{System.theme}") }
+    set :public, Proc.new { File.join(root, "/themes/#{System.theme}") } 
+    set :layout, Proc.new { File.join(root, "/themes/#{System.theme}") }
+      
     # Ensure there is a user and the correct files are being loaded for the admin
-    before do
-      
-      if request.path =~ /\/admin(\/|\w)*/
-          
-        require_user
-          
-        set :views,  Proc.new  { File.join(root, "/personas/core/views") }
-        set :public, Proc.new  { File.join(root, "/personas/core/views") }
-        set :layout, Proc.new  { File.join(root, "/personas/core/views") }
-          
-      else
-          # Change the default directories to point to "themes"
-          set :views,  Proc.new  { File.join(root, "/themes/#{System.theme}") }
-          set :public, Proc.new { File.join(root, "/themes/#{System.theme}") } 
-          set :layout, Proc.new { File.join(root, "/themes/#{System.theme}") }    
-      end
-      
+    before '/admin/?' do
+      require_user
+      set :views,  Proc.new  { File.join(root, "/personas/core/views") }
+      set :public, Proc.new  { File.join(root, "/personas/core/views") }
+      set :layout, Proc.new  { File.join(root, "/personas/core/views") }
+    end        
+        
+    after '/admin/?' do 
+      # Change the default directories to point to "themes"
+      set :views,  Proc.new  { File.join(root, "/themes/#{System.theme}") }
+      set :public, Proc.new { File.join(root, "/themes/#{System.theme}") } 
+      set :layout, Proc.new { File.join(root, "/themes/#{System.theme}") }    
     end
     
+    # Ensure there is a user and the correct files are being loaded for the admin
+    before '/admin*' do
+      require_user
+      set :views,  Proc.new  { File.join(root, "/personas/core/views") }
+      set :public, Proc.new  { File.join(root, "/personas/core/views") }
+      set :layout, Proc.new  { File.join(root, "/personas/core/views") }
+    end        
+        
+    after '/admin*' do 
+      # Change the default directories to point to "themes"
+      set :views,  Proc.new  { File.join(root, "/themes/#{System.theme}") }
+      set :public, Proc.new { File.join(root, "/themes/#{System.theme}") } 
+      set :layout, Proc.new { File.join(root, "/themes/#{System.theme}") }    
+    end
+          
     
 #########################################
 #  2. Resource Routes
