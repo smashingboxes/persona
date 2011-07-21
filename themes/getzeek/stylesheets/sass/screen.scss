@@ -372,8 +372,10 @@ Version: 1
     /* About
     -------------------------------------- */
     #about                                  { width: 100%;
-        
-        .columns-2                          { background: transparent url("/images/zeek_monster.png") 40px 0 no-repeat; padding-left: 320px; margin-bottom: 20px; min-height: 180px; }
+
+        div.content-box                     { background: transparent url("/images/zeek_monster.png") 40px 140% no-repeat; padding-left: 320px; margin-bottom: 20px; min-height: 180px;
+            .columns-2                      {  }
+        }
         
         ul#about-items                      {
             li                              { background: #d6f4fe; background: rgba(255, 255, 255, 0.3); float: left; list-style: none; text-align: center; width: 310px; margin: 10px 5px; @include box-shadow(inset 0 0 0 1px #b0d6e3);
