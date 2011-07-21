@@ -50,7 +50,7 @@ helpers do
   #
   # Returns an action to render the cheatsheet template
   def get_cheatsheet()
-    erb :'../../cms/views/cheatsheet'
+    erb :'../../personas/cms/views/cheatsheet'
   end
   
   
