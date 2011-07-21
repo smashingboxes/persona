@@ -21,7 +21,7 @@
            erb :'index'
          end
   
-  home.promote
+  #home.promote
   
   content_routes = {
   
