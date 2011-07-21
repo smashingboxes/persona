@@ -85,6 +85,17 @@
   end
   
   
+  # Renders an admin template 
+  #
+  # filename => The template file to be rendered
+  #
+  # Returns an action to render a template file
+  def admin(filename='index', layout="layout")
+      erb :"../../personas/core/views/#{filename.to_s}", :layout => :"../../personas/core/views/#{layout.to_s}"
+  end
+
+  
+  
   # Scans for all folders files in the themes directory 
   #
   # Return an array of strings equal to theme names

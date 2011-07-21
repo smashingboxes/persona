@@ -26,12 +26,15 @@
   # Load core files  
   require_all 'rubygems',
               'bundler/setup',
-              'compass',    
               'sinatra',
               'sinatra/flash',                                             # => 
               'maruku',                                                    # => For interpretting Markdown
-              'coffee-script'                                              # => For interpreting CoffeeScript
+              'coffee-script',                                             # => For interpreting CoffeeScript
+           
+              # Development
+              'sinatra/reloader' unless ENV['RACK_ENV'] == 'production'   # => Auto reloads the server with it detects changes
 
+  
   puts "Environment is set to #{ENV['RACK_ENV']}."
                          
   # Load core files

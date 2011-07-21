@@ -19,44 +19,14 @@
 
 
 #########################################
-#  1. Directory Filters
+#  1. Directories
 #########################################    
-    
-    # Change the default directories to point to "themes"
-    set :views,  Proc.new  { File.join(root, "/themes/#{System.theme}") }
-    set :public, Proc.new { File.join(root, "/themes/#{System.theme}") } 
-    set :layout, Proc.new { File.join(root, "/themes/#{System.theme}") }
-      
-    # Ensure there is a user and the correct files are being loaded for the admin
-    before '/admin/?' do
-      require_user
-      set :views,  Proc.new  { File.join(root, "/personas/core/views") }
-      set :public, Proc.new  { File.join(root, "/personas/core/views") }
-      set :layout, Proc.new  { File.join(root, "/personas/core/views") }
-    end        
-        
-    after '/admin/?' do 
-      # Change the default directories to point to "themes"
-      set :views,  Proc.new  { File.join(root, "/themes/#{System.theme}") }
-      set :public, Proc.new { File.join(root, "/themes/#{System.theme}") } 
-      set :layout, Proc.new { File.join(root, "/themes/#{System.theme}") }    
-    end
-    
-    # Ensure there is a user and the correct files are being loaded for the admin
-    before '/admin*' do
-      require_user
-      set :views,  Proc.new  { File.join(root, "/personas/core/views") }
-      set :public, Proc.new  { File.join(root, "/personas/core/views") }
-      set :layout, Proc.new  { File.join(root, "/personas/core/views") }
-    end        
-        
-    after '/admin*' do 
-      # Change the default directories to point to "themes"
-      set :views,  Proc.new  { File.join(root, "/themes/#{System.theme}") }
-      set :public, Proc.new { File.join(root, "/themes/#{System.theme}") } 
-      set :layout, Proc.new { File.join(root, "/themes/#{System.theme}") }    
-    end
-          
+  
+  # Change the default directories to point to "themes"
+  set :views,  Proc.new  { File.join(root, "/themes/#{System.theme}") }
+  set :public, Proc.new  { File.join(root, "/themes/#{System.theme}") } 
+  set :layout, Proc.new  { File.join(root, "/themes/#{System.theme}") }
+              
     
 #########################################
 #  2. Resource Routes
@@ -91,24 +61,24 @@
 #########################################
 #  2. General Routes
 #########################################
-  
+    
   # Route Directory
   get '/?' do
     erb :index
   end
   
   get '/admin/require/:name' do
-    erb :requirements, :locals => { :'@model' => DataMapper::Model.descendants.find{|m| m.name.to_s.downcase == params[:name].to_s} }, :layout => :safety
+    erb :"#{_admin}/requirements", :locals => { :'@model' => DataMapper::Model.descendants.find{|m| m.name.to_s.downcase == params[:name].to_s} }, :layout => :"#{_admin}/safety"
   end
   
   # The Admin Console
   get '/admin/?' do
-    erb :index
+    admin :index
   end
   
   # System Settings (A custom template)
   get '/admin/system' do
-    erb :system
+    admin :system
   end
   
   # Update System Settings
@@ -131,7 +101,7 @@
   
   # Admin Tools
   get "/admin/tools" do
-    erb :"../../../personas/tools/index"
+    erb :"../../personas/tools/index", :layout => :"../../personas/core/views/layout"
   end
     
   
@@ -147,7 +117,7 @@
         @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
         @record = @model.new(params[:record])
         
-        erb :new
+        admin :new
     end
     
     post '/admin/:name/create' do
@@ -169,7 +139,7 @@
         flash.now[:error] = "<strong>Error#{"s" if @record.errors.count > 1}:</strong><br/>#{errors}"
         
         # Go back, only maintain old values
-        erb :new, :locals => { :"@record" => @record }
+        erb :'../../personas/core/views/new', :layout => :'../../personas/core/views/layout', :locals => { :"@record" => @record }
       end
     end
       
@@ -179,7 +149,7 @@
   ######################################### 
     
     core_read = get '/admin/:name' do
-      erb :manage, :locals => {:"@model" => DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]} }
+      erb :'../../personas/core/views/manage', :layout => :'../../personas/core/views/layout', :locals => {:"@model" => DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]} }
     end
     
     
@@ -191,7 +161,7 @@
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
       @record = @model.get(params[:id])
       
-      erb :edit
+      admin :edit
     end
       
     post '/admin/:name/edit/:id' do

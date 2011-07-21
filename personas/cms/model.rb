@@ -20,7 +20,7 @@
     property :created_at,         DateTime,                                                    :default => Time.now
     property :updated_at,         DateTime,                                                    :default => Time.now    
     
-    belongs_to :user,             :default => User.first
+    belongs_to :user,             :default => User.first, :required => false
     
     # Allows to use the content_type as a class method, e.g., Content.post, Content.page
     # Todo: Add an singularize method and use the plural form of content_type as method name.
