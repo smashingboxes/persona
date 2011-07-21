@@ -1,4 +1,5 @@
 source "http://rubygems.org"
+source "http://gemcutter.org"
 
 group :default do
 
@@ -36,6 +37,9 @@ end
 group :development do
   gem 'sqlite3'
   gem 'dm-sqlite-adapter'
+  
+  # Console
+  gem 'racksh'
 end
 
 group :test do

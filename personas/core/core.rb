@@ -30,12 +30,8 @@
               'sinatra',
               'sinatra/flash',                                             # => 
               'maruku',                                                    # => For interpretting Markdown
-              'coffee-script',                                             # => For interpreting CoffeeScript
-           
-              # Development
-              'sinatra/reloader' unless ENV['RACK_ENV'] == 'production'   # => Auto reloads the server with it detects changes
+              'coffee-script'                                              # => For interpreting CoffeeScript
 
-  
   puts "Environment is set to #{ENV['RACK_ENV']}."
                          
   # Load core files
