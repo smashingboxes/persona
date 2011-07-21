@@ -2,34 +2,27 @@
     <div class="columns-2"><%= the_content(); %></div>
     
     <nav class="filter">
-        <header></header>
+        <header>Filter Deals</header>
         <ul>
-            <li><a href="#">Latest Deals <span>&rsaquo;</span></a></li>
-            <li><a href="#">Dining<span>&rsaquo;</span></a></li>
-            <li><a href="#">Entertainment<span>&rsaquo;</span></a></li>
-            <li><a href="#">Shopping<span>&rsaquo;</span></a></li>
-            <li><a href="#">Travel<span>&rsaquo;</span></a></li>
+            <li><a href="#" class="latest">Latest Deals<span>&rsaquo;</span></a></li>
+            <li><a href="#" class="dining">Dining<span>&rsaquo;</span></a></li>
+            <li><a href="#" class="entertainment">Entertainment<span>&rsaquo;</span></a></li>
+            <li><a href="#" class="shopping">Shopping<span>&rsaquo;</span></a></li>
+            <li><a href="#" class="travel">Travel<span>&rsaquo;</span></a></li>
         </ul>
     </nav>
     
     <section class="deals">
     
         <nav>
-            <form>
-                <label><input type="checkbox"/> Monster</label>
-                <label><input type="checkbox"/> Tiny</label>
-                <label class="search"><input type="search" class="search" placeholder="Search Deals" /></label>
-            </form>
+           <header>Saved Deals</header>
         </nav>
         
-        <ul class="feed">
-        
-            <li><h2 class="title">Search Results</h2></li>
-            
+        <ul class="feed">            
         <% Deal.all.each do |deal| %>
             <li class="post">
                 <div class="split first">
-                    <h3 class="deal_type monster">Monster Deal</h3>
+                    <h3 class="deal_type <%= deal.deal_type %>"><%= deal.deal_type.capitalize %></h3>
                     <ul class="actions">
                         <li><a href="#">Email</a></li>
                         <li><a href="#">Text</a></li>
@@ -45,7 +38,7 @@
                     </div> 
                 </div>
                 <div class="split last">
-                    <h3 class="deal_type monster">Monster Deal</h3>
+                    <h3 class="deal_type <%= deal.deal_type %>"><%= deal.deal_type.capitalize %></h3>
                     <ul class="actions">
                         <li><a href="#">Email</a></li>
                         <li><a href="#">Text</a></li>

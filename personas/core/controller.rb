@@ -2,8 +2,15 @@
 #           Core Controller             #
 #########################################
 #                                       #
-#  1. General Routes                    #
-#  2. CRUD                              #
+#  1. Directory Filters                 #
+#                                       #
+#  2. Resource Routes                   #
+#       a) Stylesheets                  #
+#       b) JavaScript                   #
+#                                       #
+#  3. General Routes                    #
+#                                       #
+#  4. General CRUD                      #
 #       a) Create Routes                #
 #       b) Read Routes                  #
 #       c) Update Routes                #
@@ -11,44 +18,86 @@
 #                                       #
 #########################################
 
+
+#########################################
+#  1. Directory Filters
+#########################################    
+    
+    # Ensure there is a user and the correct files are being loaded for the admin
+    before do
+      
+      if request.path =~ /\/admin(\/|\w)*/
+          
+          require_user
+          
+          set :views,  Proc.new  { File.join(root, "/personas/core/views") }
+          set :public, Proc.new  { File.join(root, "/personas/core/views") }
+          set :layout, Proc.new  { File.join(root, "/personas/core/views") }
+          
+      else
+          # Change the default directories to point to "themes"
+          set :views,  Proc.new  { File.join(root, "/themes/#{System.theme}") }
+          set :public, Proc.new { File.join(root, "/themes/#{System.theme}") } 
+          set :layout, Proc.new { File.join(root, "/themes/#{System.theme}") }    
+      end
+      
+    end
+    
+    
+#########################################
+#  2. Resource Routes
+#########################################
+    
+  # a. Stylesheets (and SASS/Compass)
+  #########################################
+
+      # Load all stylesheets through compass
+      get '/stylesheets/:name.css' do
+        content_type 'text/css', :charset => 'utf-8'
+        scss(:"/stylesheets/#{params[:name]}", Compass.sass_engine_options )
+      end
+      
+      # Force load admin styles
+      get '/admin/stylesheets/:name.css' do
+        content_type 'text/css', :charset => 'utf-8'
+        scss(:"/stylesheets/#{params[:name]}", Compass.sass_engine_options )
+      end
+      
+      
+  # b. JavaScript (and CoffeeScript)
+  #########################################
+      
+      # Handle javascript and coffeescript
+      get "/admin/javascripts/:name.js" do
+          content_type 'text/javascript'
+          coffee :"/javascripts/#{params[:name]}"
+      end
+
+
 #########################################
 #  2. General Routes
 #########################################
   
-  # Load all stylesheets through Compass
-  get '/stylesheets/:name.css' do
-    content_type 'text/css', :charset => 'utf-8'
-    scss(:"stylesheets/#{params[:name]}", Compass.sass_engine_options )
-  end
-  
-  # Load admin styles through Compass
-  get "/admin/stylesheets/:name.css" do
-    content_type 'text/css', :charset => 'utf-8'
-    scss(:"../../personas/core/views/stylesheets/#{params[:name]}", Compass.sass_engine_options )
-  end
-  
-  # Handle javascript and coffeescript
-  get "/admin/javascripts/:name.js" do
-      content_type 'text/javascript'
-      coffee :"../../personas/core/views/javascripts/#{params[:name]}"
-  end
-  
-  get '/' do
+  # Route Directory
+  get '/?' do
     erb :index
   end
   
-  before '/admin' do
-    require_user
+  get '/admin/require/:name' do
+    erb :requirements, :locals => { :'@model' => DataMapper::Model.descendants.find{|m| m.name.to_s.downcase == params[:name].to_s} }, :layout => :safety
   end
   
-  get '/admin' do
-    erb :"../../personas/core/views/index", :layout => :"../../personas/core/views/layout.html"
+  # The Admin Console
+  get '/admin/?' do
+    erb :index
   end
   
+  # System Settings (A custom template)
   get '/admin/system' do
-    erb :"../../personas/core/views/system", :layout => :"../../personas/core/views/layout.html"
+    erb :system
   end
   
+  # Update System Settings
   post '/admin/system' do
     _theme = System.theme
     
@@ -56,41 +105,45 @@
     
     require "./themes/#{System.theme}/config.rb"
     
+    DataMapper::Model.descendants.each do |model|
+      DataMapper.finalize
+      model.auto_upgrade!
+    end
+    
     flash[:success] = "<strong>System</strong> was successfully updated"
   
     redirect "/admin"
   end
   
+  # Admin Tools
   get "/admin/tools" do
-    erb :"../../personas/tools/index", :layout => :"../../personas/core/views/layout.html"
+    erb :"../../../personas/tools/index"
   end
-
-  
+    
   
 #########################################
-#  2. CRUD
+#  2. General CRUD
 #########################################
   
   #########################################
   #  a. Create Routes
   #########################################
       
-    get '/admin/manage/create/:name' do
-    
-      @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
-      @record = @model.new(params[:record])
-      
-      erb :"../../personas/core/views/new", :layout => :"../../personas/core/views/layout.html"
+    core_new = get '/admin/:name/create' do    
+        @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
+        @record = @model.new(params[:record])
+        
+        erb :new
     end
     
-    post '/admin/manage/create/:name' do
+    core_create = post '/admin/:name/create' do
       
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}      
       @record = @model.new(params[:record])
             
       if @record.save
         flash[:success] = "<strong>#{@model.name.capitalize}</strong> was successfully created."
-        redirect "/admin/manage/#{@model.name.downcase}"
+        redirect "/admin/#{@model.name.downcase}"
       else
         errors = ""
         
@@ -102,7 +155,7 @@
         flash.now[:error] = "<strong>Error#{"s" if @record.errors.count > 1}:</strong><br/>#{errors}"
         
         # Go back, only maintain old values
-        erb :"../../personas/core/views/new", :layout => :"../../personas/core/views/layout.html", :locals => { :"@record" => @record }
+        erb :new, :locals => { :"@record" => @record }
       end
     end
       
@@ -111,9 +164,8 @@
   #  b. Read Routes
   ######################################### 
     
-    get '/admin/manage/:name' do
-      @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
-      erb :"../../personas/core/views/manage", :layout => :"../../personas/core/views/layout.html"
+    core_read = get '/admin/:name' do
+      erb :manage, :locals => {:"@model" => DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]} }
     end
     
     
@@ -121,20 +173,20 @@
   #  c. Update Routes
   #########################################
 
-    get '/admin/manage/:name/edit/:id' do
+    core_edit = get '/admin/:name/edit/:id' do
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
       @record = @model.get(params[:id])
       
-      erb :"../../personas/core/views/edit", :layout => :"../../personas/core/views/layout.html"
+      erb :edit
     end
       
-    post '/admin/manage/:name/edit/:id' do
+    core_update = post '/admin/:name/edit/:id' do
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}
       @record = @model.get(params[:id])
       
       if @record.update(params[:record])
         flash[:success] = "<strong>#{@model.name.capitalize}</strong> was successfully updated"
-        redirect "/admin/manage/#{@model.name.downcase}"
+        redirect "/admin/#{@model.name.downcase}"
       else
         errors = ""
         
@@ -142,7 +194,7 @@
           errors += e.first + "<br/>"
         end
         flash[:error] = "<strong>Error#{"s" if @record.errors.count > 1}:</strong><br/>#{errors}"
-        redirect "/admin/manage/#{params[:name]}/edit/#{params[:id]}"
+        redirect "/admin/#{params[:name]}/edit/#{params[:id]}"
       end
             
     end
@@ -152,7 +204,7 @@
   #  d. Delete Routes
   #########################################
     
-    get '/admin/manage/delete/:name/:id' do
+    core_delete = post '/admin/:name/:id' do
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}      
       @record = @model.get(params[:id])
 

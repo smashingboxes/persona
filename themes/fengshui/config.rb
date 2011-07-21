@@ -7,4 +7,3 @@
 
 load_persona "cms"
 load_persona "crm"
-load_persona 'tools/mail'

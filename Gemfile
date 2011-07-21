@@ -7,14 +7,17 @@ group :default do
   
   # Sinatra, naturally  
   gem 'sinatra'
+  gem 'sinatra-reloader'
   gem 'sinatra-flash'
+  gem 'sinatra-advanced-routes'
   
   # Templating
   gem 'maruku'
   gem 'tilt'
   gem 'haml'
   
-  # Manage Coffeescript
+  # Manage JavaScript
+  gem 'sprockets'
   gem 'coffee-script'
   gem "therubyracer"
     
@@ -32,16 +35,13 @@ end
 
 group :development do
   gem 'sqlite3'
-  gem 'dm-sqlite-adapter' 
+  gem 'dm-sqlite-adapter'
 end
 
 group :test do
-  ###
-  # Temporarily disabled
-  ###
+  gem 'sqlite3'
+  gem 'dm-sqlite-adapter'
   
-  #gem 'ruby-debug'
-  #gem 'rack-test'
-  #gem 'autotest'
-  #gem 'rspec', '2.5.0'
+  gem 'rspec'
+  gem 'rack-test'  
 end

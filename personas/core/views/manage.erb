@@ -2,7 +2,7 @@
     <article>
         <h1><%= @model.storage_name.capitalize %></h1>
         <hr/>
-        <a href="/admin/manage/create/<%= @model.name.downcase %>" class="button">New <%= @model.name %></a>
+        <a href="/admin/<%= @model.name.downcase %>/create" class="button">New <%= @model.name %></a>
         <hr/>
         <% if @model.count > 0 %>
             <table>
@@ -24,8 +24,8 @@
                                 <td <%= "class='long-entry'" if a[1].size > 30 %>><%= truncate( a[1].to_s.capitalize, 15, true ) %></td>
                             <% end %>
                         <% end %>
-                        <td><a href="/admin/manage/<%= @model.name.downcase %>/edit/<%= e.id %>">Edit</a></td>
-                        <td><a href="/admin/manage/delete/<%= @model.name.downcase %>/<%= e.id %>" class="delete" title="Delete current page">Delete</a></td>    
+                        <td><a href="/admin/<%= @model.name.downcase %>/edit/<%= e.id %>" title="Edit current page">Edit</a></td>    
+                        <td><a href="/admin/<%= @model.name.downcase %>/delete/<%= e.id %>" class="delete" title="Delete current page">Delete</a></td>    
                     </tr>
                 <% end %>           
               </tbody>

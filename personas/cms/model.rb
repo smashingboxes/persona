@@ -14,12 +14,13 @@
     property :content_type,       Enum[:post, :page, :category, :comment, :tag, :widget],      :required => true,      :message => "Please specify the content type."
     property :parent,             Integer,                                                     :default  => 0
     property :template,           String,                                                      :default  => "single"
-    property :author,             Integer,                                                     :default => User.first.id
     
     property :position,           Integer,                                                     :default => 0
     
     property :created_at,         DateTime,                                                    :default => Time.now
     property :updated_at,         DateTime,                                                    :default => Time.now    
+    
+    belongs_to :user,             :default => User.first
     
     # Allows to use the content_type as a class method, e.g., Content.post, Content.page
     # Todo: Add an singularize method and use the plural form of content_type as method name.
@@ -29,8 +30,10 @@
     
   end
   
-  Content.auto_upgrade!
-    
+  class User
+      has n, :contents
+  end
+      
   # Updates the system data table with more attributes
   class System
     
@@ -46,19 +49,3 @@
     end 
     
   end
-  
-  DataMapper.finalize
-  System.auto_upgrade! 
-  
-  # Create the default settings
-  unless Content.first
-    @homepage = Content.create(
-      :title => "Hello, world!",
-      :content_type => "page"
-      )
-  end
-  
-  # Create the default settings
-  @system = System.create(
-      :homepage => Content.first.id
-  )

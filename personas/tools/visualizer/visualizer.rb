@@ -13,9 +13,9 @@ require 'sinatra/base'
 #######################################################
 
 get '/admin/tools/datamodel' do
-    erb :"../../personas/tools/visualizer/data", :layout => :"../../personas/core/views/layout.html"
+    erb :"../../../personas/tools/visualizer/data"
 end
 
 get '/admin/tools/type' do
-    erb :"../../personas/tools/visualizer/type"
+    erb :"../../../personas/tools/visualizer/type"
 end

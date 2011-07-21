@@ -2,43 +2,63 @@
 #             Core Persona              #
 #########################################
 #                                       #
-#  1. Setup                             #
+#  1. Requirements                      #
+#  2. Configuration                     #
 #                                       #
 #########################################  
   
 #########################################
-#  1. Setup
+#  1. Requirements
 #########################################
-
-  _location = File.dirname(__FILE__)
-
-  # Load in Helpers
-  require "#{_location}/helpers.rb"
   
+  # Takes all items out of a collection and
+  # requires them
+  #
+  # items - A variable number of required file
+  #         names as strings
+  #
+  def require_all(*items)
+    items.each do |b|
+      require b
+    end
+  end
+    
+  # Load core files  
+  require_all 'rubygems',
+              'bundler/setup',
+              'compass',    
+              'sinatra',
+              'sinatra/advanced_routes',                                   # => Helps us manage our route overides
+              'sinatra/flash',                                             # => 
+              'maruku',                                                    # => For interpretting Markdown
+              'coffee-script',                                             # => For interpreting CoffeeScript
+           
+              # Development
+              'sinatra/reloader' unless ENV['RACK_ENV'] == 'production'   # => Auto reloads the server with it detects changes
+
+  
+  puts "Environment is set to #{ENV['RACK_ENV']}."
+                         
   # Load core files
-  require_all 'rubygems', 'bundler/setup','compass', 'sinatra', 'haml', 'sinatra/flash', 'erb', 'tilt', 'maruku', "coffee-script"
+  require     './personas/core/model.rb'                                   # => Sets up the database and System model
   
-  # Required for flash notifications
-  enable :sessions
+  require_all './personas/core/helpers.rb',                                # => Required for the 'require_all' method
+              './personas/tools/authentication/authentication.rb',         # => Load Authentication
+              './personas/core/controller.rb',                             # => Core controllers
+              './personas/tools/visualizer/visualizer.rb',                 # => Displays all model attributes
+              "./themes/#{System.theme}/config.rb"                         # => Fireup theme modifiers
+  
+
+#########################################
+#  2. Configuration
+#########################################              
+  
+  enable :sessions 
   
   # Let Tilt know to look for '*.html.erb'
   Tilt.register 'html.erb', Tilt::ERBTemplate
   
-  # Fire up the core model
-  require './personas/core/model.rb'
-  
-  # Change the default directories to point to "themes"
-  set :views, Proc.new { File.join(root, "/themes/#{System.theme}") }
-  set :public, Proc.new { File.join(root, "/themes/#{System.theme}") } 
-  
   # Configure Compass
   configure do
-    Compass.add_project_configuration(File.join(Sinatra::Application.root, 'personas', 'core', 'compass.config'))
+    Compass.add_project_configuration('./personas/core/compass.config')
   end
-  
-  # Load remaining files
-  require_all './personas/tools/authentication/authentication.rb',      # => Load Authentication
-              "./themes/#{System.theme}/config.rb",                     # => Fireup theme modifiers (We do this first so that they can overide the core controller
-              './personas/core/controller.rb',                          # => Core controllers
-              './personas/tools/visualizer/visualizer.rb'               # => Displays all model attributes
-  

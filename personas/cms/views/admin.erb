@@ -3,14 +3,14 @@
   <a id="icon" href="/admin"> &#9776;</a>
   
   <nav>
-      <a class="create" href="/admin/manage/create/content" title="Create a new page" draggable="true">+</a>
+      <a class="create" href="/admin/create/content" title="Create a new page" draggable="true">+</a>
       
   <% if params[:id] %>
-      <a class="edit" href="/admin/manage/content/edit/<%= params[:id] %>" title="Edit current page">&#9998;</a>
-      <a class="delete" href="/admin/manage/delete/content/<%= params[:id] %>" title="Delete current page">&#10006;</a>
+      <a class="edit" href="/admin/content/edit/<%= params[:id] %>" title="Edit current page">&#9998;</a>
+      <a class="delete" href="/admin/delete/content/<%= params[:id] %>" title="Delete current page">&#10006;</a>
   <% elsif @content %>
-      <a class="edit" href="/admin/manage/content/edit/<%= @content.id %>" title="Edit current page">&#9998;</a>
-      <a class="delete" href="/admin/manage/delete/content/<%= @content.id %>" title="Delete current page">&#10006;</a>
+      <a class="edit" href="/admin/content/edit/<%= @content.id %>" title="Edit current page">&#9998;</a>
+      <a class="delete" href="/admin/delete/content/<%= @content.id %>" title="Delete current page">&#10006;</a>
   <% else %>
       <a class="disabled">&#9997;</a>
       <a class="disabled">&#10006;</a>

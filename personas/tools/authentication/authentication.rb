@@ -63,8 +63,20 @@ end
 # 2) Controllers
 #######################################################
 
+# Ensure there is a user and the correct files are being loaded for the admin
+before '/login' do
+  set :views,  Proc.new  { File.join(root, "/personas/core/views") }
+  set :public, Proc.new  { File.join(root, "/personas/core/views") }
+  set :layout, Proc.new  { File.join(root, "/personas/core/views") }
+end
+    
+# Ensure there is a user and the correct files are being loaded for the admin
+before "/login" do
+  set :views, Proc.new  { File.join(root, "/personas/tools/authentication/views") } 
+end
+    
 get '/login' do
-    erb :"../../personas/tools/authentication/views/login", :layout => :"../../personas/tools/authentication/views/layout.html"
+    erb :login, :layout => :'../../../core/views/safety.html'
 end
 
 get '/logout' do

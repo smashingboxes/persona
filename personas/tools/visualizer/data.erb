@@ -10,7 +10,7 @@
         <hr/>
         <% all_models.each do |m| %>
             <table>
-              <caption><%= m.name.capitalize %> </caption>
+              <caption><%= m.name.capitalize %> (<%= m.all.count %>)</caption>
               <thead>
                   <th>Attribute Name</th>
                   <th>Attribute Type</th>

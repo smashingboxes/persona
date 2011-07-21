@@ -1,8 +1,8 @@
-h1. Prototypical - a lightweight prototyping tool "!http://ci.smashingboxes.com/smashingboxes/Prototypical.png!":http://ci.smashingboxes.com/smashingboxes/Prototypical
+h1. Persona - a lightweight prototyping tool "!http://ci.smashingboxes.com/smashingboxes/Prototypical.png!":http://ci.smashingboxes.com/smashingboxes/Prototypical
 
 h2. Overview
 
-Prototypical is built on Sinatra with the goal of assisting developers with the rapid creation of working prototypes. Prototypical is responsive, easy to set up, and takes most of the grunt work out of building an initial draft to show clients.
+Persona is built on Sinatra with the goal of assisting developers with the rapid creation of working prototypes. Persona is responsive, easy to set up, and takes most of the grunt work out of building an initial draft to show clients.
 
 h3. Update 6-16-11
 

@@ -11,23 +11,11 @@
 #  1. System Helpers
 #########################################    
   
-  # Takes all items out of a collection and
-  # requires them
-  #
-  # items - A variable number of required file
-  #         names as strings
-  #
-  def require_all(*items)
-    items.each do |b|
-      require b
-    end
-  end
-  
-  
   # Returns the path to the theme currently in use
   def current_theme()
       System.theme
   end
+  
   
   # Strips html and returns a string
   def strip_html(str)
@@ -48,6 +36,11 @@
   end
   
   
+  # Makes text human readible
+  def humanize(str)
+    strip_html(str.to_s).gsub("_", " ").split(" ").each{|s| s.capitalize!}.join(" ")
+  end
+    
   # Looks for a file in the themes folder. If it does not exist, 
   # looks for the file in the proto-includes/views folder. Otherwise,
   # it returns nothing.
@@ -144,6 +137,6 @@ helpers do
     return "<link rel='stylesheet' href='/stylesheets/#{filename}' media='#{media}'/>"
   
   end
-
+  
 end
 

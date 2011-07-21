@@ -50,7 +50,7 @@ helpers do
   #
   # Returns an action to render the cheatsheet template
   def get_cheatsheet()
-    erb :'../../personas/cms/views/cheatsheet'
+    erb :'../../cms/views/cheatsheet'
   end
   
   
@@ -151,18 +151,8 @@ helpers do
   #
   # Retuns the author of the passed object (Be it from the protoloop or argument)
   def the_author(content=nil)
-    if node = content || @content || Content.get(params[:id])
-        
-      author = User.get(node.author)
-        
-      if (author.first_name && author.second_name)
-        ( User.get(node.author).first_name + " " + User.get(node.author).last_name )
-      else          
-        author.username
-      end
-        
-    else
-      "<strong>Error:</strong> No author could be found" unless ENV['RACK_ENV'] == 'production'
+    if node = content || @content || Content.get(params[:id])        
+      author = node.author
     end
   end
   
@@ -262,7 +252,7 @@ helpers do
   # Returns a url to location of the passed content object
   def the_link(content=nil)
       if node = content || @content || Content.get(params[:id])
-        "/node/#{node.id}"
+        "/content/#{node.id}"
       else
         "<strong>Error:</strong> No link could be found" unless ENV['RACK_ENV'] == 'production'
       end

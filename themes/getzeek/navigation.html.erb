@@ -2,7 +2,7 @@
     <ul>
     
         <% if @include_home %>
-            <li class="home first <%= "current" if params[:id] == nil %>">
+            <li class="home first <%= "current" if (params[:id] == nil && (params[:name] == nil) ) %>">
                 <a title="Home" href='/'>Home</a>
                 <% if has_children?("page", Content.get(System.homepage)) %>
                       <ul class="children">

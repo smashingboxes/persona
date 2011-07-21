@@ -2,8 +2,8 @@
     <% @model.properties.each do |p| %> 
       <% unless (p.name.to_s === "id") || (p.options[:primitive] == DateTime) %>
       <p>
-        <label><%= p.name.to_s.gsub("_", " ").capitalize %></label>
-            
+        <label><%= humanize(p.name) %></label>
+        
         <% if p.options[:length] %>
             <textarea name="record[<%= p.name %>]" placeholder="Enter <%= p.name.to_s.gsub("_", " ") %>"><%= @record[p.name] %></textarea>
         <% elsif p.options[:flags] %>
@@ -14,6 +14,19 @@
             </select>
         <% elsif p.name.to_s === "password" %>
             <input type="password" class="text" placeholder="Enter <%= p.name %>" name="record[<%= p.name %>]" value="<%= @record[p.name] %>"/>
+        <% elsif p.options[:index] %>
+            <select name="record[<%= p.name %>]">
+                <option>
+                    <% DataMapper::Model.descendants.find{ |model| model.name.downcase == p.options[:index].to_s }.all.each do |model| %>
+                    <p> 
+                        <%= model.id %>)
+                        <% model.attributes.find_all{|b| b[0].to_s != "password"}.each do |a| %>
+                            <%= a[1].to_s + ", " if a[1].is_a? String %>
+                        <% end %>
+                    </p>
+                    <% end %>
+                </option>
+            </select>
         <% else %>
             <input type="text" class="text" name="record[<%= p.name %>]" value="<%= @record[p.name] %>"/>
         <% end %>

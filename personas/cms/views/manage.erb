@@ -2,17 +2,17 @@
     <article>
         <h1>Content</h1>
         <hr/>
-        <a href="/admin/manage/create/content" class="button">New Content</a>
+        <a href="/admin/content/create" class="button">New Content</a>
         <hr/>
         <% proto_loop "page" do %>
             <% if @content.parent == 0 %>
             <div class="mediabox page">
-                <h4><a href="<%= the_link %>"><strong><%= the_title() %></strong></a> | <a href="/admin/manage/content/edit/<%= the_id %>">Edit Page</a></h4>
+                <h4><a href="<%= the_link %>"><strong><%= the_title() %></strong></a> | <a href="/admin/content/edit/<%= the_id %>">Edit Page</a></h4>
                 <hr/>
                 <ul>
                 <% child_loop "page" do %>
                 <li>
-                    <strong><a href="<%= the_link %>"><%= the_title() %></a></strong> | <a href="/admin/manage/content/edit/<%= the_id %>">Edit Page</a>                    
+                    <strong><a href="<%= the_link %>"><%= the_title() %></a></strong> | <a href="/admin/content/edit/<%= the_id %>">Edit Page</a>                    
                 </li>
                 <% end %>
                 </ul>

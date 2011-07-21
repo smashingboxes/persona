@@ -1,12 +1,11 @@
         <section class="manage">
             <article>
                 <h3>Edit <strong><%= the_title %></strong></h3>
-                <form action="/admin/manage/content/edit/<%= the_id %>" method="post" id="manageContent">
+                <form action="/admin/content/edit/<%= the_id %>" method="post" id="manageContent">
                     
                   <%= get_cheatsheet %>
                   
                   <fieldset>
-                    <legend>Please use the form below to create a page:</legend>
                     <p>
                       <label for="title">Page Title</label><br>
                       <input type="text" class="text" name="record[title]" id="title" value="<%= the_title %>" />

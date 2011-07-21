@@ -33,9 +33,6 @@ class System
   
 end
 
-DataMapper.finalize
-System.auto_upgrade!
-
 
 #######################################################
 # 2) Routes
@@ -44,7 +41,7 @@ System.auto_upgrade!
   post "/contactme" do 
     
     begin
-      email "nate.hunzaker@gmail.com", "Hey Nate!", "How are you doing?"
+      email "nate.hunzaker@gmail.com", "Hey Nate!", "Someone contacted you!"
     rescue Exception => e
       flash[:error] = "<strong>Oops!</strong> The following error occurred:<hr/>#{e}"
     end

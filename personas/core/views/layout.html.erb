@@ -3,8 +3,8 @@
 
   <head>
       <meta charset="utf-8">
-  	     	 
-  	  <link rel="stylesheet" href="/admin/stylesheets/screen.css" type="text/css" media="all"/>
+  	  
+  	  <link rel="stylesheet" href="/admin/stylesheets/screen.css?<%= rand(99999999999) %>" type="text/css" media="all"/>
       
       <title><%= System.theme.capitalize %> Admin</title>
       
@@ -39,7 +39,7 @@
                   <li class="home"><a href="/admin" title="Go to dashboard">&#8657;</a></li>
                   <% all_models.each do |m| %>
                       <% unless m == System %>
-                          <li <%= "class='current'" if (params[:name] && params[:name] === m.name.downcase) %>><a href="/admin/manage/<%= m.name.downcase %>"><%= m.storage_name.capitalize %></a></li>
+                          <li <%= "class='current'" if (params[:name] && params[:name] === m.name.downcase) %>><a href="/admin/<%= m.name.downcase %>"><%= m.storage_name.capitalize %></a></li>
                       <% end %>
                   <% end %>
                   <li class="settings"><a href="/admin/system">System Settings</a></li>
