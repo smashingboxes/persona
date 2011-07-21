@@ -2,7 +2,7 @@
     <article>
         <form method="put" action="/admin/manage/<%= params[:name] %>/edit/<%= params[:id] %>">
           <h1>Currently Editing <strong><%= @model.name %> Entry <%= params[:id] %></strong> </h1>
-          <%= erb :'partials/_form' %>
+          <%= erb :'../../personas/core/views/partials/_form' %>
           <input type="reset" value="Reset"/><input type="submit" value="Save"/>
         </form>
    </article>
