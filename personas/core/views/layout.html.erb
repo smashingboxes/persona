@@ -29,7 +29,7 @@
           
           <nav class="utility">
               <ul>
-                  <li class="user">Welcome, <a href="/admin"><strong><%= current_user.username.capitalize %></strong></a></li>
+                  <li class="user">Welcome, <a href="/admin/user/edit/<%= current_user.id %>"><strong><%= current_user.username.capitalize %></strong></a></li>
                   <li><a href="/logout">Sign Out</a></li>
               </ul>
           </nav>

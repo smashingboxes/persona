@@ -12,6 +12,25 @@
 #######################################################
 
 #######################################################
+#  3) Resource Routes
+#######################################################
+
+  get '/content/export.json' do
+    
+    content_type :json
+    
+    require_user
+    
+    data = []
+
+    Content.all.each do |c|
+      data << c.to_json        
+    end
+    
+    data
+  end
+
+#######################################################
 #  1) Basic Routes
 #######################################################
   
@@ -22,7 +41,7 @@
   end
   
   get '/content/:id' do
-    proto_genesis :"/templates/#{Content.get(params[:id]).template}"
+    erb :"/templates/#{Content.get(params[:id]).template}"
   end
            
   get '/content/:type/:name' do
@@ -31,12 +50,12 @@
              
     @content = Content.first(:content_type => type, :title => name)
 
-    proto_genesis :"/templates/#{@content.template}"
+    erb :"/templates/#{@content.template}"
   end
   
            
 #######################################################
-#  1) Admin Content Routes
+#  2) Admin Content Routes
 #######################################################        
   
   # Create
