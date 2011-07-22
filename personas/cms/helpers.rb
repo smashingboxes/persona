@@ -31,7 +31,7 @@ helpers do
   #
   # Returns an action to render the header template
   def get_header()  
-    proto_genesis 'header'
+    erb :'header'
   end
   
   
@@ -42,7 +42,7 @@ helpers do
   # Returns an action to render the sidebar template
   def get_sidebar(css_class="left")
     @css_class = css_class
-    proto_genesis 'sidebar'
+    erb :'sidebar'
   end
   
   
@@ -59,8 +59,8 @@ helpers do
   # Returns an action to render the footer template
   def get_footer()
     
-    output = proto_genesis 'footer'
-    output += proto_genesis '../../personas/cms/views/admin' if authorized?
+    output = erb :'footer'
+    output += erb :'../../personas/cms/views/admin' if authorized?
     
     return output
     
@@ -71,7 +71,7 @@ helpers do
   #
   # Returns an action to render the admin menu template
   def get_admin()
-    proto_genesis '../../personas/cms/views/admin'
+    erb :'../../personas/cms/views/admin'
   end
   
   
@@ -126,7 +126,7 @@ helpers do
 
     end
     
-    proto_genesis "navigation"
+    erb :"navigation"
         
   end
 

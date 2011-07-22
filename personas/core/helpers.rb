@@ -2,152 +2,170 @@
 #             Core Persona              #
 #########################################
 #                                       #
-#  1. System methods                    #
-#  1. Helper methods                    #
+#   I. System methods                   #
+#       1) String Helpers               #
+#           a) strip_html               #
+#           b) truncate                 #
+#           c) humanize                 #
+#                                       #
+#       2) Rendering Helpers            #
+#           a) proto_genesis            #
+#           b) admin                    #
+#                                       #
+#       3) File/Data Helpers            #
+#           a) themes                   #
+#           b) all_models               #
+#           c) current_theme            #
+#           d) load_persona             #
+#                                       #
+#                                       #
+#  II. Helper methods                   #
 #                                       #
 #########################################
 
 #########################################
-#  1. System Helpers
-#########################################    
-  
-  # Returns the path to the theme currently in use
-  def current_theme()
-      System.theme
-  end
-  
-  
-  # Strips html and returns a string
-  def strip_html(str)
-      str.gsub(/<\/?[^>]*>/, "")
-  end
-  
-  
-  # Reduces a string to a certain number of words and returns a string
-  def truncate(str, length=10, strip=false)
-    
-    str = strip_html(str) if strip
+#  I. System Helpers
+######################################### 
 
-    str = str.split(" ")[0..length].join(" ")
-    str += "..." if str.split(" ").length > length   
+    #########################################
+    #  1. String Helpers
+    #########################################   
+    
+        # a) strip_html
+        #
+        #    Receives a string and removes all html elements
+        #
+        def strip_html(str)
+            str.gsub(/<\/?[^>]*>/, "")
+        end
         
-    return str
-    
-  end
-  
-  
-  # Makes text human readible
-  def humanize(str)
-    strip_html(str.to_s).gsub("_", " ").split(" ").each{|s| s.capitalize!}.join(" ")
-  end
-    
-  # Looks for a file in the themes folder. If it does not exist, 
-  # looks for the file in the proto-includes/views folder. Otherwise,
-  # it returns nothing.
-  # 
-  # filename = The file in question
-  #
-  # Returns a string
-  def look_for(term)
-      
-      found = ""
-         
-      # Check the /themes/template directory
-      Dir.foreach("./themes/#{current_theme}/") do |cf|
-        if cf.split('.').first == term
-            found = term
-            return found 
-        end
-      end
-      
-      # Otherwise, check the default theme
-      Dir.foreach("./themes/default/") do |cf|
-        if cf.split('.').first == term
-          found = "../../themes/default/#{term}" 
-          return found
-        end
-      end
-      
-      # If it can't find either one, we'll at throw the original term back out
-      # for error handling
-      return term
-      
-  end
+        
+        # b) truncate:
+        #
+        #    Reduces a string to a certain number of words and returns a string
+        #
+        def truncate(str, length=10, strip=false)
           
-  # Renders a template if it exists, if not it 
-  # defaults to the default template in proto-includes
-  #
-  # filename => The template file to be rendered
-  #
-  # Returns an action to render a template file
-  def proto_genesis(filename="")       
-      erb :"#{look_for filename}"
-  end
+          str = strip_html(str) if strip
+      
+          str = str.split(" ")[0..length].join(" ")
+          str += "..." if str.split(" ").length > length   
+              
+          return str
+          
+        end
+        
+        
+        # c) humanize:
+        #
+        #    Makes text human readible by replacing "_" and capitalizing words
+        #
+        def humanize(str)
+          strip_html(str.to_s).gsub("_", " ").split(" ").each{|s| s.capitalize!}.join(" ")
+        end
   
   
-  # Renders an admin template 
-  #
-  # filename => The template file to be rendered
-  #
-  # Returns an action to render a template file
-  def admin(filename='index', layout="layout")
-      erb :"../../personas/core/views/#{filename.to_s}", :layout => :"../../personas/core/views/#{layout.to_s}"
-  end
+    #########################################
+    #  2. Rendering Helpers
+    #########################################
+                
+        # a) proto_genesis
+        #
+        #    Trys to render a template if it exists.
+        #    If not it tries the default template
+        #
+        def proto_genesis(filename="")       
+            erb :"#{filename}"
+            erb :"../default/#{filename}"
+        end
+        
+        
+        # b) admin
+        #
+        #    Requires user authentication and renders
+        #    an admin template, 
+        #
+        def admin(filename='index', layout="layout")
+            require_user
+            erb :"../../personas/core/views/#{filename.to_s}", :layout => :"../../personas/core/views/#{layout.to_s}"
+        end
 
-  
-  
-  # Scans for all folders files in the themes directory 
-  #
-  # Return an array of strings equal to theme names
-  def themes()
-    source = "./themes/"
-    
-    cluster = []
-    
-    Dir.foreach(source) do |cf|
-      unless cf == '.' || cf == '..' 
-        cluster << cf.split('.').first
-      end 
-    end
-    
-    return cluster
-  end
 
+    #########################################
+    #  3. File/Data Helpers
+    #########################################
+
+        # a) themes 
+        #
+        #    Scans for all folders files in the themes directory
+        #    and returns an array of string-value names
+        #
+        def themes()
+          source = "./themes/"
+          
+          cluster = []
+          
+          Dir.foreach(source) do |cf|
+            unless cf == '.' || cf == '..' 
+              cluster << cf.split('.').first
+            end 
+          end
+          
+          return cluster
+        end
+              
+              
+        # b) all_models
+        #
+        #    Gets all descendants of the DataMapper::Model
+        #    class and returns an array of classes
+        #
+        def all_models
+            cluster = DataMapper::Model.descendants
+        end
+        
+        
+        # c) current_theme
+        #
+        #    Returns the name to the theme currently in use
+        #
+        def current_theme()
+            System.theme
+        end
   
-  # Syntax sugar for loading personas into the system
-  def load_persona(persona="")
-      _file = persona.split("/").last
-      require "./personas/#{persona}/#{_file}"
-  end
   
-  
-  # Gets all models and returns an array
-  def all_models
-      cluster = DataMapper::Model.descendants
-  end
-  
+        # d) load_persona 
+        #
+        #    Syntax sugar for loading personas into the system
+        #
+        def load_persona(persona="")
+            _file = persona.split("/").last
+            require "./personas/#{persona}/#{_file}"
+        end
+        
  
+
 #########################################
 #  2. Helpers methods
 #########################################  
  
-helpers do    
-  
-  # Renders a link tag with stylesheet information
-  #
-  # stylesheet => The name of the stylesheet. Defaults to 'screen'
-  # media      => The media format the stylesheet will be displayed as.
-  #               Defaults to 'screen'
-  #
-  # Example:
-  #   get_stylesheet("print", "print") => <link rel='stylesheet' href='/stylesheets/print.css' media='print'/>
-  #
-  # Returns an action to render a stylesheet link
-  def stylesheet(filename="screen", media="all")
+ 
+    helpers do    
+      
+      # 1) stylesheet
+      #    
+      #    Renders a link tag with stylesheet information
+      #
+      #    stylesheet => The name of the stylesheet. Defaults to 'screen'
+      #    media      => The media format the stylesheet will be displayed as.
+      #                  Defaults to 'screen'
+      #
+      # Returns an action to render a stylesheet link
+      def stylesheet(filename="screen", media="all")
+        
+        return "<link rel='stylesheet' href='/stylesheets/#{filename}?#{Random.rand(99999999)}' media='#{media}'/>"
+      
+      end
+      
+    end
     
-    return "<link rel='stylesheet' href='/stylesheets/#{filename}?#{Random.rand(99999999)}' media='#{media}'/>"
-  
-  end
-  
-end
-

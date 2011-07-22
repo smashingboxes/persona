@@ -68,7 +68,8 @@
   end
   
   get '/admin/require/:name' do
-    erb :"#{_admin}/requirements", :locals => { :'@model' => DataMapper::Model.descendants.find{|m| m.name.to_s.downcase == params[:name].to_s} }, :layout => :"#{_admin}/safety"
+    @model = DataMapper::Model.descendants.find{|m| m.name.to_s.downcase == params[:name].to_s}
+    admin :requirements, :safety
   end
   
   # The Admin Console
