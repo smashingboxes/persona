@@ -120,14 +120,14 @@ Version: 1
     sup                                     { font-size: 0.5em; vertical-align: baseline; }
         
 
-    /* f) Utility Class 
+    /* f) Utility Classes 
     ---------------------------------------*/
     .amp, .alt                              { font-family: $fancy, serif; font-style: italic; font-weight: normal; }
     .columns-3                              { @include column-count(3); @include column-gap(1em); } 
     .columns-2                              { @include column-count(2); @include column-gap(1em); } 
  
  
-    /* g) Utility Class 
+    /* g) Icon Classes 
     ---------------------------------------*/
     .icon                                   { display: block; width: 32px; height: 32px; padding: 0 3px; text-indent: -9999px; 
         &.email                             { background: transparent url("/images/icons/icon_email.png") 0 50% no-repeat; width: 14px; height: 20px; }
@@ -141,9 +141,6 @@ Version: 1
  *   2) Structure                              *
  * =========================================== */
     
-    
-/* Structure
------------------------------------------- */
 #wrapper                                    { @include container(); margin: 1em auto 3em; padding-bottom: 30px; overflow: visible;    
     
     nav                                     { 
@@ -157,6 +154,7 @@ Version: 1
         
         #logo                                   { background: transparent url("/images/zeek_logo.png") 50% 0% no-repeat; display: block; height: 160px; width: 288px; margin: -47px auto 30px -30px; position: absolute; text-indent: -9999px; }
         
+        
         /* Navigation
         -------------------------------------- */
         .menu                                   { clear: right; text-align: right;
@@ -165,26 +163,26 @@ Version: 1
             
             ul                                  { margin: 0 0 0 20px; 
                 li                              { float: none; @include inline-block(); position: relative; text-align: right; list-style: none; margin: 0 -1px 0 0;
-                    a                           { border-right: 1px solid #b3db7a; color: #fff; font-weight: bold; font: bold 16px/54px $century_gothic; padding: 0 14px; text-shadow: 0 1px 3px #60852c; }
-                    &.last a                    { border: 0; padding-right: 14px; @include border-right-radius(10px); }
+                    a                           { color: #fff; font-weight: bold; font: bold 16px/54px $century_gothic; padding: 0 14px; text-shadow: 0 1px 3px #60852c; }
+                    &.last                      { @include border-right-radius(10px);
+                        > a                     { border: 0; padding-right: 14px;  }
+                    }
                     
-                    &.current, &:hover          { background: #142423; @include box-shadow(inset 0 0 2px #000); border: 1px solid #b3db7a; border-color: #111 #b3db7a; 
+                    &.current, &:hover          { background: #142423; @include box-shadow(inset 0 0 2px #000); border: 1px solid #111;
                         > a                     { border-color: transparent; padding: 5px 13px; }
                     }
                     
                     &:hover ul                  { display: none; }
 
-                    ul.children                 { display: none; position: absolute; padding-top: 3px; margin: 0 0 0 -1px; left: 0; top: 55px; width: 800px; text-align: left;
-                        li                      { background: #a1d54d; border: 1px solid #8cc644; margin: 0 0 0 2px;
+                    ul.children                 { display: none; position: absolute; padding-top: 3px; margin: 0; left: -3px; top: 55px; width: 600px; text-align: left;
+                        li                      { background: #a1d54d; border: 1px solid #8cc644; margin: 0 0 0 2px; white-space: nowrap; 
                             a                   { border: none; line-height: 40px; }
                             &.current, &:hover  { background: #142423; border: 1px solid #111; @include box-shadow(none); 
                                 a               { border: none; padding: 5px 14px; text-shadow: 0 0 1px #111; }
                             }
                         }
                     }
-                    
-                    /*&.first ul.children        { right: inherit; left: 0; margin-left: 228px;}
-                    
+                                        
                     /* Adds current child permanance */
                     &.current > ul.children     { display: block;}
               
@@ -228,7 +226,6 @@ Version: 1
             a:active                        { @include box-shadow(inset 2px 2px 5px #555);}
             
             ul, li                          { background: none; border: none; list-style: circle;}        
-
         }
                     
         /* Filter for accordions */
@@ -265,12 +262,25 @@ Version: 1
             }
         }
         
+        /* Sizes */
+        &.small                             { width: 15%; float: left; 
+            header                          { padding: 0; text-align: center; @include border-top-radius(12px); }
+            ul li a                         { text-indent: 10px; }
+        }
+        
+        &.medium                            { width: 30%; float: left; overflow: hidden; 
+            header                          { @include border-top-right-radius(0); }
+        }
+
     } 
-    
     
     /* Deals Feed */
     section.deals                           { width: 500px; margin-right: 0; float: left; display: inline;
-        header                              { margin: 0; }
+        
+        &.col1                               { float: left; }
+        &.col2                               { float: right; }
+        
+        header                              { margin: 0; height: 38px; line-height: 38px; }
         
         nav                                 { border: 1px solid #80ad45; @include border-top-radius(10px); @include background-image(linear-gradient( color-stops(#a1d54d, #8cc644) ) ); 
             form                            { padding: 0 15px; overflow: hidden;
@@ -296,7 +306,8 @@ Version: 1
                 iframe.map                  { margin: 2%; width: 96%; height: 300px; }
             }
             
-            li.post                         { border: none; margin: 0; overflow: hidden; padding: 2%;
+            
+            li.post, li.deal, li.fundraiser { border: none; margin: 0; overflow: hidden; padding: 2%;
                 .deal_type                  { font-size: 22px; margin: 0 0 10px; font-weight: normal; float: left;
                     &.monster               { background: url("/images/star.png") 0 50% no-repeat; padding-left: 30px; }
                 }
@@ -313,6 +324,13 @@ Version: 1
                     &.last                  { float: right; }
                 }
             }
+            
+            li.post                         { border-bottom: 1px solid #b0d6e3; 
+                .content                    { background: transparent; padding: 0; border: none; padding: 10px;
+                    p.description           { color: #111; margin: 0; }
+                    p.meta                  { text-align: right; }
+                }
+            }
               
             ul.actions                      { float: right;
                 li                          { display: block; float: left; margin: 0;
@@ -320,52 +338,52 @@ Version: 1
                 }
             }
             
-            li.view_all                     { border-bottom: 0; margin: 20px 0 10px; padding: 10px 15px 10px 0; text-align: right; }
+            li.view_all                     { background: none; border-bottom: 0; margin: 20px 0 10px; padding: 10px 15px 10px 0; text-align: right; 
+                .button                     { color: #fff;}
+            }
+        }
+        
+        /* Sizes */
+        &.large                             { width: 70%; position: relative; left: 1px;
+            nav                             { @include border-top-left-radius(0); }
+                .actions a                  { font-size: 10px; }
+            }
         }
         
     }
-    
+        
+    #tabs                                  { background: none; border: 0; float: right;
+        .tabs                              { @include background-image(linear-gradient( color-stops(#a1d54d, #8cc644) ) ); border: 1px solid #80ad45; border-top: 0; padding: 0; @include border-top-radius(12px); @include border-bottom-radius(0);
+            > li                           { background: none; border: none; @include border-radius(0); margin: 0;
+                a                          { color: #fff; font: bold 15px/40px $century_gothic; height: 40px; padding: 0 1em; text-shadow: 0 1px 3px #60852c;  }
+  
+                &:hover, 
+                &.ui-state-active          { background: #1e2f2e; border: none; padding-bottom: 1px;
+                    &.first                { @include border-top-left-radius(12px); }
+                    a                      { text-shadow: 0 1px 3px #111; }
+                }
+            }
+        }
+        
+        .tabs-box                          { border: none; padding: 0;
+           
+            header                         { margin: 25px 0; min-height: 105px;
+                .title                     { color: #113440; font: normal 34px/1.2em $league_gothic; text-shadow: none; text-transform: uppercase; text-shadow: 0 1px 3px #60852c; width: 55%; }
+                .subtitle                  { color: #113440; font: normal 18px/1.2em $century_gothic; margin-top: 15px; text-shadow: 0 1px 3px #60852c; }
+            }
+            
+            .ui-tabs-panel                 { padding: 0;}
+            .ui-widget-content a           { color: #113440; }
+            
+            article                        { background: #d6f4fe; background: rgba(255, 255, 255, 0.3); border: 1px solid #b0d6e3; padding: 25px; }
+        
+        }
+    }
     
     
     /* Homepage
     -------------------------------------- */
-    #getZeek                                { @include column(11); margin-right: 20px;
-        #tabs                               { background: none; border: 0;
-            .tabs                           { background: none; border: 0; padding: 0;
-                li                          { border: 1px solid #80ad45; @include border-top-radius(10px); @include background-image(linear-gradient( color-stops(#a1d54d, #8cc644) ) );
-                    a                       { color: #fff; font: bold 15px/1.5em $century_gothic; text-shadow: 0 1px 3px #60852c; }
-    
-                    &.ui-state-active       { background: #1e2f2e; border-color: #111; 
-                        a                   { text-shadow: 0 1px 3px #111; }
-                    }
-                }
-            }
-            
-            .content                        { background: #a1d54d; border: 1px solid #80ad45; @include border-bottom-radius(10px); @include border-top-right-radius(10px); @include background-image(linear-gradient( color-stops(#a1d54d, #8cc644) ) );
-                header                      { margin: 25px 0; min-height: 105px;
-                    .title                  { color: #fff; font: normal 34px/1.2em $league_gothic; text-shadow: none; text-transform: uppercase; text-shadow: 0 1px 3px #60852c; width: 55%; }
-                    .subtitle               { color: #fff; font: normal 18px/1.2em $century_gothic; margin-top: 15px; text-shadow: 0 1px 3px #60852c; }
-                }
-                
-                form                        { background: url("/images/card.jpg") 98% 0% no-repeat;
-                    .text                   { border: 1px solid #7caf38; max-width: 387px; @include box-shadow(inset 2px 2px 5px #ccc); }
-                }
-                
-                footer                      { text-align: right; margin: 10px 0 0 0;}
-            
-            }
-        }
-        
-        .about                              { margin-top: 40px;
-            header                          { margin: 0; }
-            p                               { background: url("/images/cash.png") 0 -10px no-repeat; font: normal 16px/1.5em $century_gothic; padding-left: 200px; }
-            footer                          { padding-left: 200px;}
-        }
-        
-        .tweets                             { margin-top: 80px;
-            h3                              { font-family: $century_gothic; }
-        }
-    }
+    #getZeek                                { @include column(11); margin-right: 20px; }
     
    
     
@@ -373,13 +391,11 @@ Version: 1
     -------------------------------------- */
     #about                                  { width: 100%;
 
-        div.content-box                     { background: transparent url("/images/zeek_monster.png") 40px 100% no-repeat; padding-left: 320px; margin-bottom: 20px; min-height: 180px;
-            .columns-2                      {  }
-        }
+        div.content-box                     { background: transparent url("/images/zeek_monster.png") 40px 100% no-repeat; padding-left: 320px; margin-bottom: 20px; min-height: 180px; }
         
         ul#about-items                      {
             li                              { background: #d6f4fe; background: rgba(255, 255, 255, 0.3); float: left; list-style: none; text-align: center; width: 310px; margin: 10px 5px; @include box-shadow(inset 0 0 0 1px #b0d6e3);
-                header                      { border: 1px solid #80ad45; height: 21px ; margin-top: -5px; @include border-top-radius(10px); @include background-image(linear-gradient( color-stops(#a1d54d, #8cc644) ) );  }
+                header                      { border: 1px solid #80ad45; height: 21px ; margin-top: -5px; margin-bottom: 20px; @include border-top-radius(10px); @include background-image(linear-gradient( color-stops(#a1d54d, #8cc644) ) );  }
                 .content                    { padding: 15px; text-align: left; }
                 
                 &.first                     { margin-left: 0; }
@@ -388,6 +404,7 @@ Version: 1
         }
         
     }
+    
     
     /* The Card
     -------------------------------------- */
@@ -410,53 +427,17 @@ Version: 1
         }
     }
     
-    /* Deal Tracker
-    -------------------------------------- */
-    
-    #deal_tracker                           {
-        
-        nav.filter                          { width: 30%; float: left; overflow: hidden; }
-                
-        .deals                              { width: 70%; position: relative; left: 1px;
-            nav                             { @include border-top-left-radius(0); }
-                        
-            .actions a                      { font-size: 10px; }
-        }
-    }
-    
-    /* Search Results
-    -------------------------------------- */
-    
-    #search_results                         {
-        
-        nav.filter                          { width: 30%; float: left; 
-            header                          { @include border-top-right-radius(0); }
-        }
-        
-        .deals                              { width: 70%; position: relative; left: 1px;
-            nav                             { @include border-top-left-radius(0); }
-            
-            .actions a                      { font-size: 10px; }
-        }
-    }
-
-
-    
     /* All Fundraisers
     -------------------------------------- */
     
     #fundraiser_tracker                     { 
-        
-        nav.filter                          { width: 15%; float: left; 
-            header                          { padding: 0; text-align: center; @include border-top-radius(12px); }
-            ul li a                         { text-indent: 10px; }
-        }
         
         .deals                              { width: 83%; float: right; overflow: hidden;
             ul.feed                         { padding-top: 20px; 
                 li.post                     { padding: 0 2%; }
             }
         }
+        
     }
     
     /* Fundraiser Feed
@@ -516,6 +497,7 @@ Version: 1
         .col2                               { width: 54.2%; float: right; }
                 
         .profile                            { margin-bottom: 72px; overflow: hidden;
+            
             .col1                           { float: left; width: 37.5%; 
                 img                         { margin-bottom: 20px; }
             }
@@ -532,48 +514,7 @@ Version: 1
         
         
         .support                            { clear: both; font-size: 17px; line-height: 1.5em;}
-        .map                                { width: 100%; height: 270px;}
-        #tabs                               { background: none; border: 0;
-            .tabs                           { @include background-image(linear-gradient( color-stops(#a1d54d, #8cc644) ) ); border: 1px solid #80ad45; border-top: 0; padding: 0; @include border-top-radius(12px); @include border-bottom-radius(0);
-                li                          { background: none; border: none; @include border-radius(0); margin: 0;
-                    a                       { color: #fff; font: bold 15px/40px $century_gothic; height: 40px; padding: 0 1em; text-shadow: 0 1px 3px #60852c;  }
-    
-                    &:hover, 
-                    &.ui-state-active       { background: #1e2f2e; border: none; padding-bottom: 1px;
-                        &.first             {  @include border-top-left-radius(12px); }
-                        a                   { text-shadow: 0 1px 3px #111; }
-                    }
-                }
-            }
-            
-            .content                        { border: none; padding: 0;
-               
-                header                      { margin: 25px 0; min-height: 105px;
-                    .title                  { color: #fff; font: normal 34px/1.2em $league_gothic; text-shadow: none; text-transform: uppercase; text-shadow: 0 1px 3px #60852c; width: 55%; }
-                    .subtitle               { color: #fff; font: normal 18px/1.2em $century_gothic; margin-top: 15px; text-shadow: 0 1px 3px #60852c; }
-                }
-                
-                .ui-tabs-panel              { padding: 0;}
-                .ui-widget-content a        { color: #fff; }
-                
-                ul.feed                     { border-width: 0 1px 1px; padding: 0; overflow: hidden;
-                    
-                    li.post                 { background: #d6f4fe; background: rgba(255, 255, 255, 0.3); border: none; border-bottom: 1px solid #283837; list-style: none; margin: 0; padding: 25px;                     
-                        img.thumb           { border: 1px solid #aaa; float: left; margin-right: 20px; }
-                        h4                  { font-weight: normal; margin: 0; }
-                        .meta               { font-weight: bold; font-size: 10px; margin: 0; position: relative; top: 15px; text-align: right;}
-                        .description        { color: #111; }
-                    }
-        
-                    li.view_all             { border-top: 1px solid #aaa; border-bottom: 0; list-style: none; margin: 0; padding: 25px; text-align: right; @include box-shadow(0 0 26px #777);}
-                }
-                
-                article                     { background: #d6f4fe; background: rgba(255, 255, 255, 0.3); padding: 25px; }
-            
-            }
-        }
-
-        
+        iframe.map                          { width: 100%; height: 270px;}
     }
     
     /* Profile Page (Basic Info Form)
@@ -603,8 +544,6 @@ Version: 1
         
         input.submit                        { clear: both; display: block; float: right;}
     }
-}
-
 
 
 
@@ -671,15 +610,63 @@ form                                        {
     }
 }
 
-
 /* =========================================== *
- *   3) Form Elements                          *
+ *   4) UI Components                          *
  * =========================================== */
   
   
+   /* Support Box
+    * Display on fundraiser pages
+    *******************************************/
     .support-box                            { background: transparent url("/images/support-pic.png") 100% 100% no-repeat; clear: both; font-size: 17px; line-height: 1.5em; min-height: 300px; 
         p                                   { padding-right: 140px;}
     }
+    
+    
+   /* About Box
+    * Displays on the homepage
+    *******************************************/
+    .about-box                              { margin-bottom: 80px;
+        header                              { margin: 0; }
+        p                                   { background: url("/images/cash.png") 0 -10px no-repeat; font: normal 16px/1.5em $century_gothic; padding-left: 200px; }
+        footer                              { padding-left: 200px;}
+    }
+    
+    .tweet-box                              {
+          h3                                { font-family: $century_gothic; }
+    }
+    
+    
+   /* Promotion Tabs
+    * Display on the homepage
+    *******************************************/
+    #promo-tabs                                 { background: none; border: 0; float: left; margin-bottom: 80px; width: 100%;
+        
+        .tabs                                   { background: none; border: 0; padding: 0;
+            li                                  { border: 1px solid #80ad45; @include border-top-radius(10px); @include background-image(linear-gradient( color-stops(#a1d54d, #8cc644) ) );
+                a                               { color: #fff; font: bold 15px/1.5em $century_gothic; text-shadow: 0 1px 3px #60852c; }
+
+                &.ui-state-active               { background: #1e2f2e; border-color: #111; 
+                    a                           { text-shadow: 0 1px 3px #111; }
+                }
+            }
+        }
+        
+        .tabs-box                               { background: #a1d54d; border: 1px solid #80ad45; @include border-bottom-radius(10px); @include border-top-right-radius(10px); @include background-image(linear-gradient( color-stops(#a1d54d, #8cc644) ) );
+            header                              { margin: 25px 0; min-height: 105px;
+                .title                          { color: #fff; font: normal 34px/1.2em $league_gothic; text-shadow: none; text-transform: uppercase; text-shadow: 0 1px 3px #60852c; width: 55%; }
+                .subtitle                       { color: #fff; font: normal 18px/1.2em $century_gothic; margin-top: 15px; text-shadow: 0 1px 3px #60852c; }
+            }
+            
+            form                                { background: url("/images/card.jpg") 98% 0% no-repeat;
+                .text                           { border: 1px solid #7caf38; max-width: 387px; @include box-shadow(inset 2px 2px 5px #ccc); }
+            }
+            
+            footer                              { text-align: right; margin: 10px 0 0 0;}
+        
+        }
+    }
+
 
 
     /* Fancy Background

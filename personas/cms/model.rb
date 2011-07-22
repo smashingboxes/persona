@@ -28,6 +28,10 @@
       self.all(:content_type => name.to_s)
     end
     
+    def has_children?
+      has_children = ( Content.all(:parent => self.id).count > 0 ) ? true : false
+    end
+    
   end
   
   class User

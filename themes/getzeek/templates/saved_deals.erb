@@ -1,7 +1,7 @@
 <article id="search_results">
     <div class="columns-2"><%= the_content(); %></div>
     
-    <nav class="filter">
+    <nav class="filter medium">
         <header>Filter Deals</header>
         <ul>
             <li><a href="#" class="latest">Latest Deals<span>&rsaquo;</span></a></li>
@@ -12,7 +12,7 @@
         </ul>
     </nav>
     
-    <section class="deals">
+    <section class="deals large">
     
         <nav>
            <header>Saved Deals</header>
@@ -20,7 +20,7 @@
         
         <ul class="feed">            
         <% Deal.all.each do |deal| %>
-            <li class="post">
+            <li class="deal">
                 <div class="split first">
                     <h3 class="deal_type <%= deal.deal_type %>"><%= deal.deal_type.capitalize %></h3>
                     <ul class="actions">

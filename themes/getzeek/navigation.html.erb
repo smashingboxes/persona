@@ -7,25 +7,28 @@
                 <% if has_children?("page", Content.get(System.homepage)) %>
                       <ul class="children">
                           <% child_loop "page", Content.get(System.homepage) do %>
-                              <li class="<%= get_position(@index, @content) %>"><a href="<%= the_link %>"><%= the_title %></a></li>
+                              <li class="<%= "current" if the_id == params[:id] %>"><a href="<%= the_link %>"><%= the_title %></a></li>
                           <% end %>
                       </ul>
                   <% end %>
             </li>
         <% end %>
         
-        <% Content.all(:content_type => "page", :parent => 0).each_with_index do |c, index| %>
+        <% pages = Content.all(:content_type => "page", :parent => 0) %>
+        
+        <% pages.each_with_index do |c, index| %>
             
             <% @content = c %>
-            <% if ( @content.parent == 0 && @content.id != System.homepage ) %>
-                <li class="<%= get_position(index, @content) %>">
+            
+            <% if ( @content.id != System.homepage ) %>
+                <li class="<%= get_position(pages, index) %>">
                     
                     <a href="<%= the_link %>"><%= the_title %></a>
                     
-                    <% if has_children? %>
+                    <% if @content.has_children? %>
                         <ul class="children">
                             <% child_loop "page" do %>
-                                <li class="<%= get_position(index, @content) %>"><a href="<%= the_link %>"><%= the_title %></a></li>
+                                <li class="<%= "current" if the_id == params[:id] %>"><a href="<%= the_link %>"><%= the_title %></a></li>
                             <% end %>
                         </ul>
                     <% end %>

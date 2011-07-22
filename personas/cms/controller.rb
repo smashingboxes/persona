@@ -15,9 +15,9 @@
 #  3) Resource Routes
 #######################################################
 
-  get '/content/export.json' do
+  get '/content/export.xml' do
     
-    content_type :json
+    content_type :xml
     
     require_user
     

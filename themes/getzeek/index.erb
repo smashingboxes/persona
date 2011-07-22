@@ -1,11 +1,11 @@
 <section id="getZeek">
-    <section id="tabs">
+    <section id="promo-tabs">
         <h2>Get Zeek</h2>
         <ul class="tabs">
             <li><a href="#tabs-1">Activate Card</a></li>
             <li><a href="#tabs-2">Purchase Card</a></li>
         </ul>
-        <ul class="content">
+        <ul class="tabs-box">
             <li id="tabs-1">
                 <form>
                     <header>
@@ -39,7 +39,7 @@
         </ul>
     </section>
     
-    <section class="about">
+    <section class="about-box">
         <header>
             <h2>About Zeek</h2>
         </header>
@@ -50,7 +50,7 @@
             <a href="#readmore" class="button">Read More</a>
         </footer>        
     </section>
-    <section class="tweets">
+    <section class="tweet-box">
         <header>
             <h2>Zeek Tweets</h2>
         </header>
@@ -64,9 +64,7 @@
 
 <section class="deals">
     
-    <header>
-        <h2>Latest Deals</h2>
-    </header>
+    <h2>Latest Deals</h2>
 
     <nav>
         <form>
@@ -78,7 +76,7 @@
     
     <ul class="feed">
         <% Deal.all.each do |deal| %>
-            <li class="post">
+            <li class="deal">
                 <h3 class="deal_type <%= deal.deal_type %>"><%= deal.deal_type.capitalize %> Deal</h3>
                 <ul class="actions">
                     <li><a href="#" class="icon email">Email</a></li>

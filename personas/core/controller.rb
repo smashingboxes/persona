@@ -88,7 +88,7 @@
     
     System.first.update(params[:'system'])
     
-    require "./themes/#{System.theme}/config.rb"
+    require "./themes/#{System.theme}/persona.rb"
     
     DataMapper::Model.descendants.each do |model|
       DataMapper.finalize
@@ -189,7 +189,7 @@
   #  d. Delete Routes
   #########################################
     
-    post '/admin/:name/:id' do
+    get '/admin/:name/delete/:id' do
       @model = DataMapper::Model.descendants.find{ |model| model.name.downcase == params[:name]}      
       @record = @model.get(params[:id])
 
@@ -197,6 +197,8 @@
       
       flash[:error] = "<strong>#{@model.name}</strong> was successfully deleted"
       
-      redirect "/admin/manage/#{@model.name.downcase}"
+      redirect "/admin/#{@model.name.downcase}"
+      
     end
   
+    

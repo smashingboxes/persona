@@ -1,33 +1,24 @@
-# ##################################################### #
-# A place to edit the functionality of your persona app #
-# ##################################################### #
+# Require any additional compass plugins here.
 
-# Warning, having multiple personalities could make you crazy,
-# tread lightly
+# Set this to the root of your project when deployed:
+http_path = "/"
+css_dir = "/stylesheets"
+sass_dir = "/stylesheets/sass"
+images_dir = "images"
+javascripts_dir = "javascripts"
 
-load_persona "cms"
-load_persona "crm"
+# You can select your preferred output style here (can be overridden via the command line):
+output_style = :compressed
 
-# Deals
-class Deal
-  include DataMapper::Resource
+# To enable relative paths to assets via compass helper functions. Uncomment:
+# relative_assets = true
 
-  property :id,                 Serial
-  property :title,              String,                   :required => true,            :message => "Please specify a title for this content."
-  property :description,        Text
-  property :deal_type,          Enum[:zeek, :monster],    :required => true,            :default => :zeek
-  property :author,             Integer,                  :default => User.first.id
-      
-  property :created_at,         DateTime,                 :default => Time.now
-  property :updated_at,         DateTime,                 :default => Time.now
+# To disable debugging comments that display the original location of your selectors. Uncomment:
+line_comments = false
 
-  # Allows to use the content_type as a class method, e.g., Content.post, Content.page
-  # Todo: Add an singularize method and use the plural form of content_type as method name.
-  def self.method_missing(name, *args)
-    self.all(:content_type => name.to_s)
-  end
-  
-end
 
-DataMapper.finalize
-Deal.auto_upgrade!
+# If you prefer the indented syntax, you might want to regenerate this
+# project again passing --syntax sass, or you can uncomment this:
+# preferred_syntax = :sass
+# and then run:
+# sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass

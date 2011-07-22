@@ -38,7 +38,10 @@ end
     def self.theme
       self.first.theme
     end
-        
+    
+    def self.title
+      self.first.title
+    end
   end
         
   DataMapper.finalize

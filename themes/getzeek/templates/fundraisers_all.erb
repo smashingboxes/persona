@@ -1,7 +1,7 @@
 <article id="fundraiser_tracker">
     <div class="columns-2"><%= the_content(); %></div>
     
-    <nav class="filter">
+    <nav class="filter small">
         <header>
             Sort Fundraisers
         </header>
@@ -23,7 +23,7 @@
         
         <ul class="feed">            
         <% Deal.all.each do |deal| %>
-            <li class="post">
+            <li class="fundraiser">
                 <div class="split first">
                     <h3 class="deal_type">CFCC Alumni</h3>
                     <ul class="actions">

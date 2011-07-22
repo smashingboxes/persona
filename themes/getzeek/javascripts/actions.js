@@ -17,7 +17,7 @@
         return false;
       }
     });
-    return $('#tabs').tabs();
+    return $('#tabs, #promo-tabs').tabs();
   });
   $("#accordion").accordion();
 }).call(this);

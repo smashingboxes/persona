@@ -80,14 +80,6 @@ helpers do
   # options => Optional overides to dicate the output of the nav
   #            html element.
   #
-  # Example:
-  #   get_navigation({ :css_class => "menu" })
-  #       # => <nav class="menu">
-  #               <ul>
-  #                   <li><a href="/node/1">Title</a></li> ...
-  #               </ul>
-  #            </nav>
-  #
   # Returns a string describing the navigation HTML component
   def get_navigation( options={} )
     
@@ -99,29 +91,22 @@ helpers do
     @css_class = local_options[:css_class]
     @include_home = local_options[:css_class]
     
-    def get_position(index, content)
+    def get_position(collection, index)
         
         list_style = ""
         
         # Get position
         if index == 0
-            list_style += "first"
-        elsif index == Content.pages.size - 1
+            list_style += "first" unless @include_home
+        elsif index == collection.length - 1
             list_style += "last"
         end
         
         # Is this the current link?
-        if (content.id == params[:id].to_i)
+        if (collection[index].id == params[:id].to_i)
           list_style += " current"
         end
-        
-        # Are children current?
-        Content.all(:parent => content.id).each do |child|
-            if (child.id == params[:id].to_i)
-                list_style += " current"
-            end
-        end
-        
+
         return list_style       
 
     end

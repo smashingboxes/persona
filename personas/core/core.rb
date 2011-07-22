@@ -27,7 +27,7 @@
   require_all 'rubygems',
               'bundler/setup',
               'sinatra',
-              'sinatra/flash',                                             # => 
+              'sinatra/flash',                                             # => For flash notifications
               'maruku',                                                    # => For interpretting Markdown
               'coffee-script',                                             # => For interpreting CoffeeScript
            
@@ -43,7 +43,7 @@
   require_all './personas/core/helpers.rb',                                # => Required for the 'require_all' method
               './personas/tools/authentication/authentication.rb',         # => Load Authentication
               './personas/tools/visualizer/visualizer.rb',                 # => Displays all model attributes
-              "./themes/#{System.theme}/config.rb",                        # => Fireup theme modifiers
+              "./themes/#{System.theme}/persona.rb",                       # => Fireup theme modifiers
               './personas/core/controller.rb'                              # => Core controllers
 
 
