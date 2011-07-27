@@ -3,12 +3,9 @@ source "http://gemcutter.org"
 
 group :default do
 
-  # We need to place compass before sinatra
-  gem 'compass'
-  
   # Sinatra, naturally  
   gem 'sinatra'
-  gem 'sinatra-reloader'
+  gem 'big_band'
   gem 'sinatra-flash'
   
   # Templating
@@ -23,22 +20,27 @@ group :default do
     
   # Data
   gem 'data_mapper'
-  
+    
   # Mail
   gem 'pony'
+  
+  # Authentication
+  gem 'warden'
   
 end
 
 group :production do
-    gem 'dm-postgres-adapter'
+  gem 'dm-postgres-adapter'
 end
 
 group :development do
   gem 'sqlite3'
   gem 'dm-sqlite-adapter'
   
-  # Console
+  # Consoles
   gem 'racksh'
+  gem 'rack-webconsole'
+  
 end
 
 group :test do

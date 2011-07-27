@@ -1,6 +1,5 @@
 <nav class="<%= @css_class %>">
     <ul>
-    
         <% if @include_home %>
             <li class="home first <%= "current" if params[:id] == nil %>"><a title="Home" href='/'>Home</a></li>
         <% end %>
@@ -8,14 +7,14 @@
         <% proto_loop "page" do %>
             
             <% if ( @content.parent == 0 && @content.id != System.homepage ) %>
-                <li class="<%= get_position(@index, @content) %>">
+                <li>
                     
                     <a href="<%= the_link %>"><%= the_title %></a>
                     
                     <% if has_children? %>
                         <ul class="children">
                             <% child_loop "page" do %>
-                                <li class="<%= get_position(@index, @content) %>"><a href="<%= the_link %>"><%= the_title %></a></li>
+                                <li><a href="<%= the_link %>"><%= the_title %></a></li>
                             <% end %>
                         </ul>
                     <% end %>
@@ -24,6 +23,6 @@
             <% end %>
             
         <% end %>
-        
+    
     </ul>
 </nav>

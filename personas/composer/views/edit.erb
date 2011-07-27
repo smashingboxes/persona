@@ -1,0 +1,60 @@
+        <section class="manage">
+            <article>
+                <h3>Editing <strong><%= the_title %></strong></h3>
+                <form action="/admin/content/edit/<%= the_id %>" method="post" id="manageContent">
+                  <aside>
+                      <section class="actions">
+                        <header>Actions</header>
+                        <input type="reset" value="Reset" class="button" />
+                        <input type="submit" value="Update" class="button" />
+                      </section> 
+                      <%= get_cheatsheet %>
+                  </aside>
+                  <fieldset>
+                    <p>
+                      <label for="title">Page Title</label><br>
+                      <input type="text" class="text" name="record[title]" id="title" value="<%= the_title %>" />
+                    </p>
+        
+                    <div id="editor" class="markdown">
+                      <label for="body">Content:</label><br/><br/>
+                      <a class="fullscreen" href="#editor">Fullscreen</a>
+                      <a class="exit" href="#">Exit</a>
+                      <textarea name="record[body]" id="body" rows="5" cols="20"><%= the_content nil, true %></textarea>
+                    </div>
+                  </fieldset>
+                  
+                  <fieldset>
+                    <legend>Other Properties:</legend>
+                    <p>
+                        <label>Content Type</label>
+                        <select name="record[content_type]" id="content_type">
+                            <option value="page" <%= 'selected="true"' if the_content_type == "page" %>>Page</option>
+                            <option value="post" <%= 'selected="true"' if the_content_type == "post" %>>Post</option>
+                        </select>
+                    </p>
+                    
+                    <p>
+                        <label>Parent</label>
+                         <select name="record[parent]" id="parent">
+                                <option value="0">None</option>
+                             <% parent = the_parent %>
+                             <% proto_loop "page" do %>
+                                <option value="<%= the_id %>" <%= 'selected="true"' if parent == the_id %>><%= the_title %></option>
+                             <% end %>
+                        </select>
+                    </p>
+                    <p>
+                        <label>Template:</label>
+                        <select name="record[template]" id="parent">
+                            <% templates.each do |t| %>
+                            <option value="<%= t %>" <%= "selected" if t == the_template %>><%= t.capitalize %></option>>
+                            <% end %>
+                        </select>
+                    </p>
+                  </fieldset>                  
+                </form>
+
+            <hr/>
+            </article>
+        </section>

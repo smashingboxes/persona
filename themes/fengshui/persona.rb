@@ -4,6 +4,3 @@
 
 # Warning, having multiple personalities could make you crazy,
 # tread lightly
-
-load_persona "cms"
-load_persona "crm"

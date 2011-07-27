@@ -1,0 +1,10 @@
+<section>
+    <article>
+        <form method="post" action="/admin/<%= @model.name.downcase %>/create">
+          <h1>New <strong><%= @model.name %> Entry <%= params[:id] %></strong> </h1>
+          <p>Please specify the following information:</p>
+          <%= erb :'partials/_form' %>
+          <input type="reset" value="Reset"/><input type="submit" value="Submit"/>
+        </form>
+   </article>
+</section>

@@ -1,0 +1,9 @@
+<section>
+    <article>
+        <form method="post" action="/admin/<%= params[:name] %>/edit/<%= params[:id] %>">
+            <h1>Currently Editing <strong><%= humanize find_name(@record) %></strong> </h1>
+            <%= erb :'partials/_form' %>
+            <input type="reset" value="Reset"/><input type="submit" value="Save"/>
+        </form>
+   </article>
+</section>
