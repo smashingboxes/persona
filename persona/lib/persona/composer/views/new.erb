@@ -1,0 +1,54 @@
+        <section class="manage">
+            <article>
+                <h3>New <strong>Content</strong></h3>
+
+                <form action="/admin/content/create" method="post" id="manageContent">
+                  
+                  <aside>
+                      <section class="actions">
+                          <header>Actions</header>
+                          <input type="reset" value="Reset" class="button" />
+                          <input type="submit" value="Create" class="button"/>
+                      </section>
+                      <%= get_cheatsheet %>
+                      <fieldset>
+                          <legend>Other Properties:</legend>
+                              <label>Content Type</label>
+                              <select name="record[content_type]" id="content_type">
+                                  <option value="page">Page</option>
+                                  <option value="post">Post</option>
+                              </select>
+                              <label>Parent</label>
+                               <select name="record[parent]" id="parent">
+                                      <option value="0">None</option>
+                                   <% proto_loop "page" do %>
+                                      <option value="<%= the_id %>"><%= the_title %></option>
+                                   <% end %>
+                              </select>
+                              <label>Template:</label>
+                              <select name="record[template]" id="parent">
+                                  <% templates.each do |t| %>
+                                  <option value="<%= t %>" <%= "selected" if t == "single" %>><%= t.capitalize %></option>>
+                                  <% end %>
+                              </select>
+                        </fieldset>
+                  </aside>
+                  
+                  <fieldset>
+                    <p>
+                      <label for="title">Page Title</label><br>
+                      <input type="text" class="text" name="record[title]" id="title" placeholder="Lorem Ipsum" />
+                    </p>
+        
+                    <div id="editor" class="markdown">
+                        <label for="body">Content:</label><br/><br/>
+                        <a class="fullscreen" href="#editor">Fullscreen</a>
+                        <a class="exit" href="#">Exit</a>
+                        <textarea name="record[body]" id="body" rows="5" cols="20"></textarea>
+                    </div>
+        
+                  </fieldset>
+
+                </form>
+            </article>
+        </section>

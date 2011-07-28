@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+      <meta charset="utf-8">
+  	     	 
+  	  <link rel="stylesheet" href="/admin/stylesheets/screen.css" type="text/css" media="all"/>
+  	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+      <script src="/admin/javascripts/system.js"></script>
+      
+      <title><%= System.theme.capitalize %></title>
+      
+      <!-- Patch holes in HTML5 support -->
+      
+      <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+      
+  </head>
+
+  <body>    
+        <header id="header">
+            
+            <a id="logo"><%= System.theme %> Admin</a>
+            
+            <nav class="utility">
+                <ul>
+                    <li></li>
+                </ul>
+            </nav>
+            
+            <nav class="menu">
+                <ul>
+                </ul>
+            </nav>
+        </header>
+        
+        <div id="wrapper">
+            <%= yield %>      
+        </div> 
+            
+    </div>
+
+    <div id="overlays">
+    
+        <%# styled_flash %>
+        
+    </div>
+        
+  </body>
+</html>

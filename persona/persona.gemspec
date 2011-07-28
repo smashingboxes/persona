@@ -7,10 +7,26 @@ Gem::Specification.new do |s|
   s.version     = Persona::VERSION
   s.authors     = ["Nathan Hunzaker"]
   s.email       = ["nate.hunzaker@gmail.com"]
-  s.homepage    = "personacms.heroku.com"
+  s.homepage    = "http://personacms.heroku.com"
   s.summary     = %q{A simple web framework.}
-  s.description = %q{A collection of sinatra apps which work together to provide a simple web framework.}
-
+  s.description = %q{A collection of sinatra-based apps which work together to create a simple web framework.}
+  
+  s.required_ruby_version = '>= 1.9.2'
+  
+  s.add_dependency 'sinatra'
+  s.add_dependency 'big_band'
+  s.add_dependency 'sinatra-flash'
+  s.add_dependency 'maruku'
+  s.add_dependency 'coffee-script'
+  s.add_dependency "therubyracer"
+  s.add_dependency 'data_mapper'
+  s.add_dependency 'dm-postgres-adapter'
+  
+  s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'dm-sqlite-adapter'
+  s.add_development_dependency 'racksh'
+  s.add_development_dependency 'rack-webconsole'
+  
   s.rubyforge_project = "persona"
 
   s.files         = `git ls-files`.split("\n")

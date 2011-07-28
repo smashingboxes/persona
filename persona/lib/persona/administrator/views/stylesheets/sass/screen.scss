@@ -1,0 +1,386 @@
+/* -------------------------------------------- *
+ *               Persona Admin CSS              *
+ * -------------------------------------------- *
+ *                                              *
+ *  @author   Nate Hunzaker                     *
+ *  @version  3.2                               *
+ *                                              *
+ * -------------------------------------------- *
+
+ * -------------------------------------------- *
+ *               Table of Contents              * 
+ * -------------------------------------------- *
+ *                                              *
+ *  1. Setup                                    *
+ *  2. Admin Toggle                             *
+ *  3. Login Form                               *
+ *  4. Content Management Forms                 *
+ *  3. UI Elements                              *
+ *      a) Fancy Radio Button Thumbnails        *
+ *      b) Flash Notifications                  *
+ *                                              *
+----------------------------------------------- */
+
+@import "blueprint/reset";
+@import "partials/base";
+@import "blueprint"; 
+
+@import "compass/css3";
+@import "compass/utilities";
+
+
+/* =========================================== *
+ *   1) Typography & Colors                    *
+ * =========================================== */
+
+    /* a) Variables
+    ---------------------------------------*/
+    
+    $body_copy  : #222;
+    $primary    : #f80;
+    $accent     : adjust-saturation(lighten($primary, 10%), -10%);
+    
+    $grid-background-column-color: rgba(225, 225, 225, 0.25);
+    $grid-background-baseline-color: rgba(0, 0, 0, 0.05);
+    
+    /*
+     *   Based upon recommendations by the Aaron Boodman
+     *   article: http://blogs.sitepoint.com/eight-definitive-font-stacks-3/
+     */
+    
+    $sans-serif : Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    $serif      : Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif," "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+    $mono       : Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+    $fancy      : "Goudy Old Style", "Palatino", "Book Antique", $serif;
+    
+    
+    /* b) Universal Styles
+    ---------------------------------------*/
+    html                                    { background: #fff; height: 100%; @include background-image(linear-gradient(#eeeeee, #ffffff)); background-repeat: repeat-x; }
+    body                                    { color: $body_copy; font: normal 14px/1.5em $sans-serif; padding-bottom: 80px;}
+
+    /* c) Headings
+    ---------------------------------------*/
+    h1, h2, h3, h4, h5, h6                  { color: $body_copy; font-weight: normal; line-height: 20px; margin-bottom: 20px; text-rendering: optimizeLegibility; }
+    h1                                      { font-size: 28px; line-height: 28px; }
+        h2                                  { font-size: 26px; line-height: 26px; }
+            h3                              { font-size: 24px; line-height: 24px; }
+                h4                          { font-size: 18px; margin-bottom: 10px; }
+                    h5                      { font-size: 16px; margin-bottom: 10px; }
+                        h6                  { font-size: 14px; margin-bottom: 6px; }
+
+
+
+    /* d) Lists
+    ---------------------------------------*/
+    article                                 {
+        ol, ul                              { margin-bottom: 1em; 
+            li                              { list-style: circle; margin: 0 0 0 2em; padding: 0; }
+        }
+        
+        ol li                               { list-style: decimal; }
+        
+        dl                                  { margin-bottom: 1em;
+            lh                              { font: bold 14px/1.9em inherit; } 
+            dt                              { margin: 0 0 0 1em; font-weight: bold;}
+            dd                              { margin: 0 0 1em 2em; }
+        }
+    }
+
+    
+    /* e) General
+    ---------------------------------------*/
+    blockquote, p, pre                      { margin-bottom: 1em; }
+    
+    abbr                                    { border-bottom: 1px dotted lighten($body_copy, 30%); }
+    
+    a                                       { color: $primary; text-decoration: none; 
+        &:hover, &:focus                    { color: $accent; }
+        &:active                            { color: darken($accent, 10%); }
+    }
+    
+    blockquote                              { border-bottom: 1px solid #CFCFCF; border-top: 1px solid #CFCFCF; color: lighten($body_copy, 40%); clear: right; font: italic 14px/1.5em $serif; margin: 2em 0; padding: 0em 4em; @include box-shadow(0 0 1px 1px #fff, 0 0 25px #ddd);        
+        &::before                           { background: url("/images/blockquotes.png") no-repeat; width: 32px; height: 32px; display: block; position: relative; left: -42px; top: 15px; }
+        &::after                            { background: url("/images/blockquotes.png") -40px 0 no-repeat; width: 32px; height: 32px; display: block; position: relative; left: 100%; top: -15px; }
+
+        img                                 { border: 0.5em solid #fff; float: left; margin: 0 2em 0 0; @include box-shadow(0 1px 3px lighten($body_copy, 30%) ); }
+    }
+    
+    code                                    { font-family: $mono; }
+    
+    em                                      { font-style: italic; color: darken($body_copy, 5%); } 
+
+    hr                                      { border: none; border-bottom: 1px dashed lighten($body_copy, 50%); clear: both; margin: 1.5em 0;}
+    
+    mark                                    { background: #fe8; position: relative; padding: 0.3em 0 0; text-shadow: 0 1px 1px #aa3; @include transition(background-color 0.3s ease-out); 
+        &:hover                             { background: lighten(#fe8, 15%); }
+    }
+    
+    table                                   { border: 1px solid #aaa; border-collapse: collapse; cell-padding: 0; font-size: 14px; margin: 0 auto; text-shadow: 0 1px 0px #fff; width: 100%;
+        th                                  { background: #fff; border: 1px solid #aaa; font-weight: bold; padding: 5px 10px; border-bottom: 1px solid #aaa; text-align: center;}
+        
+        tr                                  { background: #fff; }
+        tr:nth-child(odd)                   { background: #efefef;  cell-spacing: 0;  }
+        tr:nth-child(odd) td                { background: #efefef; border: 1px solid #aaa; cell-spacing: 0;  }
+        tr td                               { border: 1px solid #aaa; cell-spacing: 0; padding: 10px; text-align: center; vertical-align: top;
+            &.long-entry                    { text-align: left;}
+        }
+        tr td:first-child                   { border-right: 1px solid #aaa; }
+        th:first-child                      { border-right: 1px solid #aaa; }
+                
+        caption                             { background: #555; border: 1px solid #444; border-bottom: none; color: #fff; font: bold 18px/1.7em $sans-serif; text-align: center; text-shadow: 0 0 3px #111; @include box-shadow( inset 0 -10px 35px #333); @include border-top-radius(8px);  }
+    }
+    
+    small                                   { font-size: 11px; }
+    
+    strong                                  { font-weight: bold; }
+    sub                                     { font-size: 0.5em; vertical-align: baseline; }
+    sup                                     { font-size: 0.5em; vertical-align: baseline; }
+        
+
+    /* f) Utility Class 
+    ---------------------------------------*/
+    .amp, .alt                              { font-family: $fancy, serif; font-style: italic; font-weight: normal; }
+    .columns-3                              { @include column-count(3); @include column-gap(1em); } 
+    .columns-2                              { @include column-count(2); @include column-gap(1em); } 
+ 
+ 
+/* =========================================== *
+ *   2) Structure                              *
+ * =========================================== */
+    
+    #wrapper                                    { @include container(); margin: auto; }
+
+
+    /* a) Header
+    ------------------------------------------ */
+    #header                                     { background: #222 url("http://www.subtlepatterns.com/patterns/tactile_noise.png"); border-bottom: 1px solid #fff; height: 68px; margin-bottom: 40px; overflow: hidden; padding: 5px 0 0px; @include box-shadow(inset 0 0 35px #111); 
+        #returnLink                             { position: absolute; top: 0; left: 0; }
+          
+        #logo                                   { color: #eee; font-size: 16px; text-transform: uppercase; letter-spacing: 4px; position: absolute; top: 12px; left: 2%; text-shadow: 0 0 25px #fff;}            
+            
+        nav.utility                             { margin-right: 20px; text-align: right; padding: 6px 0 12px;
+            ul li                               { color: #fff; font-size: 11px; padding: 0 10px; list-style: none; @include inline-block();
+                &.user                          { border-right: 1px solid #333; }
+                
+                a                               { color: #fff; font-weight: normal; }
+                                    
+                strong                          { color: #fa3; }
+            }
+        }
+                            
+        nav.menu                                { background: #555; border-top: 1px solid #777; clear: both; @include box-shadow( inset 0 -10px 35px #333);
+            ul                                  { margin: -3px auto 0; width: 950px; height: 29px;
+                li                              { float: left; list-style: none; margin-right: 15px;
+                    a                           { color: #fff; display: block; padding: 5px 10px 4px 30px; text-shadow: 0 1px 2px #111;  
+                        img                     { position: absolute; margin-left: -23px; margin-top: 2px; width: 16px; margin-right: 5px; }
+                        &:hover                 { text-shadow: 0 0 5px #fff;}
+                    }
+                                            
+                }
+                
+                li.current a, li.settings a, 
+                li.tools a, li.home a           { background: #777; border: 1px solid #999;  border-width: 1px 1px 0; padding-top: 4px; @include border-top-radius(5px); @include box-shadow(0 0 4px #222); }
+                
+                li.home                         { margin-right: 50px;
+                    a                           { background: rgb(245, 127, 0); border: 1px solid rgb(255, 190, 60); border-width: 1px 1px 0; padding: 5px 10px 4px; @include background-image(linear-gradient(#ff9d00, #f57f00)); 
+                        &:hover                 { text-shadow: 0 0 5px #ff0; }
+                    }
+                }
+  
+                li.settings                     { margin-left: 15px; float: right;
+                    a                           { background: #677; border: 1px solid #899; border-width: 1px 1px 0;
+                        &:hover                 { text-shadow: 0 0 5px #aff;}
+                    }
+                }
+                
+                li.tools                        { float: right; margin: 0;
+                    a                           { background: #aa4545; border: 1px solid #b77; border-width: 1px 1px 0;
+                        &:hover                 { text-shadow: 0 0 5px #f66;}
+                    }
+                }
+            }
+        }
+    }
+    
+    /* c) Footer
+    ------------------------------------------ */
+    footer                                      { clear: both; font-size: 14px; margin: 100px auto 20px; border-top: 1px solid #ddd; padding-top: 10px;
+        #legal                                  { font-size: 12px; display: block; text-align: center;  text-shadow: 0 1px 0 #fff;
+            a                                   { font-weight: bold; }
+        }
+    }
+
+
+/* =========================================== *
+ *   3) Form Elements                          *
+ * =========================================== */
+    
+    form                                        { font-size: 14px; margin: 0 0 100px;
+        p                                       { border-bottom: 1px dotted #d9d9d9; clear: both; overflow: hidden; margin-bottom: 20px; padding-bottom: 20px; }
+        label                                   { font-weight: bold; max-width: 150px; margin-top: 10px; float: left; }
+        fieldset                                { background: #fff; padding: 1.4em; margin: 0 0 1.5em 0; border: 1px solid #ccc; border-bottom: 1px solid #bbb;  @include box-shadow(0 2px 5px #ddd); @include border-radius(5px); }
+        legend                                  { font-weight: bold; font-size: 14px; margin-top: -0.2em; margin-bottom: 1em; }
+        legend, #IE8#HACK                       { margin-top: 0; margin-bottom: 0;}
+        
+        input[type=text], 
+        input[type=password], 
+        input.text, input.title, textarea, 
+        select                                  { background-color: #fff; border: 1px solid #bbb; margin: 0.5em 0; width: 100%; max-width: 700px; padding: 8px 0; font-size: 12px; float: right; text-indent: 8px; @include box-shadow(#ddd 0 1px 3px inset); 
+            &:focus                             { border-color: #666; }
+        }
+        
+        input.text                              { text-indent: 8px;}
+        
+        textarea                                { min-height: 150px; }
+        select                                  { background-color: #fff; border-width: 1px; border-style: solid; height: 30px; margin-bottom: 1em;
+            option                              { height: 30px; }
+        }
+                
+    }
+
+    /* a) Template Selection
+    ------------------------------------------ */
+    
+    label.radioThumb                            { display: block; float: left; margin: auto 20px; text-align: center;
+        input[type="radio"]                     { display: none;
+            &:checked+img                       { border-color: red; @include box-shadow(0 0 20px #faa); }
+        }
+        img                                     { border: 1px solid #AAA; cursor: pointer; position: relative; bottom: -2px; left: -10px; 
+            &:hover                             { border: 1px solid #88b; @include box-shadow(0 0 20px #ccf); }
+        }
+        p                                       { margin-left: -17px; margin-bottom: 0; }
+    }
+    
+    /* b) Login Form
+    ------------------------------------------ */
+        #login                                  { width: 400px; margin: 0 auto;
+            fieldset                            { border: 1px solid #aaa; @include box-shadow(0 1px 8px rgba(0, 0, 0, 0.3)); @include border-radius(5px); }
+            label                               { float: none; width: 100%; }
+            input.text                          { float: none; width: 100%; padding: 10px 0; margin: 10px 0; }
+        }
+        
+    /* c) Content Management Forms
+    ------------------------------------------ */
+    
+    #manageContent                              {
+        #tabs                                   { overflow: hidden; }
+        textarea                                { min-height: 500px; padding: 2%; width: 96%}
+        fieldset                                { margin-top: 40px; }
+        legend                                  { background: white; padding: 0 10px 0; border: 1px solid #CCC; border-bottom: 0; @include border-top-radius(5px); position: relative; top: -12px; }
+        input.text, textarea                    { max-width: 99.6%;}
+    }
+    
+    
+/* =========================================== *
+ *   4) Misc. Elements                         *
+ * =========================================== */
+    
+    /* a) UI Elements
+    ------------------------------------------ */
+    button, .button, 
+    input[type="submit"], input[type="reset"]   { background: #3b88d8; @include background-image(linear-gradient(#52a8e8, #377ad0)); border-top: 1px solid #4081af; border-right: 1px solid #2e69a3; border-bottom: 1px solid #20559a; border-left: 1px solid #2e69a3; @include border-radius(15px); @include box-shadow(inset 0 1px 0 0 #72b9eb, 0 1px 2px 0 #b3b3b3); color: #fff; font: bold 16px/2em $sans-serif; line-height: 2em; padding: 0 15px; text-align: center; text-shadow: 0 1px 2px #223;  -webkit-background-clip: padding-box;
+        &:hover                                 { background: #2a81d7; @include background-image(linear-gradient(#3e9ee5, #206bcb)); border-top: 1px solid #2a73a6; border-right: 1px solid #165899; border-bottom: 1px solid #07428f; border-left: 1px solid #165899; @include box-shadow(inset 0 1px 0 0 #62b1e9); cursor: pointer; text-shadow: 0 1px 2px #223; -webkit-background-clip: padding-box; }
+        &:active                                { background: #3282d3; border: 1px solid #154c8c; border-bottom: 1px solid #0e408e; @include box-shadow(inset 0 0 6px 3px #1657b5, 0 1px 0 0 #fff); text-shadow: 0 -1px 1px #2361a4; -webkit-background-clip: padding-box; }
+    
+        &[disabled],
+        &[disabled]:hover,
+        &[disabled]:active                      { background: #999; @include background-image(linear-gradient(#dadada, #f3f3f3)); border-top: 1px solid #c5c5c5; border-right: 1px solid #cecece; border-bottom: 1px solid #d9d9d9; border-left: 1px solid #cecece; color: #8f8f8f; @include box-shadow(none); cursor: not-allowed; text-shadow: 0 -1px 1px #ebebeb; }
+    
+        *::-moz-focus-inner                     { border: 0; padding: 0; }
+    } 
+    
+    a.button                                    { padding: 6px 10px;
+        &:hover                                 { color: #fff; }
+    }
+        
+    
+
+
+
+/* 4) Content Management Forms
+----------------------------------------------- */
+    #manageContent                              {
+        #tabs                                   { overflow: hidden; }
+        fieldset                                { margin-top: 40px; }
+        legend                                  { background: white; padding: 0 10px 0; border: 1px solid #CCC; border-bottom: 0; @include border-top-radius(5px); position: relative; top: -12px; }
+        input.text                              { width: 99.5%; }
+        
+        aside                                   { width: 27%; margin-left: 4%; float: right; 
+            .cheatsheet                         { background: #ffd; border: 1px solid #fda; clear: both; height: 15px; margin: 0 0 1em 0; overflow: hidden; padding: 1.5em 1.3em; @include border-radius(5px); @include box-shadow(0 0 1px #fff, 0 2px 5px #ddd);
+                .title                          { background: #FEA; color: #333; padding: 9px; margin: -21px -18px 10px; border-top: 1px solid #FFD; text-shadow: 0 1px 0 #fff; text-align: center; border-bottom: 1px solid #FDA; @include border-top-radius(5px); 
+                    button                      { color: #333; text-align: center; padding: 0 13px; text-shadow: none; background: #ffd; border: 1px solid #fda; @include box-shadow(none); @include border-radius(5px); margin-right: 12px; 
+                        &:hover                 { background: #fec; }
+                    }
+                }
+                p, ul, ol                       { background: #FFE; border: 1px ridge #fda; padding: 5%; @include box-shadow(0 1px 4px #EDA); }
+            }
+        }
+        
+    }
+    
+    section.actions                             { background: #fff; border: 1px solid #d9d9d9; padding-bottom: 15px; margin: 0 0 25px 0; text-align: center;  @include box-shadow(0 2px 5px #ddd); @include border-radius(5px); 
+        header                                  { background: #fcfcfc; border-bottom: 1px solid #d9d9d9; font-weight: bold; margin-bottom: 10px; padding: 10px; @include border-top-radius(5px); }
+    }
+    
+   #editor                                      { padding: 0 20px 20px; border: 1px solid #eee; background: #dedede url("/admin/stylesheets/images/fabric_1.png"); overflow: hidden; @include box-shadow(0 0 1px #aaa); @include transition(1s height linear);
+      label                                     { font-size: 18px; max-width: 100%; padding-bottom: 10px; text-shadow: 0 1px 0 #fff; display: block;}
+      textarea                                  { background: #fff }
+      
+      .fullscreen                               { display: block;}
+      .exit                                     { display: none; }
+      
+      &:target                                  { background: #fefefe; position: fixed; padding: 30px 17%; width: 66%; height: 97%; top: 0; left: 0; z-index: 999999; @include box-shadow( 0 0 50px #111); overflow: scroll;
+          label                                 { display: block; font-size: 36px; line-height: 48px; font-family: $fancy; text-align: center; width: 100%;}
+          textarea                              { border: none; display: block; padding: 10%; clear: both; margin: 0; width: 80%; outline: none; }
+          .fullscreen                           { display: none;}
+          .exit                                 { display: block; }
+      }
+   }
+    
+
+/* 5) UI Elements
+----------------------------------------------- */
+
+    /* a) Fancy Radio Button Thumbnails
+    ------------------------------------------- */
+        
+        label.radioThumb                        { display: block; float: left; margin: auto 20px; text-align: center;
+            input[type="radio"]                 { display: none;
+                &:checked+img                   { border-color: red; @include box-shadow(0 0 20px #faa); }
+            }
+            img                                 { border: 1px solid #AAA; cursor: pointer; position: relative; bottom: -2px; left: -10px; 
+                &:hover                         { border: 1px solid #88b; @include box-shadow(0 0 20px #ccf); }
+            }
+            span                                { display: block; margin-left: -17px; margin-bottom: 0; }
+        }
+      
+    /* b) Flash Notifications
+    ------------------------------------------- */
+        .flash                                  { background: lighten($body_copy, 80%); border: 1px solid lighten($body_copy, 70%); color: #333; cursor: pointer; display: none; font-size: 14px; left: 10px; max-width: 300px; padding: 14px 20px; position: fixed; top: 5px; @include border-radius(4px); @include box-shadow(inset 0 1px 1px #fff); z-index: 9999;
+            
+            a                                   { text-decoration: underline; font-weight: bold;}
+            
+            &.success                           { background-color: #E6EFC2; color: #264409; border-color: #C6D880; @include box-shadow(inset 0 1px 0 #fff, #ADA 0 1px 3px);
+                a                               { color:#264409; }
+            }
+            
+            &.error, &.alert                    { background-color: #FBE3E4; color: #8A1F11; border-color: #FBC2C4; @include box-shadow(inset 0 1px 0 #fff, #FCC 0 1px 3px);
+                a                               { color:#8a1f11; }
+            }
+            
+            &.notice                            { background-color: #FFF6BF; color: #514721; border-color: #FFD324; @include box-shadow(inset 0 1px 0 #fff, #CC6 0 1px 3px);
+                a                               { color:#514721;}
+            }
+            
+            &.info                              { background-color: #D5EDF8; color: #205791; border-color: #92CAE4;  @include box-shadow(inset 0 1px 0 #fff, #CCF 0 1px 3px);
+                a                               { color:#205791; }
+            }
+        }        
+        
+        
+    /* e) Media Boxes
+    ------------------------------------------- */ 
+        .mediabox                               { background:#fefefe; padding: 2% 2%; width: 26%; margin: 1.4%; border: 1px solid #d9d9d9; @include inline-block; vertical-align: top; @include box-shadow(0 1px 5px #ddd); }
+    
+    

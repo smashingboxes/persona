@@ -1,0 +1,37 @@
+<section>
+    <article>
+        <h1><%= @model.storage_name.capitalize %></h1>
+        <a href="/admin/<%= @model.name.downcase %>/create" class="button">New <%= @model.name %></a>
+        <hr/>
+        <% if @model.count > 0 %>
+            <table>
+              <caption>All <%= @model.storage_name.capitalize %> </caption>
+              <thead>
+                <% @model.first.attributes.each do |a| %>
+                    <% unless (@model.first[a[0]].is_a? DateTime) || (a[0].to_s === "password") %>
+                        <th><%= a[0].to_s.gsub("_", " ").capitalize %></th>
+                    <% end %>
+                <% end %>
+                        <th>&#9998;</th>
+                        <th>&#10006;</th>
+              </thead>
+              <tbody>
+                <% @model.all.each do |e| %>
+                    <tr>
+                        <% e.attributes.each do |a| %>
+                            <% unless (@model.first[a[0]].is_a? DateTime) || (a[0].to_s === "password") %>
+                                <td <%= "class='long-entry'" if a[1].size > 30 %>><%= truncate( a[1].to_s.capitalize, 15, true ) %></td>
+                            <% end %>
+                        <% end %>
+                        <td><a href="/admin/<%= @model.name.downcase %>/edit/<%= e.id %>" title="Edit current page">Edit</a></td>    
+                        <td><a href="/admin/<%= @model.name.downcase %>/delete/<%= e.id %>" class="delete" title="Delete current page">Delete</a></td>    
+                    </tr>
+                <% end %>           
+              </tbody>
+            </table>
+        <% else %>
+            <h1><strong>Empty!</strong></h1>
+            <h4>No entries could be found in the <%= @model.storage_name.capitalize %> model</h4>
+        <% end %>
+   </article>
+</section>

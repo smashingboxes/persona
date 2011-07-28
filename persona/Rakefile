@@ -1,1 +1,17 @@
 require 'bundler/gem_tasks'
+
+
+namespace :persona do
+  
+  task :refresh do
+      
+      puts "Rebuilding Persona Gem..."
+      `rake install`
+      
+      puts "Starting server..."
+      
+      `rackup`
+      
+  end
+
+end
