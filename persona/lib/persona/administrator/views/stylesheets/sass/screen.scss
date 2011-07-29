@@ -226,11 +226,11 @@
         input[type=text], 
         input[type=password], 
         input.text, input.title, textarea, 
-        select                                  { background-color: #fff; border: 1px solid #bbb; margin: 0.5em 0; width: 100%; max-width: 700px; padding: 8px 0; font-size: 12px; float: right; text-indent: 8px; @include box-shadow(#ddd 0 1px 3px inset); 
-            &:focus                             { border-color: #666; }
+        select                                  { background-color: #fff; border: 1px solid #bbb; margin: 0.5em 0; width: 100%; max-width: 700px; padding: 8px 0; font-size: 12px; float: right; outline: 0; text-indent: 8px; @include box-shadow(#ddd 0 1px 3px inset); 
+            &:focus                             { border-color: #6af; @include box-shadow(0 0 5px rgba(80, 200, 255, 0.5)); }
         }
         
-        input.text                              { text-indent: 8px;}
+        input.text                              { text-indent: 8px; }
         
         textarea                                { min-height: 150px; }
         select                                  { background-color: #fff; border-width: 1px; border-style: solid; height: 30px; margin-bottom: 1em;
